@@ -1,0 +1,186 @@
+{
+	"id": "com.tkbhome",
+	"name": {
+		"en": "TKB Home"
+	},
+	"version": "1.0.0",
+	"compatibility": ">=0.9.3",
+	"description": {
+		"en": "TKB Home devices for Homey"
+	},
+	"category": [
+		"appliances",
+		"lights",
+		"security"
+	],
+	"images": {
+		"large": "/assets/images/large.png",
+		"small": "/assets/images/small.png"
+	},
+	"author": {
+		"name": "Remco Mengers",
+		"email": "caseda08@hotmail.com"
+	},
+	"drivers": [
+		{
+			"id": "TZ65D",
+			"name": {
+				"en": "TKB Home Dual Wall Dimmer TZ65D",
+				"nl": "TKB Home Dubbele Muur Dimmer TZ65D"
+			},
+			"zwave": {
+				"manufacturerId": 280,
+				"productTypeId": 258,
+				"productId": [
+					8278
+				],
+				"learnmode": {
+					"image": "/drivers/TZ65D/assets/learnmode.svg",
+					"instruction": {
+						"en": "Press the on/off button 3 times within 1.5 seconds",
+						"nl": "Druk 3 keer op de aan/uit knop binnen 1,5 seconden"
+					}
+				},
+				"associationGroups": [
+					4
+				]
+			},
+			"class": "light",
+			"capabilities": [
+				"onoff",
+				"dim"
+			],
+			"images": {
+				"large": "/drivers/TZ65D/assets/images/large.png",
+				"small": "/drivers/TZ65D/assets/images/small.png"
+			}
+		},
+		{
+			"id": "TZ67",
+			"name": {
+				"en": "TKB Home Dimmer Wallplug TZ67",
+				"nl": "TKB Home Dimmer Muurplug TZ67"
+			},
+			"zwave": {
+				"manufacturerId": 280,
+				"productTypeId": 514,
+				"productId": [
+					1553
+				],
+				"learnmode": {
+					"image": "/drivers/TZ67/assets/learnmode.svg",
+					"instruction": {
+						"en": "Press button 3 times within 1.5 seconds",
+						"nl": "Druk 3 keer op de knop binnen 1,5 seconden"
+					}
+				},
+				"associationGroups": [
+					1
+				]
+			},
+			"class": "socket",
+			"capabilities": [
+				"onoff",
+				"dim"
+			],
+			"images": {
+				"large": "/drivers/TZ67/assets/images/large.png",
+				"small": "/drivers/TZ67/assets/images/small.png"
+			},
+			"settings": [
+				{
+					"id": "led_behaviour",
+					"type": "dropdown",
+					"label": {
+						"en": "LED Behaviour",
+						"nl": "LED Gedrag"
+					},
+					"hint": {
+						"en": "Determine the behaviour of the LED.",
+						"nl": "Bepaal het gedrag van de LED."
+					},
+					"value": "0",
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "LED indicates the socket is off.",
+								"nl": "LED geeft aan het stopcontact uit is."
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "LED indicates the socket is on",
+								"nl": "LED geeft aan het stopcontact aan is"
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "TZ68",
+			"name": {
+				"en": "TKB Home Wallplug TZ68",
+				"nl": "TKB Home Muurplug TZ68"
+			},
+			"zwave": {
+				"manufacturerId": 280,
+				"productTypeId": 257,
+				"productId": [
+					259
+				],
+				"learnmode": {
+					"image": "/drivers//assets/learnmode.svg",
+					"instruction": {
+						"en": "Press button 3 times within 1.5 seconds",
+						"nl": "Druk 3 keer op de knop binnen 1,5 seconden"
+					}
+				},
+				"associationGroups": [
+					1
+				]
+			},
+			"class": "socket",
+			"capabilities": [
+				"onoff"
+			],
+			"images": {
+				"large": "/drivers//assets/images/large.png",
+				"small": "/drivers//assets/images/small.png"
+			},
+			"settings": [
+				{
+					"id": "led_behaviour",
+					"type": "dropdown",
+					"label": {
+						"en": "LED Behaviour",
+						"nl": "LED Gedrag"
+					},
+					"hint": {
+						"en": "Determine the behaviour of the LED.",
+						"nl": "Bepaal het gedrag van de LED."
+					},
+					"value": "0",
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "LED indicates the socket is off.",
+								"nl": "LED geeft aan het stopcontact uit is."
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "LED indicates the socket is on",
+								"nl": "LED geeft aan het stopcontact aan is"
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}
