@@ -15,8 +15,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			'command_set': 'SWITCH_MULTILEVEL_SET',
 			'command_set_parser': value => {
 				return {
-					'Value': (value > 0) ? 'on/enable' : 'off/disable',
-					'Dimming Duration': 1
+					'Value': (value > 0) ? 'on/enable' : 'off/disable'
 				};
 			},
 			'command_report': 'SWITCH_MULTILEVEL_REPORT',
@@ -35,8 +34,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				if (value >= 1) value = 0.99;
 				
 				return {
-					'Value': value * 100,
-					'Dimming Duration': 1
+					'Value': value * 100
 				};
 			},
 			'command_report': 'SWITCH_MULTILEVEL_REPORT',

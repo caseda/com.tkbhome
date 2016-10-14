@@ -21,6 +21,63 @@
 		"name": "Remco Mengers",
 		"email": "caseda08@hotmail.com"
 	},
+	"flow": {
+		"triggers": [
+			{
+				"id": "TZ65D_s2_on",
+				"title": {
+					"en": "Right Switch [On]",
+					"nl": "Rechter Schakelaar [Aan]"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=TZ65D"
+					}
+				]
+			},
+			{
+				"id": "TZ65D_s2_off",
+				"title": {
+					"en": "Right Switch [Off]",
+					"nl": "Rechter Schakelaar [Uit]"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=TZ65D"
+					}
+				]
+			},
+			{
+				"id": "TZ65D_s2_dim",
+				"title": {
+					"en": "Right Switch [Dim]",
+					"nl": "Rechter Schakelaar [Dim]"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=TZ65D"
+					}
+				],
+				"tokens": [
+					{
+						"name": "dim_level",
+						"title": {
+							"en": "dim %"
+						},
+						"example": {
+							"en": "127"
+						}
+					}
+				]
+			}
+		]
+	}
 	"drivers": [
 		{
 			"id": "TZ65D",
@@ -30,18 +87,19 @@
 			},
 			"zwave": {
 				"manufacturerId": 280,
-				"productTypeId": 258,
+				"productTypeId": 2056,
 				"productId": [
-					8278
+					2056
 				],
 				"learnmode": {
 					"image": "/drivers/TZ65D/assets/learnmode.svg",
 					"instruction": {
-						"en": "Press the on/off button 3 times within 1.5 seconds",
-						"nl": "Druk 3 keer op de aan/uit knop binnen 1,5 seconden"
+						"en": "Press the left on/off button once",
+						"nl": "Druk een keer op de linker aan/uit knop"
 					}
 				},
 				"associationGroups": [
+					2,
 					4
 				]
 			},
@@ -53,7 +111,159 @@
 			"images": {
 				"large": "/drivers/TZ65D/assets/images/large.png",
 				"small": "/drivers/TZ65D/assets/images/small.png"
-			}
+			},
+			"settings": [
+				{
+					"id": "led_behaviour",
+					"type": "dropdown",
+					"label": {
+						"en": "LED Behaviour",
+						"nl": "LED Gedrag"
+					},
+					"hint": {
+						"en": "Determine the behaviour of the LED.",
+						"nl": "Bepaal het gedrag van de LED."
+					},
+					"value": "0",
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "LED indicates the socket is off.",
+								"nl": "LED geeft aan het stopcontact uit is."
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "LED indicates the socket is on",
+								"nl": "LED geeft aan het stopcontact aan is"
+							}
+						}
+					]
+				},
+				{
+					"id": "led_behaviour_data",
+					"type": "dropdown",
+					"label": {
+						"en": "LED Behaviour On Data",
+						"nl": "LED Gedrag Met Data"
+					},
+					"hint": {
+						"en": "Determine the behaviour of the LED when data is being transmitted.",
+						"nl": "Bepaal het gedrag van de LED wanneer data word verzonden."
+					},
+					"value": "2",
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "LED doesn't blink.",
+								"nl": "LED knipperd niet."
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "LED blinks when transmitting data.",
+								"nl": "LED knipperd wanneer data word verzonden."
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "LED blinks for 1 seconds when data is send.",
+								"nl": "LED knipperd voor 1 seconden als hij data verzend."
+							}
+						}
+					]
+				},
+				{
+					"id": "invert_switch",
+					"type": "dropdown",
+					"label": {
+						"en": "Switch Behaviour",
+						"nl": "Schakelaar Gedrag"
+					},
+					"hint": {
+						"en": "Determine the behaviour of the switch.",
+						"nl": "Bepaal het gedrag van de schakelaar."
+					},
+					"value": "0",
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "Switch up = Off, Switch down = On.",
+								"nl": "Schakelaar omhoog = Uit, Schakelaar omlaag = Aan."
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "Switch up = On, Switch down = Off.",
+								"nl": "Schakelaar omhoog = Aan, Schakelaar omlaag = Uit."
+							}
+						}
+					]
+				},
+				{
+					"id": "poll_switch2",
+					"type": "checkbox",
+					"label": {
+						"en": "Polling Right Switch",
+						"nl": "Polling Rechter Schakelaar"
+					},
+					"hint": {
+						"en": "Determine if the right switch state is being polled internally.",
+						"nl": "Bepaal of de rechter schakelaar status word gepolled intern."
+					},
+					"value": true
+				},
+				{
+					"id": "poll_switch2_interval",
+					"type": "number",
+					"label": {
+						"en": "Polling Interval Right Switch",
+						"nl": "Polling Interval Rechter Schakelaar"
+					},
+					"hint": {
+						"en": "Determine the interval (in minutes) the right switch state is being polled internally. Range: 1 - 255, 0 = Off",
+						"nl": "Bepaal het interval dat de rechter schakelaar status word gepolled intern. Bereik: 1 - 255, 0 - Uit"
+					},
+					"value": 2,
+					"attr": {
+						"min": 0,
+						"max": 255
+					}
+				},
+				{
+					"id": "roller_blind_group2",
+					"type": "checkbox",
+					"label": {
+						"en": "Association Group 2 is a rollerblind",
+						"nl": "Association Group 2 is een rolgordijn"
+					},
+					"hint": {
+						"en": "Determine if the devices in Association Group 2 is a rollerblind.",
+						"nl": "Bepaal of de modules in Association Group 2 is een rolgordijn zijn."
+					},
+					"value": false
+				},
+				{
+					"id": "roller_blind_group3",
+					"type": "checkbox",
+					"label": {
+						"en": "Association Group 3 is a rollerblind",
+						"nl": "Association Group 3 is een rolgordijn"
+					},
+					"hint": {
+						"en": "Determine if the devices in Association Group 2 is a rollerblind.",
+						"nl": "Bepaal of de modules in Association Group 2 is een rolgordijn zijn."
+					},
+					"value": false
+				}
+			]
 		},
 		{
 			"id": "TZ67",
@@ -132,7 +342,7 @@
 					259
 				],
 				"learnmode": {
-					"image": "/drivers//assets/learnmode.svg",
+					"image": "/drivers/TZ68/assets/learnmode.svg",
 					"instruction": {
 						"en": "Press button 3 times within 1.5 seconds",
 						"nl": "Druk 3 keer op de knop binnen 1,5 seconden"
@@ -147,8 +357,8 @@
 				"onoff"
 			],
 			"images": {
-				"large": "/drivers//assets/images/large.png",
-				"small": "/drivers//assets/images/small.png"
+				"large": "/drivers/TZ68/assets/images/large.png",
+				"small": "/drivers/TZ68/assets/images/small.png"
 			},
 			"settings": [
 				{
