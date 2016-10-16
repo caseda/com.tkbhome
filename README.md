@@ -24,5 +24,5 @@ If so, I will need to change the name/remove them.
 ..Caseda
 
 ## Change Log:
-**1.0.0:**
+**0.9.0:**
 First Addition to app-store.
