@@ -18,9 +18,11 @@ This app adds support for TKB Home devices in Homey.
 * Dutch (Nederlands)
 
 ### Notes:
-experimental = These might trigger on left switch as well.  
+Experimental:  
+These might trigger on left switch as well.  
 If so, I will need to change the name/remove them.  
+..Caseda
 
 ## Change Log:
-**1.0.0:**  
+**1.0.0:**
 First Addition to app-store.
