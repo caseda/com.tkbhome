@@ -86,5 +86,28 @@ module.exports.on('initNode', token => {
 				Homey.manager('flow').triggerDevice('TZ65D_s2_dim', dimValue, null, node.device_data);
 			}
 		});
+		
+		node.instance.CommandClass['COMMAND_CLASS_MULTILEVEL'].on('report', (command, report) => {
+			if (command.name === "SWITCH_MULTILEVEL_START_LEVEL_CHANGE") {
+				
+				if (report.hasOwnProperty("Properties1") &&
+				report.Properties1.hasOwnProperty("Up/Down")) {
+					
+					if (report.Properties1['Up/Down'] === "0") {
+						Homey.manager('flow').triggerDevice('TZ65D_s2_hold_down', null, null, node.device_data);
+					}
+					
+					else
+					if (report.Properties1['Up/Down'] === "1") {
+						Homey.manager('flow').triggerDevice('TZ65D_s2_hold_up', null, null, node.device_data);
+					}
+				}
+			}
+			
+			else
+			if (command.name === "SWITCH_MULTILEVEL_STOP_LEVEL_CHANGE") {
+				Homey.manager('flow').triggerDevice('TZ65D_s2_hold_released', null, null, node.device_data);
+			}
+		});
 	}
 });

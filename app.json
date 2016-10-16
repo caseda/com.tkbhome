@@ -3,7 +3,7 @@
 	"name": {
 		"en": "TKB Home"
 	},
-	"version": "1.0.0",
+	"version": "0.9.0",
 	"compatibility": ">=0.9.3",
 	"description": {
 		"en": "TKB Home devices for Homey"
@@ -54,8 +54,8 @@
 			{
 				"id": "TZ65D_s2_dim",
 				"title": {
-					"en": "Right Switch [Dim]",
-					"nl": "Rechter Schakelaar [Dim]"
+					"en": "Right Switch [Dim Level Changed]",
+					"nl": "Rechter Schakelaar [Dim Level Veranderd]"
 				},
 				"args": [
 					{
@@ -73,6 +73,48 @@
 						"example": {
 							"en": "127"
 						}
+					}
+				]
+			},
+			{
+				"id": "TZ65D_s2_hold_down",
+				"title": {
+					"en": "Right Switch [Hold Top]",
+					"nl": "Rechter Schakelaar [Boven Vasthouden]"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=TZ65D"
+					}
+				]
+			},
+			{
+				"id": "TZ65D_s2_hold_up",
+				"title": {
+					"en": "Right Switch [Hold Bottom]",
+					"nl": "Rechter Schakelaar [Onder Vasthouden]"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=TZ65D"
+					}
+				]
+			},
+			{
+				"id": "TZ65D_s2_hold_released",
+				"title": {
+					"en": "Right Switch [Hold Released]",
+					"nl": "Rechter Schakelaar [Vasthouden Los]"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=TZ65D"
 					}
 				]
 			}
