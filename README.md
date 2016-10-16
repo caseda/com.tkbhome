@@ -2,8 +2,8 @@
 This app adds support for TKB Home devices in Homey.
 
 ## Supported devices:
-+ TZ65D - Dual Wall Dimmer
-  - Right Switch only flow triggers:
++ TZ65 - Single & Dual Wall Dimmer
+  - TZ65D => Right Switch only flow triggers:
     - On
     - Off
     - Dim Level Changed
@@ -24,5 +24,8 @@ If so, I will need to change the name/remove them.
 ..Caseda
 
 ## Change Log:
+**0.9.1:**
+Changed TZ65D to TZ65 (TZ65S & TZ65D are both same driver)  
+
 **0.9.0:**
 First Addition to app-store.

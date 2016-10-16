@@ -3,7 +3,7 @@
 	"name": {
 		"en": "TKB Home"
 	},
-	"version": "0.9.0",
+	"version": "0.9.1",
 	"compatibility": ">=0.9.3",
 	"description": {
 		"en": "TKB Home devices for Homey"
@@ -26,8 +26,8 @@
 			{
 				"id": "TZ65D_s2_on",
 				"title": {
-					"en": "Right Switch [On]",
-					"nl": "Rechter Schakelaar [Aan]"
+					"en": "Right Switch [On] (TZ65D Only)",
+					"nl": "Rechter Schakelaar [Aan] (Alleen TZ65D)"
 				},
 				"args": [
 					{
@@ -40,8 +40,8 @@
 			{
 				"id": "TZ65D_s2_off",
 				"title": {
-					"en": "Right Switch [Off]",
-					"nl": "Rechter Schakelaar [Uit]"
+					"en": "Right Switch [Off] (TZ65D Only)",
+					"nl": "Rechter Schakelaar [Uit] (Alleen TZ65D)"
 				},
 				"args": [
 					{
@@ -54,8 +54,8 @@
 			{
 				"id": "TZ65D_s2_dim",
 				"title": {
-					"en": "Right Switch [Dim Level Changed]",
-					"nl": "Rechter Schakelaar [Dim Level Veranderd]"
+					"en": "Right Switch [Dim Level Changed] (TZ65D Only)",
+					"nl": "Rechter Schakelaar [Dim Level Veranderd] (Alleen TZ65D)"
 				},
 				"args": [
 					{
@@ -79,8 +79,8 @@
 			{
 				"id": "TZ65D_s2_hold_up",
 				"title": {
-					"en": "Right Switch [Hold Top]",
-					"nl": "Rechter Schakelaar [Boven Vasthouden]"
+					"en": "Right Switch [Hold Top] (TZ65D Only)",
+					"nl": "Rechter Schakelaar [Boven Vasthouden] (Alleen TZ65D)"
 				},
 				"args": [
 					{
@@ -93,8 +93,8 @@
 			{
 				"id": "TZ65D_s2_hold_down",
 				"title": {
-					"en": "Right Switch [Hold Bottom]",
-					"nl": "Rechter Schakelaar [Onder Vasthouden]"
+					"en": "Right Switch [Hold Bottom] (TZ65D Only)",
+					"nl": "Rechter Schakelaar [Onder Vasthouden] (Alleen TZ65D)"
 				},
 				"args": [
 					{
@@ -107,8 +107,8 @@
 			{
 				"id": "TZ65D_s2_hold_released",
 				"title": {
-					"en": "Right Switch [Hold Released]",
-					"nl": "Rechter Schakelaar [Vasthouden Los]"
+					"en": "Right Switch [Hold Released] (TZ65D Only)",
+					"nl": "Rechter Schakelaar [Vasthouden Los] (Alleen TZ65D)"
 				},
 				"args": [
 					{
@@ -122,10 +122,10 @@
 	},
 	"drivers": [
 		{
-			"id": "TZ65D",
+			"id": "TZ65",
 			"name": {
-				"en": "TKB Home Dual Wall Dimmer TZ65D",
-				"nl": "TKB Home Dubbele Muur Dimmer TZ65D"
+				"en": "TKB Home Single/Dual Wall Dimmer TZ65",
+				"nl": "TKB Home Enkele/Dubbele Muur Dimmer TZ65"
 			},
 			"zwave": {
 				"manufacturerId": 280,
@@ -136,12 +136,13 @@
 				"learnmode": {
 					"image": "/drivers/TZ65D/assets/learnmode.svg",
 					"instruction": {
-						"en": "Press the left on/off button once",
-						"nl": "Druk een keer op de linker aan/uit knop"
+						"en": "Press the (left) on/off button once",
+						"nl": "Druk een keer op de (linker) aan/uit knop"
 					}
 				},
 				"associationGroups": [
 					2,
+					3,
 					4
 				]
 			},
@@ -151,8 +152,8 @@
 				"dim"
 			],
 			"images": {
-				"large": "/drivers/TZ65D/assets/images/large.png",
-				"small": "/drivers/TZ65D/assets/images/small.png"
+				"large": "/drivers/TZ65/assets/images/large.png",
+				"small": "/drivers/TZ65/assets/images/small.png"
 			},
 			"settings": [
 				{
@@ -248,62 +249,6 @@
 							}
 						}
 					]
-				},
-				{
-					"id": "poll_switch2",
-					"type": "checkbox",
-					"label": {
-						"en": "Polling Right Switch",
-						"nl": "Polling Rechter Schakelaar"
-					},
-					"hint": {
-						"en": "Determine if the right switch state is being polled internally.",
-						"nl": "Bepaal of de rechter schakelaar status word gepolled intern."
-					},
-					"value": true
-				},
-				{
-					"id": "poll_switch2_interval",
-					"type": "number",
-					"label": {
-						"en": "Polling Interval Right Switch",
-						"nl": "Polling Interval Rechter Schakelaar"
-					},
-					"hint": {
-						"en": "Determine the interval (in minutes) the right switch state is being polled internally. Range: 1 - 255, 0 = Off",
-						"nl": "Bepaal het interval dat de rechter schakelaar status word gepolled intern. Bereik: 1 - 255, 0 - Uit"
-					},
-					"value": 2,
-					"attr": {
-						"min": 0,
-						"max": 255
-					}
-				},
-				{
-					"id": "roller_blind_group2",
-					"type": "checkbox",
-					"label": {
-						"en": "Association Group 2 is a rollerblind",
-						"nl": "Association Group 2 is een rolgordijn"
-					},
-					"hint": {
-						"en": "Determine if the devices in Association Group 2 is a rollerblind.",
-						"nl": "Bepaal of de modules in Association Group 2 is een rolgordijn zijn."
-					},
-					"value": false
-				},
-				{
-					"id": "roller_blind_group3",
-					"type": "checkbox",
-					"label": {
-						"en": "Association Group 3 is a rollerblind",
-						"nl": "Association Group 3 is een rolgordijn"
-					},
-					"hint": {
-						"en": "Determine if the devices in Association Group 2 is a rollerblind.",
-						"nl": "Bepaal of de modules in Association Group 2 is een rolgordijn zijn."
-					},
-					"value": false
 				}
 			]
 		},

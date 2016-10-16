@@ -3,9 +3,10 @@
 const path = require('path');
 const ZwaveDriver = require('homey-zwavedriver');
 
-// http://www.tkbhome.com/?cn-p-d-181.html
-// http://www.pepper1.net/zwavedb/device/343
-// TZ65D
+// http://www.tkbhome.com/?cn-p-d-180.html <- TZ65S
+// http://www.tkbhome.com/?cn-p-d-181.html <- TZ65D
+// http://www.pepper1.net/zwavedb/device/424 <- TZ65S
+// http://www.pepper1.net/zwavedb/device/343 <- TZ65D
 
 module.exports = new ZwaveDriver( path.basename(__dirname), {
 	capabilities: {
@@ -50,24 +51,8 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			"index": 4,
 			"size": 1,
 		},
-		"roller_blind_group2": {
-			"index": 14,
-			"size": 1,
-		},
-		"roller_blind_group3": {
-			"index": 15,
-			"size": 1,
-		},
 		"led_behaviour_data": {
 			"index": 19,
-			"size": 1,
-		},
-		"poll_switch2_interval": {
-			"index": 20,
-			"size": 1,
-		},
-		"poll_switch2": {
-			"index": 22,
 			"size": 1,
 		},
 	}
