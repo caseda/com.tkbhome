@@ -77,7 +77,7 @@
 				]
 			},
 			{
-				"id": "TZ65D_s2_hold_down",
+				"id": "TZ65D_s2_hold_up",
 				"title": {
 					"en": "Right Switch [Hold Top]",
 					"nl": "Rechter Schakelaar [Boven Vasthouden]"
@@ -91,7 +91,7 @@
 				]
 			},
 			{
-				"id": "TZ65D_s2_hold_up",
+				"id": "TZ65D_s2_hold_down",
 				"title": {
 					"en": "Right Switch [Hold Bottom]",
 					"nl": "Rechter Schakelaar [Onder Vasthouden]"
