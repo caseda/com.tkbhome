@@ -24,6 +24,9 @@ If so, I will need to change the name/remove them.
 ..Caseda
 
 ## Change Log:
+**0.9.2:**
+Fixed a bug in flow triggers TZ65(D)  
+
 **0.9.1:**
 Changed TZ65D to TZ65 (TZ65S & TZ65D are both same driver)  
 
