@@ -72,7 +72,7 @@ module.exports.on('initNode', token => {
 			}
 		});
 		
-		node.instance.CommandClass['COMMAND_CLASS_MULTILEVEL'].on('report', (command, report) => {
+		node.instance.CommandClass['COMMAND_CLASS_SWITCH_MULTILEVEL'].on('report', (command, report) => {
 			if (command.name === "SWITCH_MULTILEVEL_START_LEVEL_CHANGE") {
 				
 				if (report.hasOwnProperty("Properties1") &&
