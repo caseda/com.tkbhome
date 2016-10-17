@@ -30,7 +30,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			{
 				'command_class': 'COMMAND_CLASS_BASIC',
 				'command_report': 'BASIC_REPORT',
-				'command_report_parser': report => report['Value' ] > 0
+				'command_report_parser': report => report['Value'] > 0
 			}
 		],
 		
