@@ -24,6 +24,9 @@ If so, I will need to change the name/remove them.
 ..Caseda
 
 ## Change Log:
+**0.9.3:**
+Fixed TZ68 not using the right Command Class
+
 **0.9.2:**
 Fixed a bug in flow triggers TZ65(D)  
 Fixed a bug that TZ67 & TZ68 state in homey did not change on physical changes
