@@ -26,7 +26,7 @@ If so, I will need to change the name/remove them.
 ## Change Log:
 **0.9.2:**
 Fixed a bug in flow triggers TZ65(D)  
-Fixed a bug that TZ65's state in homey did not change on physical changes
+Fixed a bug that TZ67 & TZ68 state in homey did not change on physical changes
 
 **0.9.1:**
 Changed TZ65D to TZ65 (TZ65S & TZ65D are both same driver)  
