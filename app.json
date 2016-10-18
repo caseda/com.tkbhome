@@ -33,7 +33,7 @@
 					{
 						"name": "device",
 						"type": "device",
-						"filter": "driver_id=TZ65D"
+						"filter": "driver_id=TZ65"
 					}
 				]
 			},
@@ -47,7 +47,7 @@
 					{
 						"name": "device",
 						"type": "device",
-						"filter": "driver_id=TZ65D"
+						"filter": "driver_id=TZ65"
 					}
 				]
 			},
@@ -61,7 +61,7 @@
 					{
 						"name": "device",
 						"type": "device",
-						"filter": "driver_id=TZ65D"
+						"filter": "driver_id=TZ65"
 					}
 				],
 				"tokens": [
@@ -86,7 +86,7 @@
 					{
 						"name": "device",
 						"type": "device",
-						"filter": "driver_id=TZ65D"
+						"filter": "driver_id=TZ65"
 					}
 				]
 			},
@@ -100,7 +100,7 @@
 					{
 						"name": "device",
 						"type": "device",
-						"filter": "driver_id=TZ65D"
+						"filter": "driver_id=TZ65"
 					}
 				]
 			},
@@ -114,7 +114,7 @@
 					{
 						"name": "device",
 						"type": "device",
-						"filter": "driver_id=TZ65D"
+						"filter": "driver_id=TZ65"
 					}
 				]
 			}
