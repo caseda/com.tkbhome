@@ -25,7 +25,7 @@ If so, I will need to change the name/remove them.
 
 ## Change Log:
 **0.9.3:**
-Fixed TZ68 not using the right Command Class
+Fixed TZ68 not using the right Command Class  
 Fixed flow cards TZ65
 
 **0.9.2:**
