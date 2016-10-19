@@ -26,9 +26,9 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 					return report['Value (Raw)'][0] > 0;
 				}
 			},
-			{
+			{ // for physical changes
 				'command_class': 'COMMAND_CLASS_BASIC',
-				'command_report': 'BASIC_REPORT',
+				'command_report': 'BASIC_SET',
 				'command_report_parser': report => report['Value'] > 0
 			}
 		],
