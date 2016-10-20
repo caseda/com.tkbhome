@@ -3,13 +3,9 @@ This app adds support for TKB Home devices in Homey.
 
 ## Supported devices:
 + TZ65 - Single & Dual Wall Dimmer
-  - TZ65D => Right Switch only flow triggers:
+  - TZ65D => only Right Switch flow triggers #1:
     - On
     - Off
-    - Dim Level Changed
-    - Held Up (experimental)
-    - Held Down (experimental)
-    - Hold Released (experimental)
 + TZ67 - Wallplug Dimmer (all types)
 + TZ68 - Wallplug Switch (all types)
 
@@ -18,12 +14,14 @@ This app adds support for TKB Home devices in Homey.
 * Dutch (Nederlands)
 
 ### Notes:
-Experimental:  
-These might trigger on left switch as well.  
-If so, I will need to change the name/remove them.  
-..Caseda
+#1:  
+The TZ65(D) doesn't work properly yet (only right switch (TZ65D) work with "on & off").
+Expect it to fully work in the next update (0.9.5), very soon.
 
 ## Change Log:
+**0.9.4:**
+Fixed TZ67 & TZ68 not responding to hardware changes (used wrong report command).
+
 **0.9.3:**
 Fixed TZ68 not using the right Command Class  
 Fixed flow cards TZ65
