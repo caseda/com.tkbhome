@@ -3,8 +3,8 @@
 	"name": {
 		"en": "TKB Home"
 	},
-	"version": "0.9.4",
-	"compatibility": ">=0.9.3",
+	"version": "0.9.5",
+	"compatibility": ">=1.0.1",
 	"description": {
 		"en": "TKB Home devices for Homey"
 	},
@@ -24,10 +24,10 @@
 	"flow": {
 		"triggers": [
 			{
-				"id": "TZ65D_s2_on",
+				"id": "TZ65D_s2_single_on",
 				"title": {
-					"en": "Right Switch [On] (TZ65D Only)",
-					"nl": "Rechter Schakelaar [Aan] (Alleen TZ65D)"
+					"en": "Right Switch pressed 1x on",
+					"nl": "Rechter Schakelaar 1x aan gedrukt"
 				},
 				"args": [
 					{
@@ -38,10 +38,10 @@
 				]
 			},
 			{
-				"id": "TZ65D_s2_off",
+				"id": "TZ65D_s2_single_off",
 				"title": {
-					"en": "Right Switch [Off] (TZ65D Only)",
-					"nl": "Rechter Schakelaar [Uit] (Alleen TZ65D)"
+					"en": "Right Switch pressed 1x off",
+					"nl": "Rechter Schakelaar 1x uit gedrukt"
 				},
 				"args": [
 					{
@@ -52,35 +52,10 @@
 				]
 			},
 			{
-				"id": "TZ65D_s2_dim",
+				"id": "TZ65D_s2_double_on",
 				"title": {
-					"en": "Right Switch [Dim Level Changed] (TZ65D Only)",
-					"nl": "Rechter Schakelaar [Dim Level Veranderd] (Alleen TZ65D)"
-				},
-				"args": [
-					{
-						"name": "device",
-						"type": "device",
-						"filter": "driver_id=TZ65"
-					}
-				],
-				"tokens": [
-					{
-						"name": "dim_level",
-						"title": {
-							"en": "dim %"
-						},
-						"example": {
-							"en": "127"
-						}
-					}
-				]
-			},
-			{
-				"id": "TZ65D_s2_hold_up",
-				"title": {
-					"en": "Right Switch [Hold Top] (TZ65D Only)",
-					"nl": "Rechter Schakelaar [Boven Vasthouden] (Alleen TZ65D)"
+					"en": "Right switch pressed 2x on",
+					"nl": "Rechter schakelaar 2x Aan gedrukt"
 				},
 				"args": [
 					{
@@ -91,24 +66,10 @@
 				]
 			},
 			{
-				"id": "TZ65D_s2_hold_down",
+				"id": "TZ65D_s2_double_off",
 				"title": {
-					"en": "Right Switch [Hold Bottom] (TZ65D Only)",
-					"nl": "Rechter Schakelaar [Onder Vasthouden] (Alleen TZ65D)"
-				},
-				"args": [
-					{
-						"name": "device",
-						"type": "device",
-						"filter": "driver_id=TZ65"
-					}
-				]
-			},
-			{
-				"id": "TZ65D_s2_hold_released",
-				"title": {
-					"en": "Right Switch [Hold Released] (TZ65D Only)",
-					"nl": "Rechter Schakelaar [Vasthouden Los] (Alleen TZ65D)"
+					"en": "Right switch pressed 2x off",
+					"nl": "Rechter schakelaar 2x uit gedrukt"
 				},
 				"args": [
 					{
@@ -124,8 +85,8 @@
 		{
 			"id": "TZ65",
 			"name": {
-				"en": "TKB Home Single/Dual Wall Dimmer TZ65",
-				"nl": "TKB Home Enkele/Dubbele Muur Dimmer TZ65"
+				"en": "Single/Dual Wall Dimmer TZ65",
+				"nl": "Enkele/Dubbele Muur Dimmer TZ65"
 			},
 			"zwave": {
 				"manufacturerId": 280,
@@ -136,8 +97,8 @@
 				"learnmode": {
 					"image": "/drivers/TZ65/assets/learnmode.svg",
 					"instruction": {
-						"en": "Press the (left) on/off button once",
-						"nl": "Druk een keer op de (linker) aan/uit knop"
+						"en": "Press the an on/off button once",
+						"nl": "Druk een keer op de een aan/uit knop"
 					}
 				},
 				"associationGroups": [
@@ -172,15 +133,15 @@
 						{
 							"id": "0",
 							"label": {
-								"en": "LED indicates the socket is off.",
-								"nl": "LED geeft aan het stopcontact uit is."
+								"en": "LED indicates the switch is off.",
+								"nl": "LED geeft aan het schakelaar uit is."
 							}
 						},
 						{
 							"id": "1",
 							"label": {
-								"en": "LED indicates the socket is on",
-								"nl": "LED geeft aan het stopcontact aan is"
+								"en": "LED indicates the switch is on",
+								"nl": "LED geeft aan het schakelaar aan is"
 							}
 						}
 					]
@@ -229,34 +190,51 @@
 						"nl": "Schakelaar Gedrag"
 					},
 					"hint": {
-						"en": "Determine the behaviour of the switch.",
-						"nl": "Bepaal het gedrag van de schakelaar."
+						"en": "Determine if the switch sends \"On\" when top or bottom is pressed.",
+						"nl": "Bepaal of de schakelaar \"Aan\" zend wanneer boven of onder is ingedrukt."
 					},
 					"value": "0",
 					"values": [
 						{
 							"id": "0",
 							"label": {
-								"en": "Switch up = Off, Switch down = On.",
-								"nl": "Schakelaar omhoog = Uit, Schakelaar omlaag = Aan."
+								"en": "Top = On",
+								"nl": "Boven = Aan"
 							}
 						},
 						{
 							"id": "1",
 							"label": {
-								"en": "Switch up = On, Switch down = Off.",
-								"nl": "Schakelaar omhoog = Aan, Schakelaar omlaag = Uit."
+								"en": "Bottom = On",
+								"nl": "Onder = Aan"
 							}
 						}
 					]
+				},
+				{
+					"id": "poll_interval",
+					"type": "number",
+					"attr": {
+						"min": 0,
+						"max": 3600
+					},
+					"value": 300,
+					"label": {
+						"en": "Poll Interval",
+						"nl": "Poll Interval"
+					},
+					"hint": {
+						"en": "The amount of seconds between asking the device for a status update.",
+						"nl": "Aantal seconden tussen het opvragen van een status update aan het apparaat."
+					}
 				}
 			]
 		},
 		{
 			"id": "TZ67",
 			"name": {
-				"en": "TKB Home Dimmer Wallplug TZ67",
-				"nl": "TKB Home Dimmer Muurplug TZ67"
+				"en": "Dimmer Wallplug TZ67",
+				"nl": "Dimmer Muurplug TZ67"
 			},
 			"zwave": {
 				"manufacturerId": 280,
@@ -319,8 +297,8 @@
 		{
 			"id": "TZ68",
 			"name": {
-				"en": "TKB Home Wallplug TZ68",
-				"nl": "TKB Home Muurplug TZ68"
+				"en": "Wallplug TZ68",
+				"nl": "Muurplug TZ68"
 			},
 			"zwave": {
 				"manufacturerId": 280,
