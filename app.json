@@ -291,6 +291,23 @@
 							}
 						}
 					]
+				},
+				{
+					"id": "poll_interval",
+					"type": "number",
+					"attr": {
+						"min": 0,
+						"max": 3600
+					},
+					"value": 0,
+					"label": {
+						"en": "Manual State Interval",
+						"nl": "Handmatig Status Interval"
+					},
+					"hint": {
+						"en": "Determine the amount of seconds homey askes for the state, needed if you use the manual button as well. Range: 0 (Off), 60 - 3600 seconds",
+						"nl": "Bepaal het aantal seconden dat homey om de status vraagt, nodig als je de handmatig knop ook gebruikt. Bereik: 0 (Off), 60 - 3600 seconden"
+					}
 				}
 			]
 		},
@@ -354,6 +371,23 @@
 							}
 						}
 					]
+				},
+				{
+					"id": "poll_interval",
+					"type": "number",
+					"attr": {
+						"min": 0,
+						"max": 3600
+					},
+					"value": 0,
+					"label": {
+						"en": "Manual State Interval",
+						"nl": "Handmatig Status Interval"
+					},
+					"hint": {
+						"en": "Determine the amount of seconds homey askes for the state, needed if you use the manual button as well. Range: 0 (Off), 60 - 3600 seconds",
+						"nl": "Bepaal het aantal seconden dat homey om de status vraagt, nodig als je de handmatig knop ook gebruikt. Bereik: 0 (Off), 60 - 3600 seconden"
+					}
 				}
 			]
 		}

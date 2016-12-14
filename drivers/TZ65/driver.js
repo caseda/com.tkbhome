@@ -9,7 +9,6 @@ const ZwaveDriver = require('homey-zwavedriver');
 // http://www.pepper1.net/zwavedb/device/343 <- TZ65D
 
 module.exports = new ZwaveDriver( path.basename(__dirname), {
-	debug: true,
 	capabilities: {
 		'onoff': {
 			'command_class': 'COMMAND_CLASS_SWITCH_MULTILEVEL',
@@ -26,7 +25,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				
 				return report['Value (Raw)'][0] > 0;
 			},
-			'pollInterval': "poll_interval"
+			'pollInterval': 'poll_interval'
 		},
 		
 		'dim': {
@@ -35,7 +34,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			'command_set': 'SWITCH_MULTILEVEL_SET',
 			'command_set_parser': (value, node) => {
 				if (node) {
-					module.exports.realtime(node.device_data, "onoff", value > 0);
+					module.exports.realtime(node.device_data, 'onoff', value > 0);
 				}
 				
 				if (value >= 1) value = 0.99;
@@ -46,7 +45,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			},
 			'command_report': 'SWITCH_MULTILEVEL_REPORT',
 			'command_report_parser': report => report['Value (Raw)'][0] / 100,
-			'pollInterval': "poll_interval"
+			'pollInterval': 'poll_interval'
 		}
 	},
 	settings: {
