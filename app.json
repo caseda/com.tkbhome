@@ -3,7 +3,7 @@
 	"name": {
 		"en": "TKB Home"
 	},
-	"version": "0.9.5",
+	"version": "1.0.0",
 	"compatibility": ">=1.0.1",
 	"description": {
 		"en": "TKB Home devices for Homey"
@@ -78,6 +78,62 @@
 						"filter": "driver_id=TZ65"
 					}
 				]
+			},
+			{
+				"id": "TZ66D_s2_single_on",
+				"title": {
+					"en": "Right Switch pressed 1x on",
+					"nl": "Rechter Schakelaar 1x aan gedrukt"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=TZ66"
+					}
+				]
+			},
+			{
+				"id": "TZ66D_s2_single_off",
+				"title": {
+					"en": "Right Switch pressed 1x off",
+					"nl": "Rechter Schakelaar 1x uit gedrukt"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=TZ66"
+					}
+				]
+			},
+			{
+				"id": "TZ66D_s2_double_on",
+				"title": {
+					"en": "Right switch pressed 2x on",
+					"nl": "Rechter schakelaar 2x Aan gedrukt"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=TZ66"
+					}
+				]
+			},
+			{
+				"id": "TZ66D_s2_double_off",
+				"title": {
+					"en": "Right switch pressed 2x off",
+					"nl": "Rechter schakelaar 2x uit gedrukt"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=TZ66"
+					}
+				]
 			}
 		]
 	},
@@ -97,8 +153,8 @@
 				"learnmode": {
 					"image": "/drivers/TZ65/assets/learnmode.svg",
 					"instruction": {
-						"en": "Press the an on/off button once",
-						"nl": "Druk een keer op de een aan/uit knop"
+						"en": "Press an on/off button once",
+						"nl": "Druk een keer op een aan/uit knop"
 					}
 				},
 				"associationGroups": [
@@ -224,9 +280,139 @@
 						"nl": "Poll Interval"
 					},
 					"hint": {
-						"en": "The amount of seconds between asking the device for a status update.",
-						"nl": "Aantal seconden tussen het opvragen van een status update aan het apparaat."
+						"en": "The amount of seconds between asking the device for a status update. Range: 0 (Off), 60 - 3600 seconds",
+						"nl": "Aantal seconden tussen het opvragen van een status update aan het apparaat. Bereik:  0 (Uit), 60 - 3600 seconden"
 					}
+				}
+			]
+		},
+		{
+			"id": "TZ66",
+			"name": {
+				"en": "Single/Dual Wall Switch TZ66",
+				"nl": "Enkele/Dubbele Muur Schakelaar TZ66"
+			},
+			"zwave": {
+				"manufacturerId": 280,
+				"productTypeId": 258,
+				"productId": [
+					4128
+				],
+				"learnmode": {
+					"image": "/drivers/TZ66/assets/learnmode.svg",
+					"instruction": {
+						"en": "Press an on/off button once",
+						"nl": "Druk een keer op een aan/uit knop"
+					}
+				},
+				"associationGroups": [
+					2,
+					3,
+					4
+				]
+			},
+			"class": "light",
+			"capabilities": [
+				"onoff"
+			],
+			"images": {
+				"large": "/drivers/TZ66/assets/images/large.png",
+				"small": "/drivers/TZ66/assets/images/small.png"
+			},
+			"settings": [
+				{
+					"id": "led_behaviour",
+					"type": "dropdown",
+					"label": {
+						"en": "LED Behaviour",
+						"nl": "LED Gedrag"
+					},
+					"hint": {
+						"en": "Determine the behaviour of the LED.",
+						"nl": "Bepaal het gedrag van de LED."
+					},
+					"value": "0",
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "LED indicates the switch is off.",
+								"nl": "LED geeft aan het schakelaar uit is."
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "LED indicates the switch is on",
+								"nl": "LED geeft aan het schakelaar aan is"
+							}
+						}
+					]
+				},
+				{
+					"id": "led_behaviour_data",
+					"type": "dropdown",
+					"label": {
+						"en": "LED Behaviour On Data",
+						"nl": "LED Gedrag Met Data"
+					},
+					"hint": {
+						"en": "Determine the behaviour of the LED when data is being transmitted.",
+						"nl": "Bepaal het gedrag van de LED wanneer data word verzonden."
+					},
+					"value": "2",
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "LED doesn't blink.",
+								"nl": "LED knipperd niet."
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "LED blinks when transmitting data.",
+								"nl": "LED knipperd wanneer data word verzonden."
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "LED blinks for 1 seconds when data is send.",
+								"nl": "LED knipperd voor 1 seconden als hij data verzend."
+							}
+						}
+					]
+				},
+				{
+					"id": "invert_switch",
+					"type": "dropdown",
+					"label": {
+						"en": "Switch Behaviour",
+						"nl": "Schakelaar Gedrag"
+					},
+					"hint": {
+						"en": "Determine if the switch sends \"On\" when top or bottom is pressed.",
+						"nl": "Bepaal of de schakelaar \"Aan\" zend wanneer boven of onder is ingedrukt."
+					},
+					"value": "0",
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "Top = On",
+								"nl": "Boven = Aan"
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "Bottom = On",
+								"nl": "Onder = Aan"
+							}
+						}
+					]
 				}
 			]
 		},
