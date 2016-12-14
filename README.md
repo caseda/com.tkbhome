@@ -3,6 +3,7 @@ This app adds support for TKB Home devices in Homey.
 
 ## Supported devices:
 + TZ65 - Single & Dual Wall Dimmer
++ TZ66 - Single & Dual Wall Switch
 + TZ67 - Wallplug Dimmer (all types)
 + TZ68 - Wallplug Switch (all types)
 
@@ -12,17 +13,19 @@ This app adds support for TKB Home devices in Homey.
 
 ### Notes:
 **TZ65**
-The TZ65 needs to use polling to get the correct dim state of the output.  
+The TZ65 needs to use polling to get the correct dim state of the output in certain situations.  
 The is by default on 300 seconds (5 minutes).  
 It is not recommended to put this below 60 seconds (1 minute),  
 it might cause too much traffic.  
-you can manually update the state by just pressing the left switch  
+you can also manually update the state by just pressing the left switch  
 You can turn it off (value: 0), if you only want/need to update the state manually
 
 ## Change Log:
 **0.9.5:**
 Update Z-Wave driver (1.1.0)  
-Fixed TZ65D right button triggers
+Fixed TZ65D right button triggers  
+Add support TZ66 (Single & Dual)  
+Add Polling for TZ67 and TZ68 (needed if people use the hardware button.)
 
 **0.9.4:**
 Fixed TZ67 & TZ68 their HardWare state change report
@@ -40,3 +43,8 @@ Changed TZ65D to TZ65 (TZ65S & TZ65D are both same driver)
 
 **0.9.0:**
 First Addition to app-store.
+
+### Donate:
+If you like the work that I have done, and loved the magic.  
+Maybe you can think about filling my magic meter again:  
+[![Paypal Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CH7AVGUY9KEQJ)
