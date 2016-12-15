@@ -21,9 +21,9 @@ you can also manually update the state by just pressing the left switch
 You can turn it off (value: 0), if you only want/need to update the state manually
 
 ## Change Log:
-**0.9.5:**
+**1.0.0:**
 Update Z-Wave driver (1.1.0)  
-Fixed TZ65D right button triggers  
+Fixed TZ65D right button flow triggers  
 Add support TZ66 (Single & Dual)  
 Add Polling for TZ67 and TZ68 (needed if people use the hardware button.)
 
