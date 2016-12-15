@@ -24,7 +24,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		}
 	},
 	settings: {
-		"night_light": {
+		"led_behaviour": {
 			"index": 3,
 			"size": 1,
 		},
