@@ -8,22 +8,19 @@ const ZwaveDriver = require('homey-zwavedriver');
 // Manual         => http://www.allcontroll.no/wp-content/uploads/2015/11/z_wave_tkb_dual_paddle_wall_switch_manual.pdf
 
 module.exports = new ZwaveDriver( path.basename(__dirname), {
+	debug: true,
 	capabilities: {
 		'onoff': {
-			'command_class': 'COMMAND_CLASS_SWITCH_MULTILEVEL',
-			'command_get': 'SWITCH_MULTILEVEL_GET',
-			'command_set': 'SWITCH_MULTILEVEL_SET',
+			'command_class': 'COMMAND_CLASS_SWITCH_BINARY',
+			'command_get': 'SWITCH_BINARY_GET',
+			'command_set': 'SWITCH_BINARY_SET',
 			'command_set_parser': value => {
 				return {
-					'Value': (value > 0) ? 'on/enable' : 'off/disable'
+					'Switch Value': (value > 0) ? 'on/enable' : 'off/disable'
 				};
 			},
-			'command_report': 'SWITCH_MULTILEVEL_REPORT',
-			'command_report_parser': report => {
-				if (typeof report['Value'] === 'string') return report['Value'] === 'on/enable';
-				
-				return report['Value (Raw)'][0] > 0;
-			}
+			'command_report': 'SWITCH_BINARY_REPORT',
+			'command_report_parser': report => report['Value'] === 'on/enable'
 		}
 	},
 	settings: {
@@ -41,7 +38,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		},
 	}
 });
-
+/*
 let singlePress = false;
 let basicSet = false;
 
@@ -51,12 +48,12 @@ module.exports.on('initNode', token => {
 	if (node) {
 		// Single press causes an applicationUpdate frame.
 		node.instance.on('applicationUpdate', () => {
-			// Read out Multilevel Switch CC after 2,5 seconds on left button
+			// Read out Binary Switch CC after 0,5 seconds on left button
 			setTimeout( function() {
 				if (basicSet === false) {
 					setTimeout( function() {
-						node.instance.CommandClass.COMMAND_CLASS_SWITCH_MULTILEVEL.SWITCH_MULTILEVEL_GET();
-					}, 2400);
+						node.instance.CommandClass.COMMAND_CLASS_SWITCH_BINARY.SWITCH_BINARY_GET();
+					}, 400);
 				}
 			}, 100);
 			
@@ -112,3 +109,4 @@ module.exports.on('initNode', token => {
 		});
 	}
 });
+*/
