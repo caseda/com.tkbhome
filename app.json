@@ -576,6 +576,86 @@
 					}
 				}
 			]
+		},
+		{
+			"id": "TZ68-PLUS",
+			"name": {
+				"en": "Wallplug (Z-Wave Plus) TZBET68",
+				"nl": "Muurplug (Z-Wave Plus) TZBET68"
+			},
+			"zwave": {
+				"manufacturerId": 280,
+				"productTypeId": 3,
+				"productId": [
+					2
+				],
+				"learnmode": {
+					"image": "/drivers/TZ68-PLUS/assets/learnmode.svg",
+					"instruction": {
+						"en": "Press button 3 times within 1.5 seconds",
+						"nl": "Druk 3 keer op de knop binnen 1,5 seconden"
+					}
+				},
+				"associationGroups": [
+					1
+				]
+			},
+			"class": "socket",
+			"capabilities": [
+				"onoff"
+			],
+			"images": {
+				"large": "/drivers/TZ68-PLUS/assets/images/large.png",
+				"small": "/drivers/TZ68-PLUS/assets/images/small.png"
+			},
+			"settings": [
+				{
+					"id": "led_behaviour",
+					"type": "dropdown",
+					"label": {
+						"en": "LED Behaviour",
+						"nl": "LED Gedrag"
+					},
+					"hint": {
+						"en": "Determine the behaviour of the LED.",
+						"nl": "Bepaal het gedrag van de LED."
+					},
+					"value": "0",
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "LED indicates the socket is off.",
+								"nl": "LED geeft aan het stopcontact uit is."
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "LED indicates the socket is on",
+								"nl": "LED geeft aan het stopcontact aan is"
+							}
+						}
+					]
+				},
+				{
+					"id": "poll_interval",
+					"type": "number",
+					"attr": {
+						"min": 0,
+						"max": 3600
+					},
+					"value": 0,
+					"label": {
+						"en": "Manual State Interval",
+						"nl": "Handmatig Status Interval"
+					},
+					"hint": {
+						"en": "Determine the amount of seconds homey askes for the state, needed if you use the manual button as well. Range: 0 (Off), 60 - 3600 seconds",
+						"nl": "Bepaal het aantal seconden dat homey om de status vraagt, nodig als je de handmatig knop ook gebruikt. Bereik: 0 (Off), 60 - 3600 seconden"
+					}
+				}
+			]
 		}
 	]
 }

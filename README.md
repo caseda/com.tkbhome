@@ -6,6 +6,7 @@ This app adds support for TKB Home devices in Homey.
 + TZ66 - Single & Dual Wall Switch
 + TZ67 - Wallplug Dimmer (all types)
 + TZ68 - Wallplug Switch (all types)
++ TZBET68 - Wallplug Switch (Z-Wave Plus) (all types)
 
 ## Supported Languages:
 * English
@@ -25,6 +26,7 @@ You can turn it off (value: 0), if you only want/need to update the state manual
 Update Z-Wave driver (1.1.0)  
 Fixed TZ65D right button flow triggers  
 Add support TZ66 (Single & Dual)  
+Add support TZBET68 (all types)
 Add Polling for TZ67 and TZ68 (needed if people use the hardware button.)
 
 **0.9.4:**
