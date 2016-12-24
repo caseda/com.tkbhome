@@ -9,7 +9,6 @@ const ZwaveDriver = require('homey-zwavedriver');
 // TSP01
 
 module.exports = new ZwaveDriver( path.basename(__dirname), {
-	debug: true,
 	capabilities: {
 		'alarm_motion': {
 			'resetTimer'                : 'motion_inactivity_timer',	// Can reference to a device setting or a number.
