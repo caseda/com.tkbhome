@@ -22,6 +22,9 @@ you can also manually update the state by just pressing the left switch
 You can turn it off (value: 0), if you only want/need to update the state manually
 
 ## Change Log:
+**1.0.1:**
+Added support for TSP01 3-in-1 Motion Sensor
+
 **1.0.0:**
 Update Z-Wave driver (1.1.0)  
 Fixed TZ65D right button flow triggers  
