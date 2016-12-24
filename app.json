@@ -148,8 +148,8 @@
 		{
 			"id": "TSP01",
 			"name": {
-				"en": "TSP01 3 in 1 PIR Motion Sensor",
-				"nl": "TSP01 3 in 1 PIR Motion Sensor"
+				"en": "TSP01/TSM02 PIR Motion Sensor",
+				"nl": "TSP01/TSM02 PIR Bewegingssensor"
 			},
 			"zwave": {
 				"manufacturerId": 280,
@@ -185,6 +185,7 @@
 			"capabilities": [
 				"alarm_motion",
 				"alarm_tamper",
+				"alarm_contact",
 				"measure_luminance",
 				"measure_temperature",
 				"measure_battery"
@@ -302,7 +303,7 @@
 								"en": "Operation mode"
 							},
 							"hint": {
-								"en": "Bit 0: 1 means security mode; 0 means home automation mode.\nBit 1: 1 means enable test mode; 0 means disable test mode.\n* Notice * Bit 0 and bit 1 will effect when the DIP Switch setting to program mode. If bit1 is enabled, the bit0 is useless.\nBit 2: Reserved, always 1.\nBit 3: Setting the temperature scale; 0: Fahrenheit, 1:Celsius\nBit 4: Disable illumination report after event triggered.\nBit 5: Disable temperature report after event triggered."
+								"en": "Bit 0: 1 means security mode; 0 means home automation mode.\nBit 1: 1 means enable test mode; 0 means disable test mode.\n* Notice * Bit 0 and bit 1 will effect when the DIP Switch setting to program mode. If bit1 is enabled, the bit0 is useless.\nBit 2: Disable the door/window function (always 1 on TSP01).\nBit 3: Setting the temperature scale; 0: Fahrenheit, 1:Celsius\nBit 4: Disable illumination report after event triggered.\nBit 5: Disable temperature report after event triggered."
 							},
 							"value": 0
 						},
@@ -317,7 +318,7 @@
 								"en": "Multi-Sensor Function Switch"
 							},
 							"hint": {
-								"en": "Using bit to control.\nBit0: Reserved, always 1.\nBit1: Disable PIR integrate Illumination.\nBit2: Reserved, always 1.\nBit3: Reserved.\nBit4: Reserved.\nBit5: Reserved.\nBit6:Enable temperature monitoring. \nWhen this bit enable, the temperature changed 3 degree Fahrenheit, it will report.\nAnd also the temperature over 140 degree Fahrenheit, it will report every 64 seconds."
+								"en": "Using bit to control.\nBit0: Disable magnetic integrate illumination, always 1 with TSP01.\nBit1: Disable PIR integrate Illumination.\nBit2: Disable magnetic integrate PIR (Default is Disable). Always 1 on TSP01.\nBit3: (TSM02 only) When Bit2 is 0 (Enable), the device is install in the same room with the light?  0: In the same room(Default), 1: In the different room.\nBit4: (TSM02 only) Disable delay 5 seconds to turn off the light, when door/window closed.\nBit5: (TSM02 only) Disable auto turn off the light, after door/window opened to turn on the light. \nBit6:Enable temperature monitoring. \nWhen this bit enable, the temperature changed 3 degree Fahrenheit, it will report.\nAnd also the temperature over 140 degree Fahrenheit, it will report every 64 seconds."
 							},
 							"value": 4
 						},
@@ -369,6 +370,23 @@
 							"hint": {
 								"en": "The interval time for auto report the battery level. 30 minutes per tick and minimum time is 30 minutes, default tick is 12 (6 hours)",
 								"nl": "Een vast interval om een rapport te sturen over het batterij niveau. 30 minuten per tik en het minimum interval is 30 minuten, de standaard waarde is 12 (6 uur)"
+							},
+							"value": 12
+						},
+						{
+							"id": "door_sensor_report_time",
+							"type": "number",
+							"attr": {
+								"min": 1,
+								"max": 127
+							},
+							"label": {
+								"en": "Auto Report Door/Window State Inverval (TSM02 only)",
+								"nl": "Rapportage interval voor status van Deur/Raamsensor (Alleen TSM02)"
+							},
+							"hint": {
+								"en": "The interval time for auto report of the door/window state. 30 minutes per tick and minimum time is 30 minutes, default tick is 12 (6 hours)",
+								"nl": "Een vast interval om een rapport te sturen over de status van de deur/raamsensor. 30 minuten per tik en het minimum interval is 30 minuten, de standaard waarde is 12 (6 uur)"
 							},
 							"value": 12
 						},

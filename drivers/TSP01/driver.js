@@ -55,21 +55,29 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			},
 			'optional': true
 		},
+		'alarm_contact': {
+			'command_class'             : 'COMMAND_CLASS_SENSOR_BINARY',
+			'command_report'            : 'SENSOR_BINARY_REPORT',
+			'command_report_parser'     : function( report ){
+				if (report['Sensor Type'] == 'Door/Window') {
+					return report['Sensor Value (Raw)'].toString('hex') == 'ff';
+				}
+			},
+			'optional': true
+		},
 		'measure_luminance': {
 			'command_class'             : 'COMMAND_CLASS_SENSOR_MULTILEVEL',
 			'command_report'            : 'SENSOR_MULTILEVEL_REPORT',
 			'command_report_parser'     : function( report ){
 				if (report['Sensor Type'] == 'Luminance (version 1)') return parseInt(report['Sensor Value (Parsed)']) * 10;
-			},
-			'optional': true
+			}
 		},
 		'measure_temperature': {
 			'command_class'             : 'COMMAND_CLASS_SENSOR_MULTILEVEL',
 			'command_report'            : 'SENSOR_MULTILEVEL_REPORT',
 			'command_report_parser'     : function( report ){
 				if (report['Sensor Type'] == 'Temperature (version 1)') return (parseInt(report['Sensor Value (Parsed)']) - 32) * 5 / 9;
-			},
-			'optional': true
+			}
 		},
 		'measure_battery': {
 			'command_class': 'COMMAND_CLASS_BATTERY',
@@ -112,6 +120,10 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		},
 		"battery_report_time": {
 			"index": 10,
+			"size": 1,
+		},
+		"door_sensor_report_time": {
+			"index": 11,
 			"size": 1,
 		},
 		"illumination_report_time": {
