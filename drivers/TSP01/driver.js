@@ -12,11 +12,34 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 	debug: true,
 	capabilities: {
 		'alarm_motion': {
-			'resetTimer'                : 'motion_inactivity_timer',
+			'resetTimer'                : 'motion_inactivity_timer',	// Can reference to a device setting or a number.
+			'resetTimerCallback'        : function (capabilityRef, refNo, node) {
+				if (capabilityRef.refNo == refNo) {
+					module.exports._debug(`Resetting state for ${node.device_data.token}/alarm_motion to false` )
+					// Parse value
+					const value = false
+
+					// Update value in node state object
+					node.state['alarm_motion'] = value;
+
+					// Emit realtime event
+					module.exports.realtime(node.device_data, 'alarm_motion', value);
+				} else {
+					module.exports._debug(`Not resetting state for ${node.device_data.token}/alarm_motion, refNo ${refNo} != ${capabilityRef.refNo}`)
+				}
+			},
 			'command_basic_usage'       : 'motion_interact_class_basic',
 			'command_class'             : 'COMMAND_CLASS_SENSOR_BINARY',
 			'command_report'            : 'SENSOR_BINARY_REPORT',
 			'command_report_parser'     : function( report, node ){
+				// If we got a resolved timeout setting, then act on it
+				if (this._resetTimer) {
+					let refNo = Math.random().toString()
+					this.refNo = refNo;
+
+					module.exports._debug(`Got report for ${node.device_data.token}/alarm_motion, reset after ${this._resetTimer} milliseconds if refNo == ${refNo}`)
+					setTimeout(this.resetTimerCallback, this._resetTimer, this, refNo, node)
+				}
 				if (report['Sensor Type'] == 'Motion') {
 					// setTimeout(function() {node.}, 6000)
 					return report['Sensor Value (Raw)'].toString('hex') == 'ff';
@@ -134,18 +157,24 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 
 					// Check if command class exists on node, necessary because of variable command classes
 					if (instance.CommandClass[optionsCapabilityItem.command_class]) {
-						if (optionsCapabilityItem.command_basic_usage) {
+						if (optionsCapabilityItem.command_basic_usage && instance.CommandClass['COMMAND_CLASS_BASIC']) {
+							that._debug(`Configuring command_basic_usage for ${deviceDataToken}/${capabilityId}`)
+							if (!optionsCapabilityItem.hasOwnProperty('_command_class_basic_active')) {
+								optionsCapabilityItem._command_class_basic_active = false;
+							}
 							
-							let command_basic_usageCallback = () => {
-								// Trigger on BASIC_SET
+							if (optionsCapabilityItem._command_class_basic_active === false) {
 								that._debug(`Registering on COMMAND_CLASS_BASIC for ${deviceDataToken}/${capabilityId}`)
-								node.instance.CommandClass['COMMAND_CLASS_BASIC'].on('report', (command, report) => {
-									
+								instance.CommandClass['COMMAND_CLASS_BASIC'].on('report', (command, report) => {
+									if (!optionsCapabilityItem._command_basic_usage) {
+										that._debug(`COMMAND_CLASS_BASIC for ${deviceDataToken}/${capabilityId} is not enabled`)
+										return; // not enabled via settings
+									}
 									if (!report || !report.hasOwnProperty("Value") || !command || !command.hasOwnProperty("name")) return;
 
 									if (command.name === "BASIC_SET") {
 										let value = true
-										if (report.Value == 100) value = false
+										if (report.Value == 0) value = false
 
 										that._debug(`Setting state for ${deviceDataToken}/${capabilityId} to ${value}` )
 										// Update value in node state object
@@ -155,11 +184,15 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 										that.realtime(node.device_data, capabilityId, value);
 									}
 								})
+
+								// If called consecutively then don't bind on another report
+								optionsCapabilityItem._command_class_basic_active = true;
 							}
 
 							// And it is a number, just run it
 							if (typeof  optionsCapabilityItem.command_basic_usage === 'boolean') {
-								command_basic_usageCallback(optionsCapabilityItem.command_basic_usage * 1000);
+								optionsCapabilityItem._command_basic_usage = optionsCapabilityItem.command_basic_usage;
+								that._debug(`setting _command_basic_usage to ${optionsCapabilityItem._command_basic_usage}`)
 							} else if (typeof optionsCapabilityItem.command_basic_usage === 'string') {
 								// Get poll interval value from settings
 								that.getSettings(node.device_data, (err, settings) => {
@@ -167,9 +200,11 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 
 									// Initiate the callback, and report-attachment
 									if (settings[optionsCapabilityItem.command_basic_usage] === 'true' || settings[optionsCapabilityItem.command_basic_usage] === true) {
-										command_basic_usageCallback();
+										optionsCapabilityItem._command_basic_usage = true;
+										that._debug('setting _command_basic_usage to true')
 									} else {
-										that._debug(`invalid command_basic_usage type in settings, expected boolean, got ${settings[optionsCapabilityItem.command_basic_usage]} : ` + (typeof optionsCapabilityItem.command_basic_usage))
+										optionsCapabilityItem._command_basic_usage = false;
+										that._debug(`disabled command_basic_usage via settings, expected true, got ${settings[optionsCapabilityItem.command_basic_usage]}`)
 									}
 								});
 							} else {
@@ -177,58 +212,32 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 							} 
 						}
 
-						// If resetTimer is set for this optionsCapabilityItem
+						// If resetTimer is set for this optionsCapabilityItem then resolve the timeout for the driver
 						if (optionsCapabilityItem.resetTimer) {
-							that._debug(`Adding resetTimer for ${deviceDataToken}/${capabilityId}`)
+							that._debug(`Configuring resetTimer for ${deviceDataToken}/${capabilityId}`)
 
-							// Create the callback to run, when setTimeout is firing
-							node.resetTimerCallback[capabilityId] = refNo => {
-								if (node.resetTimerLastActive[capabilityId] == refNo) {
-									that._debug(`Resetting state for ${deviceDataToken}/${capabilityId} to false` )
-									// Parse value
-									const value = false
-
-									// Update value in node state object
-									node.state[capabilityId] = value;
-
-									// Emit realtime event
-									that.realtime(node.device_data, capabilityId, value);
-								} else {
-									that._debug(`Not resetting state for ${deviceDataToken}/${capabilityId}, refNo ${refNo} != ${node.resetTimerLastActive[capabilityId]}`)
-								}
-							}
-
-							// Create callback to use below, when possibly searching for the resetTimer variable.
-							let resetTimerCallback = (timeout) => {
-								instance.CommandClass[optionsCapabilityItem.command_class].on('report', () => {
-									let refNo = Math.random().toString()
-									node.resetTimerLastActive[capabilityId] = refNo;
-
-									that._debug(`Got report for ${deviceDataToken}/${capabilityId}, reset after ${timeout} milliseconds if refNo == ${refNo}`)
-									setTimeout(node.resetTimerCallback[capabilityId], timeout, refNo)
-								})
-							};
-
-							// And it is a number, just run it
+							optionsCapabilityItem._resetTimer = 0;
+							// And it is a number, just set it
 							if (typeof optionsCapabilityItem.resetTimer === 'number') {
-								resetTimerCallback(optionsCapabilityItem.resetTimer * 1000);
+								// resetTimerCallback(optionsCapabilityItem.resetTimer * 1000);
+								optionsCapabilityItem._resetTimer = optionsCapabilityItem.resetTimer * 1000;
+								that._debug(`setting _resetTimer to ${optionsCapabilityItem._resetTimer}`)
 							} else if (typeof optionsCapabilityItem.resetTimer === 'string') {
-								// Get poll interval value from settings
+								// Get poll interval value from settings (async)
 								that.getSettings(node.device_data, (err, settings) => {
 									if (err) return console.error(err);
 
 									// Initiate the callback, and report-attachment
 									if (typeof settings[optionsCapabilityItem.resetTimer] === 'number') {
-										if (settings[optionsCapabilityItem.resetTimer] > 0) {
-											resetTimerCallback(settings[optionsCapabilityItem.resetTimer] * 1000);
-										}
+										optionsCapabilityItem._resetTimer = settings[optionsCapabilityItem.resetTimer] * 1000;
+										that._debug(`setting _resetTimer to ${optionsCapabilityItem._resetTimer}`)
 									} else {
 										that._debug('invalid resetTimer type in settings, expected number')
 									}
 								});
 							} else {
 								that._debug('invalid resetTimer type, expected number or string');
-							} 
+							}
 						}
 					}
 				})
@@ -239,6 +248,8 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		}
 	}
 });
+
+// Monkeypatch settings, so we can remove our driver-specific elements from the changedKeysArr
 module.exports._updateSettings = module.exports.settings
 module.exports.settings = (deviceData, newSettingsObj, oldSettingsObj, changedKeysArr, callback) => {
 	let changedKeys = []
@@ -246,5 +257,10 @@ module.exports.settings = (deviceData, newSettingsObj, oldSettingsObj, changedKe
 		if (changedKeysArr[i] ==  'motion_inactivity_timer' || changedKeysArr[i] == 'motion_interact_class_basic') continue;
 		changedKeys.push(changedKeysArr[i])
 	}
+	// Call our beforeInit, to update the settings accordingly, if needed
+	if (module.exports.options.hasOwnProperty('beforeInit') && typeof module.exports.options.beforeInit === 'function') {
+		setTimeout(module.exports.options.beforeInit, 1000, deviceData.token, () => {});
+	}
+
 	module.exports._updateSettings(deviceData, newSettingsObj, oldSettingsObj, changedKeys, callback)
 }
