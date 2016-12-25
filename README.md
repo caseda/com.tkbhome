@@ -2,6 +2,8 @@
 This app adds support for TKB Home devices in Homey.
 
 ## Supported devices:
++ TSM02 - 4 in 1 Multi Sensor
++ TSP01 - 3 in 1 Multi Sensor
 + TZ65 - Single & Dual Wall Dimmer
 + TZ66 - Single & Dual Wall Switch
 + TZ67 - Wallplug Dimmer (all types)

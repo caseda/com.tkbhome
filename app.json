@@ -4,7 +4,7 @@
 		"en": "TKB Home"
 	},
 	"version": "1.0.1",
-	"compatibility": ">=1.0.1",
+	"compatibility": ">=1.0.5",
 	"description": {
 		"en": "TKB Home devices for Homey"
 	},
@@ -148,8 +148,8 @@
 		{
 			"id": "TSP01",
 			"name": {
-				"en": "TSP01 3 in 1 PIR Motion Sensor",
-				"nl": "TSP01 3 in 1 PIR Motion Sensor"
+				"en": "3(4) in 1 Multi Sensor TSP01/TSM02",
+				"nl": "3(4) in 1 Multi Sensor TSP01/TSM02"
 			},
 			"zwave": {
 				"manufacturerId": 280,
@@ -171,18 +171,24 @@
 				"associationGroupsOptions": {
 					"1": {
 						"hint": {
-							"en": "Report message group"
+							"en": "This is the Controller group, it is not recommended to change this setting."
 						}
 					},
 					"2": {
 						"hint": {
-							"en": "Light control group"
+							"en": "Light control group, also can serve as a motion cancellation delay"
 						}
 					}
+				},
+				"defaultConfiguration": {
+					"id": 5,
+					"size": 1,
+					"value": 12
 				}
 			},
 			"class": "sensor",
 			"capabilities": [
+				"alarm_contact",
 				"alarm_motion",
 				"alarm_tamper",
 				"measure_luminance",
@@ -195,218 +201,230 @@
 			},
 			"settings": [
 				{
-					"type": "group",
-					"label": {
-						"en": "Homey driver settings",
-						"nl": "Homey driver configuratie"
+					"id": "poll_interval",
+					"type": "number",
+					"attr": {
+						"min": 0,
+						"max": 3600
 					},
-					"children": [
-						{
-							"id": "motion_inactivity_timer",
-							"type": "number",
-							"attr": {
-								"min": 0,
-								"max": 86400
-							},
-							"value": 30,
-							"label": {
-								"en": "Manual motion alarm inactivity timer",
-								"nl": "Bewegingssensor timeout (handmatig)"
-							},
-							"hint": {
-								"en": "Determine the amount of seconds after which homey decides to reset the motion sensor to OFF after no motion detected. Range: 0 (Off), 30 - 86400 seconds",
-								"nl": "Bepaal het aantal seconden waarna homey de status van de bewegingssensor reset naar UIT als er geen beweging meer is gedetecteerd. Bereik: 0 (Off), 30 - 86400 seconden"
-							}
-						},
-						{
-							"id": "motion_interact_class_basic",
-							"type": "checkbox",
-							"value": false,
-							"label": {
-								"en": "Motion alarm act on lights ON/OFF command from device",
-								"nl": "Bewegingssensor aan/uitzetten via licht aan/uit commando van apparaat"
-							},
-							"hint": {
-								"en": "Allow Homey to use the CLASS_BASIC_SET report to en-/disable the motion sensor status",
-								"nl": "Laat Homey de motion sensor status aan-/uitzetten n.a.v. het CLASS_BASIC_SET rapport (licht aan/uit status vanuit motion detector)."
-							}
-						}
-					]
+					"value": 0,
+					"label": {
+						"en": "Alarm cancellation, poll interval",
+						"nl": "Alarm annulering, poll interval"
+					},
+					"hint": {
+						"en": "Poll the sensor for cancelling the motion alarm. Range: 0 (Off), 30 - 3600 seconds",
+						"nl": "Poll de sensor om het bewegings alarm te annuleren. Bereik: 0 (Off), 30 - 3600 seconden"
+					}
 				},
 				{
-					"type": "group",
+					"id": "motion_interact_class_basic",
+					"type": "checkbox",
+					"value": true,
 					"label": {
-						"en": "Z-Wave configuration",
-						"nl": "Z-Wave configuratie"
+						"en": "Alarm cancellation, Turn Off Light(s)",
+						"nl": "Alarm annulering, Licht(en) uit"
 					},
-					"children": [
+					"hint": {
+						"en": "Allow Homey to cancel the motion alarm based on Turn Off Light(s) timer value.",
+						"nl": "Laat Homey het beweging alarm annuleren n.a.v. de Licht(en) uit timer waarde."
+					}
+				},
+				{
+					"id": "basic_set_level",
+					"type": "number",
+					"attr": {
+						"min": -1,
+						"max": 99
+					},
+					"label": {
+						"en": "Basic Set Level",
+						"nl": "Basic Set waarde"
+					},
+					"hint": {
+						"en": "Setting the BASIC command value to turn on the light(s). The -1 means turn on the light. For dimmer equipment 1 to 99 means the light strength.",
+						"en": "De waarde die wordt gestuurd tijdens het BASIC commando om het licht aan te zetten. Waarde -1 is verlichting Aan. Voor dimmers kan het bereik 1 - 99 worden gebruikt om de dim-sterkte in te stellen."
+					},
+					"value": -1
+				},
+				{
+					"id": "pir_sensitivity",
+					"type": "number",
+					"attr": {
+						"min": 0,
+						"max": 99
+					},
+					"label": {
+						"en": "Motion Sensitivity",
+						"nl": "Beweging Gevoeligheid"
+					},
+					"hint": {
+						"en": "High sensitivity means can detected long distance, but if there is more noise signal in the environment, it will re-trigger too frequency. Range: 0 (Off), 1 - 99.",
+						"nl": "Hoge sensitivity kan een grotere afstand overbruggen, maar gaat ook vaker af indien er meer ruis in de omgeving is. Bereik: 0 (Uit), 1 - 99."
+					},
+					"value": 70
+				},
+				{
+					"id": "light_sensitivity",
+					"type": "number",
+					"attr": {
+						"min": 0,
+						"max": 100
+					},
+					"label": {
+						"en": "Motion, Brightness Threshold",
+						"nl": "Beweging, Helderheid Drempel"
+					},
+					"hint": {
+						"en": "The illummination threshold (in percentage) to turn on the light on movement (Association Group 2). Range: 0 (Off, never turn on light), 1 - 99, 100 (Always turn light on). Only in 1 - 99 range it will update lux value",
+						"nl": "De drempelwaarde (in percentage) voor de lichtsensor om het licht aan te schakelen bij beweging (Associatie Groep 2). Bereik: 0 (Uit, zet nooit licht aan), 1 - 99 , 100 (Zet altijd licht aan). Alleen in het 1 - 99 bereik zal de lux waarde worden geupdate"
+					},
+					"value": 99
+				},
+				{
+					"id": "test_mode",
+					"type": "checkbox",
+					"value": false,
+					"label": {
+						"en": "Test Mode",
+						"nl": "Test Modus"
+					},
+					"hint": {
+						"en": "Should the sensor be in test mode, or be in operation mode",
+						"nl": "Moet de sensor in test modus zijn, of in werking modus zijn."
+					}
+				},
+				{
+					"id": "operation_mode",
+					"type": "dropdown",
+					"value": "0",
+					"values": [
 						{
-							"id": "basic_set_level",
-							"type": "number",
-							"attr": {
-								"min": -1,
-								"max": 100
-							},
+							"id": "0",
 							"label": {
-								"en": "Basic Set Level",
-								"nl": "Basic Set waarde"
-							},
-							"hint": {
-								"en": "Setting the BASIC command value to turn on the light. The 0xFF (-1) means turn on the light.\nFor dimmer equipment 1 to 100 means the light strength.",
-								"en": "De waarde die wordt gestuurd tijdens het BASIC commando om het licht aan te zetten. Waarde 0xFF (-1) is AAN.\nVoor dimmers kan de range 1-100 worden gebruikt om de dim-sterkte in te stellen."
-							},
-							"value": -1
-						},
-						{
-							"id": "pir_sensitivity",
-							"type": "number",
-							"attr": {
-								"min": 0,
-								"max": 99
-							},
-							"label": {
-								"en": "PIR Sensitivity",
-								"nl": "Bewegingssensor gevoeligheid"
-							},
-							"hint": {
-								"en": "Range: 0 (Off), 1 (Lowest) - 99 (Highest).\nHigh sensitivity means can detected long distance, but if there is more noise signal in the environment, it will re-trigger too frequency.",
-								"nl": "Range: 0 (Uit), 1 (Laagst) - 99 (Hoogste).\nHoge sensitivity kan een grote afstand overbruggen, maar gaat ook vaker af indien er meer ruis in de omgeving is."
-							},
-							"value": 70
-						},
-						{
-							"id": "light_sensitivity",
-							"type": "number",
-							"attr": {
-								"min": 0,
-								"max": 100
-							},
-							"label": {
-								"en": "Light threshold",
-								"nl": "Drempelwaarde helderheid lichtsensor"
-							},
-							"hint": {
-								"en": "The illummination threshold to turn on the light. When the event triggered and the environment illumination lower then the threshold, the device will turn on the light.\nRange: 0 (Off, never turn on light), 1 (Darkest) - 99 (Brightest), 100 (Off, always turn light on).\n* Notice * in test mode, only the value in 1 to 99 will enable the illumination detected function and update the illumination value.",
-								"nl": "De drempelwaarde voor de lichtsensor om het licht aan te schakelen. Als beweging is gedetecteerd en the drempel lager is dan de waarde, dan zal het licht aan worden gezet door de TSP01.\nRange: 0 (Uit, zet nooit licht aan), 1 (Donkerst) - 99 (Lichtst), 100 (Uit, zet altijd licht aan).\n* Notice * in test mode, only the value in 1 to 99 will enable the illumination detected function and update the illumination value."
-							},
-							"value": 99
-						},
-						{
-							"id": "operation_mode",
-							"type": "number",
-							"attr": {
-								"min": 0,
-								"max": 127
-							},
-							"label": {
-								"en": "Operation mode"
-							},
-							"hint": {
-								"en": "Bit 0: 1 means security mode; 0 means home automation mode.\nBit 1: 1 means enable test mode; 0 means disable test mode.\n* Notice * Bit 0 and bit 1 will effect when the DIP Switch setting to program mode. If bit1 is enabled, the bit0 is useless.\nBit 2: Reserved, always 1.\nBit 3: Setting the temperature scale; 0: Fahrenheit, 1:Celsius\nBit 4: Disable illumination report after event triggered.\nBit 5: Disable temperature report after event triggered."
-							},
-							"value": 0
-						},
-						{
-							"id": "multi_sensor_function_switch",
-							"type": "number",
-							"attr": {
-								"min": 0,
-								"max": 127
-							},
-							"label": {
-								"en": "Multi-Sensor Function Switch"
-							},
-							"hint": {
-								"en": "Using bit to control.\nBit0: Reserved, always 1.\nBit1: Disable PIR integrate Illumination.\nBit2: Reserved, always 1.\nBit3: Reserved.\nBit4: Reserved.\nBit5: Reserved.\nBit6:Enable temperature monitoring. \nWhen this bit enable, the temperature changed 3 degree Fahrenheit, it will report.\nAnd also the temperature over 140 degree Fahrenheit, it will report every 64 seconds."
-							},
-							"value": 4
-						},
-						{
-							"id": "pir_redetect_interval_time",
-							"type": "number",
-							"attr": {
-								"min": 3,
-								"max": 27
-							},
-							"value": 3,
-							"label": {
-								"en": "PIR re-detect interval time",
-								"nl": "Bewegingssensor herdetectie timeout"
-							},
-							"hint": {
-								"en": "In the security mode, after the PIR report motion detected, setting the re-detect time. \n8 seconds per tick, and minimum time is 24 seconds, default tick is 3 (24 seconds). \nSetting the suitable value to prevent received the trigger signal too frequency. \nAlso can save the battery energy. \n* Notice * If this value bigger than the configuration setting 'Turn Off Light Time'. there is a period after the light turned off and the PIR not detecting.",
-								"nl": "In security mode is het de tijd waarna de bewegingssensor opnieuw beweging mag detecteren. \n8 seconden per tik, minimale tijd is 24 seconden, standaard waarde is 3 (24 seconden). \nDe optimale waarde voorkomt dat de bewegingsdetectie te vaak afgaat. \nHet kan ook een batterijbesparing opleveren. \n* Let op * Als deze waarde hoget is dan de waarde van 'Turn Off Light Time' dan is er een moment waarin het licht uit wordt gezet en de bewegingssensor niet actief is."
+								"en": "Home Automation Mode",
+								"nl": "Huis Automatisering Modus"
 							}
 						},
 						{
-							"id": "turn_off_light_time",
-							"type": "number",
-							"attr": {
-								"min": 4,
-								"max": 127
-							},
+							"id": "1",
 							"label": {
-								"en": "Turn Off Light Time",
-								"nl": "Lichten uit timeout"
-							},
-							"hint": {
-								"en": "After turn on the light, setting the delay time to turn off the light when the PIR motion is not detected. \n8 seconds per tick, and minimum time is 32 seconds, default tick is 4 (32 seconds).",
-								"nl": "De tijd waarna het licht-uit signaal moet worden verstuurd, als er geen beweging is gedetecteerd. \n8 seconden per tik, minimale tijd is 32 seconden, standaard waarde is 4 (32 seconden)."
-							},
-							"value": 4
-						},
-						{
-							"id": "battery_report_time",
-							"type": "number",
-							"attr": {
-								"min": 1,
-								"max": 127
-							},
-							"label": {
-								"en": "Auto Report Battery Inverval",
-								"nl": "Rapportage interval voor batterijniveau"
-							},
-							"hint": {
-								"en": "The interval time for auto report the battery level. 30 minutes per tick and minimum time is 30 minutes, default tick is 12 (6 hours)",
-								"nl": "Een vast interval om een rapport te sturen over het batterij niveau. 30 minuten per tik en het minimum interval is 30 minuten, de standaard waarde is 12 (6 uur)"
-							},
-							"value": 12
-						},
-						{
-							"id": "illumination_report_time",
-							"type": "number",
-							"attr": {
-								"min": 1,
-								"max": 127
-							},
-							"label": {
-								"en": "Auto Report Illumination Inverval",
-								"nl": "Rapportage interval voor gemeten helderheid"
-							},
-							"hint": {
-								"en": "The interval time for auto report of the illumination. 30 minutes per tick and minimum time is 30 minutes, default tick is 12 (6 hours)",
-								"nl": "Een vast interval om een rapport te sturen over de gemeten helderheid. 30 minuten per tik en het minimum interval is 30 minuten, de standaard waarde is 12 (6 uur)"
-							},
-							"value": 12
-						},
-						{
-							"id": "temperature_report_time",
-							"type": "number",
-							"attr": {
-								"min": 1,
-								"max": 127
-							},
-							"label": {
-								"en": "Auto Report Temperature Inverval",
-								"nl": "Rapportage interval voor temperatuur"
-							},
-							"hint": {
-								"en": "The interval time for auto report of the temperature. 30 minutes per tick and minimum time is 30 minutes, default tick is 12 (6 hours)",
-								"nl": "Een vast interval om een rapport te sturen over de temperatuur. 30 minuten per tik en het minimum interval is 30 minuten, de standaard waarde is 12 (6 uur)"
-							},
-							"value": 12
+								"en": "Security Mode",
+								"nl": "Beveiliging Modus"
+							}
 						}
-					]
+					],
+					"label": {
+						"en": "Operation Mode",
+						"nl": "Werking Modus"
+					},
+					"hint": {
+						"en": "Security = Always send Motion Alarms & Selectable PIR sleep timer. Home Automation = Motion on lux treshold & PIR inactive for 6 seconds.",
+						"nl": "Beveiliging = Altijd beweging melden & selecteerbare inactieve beweging timer. Huis Automatisering = Beweging onder Lux Drempel & Beweging inactief voor 6 seconden."
+					}
+				},
+				{
+					"id": "door/window_mode",
+					"type": "checkbox",
+					"value": false,
+					"label": {
+						"en": "Disable Door/Window Sensor",
+						"nl": "Deactiveer Deur/Raam Sensor"
+					},
+					"hint": {
+						"en": "Should the sensor have the door/window sensor be disabled. (only used in STM02)",
+						"nl": "Moet de sensor de deur/raam sensor deactief zijn. (Alleen gebruikt in STM02)"
+					}
+				},
+				{
+					"id": "pir_redetect_interval_time",
+					"type": "number",
+					"attr": {
+						"min": 24,
+						"max": 1016,
+						"step": 8
+					},
+					"value": 24,
+					"label": {
+						"en": "PIR Re-detect Interval",
+						"nl": "Beweging Detectie Interval"
+					},
+					"hint": {
+						"en": "Mode: Home Automation always 6 seconds, Security mode: Determain the amount of seconds the PIR sensor will not respond after motion was detected, in steps of 8 seconds. Range: 24 - 1016",
+						"nl": "Modus: Huis Automatisering altijd 6 seconden, Beveiliging mode: Bepaal het aantal seconden dat de beweging sensor niet reageerd na een beweging detectie, in stappen van 8 seconden. Bereik: 24 - 1016"
+					}
+				},
+				{
+					"id": "turn_off_light_time",
+					"type": "number",
+					"attr": {
+						"min": 24,
+						"max": 1016,
+						"step": 8
+					},
+					"value": 32,
+					"label": {
+						"en": "Timer, Turn Off Light(s)",
+						"nl": "Timer, Licht(en) uit"
+					},
+					"hint": {
+						"en": "Turn lights off after this amount of seconds, in steps of 8 seconds (Also can serve as turning off motion alarm). Range: 24 - 1016",
+						"nl": "Zet verlichting uit na deze hoeveelheid seconden, in stappen van 8 seconden (kan ook figureren als beweging alarm annulering). Bereik: 24 - 1016"
+					}
+				},
+				{
+					"id": "battery_report_time",
+					"type": "number",
+					"attr": {
+						"min": 0.5,
+						"max": 63.5,
+						"step": 0.5
+					},
+					"label": {
+						"en": "Battery Level Report Interval",
+						"nl": "Batterijniveau Verzend Interval"
+					},
+					"hint": {
+						"en": "The interval time (in hours) for auto report the battery level. Range: 0.5 - 63.5",
+						"nl": "Een vast interval (in uren) om een rapport te sturen over het batterij niveau. Bereik: 0,5 - 63,5"
+					},
+					"value": 6
+				},
+				{
+					"id": "illumination_report_time",
+					"type": "number",
+					"attr": {
+						"min": 0.5,
+						"max": 63.5,
+						"step": 0.5
+					},
+					"label": {
+						"en": "Illumination Report Interval",
+						"nl": "Helderheid Verzend Interval"
+					},
+					"hint": {
+						"en": "The interval time (in hours) for auto report of the illumination. Range: 0.5 - 63.5",
+						"nl": "Een vast interval (in uren) om een rapport te sturen over de gemeten helderheid. Bereik: 0,5 - 63,5"
+					},
+					"value": 6
+				},
+				{
+					"id": "temperature_report_time",
+					"type": "number",
+					"attr": {
+						"min": 0.5,
+						"max": 63.5,
+						"step": 0.5
+					},
+					"label": {
+						"en": "Temperature Report Interval",
+						"nl": "Temperatuur Verzend Interval"
+					},
+					"hint": {
+						"en": "The interval time (in hours) for auto report of the temperature. Range: 0.5 - 63.5",
+						"nl": "Een vast interval (in uren) om een rapport te sturen over de temperatuur. Bereik: 0,5 - 63,5"
+					},
+					"value": 6
 				}
 			]
 		},
