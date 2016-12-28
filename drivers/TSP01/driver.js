@@ -277,18 +277,69 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 	}
 });
 
+module.exports.updateSettingsFromDeviceOnce = (node) => {
+	module.exports._debug('Registering CONFIGURATION_GET on next wakeup once')
+	node.instance.CommandClass.COMMAND_CLASS_WAKE_UP.once('report', () => {
+		module.exports._debug('Issueing CONFIGURATION_GET')
+
+		// Check if configuration command class is present
+		if (node.instance.CommandClass.COMMAND_CLASS_CONFIGURATION) {
+
+			// Loop thru all settings, to get them
+			module.exports.driver.settings.forEach(settingsId => {
+				if (typeof module.exports.options.settings[settingsId.id] !== 'undefined' && typeof module.exports.options.settings[settingsId.id].index !== 'undefined') {
+					// Get configuration for parameter
+					module.exports._debug(`Fetching settings for parameter ${settingsId.id}`)
+
+					// Run the GET Command
+					node.instance.CommandClass.COMMAND_CLASS_CONFIGURATION.CONFIGURATION_GET(
+						{'Parameter Number': module.exports.options.settings[settingsId.id].index},
+						(err, report) => {
+							if (err) return;
+
+							// Update using default report handler.
+							node.instance.CommandClass.COMMAND_CLASS_CONFIGURATION.emit('report', err, report);
+						}
+					);
+				};
+			});
+		}
+	})
+}
+
 // Monkeypatch settings, so we can remove our driver-specific elements from the changedKeysArr
 module.exports._updateSettings = module.exports.settings
 module.exports.settings = (deviceData, newSettingsObj, oldSettingsObj, changedKeysArr, callback) => {
-	let changedKeys = []
+	let changedKeys = [];
+	let ignoreKeys = ['tamper_sensor_reset', 'motion_inactivity_timer', 'motion_interact_class_basic']
 	for (var i = 0; i < changedKeysArr.length; i++) {
-		if (changedKeysArr[i] ==  'motion_inactivity_timer' || changedKeysArr[i] == 'motion_interact_class_basic') continue;
-		changedKeys.push(changedKeysArr[i])
+		if (ignoreKeys.indexOf(changedKeysArr[i]) !== -1) continue;
+		changedKeys.push(changedKeysArr[i]);
 	}
 	// Call our beforeInit, to update the settings accordingly, if needed
 	if (module.exports.options.hasOwnProperty('beforeInit') && typeof module.exports.options.beforeInit === 'function') {
 		setTimeout(module.exports.options.beforeInit, 1000, deviceData.token, () => {});
 	}
 
-	module.exports._updateSettings(deviceData, newSettingsObj, oldSettingsObj, changedKeys, callback)
+	// changedKeysArr = changedKeys;
+
+	const node = module.exports.getNode(deviceData);
+	// Run the original settings callback when we have woken up.
+	if (changedKeys.length > 0) {
+		module.exports._debug('Running updateSettings upon COMMAND_CLASS_WAKE_UP.report')
+		node.instance.CommandClass.COMMAND_CLASS_WAKE_UP.once('report', () => {
+			module.exports._updateSettings(deviceData, newSettingsObj, oldSettingsObj, changedKeys, () => {});
+			module.exports.updateSettingsFromDeviceOnce(node);
+		})
+	}
+
+	// Provide user with proper feedback after clicking save
+	if (node.instance.battery === true && node.instance.online === false && changedKeys.length > 0) {
+		callback(null, {
+			en: 'Settings will be saved during the next wakeup of this battery device.',
+			nl: 'Instellingen zullen worden opgeslagen bij volgende wakeup van dit apparaat'
+		});
+	} else {
+		return callback(null, true);
+	}
 }
