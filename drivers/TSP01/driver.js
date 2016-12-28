@@ -61,8 +61,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 					}
 					return report['Sensor Value'] === 'detected an event';
 				}
-			},
-			'optional': true
+			}
 		},
 		'alarm_contact': {
 			'command_class'             : 'COMMAND_CLASS_SENSOR_BINARY',
@@ -71,8 +70,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				if (report['Sensor Type'] == 'Door/Window') {
 					return report['Sensor Value'] === 'detected an event';
 				}
-			},
-			'optional': true
+			}
 		},
 		'measure_luminance': {
 			'command_class'             : 'COMMAND_CLASS_SENSOR_MULTILEVEL',
