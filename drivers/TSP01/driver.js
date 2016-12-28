@@ -46,9 +46,25 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			}
 		},
 		'alarm_tamper': {
+			'resetTimer'                : 'tamper_sensor_reset',
+			'resetTimerCallback'        : function (capabilityRef, refNo, node) {
+				if (capabilityRef.refNo == refNo) {
+					module.exports._debug(`Resetting state for ${node.device_data.token}/alarm_tamper to false` )
+					// Parse value
+					const value = false
+
+					// Update value in node state object
+					node.state['alarm_tamper'] = value;
+
+					// Emit realtime event
+					module.exports.realtime(node.device_data, 'alarm_tamper', value);
+				} else {
+					module.exports._debug(`Not resetting state for ${node.device_data.token}/alarm_tamper, refNo ${refNo} != ${capabilityRef.refNo}`)
+				}
+			},
 			'command_class'             : 'COMMAND_CLASS_SENSOR_BINARY',
 			'command_report'            : 'SENSOR_BINARY_REPORT',
-			'command_report_parser'     : function( report ){
+			'command_report_parser'     : function( report, node ){
 				// If we got a resolved timeout setting, then act on it
 				if (report['Sensor Type'] == 'Tamper') {
 					if (this._resetTimer) {
