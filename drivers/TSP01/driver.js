@@ -249,7 +249,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 							if (typeof optionsCapabilityItem.resetTimer === 'number') {
 								// resetTimerCallback(optionsCapabilityItem.resetTimer * 1000);
 								optionsCapabilityItem._resetTimer = optionsCapabilityItem.resetTimer * 1000;
-								that._debug(`setting _resetTimer to ${optionsCapabilityItem._resetTimer}`)
+								that._debug(`setting _resetTimer to ${optionsCapabilityItem._resetTimer} for ${deviceDataToken}/${capabilityId}`)
 							} else if (typeof optionsCapabilityItem.resetTimer === 'string') {
 								// Get poll interval value from settings (async)
 								that.getSettings(node.device_data, (err, settings) => {
@@ -258,7 +258,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 									// Initiate the callback, and report-attachment
 									if (typeof settings[optionsCapabilityItem.resetTimer] === 'number') {
 										optionsCapabilityItem._resetTimer = settings[optionsCapabilityItem.resetTimer] * 1000;
-										that._debug(`setting _resetTimer to ${optionsCapabilityItem._resetTimer}`)
+										that._debug(`setting _resetTimer to ${optionsCapabilityItem._resetTimer} for ${deviceDataToken}/${capabilityId}`)
 									} else {
 										that._debug('invalid resetTimer type in settings, expected number')
 									}
