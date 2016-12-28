@@ -126,6 +126,12 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		"basic_set_level": {
 			"index": 2,
 			"size": 1,
+			"signed": false,
+			"parser": function (input) {
+				input = parseInt(input);
+				if (input > 100 && input < 255) input = 255;
+				return new Buffer([input]);
+			}
 		},
 		"pir_sensitivity": {
 			"index": 3,
