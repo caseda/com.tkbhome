@@ -41,7 +41,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				}
 				if (report['Sensor Type'] == 'Motion') {
 					// setTimeout(function() {node.}, 6000)
-					return report['Sensor Value (Raw)'].toString('hex') == 'ff';
+					return report['Sensor Value'] === 'detected an event';
 				}
 			}
 		},
@@ -50,7 +50,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			'command_report'            : 'SENSOR_BINARY_REPORT',
 			'command_report_parser'     : function( report ){
 				if (report['Sensor Type'] == 'Tamper') {
-					return report['Sensor Value (Raw)'].toString('hex') == 'ff';
+					return report['Sensor Value'] === 'detected an event';
 				}
 			},
 			'optional': true
@@ -60,7 +60,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			'command_report'            : 'SENSOR_BINARY_REPORT',
 			'command_report_parser'     : function( report ){
 				if (report['Sensor Type'] == 'Door/Window') {
-					return report['Sensor Value (Raw)'].toString('hex') == 'ff';
+					return report['Sensor Value'] === 'detected an event';
 				}
 			},
 			'optional': true
