@@ -31,16 +31,16 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			'command_class'             : 'COMMAND_CLASS_SENSOR_BINARY',
 			'command_report'            : 'SENSOR_BINARY_REPORT',
 			'command_report_parser'     : function( report, node ){
-				// If we got a resolved timeout setting, then act on it
-				if (this._resetTimer) {
-					let refNo = Math.random().toString()
-					this.refNo = refNo;
-
-					module.exports._debug(`Got report for ${node.device_data.token}/alarm_motion, reset after ${this._resetTimer} milliseconds if refNo == ${refNo}`)
-					setTimeout(this.resetTimerCallback, this._resetTimer, this, refNo, node)
-				}
 				if (report['Sensor Type'] == 'Motion') {
-					// setTimeout(function() {node.}, 6000)
+					// If we got a resolved timeout setting, then act on it
+					if (this._resetTimer) {
+						let refNo = Math.random().toString()
+						this.refNo = refNo;
+
+						module.exports._debug(`Got report for ${node.device_data.token}/alarm_motion, reset after ${this._resetTimer} milliseconds if refNo == ${refNo}`)
+						setTimeout(this.resetTimerCallback, this._resetTimer, this, refNo, node)
+					}
+
 					return report['Sensor Value'] === 'detected an event';
 				}
 			}
@@ -49,7 +49,16 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			'command_class'             : 'COMMAND_CLASS_SENSOR_BINARY',
 			'command_report'            : 'SENSOR_BINARY_REPORT',
 			'command_report_parser'     : function( report ){
+				// If we got a resolved timeout setting, then act on it
 				if (report['Sensor Type'] == 'Tamper') {
+					if (this._resetTimer) {
+						let timeout = parseFloat(this._resetTimer) * 3600;
+						let refNo = Math.random().toString();
+						this.refNo = refNo;
+
+						module.exports._debug(`Got report for ${node.device_data.token}/alarm_tamper, reset after ${timeout} milliseconds if refNo == ${refNo}`)
+						setTimeout(this.resetTimerCallback, timeout, this, refNo, node)
+					}
 					return report['Sensor Value'] === 'detected an event';
 				}
 			},
