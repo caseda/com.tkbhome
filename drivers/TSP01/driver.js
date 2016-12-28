@@ -76,7 +76,10 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			'command_class'             : 'COMMAND_CLASS_SENSOR_MULTILEVEL',
 			'command_report'            : 'SENSOR_MULTILEVEL_REPORT',
 			'command_report_parser'     : function( report ){
-				if (report['Sensor Type'] == 'Luminance (version 1)') return parseInt(report['Sensor Value (Parsed)']) * 10;
+				if (report['Sensor Type'] == 'Luminance (version 1)') {
+					if (report['Level']['Scale'] === 1) return report['Sensor Value (Parsed)'];	// This value is already Lux
+					return parseFloat(report['Sensor Value (Parsed)']) * 5;	// Given value from device was percentage, according to specsheet Philiotech, max lux == 500
+				}
 			}
 		},
 		'measure_temperature': {
