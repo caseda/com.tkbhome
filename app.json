@@ -433,7 +433,33 @@
 					2,
 					3,
 					4
-				]
+				],
+				"associationGroupsOptions": {
+					"1": {
+						"hint": {
+							"en": "Pressed left paddle 1x (on and off).",
+							"nl": "Linker wipper 1x gedrukt (aan en uit)."
+						}
+					},
+					"2": {
+						"hint": {
+							"en": "Pressed right paddle 1x (on and off).",
+							"nl": "Rechter wipper 1x gedrukt (aan en uit)."
+						}
+					},
+					"3": {
+						"hint": {
+							"en": "Pressed right paddle 2x (on and off).",
+							"nl": "Rechter wipper 2x gedrukt (aan en uit)."
+						}
+					},
+					"4": {
+						"hint": {
+							"en": "(Shoulde be) All switch commands",
+							"en": "(Hoort) Alle schakel commando's",
+						}
+					}
+				}
 			},
 			"class": "light",
 			"capabilities": [
@@ -581,7 +607,33 @@
 					2,
 					3,
 					4
-				]
+				],
+				"associationGroupsOptions": {
+					"1": {
+						"hint": {
+							"en": "Pressed left paddle 1x (on and off).",
+							"nl": "Linker wipper 1x gedrukt (aan en uit)."
+						}
+					},
+					"2": {
+						"hint": {
+							"en": "Pressed right paddle 1x (on and off).",
+							"nl": "Rechter wipper 1x gedrukt (aan en uit)."
+						}
+					},
+					"3": {
+						"hint": {
+							"en": "Pressed right paddle 2x (on and off).",
+							"nl": "Rechter wipper 2x gedrukt (aan en uit)."
+						}
+					},
+					"4": {
+						"hint": {
+							"en": "(Shoulde be) All switch commands",
+							"en": "(Hoort) Alle schakel commando's",
+						}
+					}
+				}
 			},
 			"class": "light",
 			"capabilities": [
@@ -709,7 +761,15 @@
 				},
 				"associationGroups": [
 					1
-				]
+				],
+				"associationGroupsOptions": {
+					"1": {
+						"hint": {
+							"en": "This is the controller group, it is not recommended to change this.",
+							"nl": "Dit is de controller groep, het is niet aangeraden deze te wijzigen."
+						}
+					}
+				}
 			},
 			"class": "socket",
 			"capabilities": [
@@ -719,6 +779,95 @@
 			"images": {
 				"large": "/drivers/TZ67/assets/images/large.png",
 				"small": "/drivers/TZ67/assets/images/small.png"
+			},
+			"settings": [
+				{
+					"id": "led_behaviour",
+					"type": "dropdown",
+					"label": {
+						"en": "LED Behaviour",
+						"nl": "LED Gedrag"
+					},
+					"hint": {
+						"en": "Determine the behaviour of the LED.",
+						"nl": "Bepaal het gedrag van de LED."
+					},
+					"value": "0",
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "LED indicates the socket is off.",
+								"nl": "LED geeft aan het stopcontact uit is."
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "LED indicates the socket is on",
+								"nl": "LED geeft aan het stopcontact aan is"
+							}
+						}
+					]
+				},
+				{
+					"id": "poll_interval",
+					"type": "number",
+					"attr": {
+						"min": 0,
+						"max": 3600
+					},
+					"value": 0,
+					"label": {
+						"en": "Manual State Interval",
+						"nl": "Handmatig Status Interval"
+					},
+					"hint": {
+						"en": "Determine the amount of seconds homey askes for the state, needed if you use the manual button as well. Range: 0 (Off), 60 - 3600 seconds",
+						"nl": "Bepaal het aantal seconden dat homey om de status vraagt, nodig als je de handmatig knop ook gebruikt. Bereik: 0 (Off), 60 - 3600 seconden"
+					}
+				}
+			]
+		},
+		{
+			"id": "TZ67-PLUS",
+			"name": {
+				"en": "Dimmer Wallplug (Z-Wave Plus) TZ67",
+				"nl": "Dimmer Muurplug (Z-Wave Plus) TZ67"
+			},
+			"zwave": {
+				"manufacturerId": 280,
+				"productTypeId": 3,
+				"productId": [
+					8
+				],
+				"learnmode": {
+					"image": "/drivers/TZ67-PLUS/assets/learnmode.svg",
+					"instruction": {
+						"en": "Press button 3 times within 1.5 seconds",
+						"nl": "Druk 3 keer op de knop binnen 1,5 seconden"
+					}
+				},
+				"associationGroups": [
+					1
+				],
+				"associationGroupsOptions": {
+					"1": {
+						"hint": {
+							"en": "This is the controller group, it is not recommended to change this.",
+							"nl": "Dit is de controller groep, het is niet aangeraden deze te wijzigen."
+						}
+					}
+				}
+			},
+			"class": "socket",
+			"capabilities": [
+				"onoff",
+				"dim"
+			],
+			"images": {
+				"large": "/drivers/TZ67-PLUS/assets/images/large.png",
+				"small": "/drivers/TZ67-PLUS/assets/images/small.png"
 			},
 			"settings": [
 				{
@@ -790,7 +939,15 @@
 				},
 				"associationGroups": [
 					1
-				]
+				],
+				"associationGroupsOptions": {
+					"1": {
+						"hint": {
+							"en": "This is the controller group, it is not recommended to change this.",
+							"nl": "Dit is de controller groep, het is niet aangeraden deze te wijzigen."
+						}
+					}
+				}
 			},
 			"class": "socket",
 			"capabilities": [
@@ -870,7 +1027,15 @@
 				},
 				"associationGroups": [
 					1
-				]
+				],
+				"associationGroupsOptions": {
+					"1": {
+						"hint": {
+							"en": "This is the controller group, it is not recommended to change this.",
+							"nl": "Dit is de controller groep, het is niet aangeraden deze te wijzigen."
+						}
+					}
+				}
 			},
 			"class": "socket",
 			"capabilities": [

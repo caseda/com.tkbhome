@@ -5,6 +5,7 @@ This app adds support for TKB Home devices in Homey.
 + TZ65 - Single & Dual Wall Dimmer
 + TZ66 - Single & Dual Wall Switch
 + TZ67 - Wallplug Dimmer (all types)
++ TZ67-PLUS - Wallplug Dimmer (Z-Wave Plus) (all types)
 + TZ68 - Wallplug Switch (all types)
 + TZBET68 - Wallplug Switch (Z-Wave Plus) (all types)
 
@@ -23,7 +24,9 @@ You can turn it off (value: 0), if you only want/need to update the state manual
 
 ## Change Log:
 **1.0.1:**
-Added support for TSP01 3-in-1 Motion Sensor
+Added support for TSP01 3-in-1 Motion Sensor  
+Added support for TZ67-PLUS Wallplug Dimmer (Z-Wave Plus)  
+Updated Association Group Hints
 
 **1.0.0:**
 Update Z-Wave driver (1.1.0)  
