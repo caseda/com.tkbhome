@@ -176,7 +176,7 @@
 					},
 					"2": {
 						"hint": {
-							"en": "Light control group, also can serve as a motion cancellation delay"
+							"en": "Light control group, also serves as a motion cancellation (delay)"
 						}
 					}
 				},
@@ -201,51 +201,21 @@
 			},
 			"settings": [
 				{
-					"id": "poll_interval",
-					"type": "number",
-					"attr": {
-						"min": 0,
-						"max": 3600
-					},
-					"value": 0,
-					"label": {
-						"en": "Alarm cancellation, poll interval",
-						"nl": "Alarm annulering, poll interval"
-					},
-					"hint": {
-						"en": "Poll the sensor for cancelling the motion alarm. Range: 0 (Off), 30 - 3600 seconds",
-						"nl": "Poll de sensor om het bewegings alarm te annuleren. Bereik: 0 (Off), 30 - 3600 seconden"
-					}
-				},
-				{
-					"id": "motion_interact_class_basic",
-					"type": "checkbox",
-					"value": true,
-					"label": {
-						"en": "Alarm cancellation, Turn Off Light(s)",
-						"nl": "Alarm annulering, Licht(en) uit"
-					},
-					"hint": {
-						"en": "Allow Homey to cancel the motion alarm based on Turn Off Light(s) timer value.",
-						"nl": "Laat Homey het beweging alarm annuleren n.a.v. de Licht(en) uit timer waarde."
-					}
-				},
-				{
 					"id": "basic_set_level",
 					"type": "number",
 					"attr": {
-						"min": -1,
-						"max": 99
+						"min": 0,
+						"max": 255
 					},
 					"label": {
 						"en": "Basic Set Level",
 						"nl": "Basic Set waarde"
 					},
 					"hint": {
-						"en": "Setting the BASIC command value to turn on the light(s). The -1 means turn on the light. For dimmer equipment 1 to 99 means the light strength.",
-						"en": "De waarde die wordt gestuurd tijdens het BASIC commando om het licht aan te zetten. Waarde -1 is verlichting Aan. Voor dimmers kan het bereik 1 - 99 worden gebruikt om de dim-sterkte in te stellen."
+						"en": "Setting the BASIC command value to turn on the light(s). The 255 means turn on the light. For dimmer equipment 1 to 99 means the light strength.",
+						"en": "De waarde die wordt gestuurd tijdens het BASIC commando om het licht aan te zetten. Waarde 255 is verlichting Aan. Voor dimmers kan het bereik 1 - 99 worden gebruikt om de dim-sterkte in te stellen."
 					},
-					"value": -1
+					"value": 255
 				},
 				{
 					"id": "pir_sensitivity",
@@ -263,6 +233,24 @@
 						"nl": "Hoge sensitivity kan een grotere afstand overbruggen, maar gaat ook vaker af indien er meer ruis in de omgeving is. Bereik: 0 (Uit), 1 - 99."
 					},
 					"value": 70
+				},
+				{
+					"id": "turn_off_light_time",
+					"type": "number",
+					"attr": {
+						"min": 24,
+						"max": 1016,
+						"step": 8
+					},
+					"value": 32,
+					"label": {
+						"en": "Motion alarm cancellation delay",
+						"nl": "Bewegingsalarm annuleringsperiode"
+					},
+					"hint": {
+						"en": "Motion alarm cancellation and Turn lights off (Off command to Association Group 2) after these amount of seconds, in steps of 8 seconds. Range: 24 - 1016",
+						"nl": "Bewegings alarm annulering and Zet verlichting uit (Uit commando naar Associatie Groep 2) na deze hoeveelheid seconden, in stappen van 8 seconden. Bereik: 24 - 1016"
+					}
 				},
 				{
 					"id": "light_sensitivity",
@@ -355,24 +343,6 @@
 					}
 				},
 				{
-					"id": "turn_off_light_time",
-					"type": "number",
-					"attr": {
-						"min": 24,
-						"max": 1016,
-						"step": 8
-					},
-					"value": 32,
-					"label": {
-						"en": "Timer, Turn Off Light(s)",
-						"nl": "Timer, Licht(en) uit"
-					},
-					"hint": {
-						"en": "Turn lights off after this amount of seconds, in steps of 8 seconds (Also can serve as turning off motion alarm). Range: 24 - 1016",
-						"nl": "Zet verlichting uit na deze hoeveelheid seconden, in stappen van 8 seconden (kan ook figureren als beweging alarm annulering). Bereik: 24 - 1016"
-					}
-				},
-				{
 					"id": "battery_report_time",
 					"type": "number",
 					"attr": {
@@ -385,8 +355,26 @@
 						"nl": "Batterijniveau Verzend Interval"
 					},
 					"hint": {
-						"en": "The interval time (in hours) for auto report the battery level. Range: 0.5 - 63.5",
-						"nl": "Een vast interval (in uren) om een rapport te sturen over het batterij niveau. Bereik: 0,5 - 63,5"
+						"en": "The interval time (in hours) for auto report the actual battery level. Range: 0.5 - 63.5",
+						"nl": "Een vast interval (in uren) om een rapport te sturen over het actuele batterij niveau. Bereik: 0,5 - 63,5"
+					},
+					"value": 6
+				},
+				{
+					"id": "contact_report_time",
+					"type": "number",
+					"attr": {
+						"min": 0.5,
+						"max": 63.5,
+						"step": 0.5
+					},
+					"label": {
+						"en": "Door/Window Report Interval",
+						"nl": "Deur/Raam Verzend Interval"
+					},
+					"hint": {
+						"en": "The interval time (in hours) for auto report of the actual door/window state. Range: 0.5 - 63.5",
+						"nl": "Een vast interval (in uren) om een rapport te sturen over de actuele deur/raam status. Bereik: 0,5 - 63,5"
 					},
 					"value": 6
 				},
