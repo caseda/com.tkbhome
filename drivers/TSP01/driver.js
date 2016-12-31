@@ -31,45 +31,86 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			'command_class'             : 'COMMAND_CLASS_SENSOR_BINARY',
 			'command_report'            : 'SENSOR_BINARY_REPORT',
 			'command_report_parser'     : function( report, node ){
-				// If we got a resolved timeout setting, then act on it
-				if (this._resetTimer) {
-					let refNo = Math.random().toString()
-					this.refNo = refNo;
-
-					module.exports._debug(`Got report for ${node.device_data.token}/alarm_motion, reset after ${this._resetTimer} milliseconds if refNo == ${refNo}`)
-					setTimeout(this.resetTimerCallback, this._resetTimer, this, refNo, node)
-				}
 				if (report['Sensor Type'] == 'Motion') {
-					// setTimeout(function() {node.}, 6000)
-					return report['Sensor Value (Raw)'].toString('hex') == 'ff';
+					// If we got a resolved timeout setting, then act on it
+					if (this._resetTimer) {
+						let refNo = Math.random().toString()
+						this.refNo = refNo;
+
+						module.exports._debug(`Got report for ${node.device_data.token}/alarm_motion, reset after ${this._resetTimer} milliseconds if refNo == ${refNo}`)
+						setTimeout(this.resetTimerCallback, this._resetTimer, this, refNo, node)
+					}
+
+					return report['Sensor Value'] === 'detected an event';
 				}
 			}
 		},
 		'alarm_tamper': {
+			'resetTimer'                : 'tamper_sensor_reset',
+			'resetTimerCallback'        : function (capabilityRef, refNo, node) {
+				if (capabilityRef.refNo == refNo) {
+					module.exports._debug(`Resetting state for ${node.device_data.token}/alarm_tamper to false` )
+					// Parse value
+					const value = false
+
+					// Update value in node state object
+					node.state['alarm_tamper'] = value;
+
+					// Emit realtime event
+					module.exports.realtime(node.device_data, 'alarm_tamper', value);
+				} else {
+					module.exports._debug(`Not resetting state for ${node.device_data.token}/alarm_tamper, refNo ${refNo} != ${capabilityRef.refNo}`)
+				}
+			},
+			'command_class'             : 'COMMAND_CLASS_SENSOR_BINARY',
+			'command_report'            : 'SENSOR_BINARY_REPORT',
+			'command_report_parser'     : function( report, node ){
+				// If we got a resolved timeout setting, then act on it
+				if (report['Sensor Type'] == 'Tamper') {
+					if (this._resetTimer) {
+						let timeout = parseFloat(this._resetTimer) * 3600;
+						let refNo = Math.random().toString();
+						this.refNo = refNo;
+
+						module.exports._debug(`Got report for ${node.device_data.token}/alarm_tamper, reset after ${timeout} milliseconds if refNo == ${refNo}`)
+						setTimeout(this.resetTimerCallback, timeout, this, refNo, node)
+					}
+					return report['Sensor Value'] === 'detected an event';
+				}
+			}
+		},
+		'alarm_contact': {
 			'command_class'             : 'COMMAND_CLASS_SENSOR_BINARY',
 			'command_report'            : 'SENSOR_BINARY_REPORT',
 			'command_report_parser'     : function( report ){
-				if (report['Sensor Type'] == 'Tamper') {
-					return report['Sensor Value (Raw)'].toString('hex') == 'ff';
+				if (report['Sensor Type'] == 'Door/Window') {
+					return report['Sensor Value'] === 'detected an event';
 				}
-			},
-			'optional': true
+			}
 		},
 		'measure_luminance': {
 			'command_class'             : 'COMMAND_CLASS_SENSOR_MULTILEVEL',
 			'command_report'            : 'SENSOR_MULTILEVEL_REPORT',
 			'command_report_parser'     : function( report ){
-				if (report['Sensor Type'] == 'Luminance (version 1)') return parseInt(report['Sensor Value (Parsed)']) * 10;
-			},
-			'optional': true
+				if (report['Sensor Type'] == 'Luminance (version 1)') {
+					if (report['Level']['Scale'] === 1) return report['Sensor Value (Parsed)'];	// This value is already Lux
+					return parseFloat(report['Sensor Value (Parsed)']) * 5;	// Given value from device was percentage, according to specsheet Philiotech, max lux == 500
+				}
+			}
 		},
 		'measure_temperature': {
 			'command_class'             : 'COMMAND_CLASS_SENSOR_MULTILEVEL',
 			'command_report'            : 'SENSOR_MULTILEVEL_REPORT',
 			'command_report_parser'     : function( report ){
-				if (report['Sensor Type'] == 'Temperature (version 1)') return (parseInt(report['Sensor Value (Parsed)']) - 32) * 5 / 9;
-			},
-			'optional': true
+
+				if (report['Sensor Type'] == 'Temperature (version 1)') {
+					let value = report['Sensor Value (Parsed)'];
+
+					// Convert to Celcius, if Fahrenheit is given.
+					if (report['Level']['Scale'] === 1) return (value - 32) * 5 / 9;
+					return value
+				}
+			}
 		},
 		'measure_battery': {
 			'command_class': 'COMMAND_CLASS_BATTERY',
@@ -85,6 +126,12 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		"basic_set_level": {
 			"index": 2,
 			"size": 1,
+			"signed": false,
+			"parser": function (input) {
+				input = parseInt(input);
+				if (input > 100 && input < 255) input = 255;
+				return new Buffer([input]);
+			}
 		},
 		"pir_sensitivity": {
 			"index": 3,
@@ -112,6 +159,10 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		},
 		"battery_report_time": {
 			"index": 10,
+			"size": 1,
+		},
+		"door_sensor_report_time": {
+			"index": 11,
 			"size": 1,
 		},
 		"illumination_report_time": {
@@ -220,7 +271,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 							if (typeof optionsCapabilityItem.resetTimer === 'number') {
 								// resetTimerCallback(optionsCapabilityItem.resetTimer * 1000);
 								optionsCapabilityItem._resetTimer = optionsCapabilityItem.resetTimer * 1000;
-								that._debug(`setting _resetTimer to ${optionsCapabilityItem._resetTimer}`)
+								that._debug(`setting _resetTimer to ${optionsCapabilityItem._resetTimer} for ${deviceDataToken}/${capabilityId}`)
 							} else if (typeof optionsCapabilityItem.resetTimer === 'string') {
 								// Get poll interval value from settings (async)
 								that.getSettings(node.device_data, (err, settings) => {
@@ -229,7 +280,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 									// Initiate the callback, and report-attachment
 									if (typeof settings[optionsCapabilityItem.resetTimer] === 'number') {
 										optionsCapabilityItem._resetTimer = settings[optionsCapabilityItem.resetTimer] * 1000;
-										that._debug(`setting _resetTimer to ${optionsCapabilityItem._resetTimer}`)
+										that._debug(`setting _resetTimer to ${optionsCapabilityItem._resetTimer} for ${deviceDataToken}/${capabilityId}`)
 									} else {
 										that._debug('invalid resetTimer type in settings, expected number')
 									}
@@ -248,18 +299,69 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 	}
 });
 
+module.exports.updateSettingsFromDeviceOnce = (node) => {
+	module.exports._debug('Registering CONFIGURATION_GET on next wakeup once')
+	node.instance.CommandClass.COMMAND_CLASS_WAKE_UP.once('report', () => {
+		module.exports._debug('Issueing CONFIGURATION_GET')
+
+		// Check if configuration command class is present
+		if (node.instance.CommandClass.COMMAND_CLASS_CONFIGURATION) {
+
+			// Loop thru all settings, to get them
+			module.exports.driver.settings.forEach(settingsId => {
+				if (typeof module.exports.options.settings[settingsId.id] !== 'undefined' && typeof module.exports.options.settings[settingsId.id].index !== 'undefined') {
+					// Get configuration for parameter
+					module.exports._debug(`Fetching settings for parameter ${settingsId.id}`)
+
+					// Run the GET Command
+					node.instance.CommandClass.COMMAND_CLASS_CONFIGURATION.CONFIGURATION_GET(
+						{'Parameter Number': module.exports.options.settings[settingsId.id].index},
+						(err, report) => {
+							if (err) return;
+
+							// Update using default report handler.
+							node.instance.CommandClass.COMMAND_CLASS_CONFIGURATION.emit('report', err, report);
+						}
+					);
+				};
+			});
+		}
+	})
+}
+
 // Monkeypatch settings, so we can remove our driver-specific elements from the changedKeysArr
 module.exports._updateSettings = module.exports.settings
 module.exports.settings = (deviceData, newSettingsObj, oldSettingsObj, changedKeysArr, callback) => {
-	let changedKeys = []
+	let changedKeys = [];
+	let ignoreKeys = ['tamper_sensor_reset', 'motion_inactivity_timer', 'motion_interact_class_basic']
 	for (var i = 0; i < changedKeysArr.length; i++) {
-		if (changedKeysArr[i] ==  'motion_inactivity_timer' || changedKeysArr[i] == 'motion_interact_class_basic') continue;
-		changedKeys.push(changedKeysArr[i])
+		if (ignoreKeys.indexOf(changedKeysArr[i]) !== -1) continue;
+		changedKeys.push(changedKeysArr[i]);
 	}
 	// Call our beforeInit, to update the settings accordingly, if needed
 	if (module.exports.options.hasOwnProperty('beforeInit') && typeof module.exports.options.beforeInit === 'function') {
 		setTimeout(module.exports.options.beforeInit, 1000, deviceData.token, () => {});
 	}
 
-	module.exports._updateSettings(deviceData, newSettingsObj, oldSettingsObj, changedKeys, callback)
+	// changedKeysArr = changedKeys;
+
+	const node = module.exports.getNode(deviceData);
+	// Run the original settings callback when we have woken up.
+	if (changedKeys.length > 0) {
+		module.exports._debug('Running updateSettings upon COMMAND_CLASS_WAKE_UP.report')
+		node.instance.CommandClass.COMMAND_CLASS_WAKE_UP.once('report', () => {
+			module.exports._updateSettings(deviceData, newSettingsObj, oldSettingsObj, changedKeys, () => {});
+			module.exports.updateSettingsFromDeviceOnce(node);
+		})
+	}
+
+	// Provide user with proper feedback after clicking save
+	if (node.instance.battery === true && node.instance.online === false && changedKeys.length > 0) {
+		callback(null, {
+			en: 'Settings will be saved during the next wakeup of this battery device.',
+			nl: 'Instellingen zullen worden opgeslagen bij volgende wakeup van dit apparaat'
+		});
+	} else {
+		return callback(null, true);
+	}
 }
