@@ -166,6 +166,12 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			"index": 2,
 			"size": 1,
 			"signed": false,
+			"parser": function (input) {
+				// Fix user mistakes...
+				input = parseInt(input);
+				if (input > 100 && input < 255) input = 255;
+				return new Buffer([input]);
+			},
 		},
 		"pir_sensitivity": {
 			"index": 3,
@@ -180,7 +186,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			"size": 1,
 			"parser": (value, settings) => {
 				// Operation mode bit 0 (0000000x)
-				let param5 = Math.round(param5 + Number(settings.operation_mode));
+				let param5 = Math.round(Number(settings.operation_mode));
 				
 				// Operation mode bit 1 (000000x0)
 				if (value) {
@@ -200,7 +206,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			"size": 1,
 			"parser": (value, settings) => {
 				// Operation mode bit 0 (0000000x)
-				let param5 = Math.round(param5 + Number(value));
+				let param5 = Math.round(Number(value));
 				
 				// Operation mode bit 1 (000000x0)
 				if (settings.test_mode) {
@@ -220,7 +226,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			"size": 1,
 			"parser": (value, settings) => {
 				// Operation mode bit 0 (0000000x)
-				let param5 = Math.round(param5 + Number(settings.operation_mode));
+				let param5 = Math.round(Number(settings.operation_mode));
 				
 				// Operation mode bit 1 (000000x0)
 				if (settings.test_mode) {
