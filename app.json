@@ -201,6 +201,32 @@
 			},
 			"settings": [
 				{
+					"type": "group",
+					"label": {
+						"en": "Homey driver settings",
+						"nl": "Homey driver configuratie"
+					},
+					"children": [
+						{
+							"id": "resetMotionInterval",
+							"type": "number",
+							"attr": {
+								"min": 0,
+								"max": 86400
+							},
+							"label": {
+								"en": "Motion alarm cancellation timeout, triggered by Homey.",
+								"nl": "Bewegingsalarm annuleringsperiode, uitgevoerd door Homey"
+							},
+							"hint": {
+								"en": "Reset the motion alarm through Homey. Disables acting on the light control group. Set value to 0 to use the light control group. Range 1-86400.",
+								"en": "Herstel de bewegingssensor via de Homey driver. Door deze instelling te gebruiken, reageert de bewegingssensor niet meer op de 'Light Control Group'. Stel in op 0 om de trigger vanuit de sensor te gebruiken. Instelbaar bereik: 0 - 86400."
+							},
+							"value": 0
+						}
+					]
+				},
+				{
 					"id": "basic_set_level",
 					"type": "number",
 					"attr": {
@@ -320,8 +346,8 @@
 						"nl": "Deactiveer Deur/Raam Sensor"
 					},
 					"hint": {
-						"en": "Should the sensor have the door/window sensor be disabled. (only used in STM02)",
-						"nl": "Moet de sensor de deur/raam sensor deactief zijn. (Alleen gebruikt in STM02)"
+						"en": "Should the sensor have the door/window sensor be disabled. (only used in TSM02)",
+						"nl": "Moet de sensor de deur/raam sensor deactief zijn. (Alleen gebruikt in TSM02)"
 					}
 				},
 				{

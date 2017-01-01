@@ -9,7 +9,20 @@ const ZwaveDriver = require('homey-zwavedriver');
 // TSM02 Manual => https://www.intellihome.be/nl/amfilerating/file/download/file_id/1143/
 // TSP01 Manual => http://www.philio-tech.com/pdf/PSP01.pdf
 
+let resetCapabilityCallback = (resetToken, node, capabilityId) => {
+	if (node.resetToken === resetToken) {
+		module.exports._debug(`Resetting state for ${node.device_data.token}/${capabilityId} to false`);
+
+		// Update local driver state
+		node.state[capabilityId] = false;
+
+		// Inform Homey of new value
+		module.exports.realtime(node.device_data, capabilityId, false);
+	}
+}
+
 module.exports = new ZwaveDriver( path.basename(__dirname), {
+	debug: true,
 	capabilities: {
 		'alarm_contact': {
 			'command_class': 'COMMAND_CLASS_SENSOR_BINARY',
@@ -35,17 +48,28 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 					'Sensor Type': 'Motion',
 				}),
 				'command_report': 'SENSOR_BINARY_REPORT',
-				'command_report_parser': report => {
-					if (report['Sensor Type'] === 'Motion')
+				'command_report_parser': (report, node) => {
+					if (report['Sensor Type'] === 'Motion') {
+						if (node.hasOwnProperty('resetMotionInterval') && node.resetMotionInterval > 0) {
+							let resetToken = Math.random().toString();
+							node.resetToken = resetToken;
+							module.exports._debug(`Adding timeout of ${node.resetMotionInterval} with token ${resetToken}`);
+							setTimeout(resetCapabilityCallback, node.resetMotionInterval, resetToken, node, 'alarm_motion');
+						}
 						return report['Sensor Value'] === 'detected an event';
-						
+					}
+
 					return null;
 				}
 			},
 			{
 				'command_class': 'COMMAND_CLASS_BASIC',
 				'command_report': 'BASIC_SET',
-				'command_report_parser': report => {
+				'command_report_parser': (report, node) => {
+					// If resetMotionInterval is active, then disable this feature.
+					if (node.hasOwnProperty('resetMotionInterval') && node.resetMotionInterval > 0)
+						return null;
+
 					if (report.Value === 0)
 						return false;
 						
@@ -241,5 +265,56 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			"size": 1,
 			"parser": value => new Buffer([Math.round(value * 2)]),
 		},
+	},
+	beforeInit: function(deviceDataToken, callback) {
+		// module.exports._debug('Running settings for deviceToken', deviceDataToken);
+		let node = module.exports.nodes[deviceDataToken];
+		// Get poll interval value from settings
+		module.exports.getSettings(node.device_data, (err, settings) => {
+			if (err) return console.error(err);
+
+			// module.exports._debug('Got settings', deviceDataToken, settings);
+
+			// Initiate poll interval
+			if (typeof settings['resetMotionInterval'] === 'number') {
+				module.exports._debug(`Got resetMotionInterval ${settings['resetMotionInterval']} for node ${deviceDataToken}`);
+				node.resetMotionInterval = settings['resetMotionInterval'] * 1000;
+			} else {
+				node.resetMotionInterval = 0;
+			}
+		});
+		callback();
 	}
 });
+
+// Monkey patch to support our custom keys (and not trigger a device update)
+module.exports._realSettingsUpdate = module.exports.settings;
+module.exports.settings = function(deviceData, newSettingsObj, oldSettingsObj, changedKeysArr, callback) {
+	this._debug('driver.settings()', 'newSettingsObj', newSettingsObj, 'oldSettingsObj', oldSettingsObj, 'changedKeysArr', changedKeysArr);
+
+	// We have a custom settings object, remove this from the changedKeysArr
+	let changedKeys = [];
+	let ignoreKeys = ['resetMotionInterval'];
+	let runBeforeInit = false;
+	for (var i = 0; i < changedKeysArr.length; i++) {
+		if (ignoreKeys.indexOf(changedKeysArr[i]) !== -1) {
+			runBeforeInit = true;
+			continue;
+		}
+		changedKeys.push(changedKeysArr[i]);
+	}
+
+	if (runBeforeInit === true) {
+		this._debug('Trying to run beforeInit again.');
+		if (this.options.hasOwnProperty('beforeInit') && typeof this.options.beforeInit === 'function') {
+			setTimeout(this.options.beforeInit, 1000, deviceData.token, () => {});
+		}
+	}
+
+	// Provide user with proper feedback after clicking save
+	if (changedKeys.length > 0) {
+		this._realSettingsUpdate(deviceData, newSettingsObj, oldSettingsObj, changedKeys, callback);
+	} else {
+		return callback(null, true);
+	}
+}.bind(module.exports);
