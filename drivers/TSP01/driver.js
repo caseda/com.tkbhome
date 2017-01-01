@@ -191,12 +191,12 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				
 				// Operation mode bit 1 (000000x0)
 				if (value) {
-					Math.round(param5 = param5 + 2);
+					param5 = Math.round(param5 + 2);
 				}
 				
 				// Operation mode bit 2 (00000x00)
 				if (settings["door/window_mode"]) {
-					Math.round(param5 = param5 + 4);
+					param5 = Math.round(param5 + 4);
 				}
 				
 				return new Buffer([param5]);
@@ -211,12 +211,12 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				
 				// Operation mode bit 1 (000000x0)
 				if (settings.test_mode) {
-					Math.round(param5 = param5 + 2);
+					param5 = Math.round(param5 + 2);
 				}
 				
 				// Operation mode bit 2 (00000x00)
 				if (settings["door/window_mode"]) {
-					Math.round(param5 = param5 + 4);
+					param5 = Math.round(param5 + 4);
 				}
 				
 				return new Buffer([param5]);
@@ -231,12 +231,12 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				
 				// Operation mode bit 1 (000000x0)
 				if (settings.test_mode) {
-					Math.round(param5 = param5 + 2);
+					param5 = Math.round(param5 + 2);
 				}
 				
 				// Operation mode bit 2 (00000x00)
 				if (value) {
-					Math.round(param5 = param5 + 4);
+					param5 = Math.round(param5 + 4);
 				}
 				
 				return new Buffer([param5]);
