@@ -11,7 +11,7 @@ const ZwaveDriver = require('homey-zwavedriver');
 
 let resetCapabilityCallback = (resetToken, node, capabilityId) => {
 	if (node.resetToken === resetToken && node.state[capabilityId] === true) {
-		module.exports._debug(`Resetting state for ${node.device_data.token}/${capabilityId} to false`);
+		module.exports._debug(`[resetCapabilityCallback] Resetting state for ${node.device_data.token}/${capabilityId} to false`);
 
 		// Update local driver state
 		node.state[capabilityId] = false;
@@ -71,6 +71,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 						return null;
 
 					if (report.Value === 0)
+						module.exports._debug(`[BASIC_SET] Resetting state for ${node.device_data.token}/alarm_motion to false`);
 						return false;
 						
 					return null;
