@@ -10,7 +10,7 @@ const ZwaveDriver = require('homey-zwavedriver');
 // TSP01 Manual => http://www.philio-tech.com/pdf/PSP01.pdf
 
 let resetCapabilityCallback = (resetToken, node, capabilityId) => {
-	if (node.resetToken === resetToken) {
+	if (node.resetToken === resetToken && node.state[capabilityId] === true) {
 		module.exports._debug(`Resetting state for ${node.device_data.token}/${capabilityId} to false`);
 
 		// Update local driver state
