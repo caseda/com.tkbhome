@@ -198,6 +198,9 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				if (settings["door/window_mode"]) {
 					param5 = Math.round(param5 + 4);
 				}
+
+				// Operation mode bit 3 (0000x000): Set scale, 0 = Fahrenheit, 1 = Celcius
+				param5 = Math.round(param5 + 8)
 				
 				return new Buffer([param5]);
 			},
@@ -218,6 +221,9 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				if (settings["door/window_mode"]) {
 					param5 = Math.round(param5 + 4);
 				}
+
+				// Operation mode bit 3 (0000x000): Set scale, 0 = Fahrenheit, 1 = Celcius
+				param5 = Math.round(param5 + 8)
 				
 				return new Buffer([param5]);
 			},
@@ -238,6 +244,9 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				if (value) {
 					param5 = Math.round(param5 + 4);
 				}
+
+				// Operation mode bit 3 (0000x000): Set scale, 0 = Fahrenheit, 1 = Celcius
+				param5 = Math.round(param5 + 8)
 				
 				return new Buffer([param5]);
 			},
