@@ -241,6 +241,18 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				return new Buffer([param5]);
 			},
 		},
+		"temperature_monitoring": {
+			"index": 6,
+			"size": 1,
+			"parser": (value, settings) => {
+				// Multi-Sensor Function Switch bit 6 (00x00000)
+				let param6 = 4;	// Default value: Disable magetic integrate PIR
+				if (value)
+					param6 += 64;
+
+				return new Buffer([param6]);
+			},
+		},
 		"pir_redetect_interval_time": {
 			"index": 8,
 			"size": 1,

@@ -351,6 +351,19 @@
 					}
 				},
 				{
+					"id": "temperature_monitoring",
+					"type": "checkbox",
+					"value": false,
+					"label": {
+						"en": "Enable temperature monitoring",
+						"nl": "Activeer temperatuur monitoring"
+					},
+					"hint": {
+						"en": "When enabled, it will report whenever the temperature has changed 1.5 degree Celcius. If the temperature is over 60 degrees Celcius, it will report every 64 seconds.",
+						"nl": "Indien ingeschakeld dan stuurt het een temperatuur rapport als de temperatuur anderhalve graad Celcius wijzigt. Als het warmer is als 60 graden Celcius dan stuurt het iedere 64 seconden een temperatuurrapport."
+					}
+				},
+				{
 					"id": "pir_redetect_interval_time",
 					"type": "number",
 					"attr": {
