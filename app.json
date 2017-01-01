@@ -346,8 +346,8 @@
 						"nl": "Deactiveer Deur/Raam Sensor"
 					},
 					"hint": {
-						"en": "Should the sensor have the door/window sensor be disabled. (only used in TSM02)",
-						"nl": "Moet de sensor de deur/raam sensor deactief zijn. (Alleen gebruikt in TSM02)"
+						"en": "Should the sensor have the door/window sensor be disabled. (only used in TSM02, enable if using TSP01!)",
+						"nl": "Moet de sensor de deur/raam sensor deactief zijn. (Alleen gebruikt in TSM02, vink aan bij TSP01!)"
 					}
 				},
 				{
