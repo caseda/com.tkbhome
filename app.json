@@ -259,11 +259,11 @@
 						"alarm_tamper",
 						"measure_luminance_level",
 						"measure_temperature"
-					]
-				},
-				"options": {
-					"icons": {
-						"measure_luminance_level": "./drivers/TSP01/assets/measure_luminance_level.svg"
+					],
+					"options": {
+						"icons": {
+							"measure_luminance_level": "./drivers/TSP01/assets/measure_luminance_level.svg"
+						}
 					}
 				}
 			],
