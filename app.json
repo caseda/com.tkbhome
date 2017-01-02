@@ -28,8 +28,53 @@
 			}
 		]
 	},
+	"capabilities": {
+		"measure_luminance_level": {
+			"type": "number",
+			"title": {
+				"en": "Luminance Level",
+				"nl": "Helderheid Niveau"
+			},
+			"units": {
+				"en": "%"
+			},
+			"desc": {
+				"en": "Luminance Level in Percentage (%)",
+				"nl": "Helderheid Niveau in Percentage (%)"
+			},
+			"chartType": "spline",
+			"decimals": 0,
+			"getable": true,
+			"setable": false
+		}
+	},
 	"flow": {
 		"triggers": [
+			{
+				"id": "TSP01_brightness",
+				"title": {
+					"en": "The luminance level has changed",
+					"nl": "Het helderheids niveau is veranderd"
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_id=TSP01"
+					}
+				],
+				"tokens": [
+					{
+						"name": "luminance",
+						"type": "number",
+						"title": {
+							"en": "Level",
+							"en": "Niveau"
+						},
+						"example": 50
+					}
+				]
+			},
 			{
 				"id": "TZ65D_s2_single_on",
 				"title": {
@@ -191,9 +236,36 @@
 				"alarm_contact",
 				"alarm_motion",
 				"alarm_tamper",
-				"measure_luminance",
+				"measure_luminance_level",
 				"measure_temperature",
 				"measure_battery"
+			],
+			"mobile": [
+				{
+					"id": "icon",
+					"capabilities": []
+				},
+				{
+					"id": "battery",
+					"capabilities": [
+						"measure_battery"
+					]
+				},
+				{
+					"id": "sensor",
+					"capabilities": [
+						"alarm_contact",
+						"alarm_motion",
+						"alarm_tamper",
+						"measure_luminance_level",
+						"measure_temperature"
+					]
+				},
+				"options": {
+					"icons": {
+						"measure_luminance_level": "./drivers/TSP01/assets/measure_luminance_level.svg"
+					}
+				}
 			],
 			"images": {
 				"large": "/drivers/TSP01/assets/images/large.png",
@@ -314,7 +386,7 @@
 				{
 					"id": "door/window_mode",
 					"type": "checkbox",
-					"value": false,
+					"value": true,
 					"label": {
 						"en": "Disable Door/Window Sensor",
 						"nl": "Deactiveer Deur/Raam Sensor"
@@ -322,6 +394,19 @@
 					"hint": {
 						"en": "Should the sensor have the door/window sensor be disabled. (only used in STM02)",
 						"nl": "Moet de sensor de deur/raam sensor deactief zijn. (Alleen gebruikt in STM02)"
+					}
+				},
+				{
+					"id": "temperature_monitoring",
+					"type": "checkbox",
+					"value": false,
+					"label": {
+						"en": "Enable temperature monitoring",
+						"nl": "Activeer temperatuur monitoring"
+					},
+					"hint": {
+						"en": "When enabled, it will report whenever the temperature has changed 1.5 degree Celcius. If the temperature is over 60 degrees Celcius, it will report every 64 seconds.",
+						"nl": "Indien ingeschakeld dan stuurt het een temperatuur rapport als de temperatuur anderhalve graad Celcius wijzigt. Als het warmer is als 60 graden Celcius dan stuurt het iedere 64 seconden een temperatuurrapport."
 					}
 				},
 				{

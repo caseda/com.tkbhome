@@ -14,26 +14,19 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		'alarm_contact': {
 			'command_class': 'COMMAND_CLASS_SENSOR_BINARY',
 			'command_get': 'SENSOR_BINARY_GET',
-			'command_get_parser': () => ({
-				'Sensor Type': 'Door/Window'
-			}),
 			'command_report': 'SENSOR_BINARY_REPORT',
 			'command_report_parser': report => {
 				if (report['Sensor Type'] === 'Door/Window')
 					return report['Sensor Value'] === 'detected an event';
 					
 				return null;
-			},
-			'optional': true,
+			}
 		},
 		
 		'alarm_motion': [
 			{
 				'command_class': 'COMMAND_CLASS_SENSOR_BINARY',
 				'command_get': 'SENSOR_BINARY_GET',
-				'command_get_parser': () => ({
-					'Sensor Type': 'Motion',
-				}),
 				'command_report': 'SENSOR_BINARY_REPORT',
 				'command_report_parser': report => {
 					if (report['Sensor Type'] === 'Motion')
@@ -57,9 +50,6 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		'alarm_tamper': {
 			'command_class': 'COMMAND_CLASS_SENSOR_BINARY',
 			'command_get': 'SENSOR_BINARY_GET',
-			'command_get_parser': () => ({
-				'Sensor Type': 'Tamper',
-			}),
 			'command_report': 'SENSOR_BINARY_REPORT',
 			'command_report_parser': report => {
 				if (report['Sensor Type'] === 'Tamper')
@@ -69,27 +59,18 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			}
 		},
 		
-		'measure_luminance': {
+		'measure_luminance_level': {
+			'getOnWakeUp': true,
 			'command_class': 'COMMAND_CLASS_SENSOR_MULTILEVEL',
 			'command_get': 'SENSOR_MULTILEVEL_GET',
-			'command_get_parser': () => ({
-				'Sensor Type': 'Luminance (version 1)',
-				'Properties1': {
-					'Scale': 1,
-				},
-			}),
 			'command_report': 'SENSOR_MULTILEVEL_REPORT',
-			'command_report_parser': report => {
-				if (report['Sensor Type'] === "Luminance (version 1)" &&
-				report.hasOwnProperty("Level") &&
-				report.Level.hasOwnProperty("Scale")) {
-					if (report.Level.Scale === 1)
+			'command_report_parser': (report, node) => {
+				if (report['Sensor Type'] === 'Luminance (version 1)') {
+					
+						const tokens = { 'luminance': report['Sensor Value (Parsed)'] };
+						Homey.manager('flow').triggerDevice('TSP01_brightness', tokens, null, node.device_data);
+						
 						return report['Sensor Value (Parsed)'];
-						
-					if (report.Level.Scale === 0)
-						return report['Sensor Value (Parsed)'] * 5;
-						
-					return null;
 				}
 					
 				return null;
@@ -97,6 +78,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		},
 		
 		'measure_temperature': {
+			'getOnWakeUp': true,
 			'command_class': 'COMMAND_CLASS_SENSOR_MULTILEVEL',
 			'command_get': 'SENSOR_MULTILEVEL_GET',
 			'command_get_parser': () => ({
@@ -142,6 +124,12 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			"index": 2,
 			"size": 1,
 			"signed": false,
+			"parser": input => {			
+				if (input >= 100 && input < 255)
+					input = 255;
+				
+				return new Buffer([input]);
+			},
 		},
 		"pir_sensitivity": {
 			"index": 3,
@@ -154,61 +142,68 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		"test_mode": {
 			"index": 5,
 			"size": 1,
-			"parser": (value, settings) => {
+			"parser": (input, settings) => {
 				// Operation mode bit 0 (0000000x)
-				let param5 = Math.round(param5 + Number(settings.operation_mode));
+				let param5 = Number(settings.operation_mode);
 				
 				// Operation mode bit 1 (000000x0)
-				if (value) {
-					Math.round(param5 = param5 + 2);
-				}
+				if (input)
+					param5 += 2;
 				
 				// Operation mode bit 2 (00000x00)
-				if (settings["door/window_mode"]) {
-					Math.round(param5 = param5 + 4);
-				}
+				if (settings["door/window_mode"])
+					param5 += 4;
 				
-				return new Buffer([param5]);
+				return new Buffer([param5 + 8]);
 			},
 		},
 		"operation_mode": {
 			"index": 5,
 			"size": 1,
-			"parser": (value, settings) => {
+			"parser": (input, settings) => {
 				// Operation mode bit 0 (0000000x)
-				let param5 = Math.round(param5 + Number(value));
+				let param5 = Number(input);
 				
 				// Operation mode bit 1 (000000x0)
-				if (settings.test_mode) {
-					Math.round(param5 = param5 + 2);
-				}
+				if (settings.test_mode)
+					param5 += 2;
 				
 				// Operation mode bit 2 (00000x00)
-				if (settings["door/window_mode"]) {
-					Math.round(param5 = param5 + 4);
-				}
+				if (settings["door/window_mode"])
+					param5 += 4;
 				
-				return new Buffer([param5]);
+				return new Buffer([param5 + 8]);
 			},
 		},
 		"door/window_mode": {
 			"index": 5,
 			"size": 1,
-			"parser": (value, settings) => {
+			"parser": (input, settings) => {
 				// Operation mode bit 0 (0000000x)
-				let param5 = Math.round(param5 + Number(settings.operation_mode));
+				let param5 = Number(settings.operation_mode);
 				
 				// Operation mode bit 1 (000000x0)
-				if (settings.test_mode) {
-					Math.round(param5 = param5 + 2);
-				}
+				if (settings.test_mode)
+					param5 += 2;
 				
 				// Operation mode bit 2 (00000x00)
-				if (value) {
-					Math.round(param5 = param5 + 4);
-				}
+				if (input)
+					param5 += 4;
 				
-				return new Buffer([param5]);
+				return new Buffer([param5 + 8]);
+			},
+		},
+		"temperature_monitoring": {
+			"index": 6,
+			"size": 1,
+			"parser": input => {
+				// Multi-Sensor Function Switch bit 6 (0x000000)
+				let param6 = 4;	// Default value: Disable magetic integrate PIR
+				
+				if (input)
+					param6 += 64;
+
+				return new Buffer([param6]);
 			},
 		},
 		"pir_redetect_interval_time": {
