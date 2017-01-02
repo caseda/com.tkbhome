@@ -10,6 +10,7 @@ const ZwaveDriver = require('homey-zwavedriver');
 // TSP01 Manual => http://www.philio-tech.com/pdf/PSP01.pdf
 
 module.exports = new ZwaveDriver( path.basename(__dirname), {
+	debug: true,
 	capabilities: {
 		'alarm_contact': {
 			'command_class': 'COMMAND_CLASS_SENSOR_BINARY',
@@ -38,7 +39,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 				'command_report_parser': report => {
 					if (report['Sensor Type'] === 'Motion')
 						return report['Sensor Value'] === 'detected an event';
-						
+
 					return null;
 				}
 			},
@@ -142,6 +143,12 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			"index": 2,
 			"size": 1,
 			"signed": false,
+			"parser": function (input) {
+				// Fix user mistakes...
+				input = parseInt(input);
+				if (input > 100 && input < 255) input = 255;
+				return new Buffer([input]);
+			},
 		},
 		"pir_sensitivity": {
 			"index": 3,
@@ -156,17 +163,20 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			"size": 1,
 			"parser": (value, settings) => {
 				// Operation mode bit 0 (0000000x)
-				let param5 = Math.round(param5 + Number(settings.operation_mode));
+				let param5 = Math.round(Number(settings.operation_mode));
 				
 				// Operation mode bit 1 (000000x0)
 				if (value) {
-					Math.round(param5 = param5 + 2);
+					param5 = Math.round(param5 + 2);
 				}
 				
 				// Operation mode bit 2 (00000x00)
 				if (settings["door/window_mode"]) {
-					Math.round(param5 = param5 + 4);
+					param5 = Math.round(param5 + 4);
 				}
+
+				// Operation mode bit 3 (0000x000): Set scale, 0 = Fahrenheit, 1 = Celcius
+				param5 = Math.round(param5 + 8)
 				
 				return new Buffer([param5]);
 			},
@@ -176,17 +186,20 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			"size": 1,
 			"parser": (value, settings) => {
 				// Operation mode bit 0 (0000000x)
-				let param5 = Math.round(param5 + Number(value));
+				let param5 = Math.round(Number(value));
 				
 				// Operation mode bit 1 (000000x0)
 				if (settings.test_mode) {
-					Math.round(param5 = param5 + 2);
+					param5 = Math.round(param5 + 2);
 				}
 				
 				// Operation mode bit 2 (00000x00)
 				if (settings["door/window_mode"]) {
-					Math.round(param5 = param5 + 4);
+					param5 = Math.round(param5 + 4);
 				}
+
+				// Operation mode bit 3 (0000x000): Set scale, 0 = Fahrenheit, 1 = Celcius
+				param5 = Math.round(param5 + 8)
 				
 				return new Buffer([param5]);
 			},
@@ -196,19 +209,34 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			"size": 1,
 			"parser": (value, settings) => {
 				// Operation mode bit 0 (0000000x)
-				let param5 = Math.round(param5 + Number(settings.operation_mode));
+				let param5 = Math.round(Number(settings.operation_mode));
 				
 				// Operation mode bit 1 (000000x0)
 				if (settings.test_mode) {
-					Math.round(param5 = param5 + 2);
+					param5 = Math.round(param5 + 2);
 				}
 				
 				// Operation mode bit 2 (00000x00)
 				if (value) {
-					Math.round(param5 = param5 + 4);
+					param5 = Math.round(param5 + 4);
 				}
+
+				// Operation mode bit 3 (0000x000): Set scale, 0 = Fahrenheit, 1 = Celcius
+				param5 = Math.round(param5 + 8)
 				
 				return new Buffer([param5]);
+			},
+		},
+		"temperature_monitoring": {
+			"index": 6,
+			"size": 1,
+			"parser": (value, settings) => {
+				// Multi-Sensor Function Switch bit 6 (00x00000)
+				let param6 = 4;	// Default value: Disable magetic integrate PIR
+				if (value)
+					param6 += 64;
+
+				return new Buffer([param6]);
 			},
 		},
 		"pir_redetect_interval_time": {
