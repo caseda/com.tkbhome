@@ -69,7 +69,7 @@
 						"type": "number",
 						"title": {
 							"en": "Level",
-							"en": "Niveau"
+							"nl": "Niveau"
 						},
 						"example": 50
 					}
@@ -216,12 +216,14 @@
 				"associationGroupsOptions": {
 					"1": {
 						"hint": {
-							"en": "This is the Controller group, it is not recommended to change this setting."
+							"en": "This is the Controller group, it is not recommended to change this setting.",
+							"nl": "Dit is de controller groep, het is niet aangeraden deze te wijzigen."
 						}
 					},
 					"2": {
 						"hint": {
-							"en": "Light control group, also serves as a motion cancellation (delay)"
+							"en": "Light control group, also serves as a motion cancellation (delay)",
+							"nl": "Dit is dde licht controller groep, functioneerd ook als beweging alarm annulering (vertraging)."
 						}
 					}
 				},
@@ -285,7 +287,7 @@
 					},
 					"hint": {
 						"en": "Setting the BASIC command value to turn on the light(s). The 255 means turn on the light. For dimmer equipment 1 to 99 means the light strength.",
-						"en": "De waarde die wordt gestuurd tijdens het BASIC commando om het licht aan te zetten. Waarde 255 is verlichting Aan. Voor dimmers kan het bereik 1 - 99 worden gebruikt om de dim-sterkte in te stellen."
+						"nl": "De waarde die wordt gestuurd tijdens het BASIC commando om het licht aan te zetten. Waarde 255 is verlichting Aan. Voor dimmers kan het bereik 1 - 99 worden gebruikt om de dim-sterkte in te stellen."
 					},
 					"value": 255
 				},
@@ -386,7 +388,7 @@
 				{
 					"id": "door/window_mode",
 					"type": "checkbox",
-					"value": true,
+					"value": false,
 					"label": {
 						"en": "Disable Door/Window Sensor",
 						"nl": "Deactiveer Deur/Raam Sensor"

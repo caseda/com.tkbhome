@@ -13,7 +13,6 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 	capabilities: {
 		'alarm_contact': {
 			'command_class': 'COMMAND_CLASS_SENSOR_BINARY',
-			'command_get': 'SENSOR_BINARY_GET',
 			'command_report': 'SENSOR_BINARY_REPORT',
 			'command_report_parser': report => {
 				if (report['Sensor Type'] === 'Door/Window')
@@ -26,7 +25,6 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		'alarm_motion': [
 			{
 				'command_class': 'COMMAND_CLASS_SENSOR_BINARY',
-				'command_get': 'SENSOR_BINARY_GET',
 				'command_report': 'SENSOR_BINARY_REPORT',
 				'command_report_parser': report => {
 					if (report['Sensor Type'] === 'Motion')
@@ -49,7 +47,6 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		
 		'alarm_tamper': {
 			'command_class': 'COMMAND_CLASS_SENSOR_BINARY',
-			'command_get': 'SENSOR_BINARY_GET',
 			'command_report': 'SENSOR_BINARY_REPORT',
 			'command_report_parser': report => {
 				if (report['Sensor Type'] === 'Tamper')
@@ -106,7 +103,9 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		},
 		
 		'measure_battery': {
+			'getOnWakeUp': true,
 			'command_class': 'COMMAND_CLASS_BATTERY',
+			'command_get': 'BATTERY_GET',
 			'command_report': 'BATTERY_REPORT',
 			'command_report_parser': report => {
 				if (report['Battery Level'] === 'battery low warning')
