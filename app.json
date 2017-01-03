@@ -253,7 +253,7 @@
 							},
 							"hint": {
 								"en": "Setting the BASIC command value to turn on the light. The 0xFF (-1) means turn on the light.\nFor dimmer equipment 1 to 100 means the light strength.",
-								"en": "De waarde die wordt gestuurd tijdens het BASIC commando om het licht aan te zetten. Waarde 0xFF (-1) is AAN.\nVoor dimmers kan de range 1-100 worden gebruikt om de dim-sterkte in te stellen."
+								"nl": "De waarde die wordt gestuurd tijdens het BASIC commando om het licht aan te zetten. Waarde 0xFF (-1) is AAN.\nVoor dimmers kan de range 1-100 worden gebruikt om de dim-sterkte in te stellen."
 							},
 							"value": -1
 						},
@@ -456,7 +456,7 @@
 					"4": {
 						"hint": {
 							"en": "(Shoulde be) All switch commands",
-							"en": "(Hoort) Alle schakel commando's",
+							"nl": "(Hoort) Alle schakel commando's"
 						}
 					}
 				}
@@ -630,7 +630,7 @@
 					"4": {
 						"hint": {
 							"en": "(Shoulde be) All switch commands",
-							"en": "(Hoort) Alle schakel commando's",
+							"nl": "(Hoort) Alle schakel commando's"
 						}
 					}
 				}
