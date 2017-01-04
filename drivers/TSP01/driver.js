@@ -62,15 +62,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		},
 		
 		'measure_luminance_level': {
-			'getOnWakeUp': true,
 			'command_class': 'COMMAND_CLASS_SENSOR_MULTILEVEL',
-			'command_get': 'SENSOR_MULTILEVEL_GET',
-			'command_get_parser': () => ({
-				'Sensor Type': 'Luminance (version 1)',
-				'Properties1': {
-					'Scale': 0,
-				},
-			}),
 			'command_report': 'SENSOR_MULTILEVEL_REPORT',
 			'command_report_parser': (report, node) => {
 				if (report['Sensor Type'] === 'Luminance (version 1)') {
@@ -86,15 +78,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 		},
 		
 		'measure_temperature': {
-			'getOnWakeUp': true,
 			'command_class': 'COMMAND_CLASS_SENSOR_MULTILEVEL',
-			'command_get': 'SENSOR_MULTILEVEL_GET',
-			'command_get_parser': () => ({
-				'Sensor Type': 'Temperature (version 1)',
-				'Properties1': {
-					'Scale': 0,
-				},
-			}),
 			'command_report': 'SENSOR_MULTILEVEL_REPORT',
 			'command_report_parser': report => {
 				if (report['Sensor Type'] === "Temperature (version 1)" &&
