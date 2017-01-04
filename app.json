@@ -227,11 +227,23 @@
 						}
 					}
 				},
-				"defaultConfiguration": {
-					"id": 5,
-					"size": 1,
-					"value": 12
-				}
+				"defaultConfiguration": [
+					{
+						"id": 5,
+						"size": 1,
+						"value": 12
+					},
+					{
+						"id": 12,
+						"size": 1,
+						"value": 4
+					},
+					{
+						"id": 13,
+						"size": 1,
+						"value": 4
+					}
+				]
 			},
 			"class": "sensor",
 			"capabilities": [
