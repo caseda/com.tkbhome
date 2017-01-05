@@ -254,33 +254,34 @@
 				"measure_temperature",
 				"measure_battery"
 			],
-			"mobile": [
-				{
-					"id": "icon",
-					"capabilities": []
-				},
-				{
-					"id": "battery",
-					"capabilities": [
-						"measure_battery"
-					]
-				},
-				{
-					"id": "sensor",
-					"capabilities": [
-						"alarm_contact",
-						"alarm_motion",
-						"alarm_tamper",
-						"measure_luminance_level",
-						"measure_temperature"
-					],
-					"options": {
-						"icons": {
-							"measure_luminance_level": "./drivers/TSP01/assets/measure_luminance_level.svg"
+			"mobile": {
+				"components": [
+					{
+						"id": "icon"
+					},
+					{
+						"id": "battery",
+						"capabilities": [
+							"measure_battery"
+						]
+					},
+					{
+						"id": "sensor",
+						"capabilities": [
+							"alarm_contact",
+							"alarm_motion",
+							"alarm_tamper",
+							"measure_luminance_level",
+							"measure_temperature"
+						],
+						"options": {
+							"icons": {
+								"measure_luminance_level": "./drivers/TSP01/assets/measure_luminance_level.svg"
+							}
 						}
 					}
-				}
-			],
+				]
+			},
 			"images": {
 				"large": "/drivers/TSP01/assets/images/large.png",
 				"small": "/drivers/TSP01/assets/images/small.png"
