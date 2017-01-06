@@ -2,7 +2,8 @@
 This app adds support for TKB Home devices in Homey.
 
 ## Supported devices:
-+ TSP01 - 3-in-1 Motion Sensor
++ TSM02 - 4-in-1 Multi Sensor
++ TSP01 - 3-in-1 Multi Sensor
 + TZ35 - Single & Dual Wall Dimmer
 + TZ36 - Single & Dual Wall Switch
 + TZ55 - Single & Dual Wall Dimmer
@@ -30,7 +31,8 @@ You can turn it off (value: 0), if you only want/need to update the state manual
 ## Change Log:
 **1.0.1:**
 Added support:
-* TSP01 - 3-in-1 Motion Sensor
++ TSM02 - 4-in-1 Multi Sensor
+* TSP01 - 3-in-1 Multi Sensor
 * TZ35 - Single & Dual Wall Dimmer
 * TZ36 - Single & Dual Wall Switch
 * TZ55 - Single & Dual Wall Dimmer
