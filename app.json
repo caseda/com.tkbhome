@@ -1117,8 +1117,8 @@
 		{
 			"id": "TZ68-PLUS",
 			"name": {
-				"en": "Wallplug (Z-Wave Plus) TZBET68",
-				"nl": "Muurplug (Z-Wave Plus) TZBET68"
+				"en": "Wallplug (Z-Wave Plus) TZ68-PLUS",
+				"nl": "Muurplug (Z-Wave Plus) TZ68-PLUS"
 			},
 			"zwave": {
 				"manufacturerId": 280,

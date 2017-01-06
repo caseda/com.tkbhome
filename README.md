@@ -36,14 +36,14 @@ Added support:
 * TZ55 - Single & Dual Wall Dimmer
 * TZ56 - Single & Dual Wall Switch
 * TZ67-PLUS Wallplug Dimmer (Z-Wave Plus)
-Updated Association Group Hints
+Updated Association Group Hints  
 Updated Z-wave driver (1.1.2)
 
 **1.0.0:**
 Update Z-Wave driver (1.1.0)  
 Fixed TZ65D right button flow triggers  
 Add support TZ66 (Single & Dual)  
-Add support TZBET68 (all types)
+Add support TZ68-PLUS (all types)  
 Add Polling for TZ67 and TZ68 (needed if people use the hardware button.)
 
 **0.9.4:**
