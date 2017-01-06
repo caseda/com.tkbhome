@@ -2,20 +2,25 @@
 This app adds support for TKB Home devices in Homey.
 
 ## Supported devices:
++ TSP01 - 3-in-1 Motion Sensor
++ TZ35 - Single & Dual Wall Dimmer
++ TZ36 - Single & Dual Wall Switch
++ TZ55 - Single & Dual Wall Dimmer
++ TZ56 - Single & Dual Wall Switch
 + TZ65 - Single & Dual Wall Dimmer
 + TZ66 - Single & Dual Wall Switch
 + TZ67 - Wallplug Dimmer (all types)
 + TZ67-PLUS - Wallplug Dimmer (Z-Wave Plus) (all types)
 + TZ68 - Wallplug Switch (all types)
-+ TZBET68 - Wallplug Switch (Z-Wave Plus) (all types)
++ TZ68-PLUS - Wallplug Switch (Z-Wave Plus) (all types)
 
 ## Supported Languages:
 * English
 * Dutch (Nederlands)
 
 ### Notes:
-**TZ65**
-The TZ65 needs to use polling to get the correct dim state of the output in certain situations.  
+**TZ35/TZ55/TZ65**
+The TZ35/TZ55/TZ65 needs to use polling to get the correct dim state of the output in certain situations.  
 The is by default on 300 seconds (5 minutes).  
 It is not recommended to put this below 60 seconds (1 minute),  
 it might cause too much traffic.  
@@ -24,9 +29,15 @@ You can turn it off (value: 0), if you only want/need to update the state manual
 
 ## Change Log:
 **1.0.1:**
-Added support for TSP01 3-in-1 Motion Sensor  
-Added support for TZ67-PLUS Wallplug Dimmer (Z-Wave Plus)  
+Added support:
+* TSP01 - 3-in-1 Motion Sensor
+* TZ35 - Single & Dual Wall Dimmer
+* TZ36 - Single & Dual Wall Switch
+* TZ55 - Single & Dual Wall Dimmer
+* TZ56 - Single & Dual Wall Switch
+* TZ67-PLUS Wallplug Dimmer (Z-Wave Plus)
 Updated Association Group Hints
+Updated Z-wave driver (1.1.2)
 
 **1.0.0:**
 Update Z-Wave driver (1.1.0)  
