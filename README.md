@@ -37,7 +37,7 @@ Added support:
 * TZ36 - Single & Dual Wall Switch
 * TZ55 - Single & Dual Wall Dimmer
 * TZ56 - Single & Dual Wall Switch
-* TZ67-PLUS Wallplug Dimmer (Z-Wave Plus)
+* TZ67-PLUS Wallplug Dimmer (Z-Wave Plus)  
 Updated Association Group Hints  
 Updated Z-wave driver (1.1.2)
 
