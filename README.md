@@ -30,9 +30,9 @@ You can turn it off (value: 0), if you only want/need to update the state manual
 
 ## Change Log:
 **1.0.2:**
-Fix:
-TZ36 - ID's weren't correct
-TZ56 - ID's weren't correct
+Fix:  
+TZ36 - ID's weren't correct  
+TZ56 - ID's weren't correct  
 "set dim level" flow cards, now work properly
 
 **1.0.1:**
