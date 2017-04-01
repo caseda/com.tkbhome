@@ -35,7 +35,7 @@ It is not recommended to put this below 60 seconds (1 minute), it might cause to
 **1.0.3:**
 Fix:  
 All wall switches/dimmers: the right switch should work again  
-  # Do make sure homey's ID (1) is in association groups 2 and 3 only, not in 1 and 4  
+  Do make sure homey's ID (1) is in association groups 2 and 3 only, not in 1 and 4  
 Update:  
 All switch icons.  
 Multi sensor icons.  
