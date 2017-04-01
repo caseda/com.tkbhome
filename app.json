@@ -1,1433 +1,1430 @@
 {
-	"id": "com.tkbhome",
-	"name": {
-		"en": "TKB Home"
-	},
-	"version": "1.0.2",
-	"compatibility": ">=1.1.5",
-	"description": {
-		"en": "TKB Home devices for Homey"
-	},
-	"category": [
-		"appliances",
-		"lights",
-		"security"
-	],
-	"images": {
-		"large": "/assets/images/large.png",
-		"small": "/assets/images/small.png"
-	},
-	"author": {
-		"name": "Remco Mengers",
-		"email": "caseda08@hotmail.com"
-	},
-	"contributors": {
-		"developers": [
-			{
-				"name": "Michel Nederlof",
-				"email": ""
-			}
-		]
-	},
-	"capabilities": {
-		"measure_luminance_level": {
-			"type": "number",
-			"title": {
-				"en": "Luminance Level",
-				"nl": "Helderheid Niveau"
-			},
-			"units": {
-				"en": "%"
-			},
-			"desc": {
-				"en": "Luminance Level in Percentage (%)",
-				"nl": "Helderheid Niveau in Percentage (%)"
-			},
-			"chartType": "spline",
-			"decimals": 0,
-			"getable": true,
-			"setable": false
-		}
-	},
-	"flow": {
-		"triggers": [
-			{
-				"id": "TSP01_brightness",
-				"title": {
-					"en": "The luminance level has changed",
-					"nl": "Het helderheids niveau is veranderd"
-				},
-				"args": [
-					{
-						"name": "device",
-						"type": "device",
-						"filter": "driver_id=TSP01"
-					}
-				],
-				"tokens": [
-					{
-						"name": "luminance",
-						"type": "number",
-						"title": {
-							"en": "Level",
-							"nl": "Niveau"
-						},
-						"example": 50
-					}
-				]
-			},
-			{
-				"id": "TZ36D_s2_single_on",
-				"title": {
-					"en": "Right Switch pressed 1x on",
-					"nl": "Rechter Schakelaar 1x aan gedrukt"
-				},
-				"args": [
-					{
-						"name": "device",
-						"type": "device",
-						"filter": "driver_id=TZ36"
-					}
-				]
-			},
-			{
-				"id": "TZ36D_s2_single_off",
-				"title": {
-					"en": "Right Switch pressed 1x off",
-					"nl": "Rechter Schakelaar 1x uit gedrukt"
-				},
-				"args": [
-					{
-						"name": "device",
-						"type": "device",
-						"filter": "driver_id=TZ36"
-					}
-				]
-			},
-			{
-				"id": "TZ36D_s2_double_on",
-				"title": {
-					"en": "Right switch pressed 2x on",
-					"nl": "Rechter schakelaar 2x Aan gedrukt"
-				},
-				"args": [
-					{
-						"name": "device",
-						"type": "device",
-						"filter": "driver_id=TZ36"
-					}
-				]
-			},
-			{
-				"id": "TZ36D_s2_double_off",
-				"title": {
-					"en": "Right switch pressed 2x off",
-					"nl": "Rechter schakelaar 2x uit gedrukt"
-				},
-				"args": [
-					{
-						"name": "device",
-						"type": "device",
-						"filter": "driver_id=TZ36"
-					}
-				]
-			},
-			{
-				"id": "TZ65D_s2_single_on",
-				"title": {
-					"en": "Right Switch pressed 1x on",
-					"nl": "Rechter Schakelaar 1x aan gedrukt"
-				},
-				"args": [
-					{
-						"name": "device",
-						"type": "device",
-						"filter": "driver_id=TZ65"
-					}
-				]
-			},
-			{
-				"id": "TZ65D_s2_single_off",
-				"title": {
-					"en": "Right Switch pressed 1x off",
-					"nl": "Rechter Schakelaar 1x uit gedrukt"
-				},
-				"args": [
-					{
-						"name": "device",
-						"type": "device",
-						"filter": "driver_id=TZ65"
-					}
-				]
-			},
-			{
-				"id": "TZ65D_s2_double_on",
-				"title": {
-					"en": "Right switch pressed 2x on",
-					"nl": "Rechter schakelaar 2x Aan gedrukt"
-				},
-				"args": [
-					{
-						"name": "device",
-						"type": "device",
-						"filter": "driver_id=TZ65"
-					}
-				]
-			},
-			{
-				"id": "TZ65D_s2_double_off",
-				"title": {
-					"en": "Right switch pressed 2x off",
-					"nl": "Rechter schakelaar 2x uit gedrukt"
-				},
-				"args": [
-					{
-						"name": "device",
-						"type": "device",
-						"filter": "driver_id=TZ65"
-					}
-				]
-			},
-			{
-				"id": "TZ66D_s2_single_on",
-				"title": {
-					"en": "Right Switch pressed 1x on",
-					"nl": "Rechter Schakelaar 1x aan gedrukt"
-				},
-				"args": [
-					{
-						"name": "device",
-						"type": "device",
-						"filter": "driver_id=TZ66"
-					}
-				]
-			},
-			{
-				"id": "TZ66D_s2_single_off",
-				"title": {
-					"en": "Right Switch pressed 1x off",
-					"nl": "Rechter Schakelaar 1x uit gedrukt"
-				},
-				"args": [
-					{
-						"name": "device",
-						"type": "device",
-						"filter": "driver_id=TZ66"
-					}
-				]
-			},
-			{
-				"id": "TZ66D_s2_double_on",
-				"title": {
-					"en": "Right switch pressed 2x on",
-					"nl": "Rechter schakelaar 2x Aan gedrukt"
-				},
-				"args": [
-					{
-						"name": "device",
-						"type": "device",
-						"filter": "driver_id=TZ66"
-					}
-				]
-			},
-			{
-				"id": "TZ66D_s2_double_off",
-				"title": {
-					"en": "Right switch pressed 2x off",
-					"nl": "Rechter schakelaar 2x uit gedrukt"
-				},
-				"args": [
-					{
-						"name": "device",
-						"type": "device",
-						"filter": "driver_id=TZ66"
-					}
-				]
-			}
-		]
-	},
-	"drivers": [
-		{
-			"id": "TSP01",
-			"name": {
-				"en": "3(4) in 1 Multi Sensor TSP01/TSM02",
-				"nl": "3(4) in 1 Multi Sensor TSP01/TSM02"
-			},
-			"zwave": {
-				"manufacturerId": 280,
-				"productTypeId": 2,
-				"productId": [
-					2
-				],
-				"learnmode": {
-					"image": "/drivers/TSP01/assets/learnmode.svg",
-					"instruction": {
-						"en": "Press button 3 times within 1.5 seconds",
-						"nl": "Druk 3 keer op de knop binnen 1,5 seconden"
-					}
-				},
-				"associationGroups": [
-					1,
-					2
-				],
-				"associationGroupsOptions": {
-					"1": {
-						"hint": {
-							"en": "This is the Controller group, it is not recommended to change this setting.",
-							"nl": "Dit is de controller groep, het is niet aangeraden deze te wijzigen."
-						}
-					},
-					"2": {
-						"hint": {
-							"en": "Light control group, also serves as a motion cancellation (delay)",
-							"nl": "Dit is de licht controller groep, functioneerd ook als beweging alarm annulering (vertraging)."
-						}
-					}
-				},
-				"defaultConfiguration": [
-					{
-						"id": 5,
-						"size": 1,
-						"value": 12
-					},
-					{
-						"id": 12,
-						"size": 1,
-						"value": 4
-					},
-					{
-						"id": 13,
-						"size": 1,
-						"value": 4
-					}
-				]
-			},
-			"class": "sensor",
-			"capabilities": [
-				"alarm_contact",
-				"alarm_motion",
-				"alarm_tamper",
-				"measure_luminance_level",
-				"measure_temperature",
-				"measure_battery"
-			],
-			"mobile": {
-				"compontents": [
-					{
-						"id": "icon"
-					},
-					{
-						"id": "battery",
-						"capabilities": [
-							"measure_battery"
-						]
-					},
-					{
-						"id": "sensor",
-						"capabilities": [
-							"alarm_contact",
-							"alarm_motion",
-							"measure_luminance_level",
-							"measure_temperature",
-							"alarm_tamper"
-						],
-						"options": {
-							"icons": {
-								"measure_luminance_level": "./drivers/TSP01/assets/measure_luminance_level.svg"
-							}
-						}
-					}
-				]
-			},
-			"images": {
-				"large": "/drivers/TSP01/assets/images/large.png",
-				"small": "/drivers/TSP01/assets/images/small.png"
-			},
-			"settings": [
-				{
-					"id": "basic_set_level",
-					"type": "number",
-					"attr": {
-						"min": 0,
-						"max": 255
-					},
-					"label": {
-						"en": "Basic Set Level",
-						"nl": "Basic Set waarde"
-					},
-					"hint": {
-						"en": "Setting the BASIC command value to turn on the light(s). The 255 means turn on the light. For dimmer equipment 1 to 99 means the light strength.",
-						"nl": "De waarde die wordt gestuurd tijdens het BASIC commando om het licht aan te zetten. Waarde 255 is verlichting Aan. Voor dimmers kan het bereik 1 - 99 worden gebruikt om de dim-sterkte in te stellen."
-					},
-					"value": 255
-				},
-				{
-					"id": "pir_sensitivity",
-					"type": "number",
-					"attr": {
-						"min": 0,
-						"max": 99
-					},
-					"label": {
-						"en": "Motion Sensitivity",
-						"nl": "Beweging Gevoeligheid"
-					},
-					"hint": {
-						"en": "High sensitivity means can detected long distance, but if there is more noise signal in the environment, it will re-trigger too frequency. Range: 0 (Off), 1 - 99.",
-						"nl": "Hoge sensitivity kan een grotere afstand overbruggen, maar gaat ook vaker af indien er meer ruis in de omgeving is. Bereik: 0 (Uit), 1 - 99."
-					},
-					"value": 70
-				},
-				{
-					"id": "turn_off_light_time",
-					"type": "number",
-					"attr": {
-						"min": 24,
-						"max": 1016,
-						"step": 8
-					},
-					"value": 32,
-					"label": {
-						"en": "Motion alarm cancellation delay",
-						"nl": "Bewegingsalarm annuleringsperiode"
-					},
-					"hint": {
-						"en": "Motion alarm cancellation and Turn lights off (Off command to Association Group 2) after these amount of seconds, in steps of 8 seconds. Range: 24 - 1016",
-						"nl": "Bewegings alarm annulering and Zet verlichting uit (Uit commando naar Associatie Groep 2) na deze hoeveelheid seconden, in stappen van 8 seconden. Bereik: 24 - 1016"
-					}
-				},
-				{
-					"id": "light_sensitivity",
-					"type": "number",
-					"attr": {
-						"min": 0,
-						"max": 100
-					},
-					"label": {
-						"en": "Motion, Brightness Threshold",
-						"nl": "Beweging, Helderheid Drempel"
-					},
-					"hint": {
-						"en": "The illummination threshold (in percentage) to turn on the light on movement (Association Group 2). Range: 0 (Off, never turn on light), 1 - 99, 100 (Always turn light on). Only in 1 - 99 range it will update lux value",
-						"nl": "De drempelwaarde (in percentage) voor de lichtsensor om het licht aan te schakelen bij beweging (Associatie Groep 2). Bereik: 0 (Uit, zet nooit licht aan), 1 - 99 , 100 (Zet altijd licht aan). Alleen in het 1 - 99 bereik zal de lux waarde worden geupdate"
-					},
-					"value": 99
-				},
-				{
-					"id": "test_mode",
-					"type": "checkbox",
-					"value": false,
-					"label": {
-						"en": "Test Mode",
-						"nl": "Test Modus"
-					},
-					"hint": {
-						"en": "Should the sensor be in test mode, or be in operation mode",
-						"nl": "Moet de sensor in test modus zijn, of in werking modus zijn."
-					}
-				},
-				{
-					"id": "operation_mode",
-					"type": "dropdown",
-					"value": "0",
-					"values": [
-						{
-							"id": "0",
-							"label": {
-								"en": "Home Automation Mode",
-								"nl": "Huis Automatisering Modus"
-							}
-						},
-						{
-							"id": "1",
-							"label": {
-								"en": "Security Mode",
-								"nl": "Beveiliging Modus"
-							}
-						}
-					],
-					"label": {
-						"en": "Operation Mode",
-						"nl": "Werking Modus"
-					},
-					"hint": {
-						"en": "Security = Always send Motion Alarms & Selectable PIR sleep timer. Home Automation = Motion on lux treshold & PIR inactive for 6 seconds.",
-						"nl": "Beveiliging = Altijd beweging melden & selecteerbare inactieve beweging timer. Huis Automatisering = Beweging onder Lux Drempel & Beweging inactief voor 6 seconden."
-					}
-				},
-				{
-					"id": "door/window_mode",
-					"type": "checkbox",
-					"value": false,
-					"label": {
-						"en": "Disable Door/Window Sensor",
-						"nl": "Deactiveer Deur/Raam Sensor"
-					},
-					"hint": {
-						"en": "Should the sensor have the door/window sensor be disabled. (only used in STM02)",
-						"nl": "Moet de sensor de deur/raam sensor deactief zijn. (Alleen gebruikt in STM02)"
-					}
-				},
-				{
-					"id": "temperature_monitoring",
-					"type": "checkbox",
-					"value": false,
-					"label": {
-						"en": "Enable temperature monitoring",
-						"nl": "Activeer temperatuur monitoring"
-					},
-					"hint": {
-						"en": "When enabled, it will report whenever the temperature has changed 1.5 degree Celcius. If the temperature is over 60 degrees Celcius, it will report every 64 seconds.",
-						"nl": "Indien ingeschakeld dan stuurt het een temperatuur rapport als de temperatuur anderhalve graad Celcius wijzigt. Als het warmer is als 60 graden Celcius dan stuurt het iedere 64 seconden een temperatuurrapport."
-					}
-				},
-				{
-					"id": "pir_redetect_interval_time",
-					"type": "number",
-					"attr": {
-						"min": 24,
-						"max": 1016,
-						"step": 8
-					},
-					"value": 24,
-					"label": {
-						"en": "PIR Re-detect Interval",
-						"nl": "Beweging Detectie Interval"
-					},
-					"hint": {
-						"en": "Mode: Home Automation always 6 seconds, Security mode: Determain the amount of seconds the PIR sensor will not respond after motion was detected, in steps of 8 seconds. Range: 24 - 1016",
-						"nl": "Modus: Huis Automatisering altijd 6 seconden, Beveiliging mode: Bepaal het aantal seconden dat de beweging sensor niet reageerd na een beweging detectie, in stappen van 8 seconden. Bereik: 24 - 1016"
-					}
-				},
-				{
-					"id": "battery_report_time",
-					"type": "number",
-					"attr": {
-						"min": 0.5,
-						"max": 63.5,
-						"step": 0.5
-					},
-					"label": {
-						"en": "Battery Level Report Interval",
-						"nl": "Batterijniveau Verzend Interval"
-					},
-					"hint": {
-						"en": "The interval time (in hours) for auto report the actual battery level. Range: 0.5 - 63.5",
-						"nl": "Een vast interval (in uren) om een rapport te sturen over het actuele batterij niveau. Bereik: 0,5 - 63,5"
-					},
-					"value": 6
-				},
-				{
-					"id": "contact_report_time",
-					"type": "number",
-					"attr": {
-						"min": 0.5,
-						"max": 63.5,
-						"step": 0.5
-					},
-					"label": {
-						"en": "Door/Window Report Interval",
-						"nl": "Deur/Raam Verzend Interval"
-					},
-					"hint": {
-						"en": "The interval time (in hours) for auto report of the actual door/window state. Range: 0.5 - 63.5",
-						"nl": "Een vast interval (in uren) om een rapport te sturen over de actuele deur/raam status. Bereik: 0,5 - 63,5"
-					},
-					"value": 6
-				},
-				{
-					"id": "illumination_report_time",
-					"type": "number",
-					"attr": {
-						"min": 0.5,
-						"max": 63.5,
-						"step": 0.5
-					},
-					"label": {
-						"en": "Illumination Report Interval",
-						"nl": "Helderheid Verzend Interval"
-					},
-					"hint": {
-						"en": "The interval time (in hours) for auto report of the illumination. Range: 0.5 - 63.5",
-						"nl": "Een vast interval (in uren) om een rapport te sturen over de gemeten helderheid. Bereik: 0,5 - 63,5"
-					},
-					"value": 2
-				},
-				{
-					"id": "temperature_report_time",
-					"type": "number",
-					"attr": {
-						"min": 0.5,
-						"max": 63.5,
-						"step": 0.5
-					},
-					"label": {
-						"en": "Temperature Report Interval",
-						"nl": "Temperatuur Verzend Interval"
-					},
-					"hint": {
-						"en": "The interval time (in hours) for auto report of the temperature. Range: 0.5 - 63.5",
-						"nl": "Een vast interval (in uren) om een rapport te sturen over de temperatuur. Bereik: 0,5 - 63,5"
-					},
-					"value": 2
-				}
-			]
-		},
-		{
-			"id": "TZ36",
-			"name": {
-				"en": "Single/Dual Wall Switch TZ36/TZ56",
-				"nl": "Enkele/Dubbele Muur Schakelaar TZ36/TZ56"
-			},
-			"zwave": {
-				"manufacturerId": 280,
-				"productTypeId": 3,
-				"productId": [
-					3
-				],
-				"learnmode": {
-					"image": "/drivers/TZ36/assets/learnmode.svg",
-					"instruction": {
-						"en": "Press an on/off button once",
-						"nl": "Druk een keer op een aan/uit knop"
-					}
-				},
-				"associationGroups": [
-					2,
-					3,
-					4
-				],
-				"associationGroupsOptions": {
-					"1": {
-						"hint": {
-							"en": "Pressed left paddle 1x (on and off).",
-							"nl": "Linker wipper 1x gedrukt (aan en uit)."
-						}
-					},
-					"2": {
-						"hint": {
-							"en": "Pressed right paddle 1x (on and off).",
-							"nl": "Rechter wipper 1x gedrukt (aan en uit)."
-						}
-					},
-					"3": {
-						"hint": {
-							"en": "Pressed right paddle 2x (on and off).",
-							"nl": "Rechter wipper 2x gedrukt (aan en uit)."
-						}
-					},
-					"4": {
-						"hint": {
-							"en": "(Shoulde be) All switch commands",
-							"nl": "(Hoort) Alle schakel commando's"
-						}
-					}
-				}
-			},
-			"class": "light",
-			"capabilities": [
-				"onoff"
-			],
-			"images": {
-				"large": "/drivers/TZ36/assets/images/large.png",
-				"small": "/drivers/TZ36/assets/images/small.png"
-			},
-			"settings": [
-				{
-					"id": "led_behaviour",
-					"type": "dropdown",
-					"label": {
-						"en": "LED Behaviour",
-						"nl": "LED Gedrag"
-					},
-					"hint": {
-						"en": "Determine the behaviour of the LED.",
-						"nl": "Bepaal het gedrag van de LED."
-					},
-					"value": "0",
-					"values": [
-						{
-							"id": "0",
-							"label": {
-								"en": "LED indicates the switch is off.",
-								"nl": "LED geeft aan het schakelaar uit is."
-							}
-						},
-						{
-							"id": "1",
-							"label": {
-								"en": "LED indicates the switch is on",
-								"nl": "LED geeft aan het schakelaar aan is"
-							}
-						}
-					]
-				},
-				{
-					"id": "led_behaviour_data",
-					"type": "dropdown",
-					"label": {
-						"en": "LED Behaviour On Data",
-						"nl": "LED Gedrag Met Data"
-					},
-					"hint": {
-						"en": "Determine the behaviour of the LED when data is being transmitted.",
-						"nl": "Bepaal het gedrag van de LED wanneer data word verzonden."
-					},
-					"value": "2",
-					"values": [
-						{
-							"id": "0",
-							"label": {
-								"en": "LED doesn't blink.",
-								"nl": "LED knipperd niet."
-							}
-						},
-						{
-							"id": "1",
-							"label": {
-								"en": "LED blinks when transmitting data.",
-								"nl": "LED knipperd wanneer data word verzonden."
-							}
-						},
-						{
-							"id": "2",
-							"label": {
-								"en": "LED blinks for 1 seconds when data is send.",
-								"nl": "LED knipperd voor 1 seconden als hij data verzend."
-							}
-						}
-					]
-				},
-				{
-					"id": "invert_switch",
-					"type": "dropdown",
-					"label": {
-						"en": "Switch Behaviour",
-						"nl": "Schakelaar Gedrag"
-					},
-					"hint": {
-						"en": "Determine if the switch sends \"On\" when top or bottom is pressed.",
-						"nl": "Bepaal of de schakelaar \"Aan\" zend wanneer boven of onder is ingedrukt."
-					},
-					"value": "0",
-					"values": [
-						{
-							"id": "0",
-							"label": {
-								"en": "Top = On",
-								"nl": "Boven = Aan"
-							}
-						},
-						{
-							"id": "1",
-							"label": {
-								"en": "Bottom = On",
-								"nl": "Onder = Aan"
-							}
-						}
-					]
-				}
-			]
-		},
-		{
-			"id": "TZ65",
-			"name": {
-				"en": "Single/Dual Wall Dimmer TZ35/TZ55/TZ65",
-				"nl": "Enkele/Dubbele Muur Dimmer TZ35/TZ55/TZ65"
-			},
-			"zwave": {
-				"manufacturerId": 280,
-				"productTypeId": 2056,
-				"productId": [
-					2056
-				],
-				"learnmode": {
-					"image": "/drivers/TZ65/assets/learnmode.svg",
-					"instruction": {
-						"en": "Press an on/off button once",
-						"nl": "Druk een keer op een aan/uit knop"
-					}
-				},
-				"associationGroups": [
-					2,
-					3,
-					4
-				],
-				"associationGroupsOptions": {
-					"1": {
-						"hint": {
-							"en": "Pressed left paddle 1x (on and off).",
-							"nl": "Linker wipper 1x gedrukt (aan en uit)."
-						}
-					},
-					"2": {
-						"hint": {
-							"en": "Pressed right paddle 1x (on and off).",
-							"nl": "Rechter wipper 1x gedrukt (aan en uit)."
-						}
-					},
-					"3": {
-						"hint": {
-							"en": "Pressed right paddle 2x (on and off).",
-							"nl": "Rechter wipper 2x gedrukt (aan en uit)."
-						}
-					},
-					"4": {
-						"hint": {
-							"en": "(Shoulde be) All switch commands",
-							"nl": "(Hoort) Alle schakel commando's"
-						}
-					}
-				}
-			},
-			"class": "light",
-			"capabilities": [
-				"onoff",
-				"dim"
-			],
-			"capabilitiesOptions": {
-				"onoff": {
-					"setOnDim": false
-				}
-			},
-			"images": {
-				"large": "/drivers/TZ65/assets/images/large.png",
-				"small": "/drivers/TZ65/assets/images/small.png"
-			},
-			"settings": [
-				{
-					"id": "led_behaviour",
-					"type": "dropdown",
-					"label": {
-						"en": "LED Behaviour",
-						"nl": "LED Gedrag"
-					},
-					"hint": {
-						"en": "Determine the behaviour of the LED.",
-						"nl": "Bepaal het gedrag van de LED."
-					},
-					"value": "0",
-					"values": [
-						{
-							"id": "0",
-							"label": {
-								"en": "LED indicates the switch is off.",
-								"nl": "LED geeft aan het schakelaar uit is."
-							}
-						},
-						{
-							"id": "1",
-							"label": {
-								"en": "LED indicates the switch is on",
-								"nl": "LED geeft aan het schakelaar aan is"
-							}
-						}
-					]
-				},
-				{
-					"id": "led_behaviour_data",
-					"type": "dropdown",
-					"label": {
-						"en": "LED Behaviour On Data",
-						"nl": "LED Gedrag Met Data"
-					},
-					"hint": {
-						"en": "Determine the behaviour of the LED when data is being transmitted.",
-						"nl": "Bepaal het gedrag van de LED wanneer data word verzonden."
-					},
-					"value": "2",
-					"values": [
-						{
-							"id": "0",
-							"label": {
-								"en": "LED doesn't blink.",
-								"nl": "LED knipperd niet."
-							}
-						},
-						{
-							"id": "1",
-							"label": {
-								"en": "LED blinks when transmitting data.",
-								"nl": "LED knipperd wanneer data word verzonden."
-							}
-						},
-						{
-							"id": "2",
-							"label": {
-								"en": "LED blinks for 1 seconds when data is send.",
-								"nl": "LED knipperd voor 1 seconden als hij data verzend."
-							}
-						}
-					]
-				},
-				{
-					"id": "invert_switch",
-					"type": "dropdown",
-					"label": {
-						"en": "Switch Behaviour",
-						"nl": "Schakelaar Gedrag"
-					},
-					"hint": {
-						"en": "Determine if the switch sends \"On\" when top or bottom is pressed.",
-						"nl": "Bepaal of de schakelaar \"Aan\" zend wanneer boven of onder is ingedrukt."
-					},
-					"value": "0",
-					"values": [
-						{
-							"id": "0",
-							"label": {
-								"en": "Top = On",
-								"nl": "Boven = Aan"
-							}
-						},
-						{
-							"id": "1",
-							"label": {
-								"en": "Bottom = On",
-								"nl": "Onder = Aan"
-							}
-						}
-					]
-				},
-				{
-					"id": "poll_interval",
-					"type": "number",
-					"attr": {
-						"min": 0,
-						"max": 3600
-					},
-					"value": 300,
-					"label": {
-						"en": "Poll Interval",
-						"nl": "Poll Interval"
-					},
-					"hint": {
-						"en": "The amount of seconds between asking the device for a status update. Range: 0 (Off), 60 - 3600 seconds",
-						"nl": "Aantal seconden tussen het opvragen van een status update aan het apparaat. Bereik:  0 (Uit), 60 - 3600 seconden"
-					}
-				}
-			]
-		},
-		{
-			"id": "TZ66",
-			"name": {
-				"en": "Single/Dual Wall Switch TZ66",
-				"nl": "Enkele/Dubbele Muur Schakelaar TZ66"
-			},
-			"zwave": {
-				"manufacturerId": 280,
-				"productTypeId": 258,
-				"productId": [
-					4128,
-					4150
-				],
-				"learnmode": {
-					"image": "/drivers/TZ66/assets/learnmode.svg",
-					"instruction": {
-						"en": "Press an on/off button once",
-						"nl": "Druk een keer op een aan/uit knop"
-					}
-				},
-				"associationGroups": [
-					2,
-					3,
-					4
-				],
-				"associationGroupsOptions": {
-					"1": {
-						"hint": {
-							"en": "Pressed left paddle 1x (on and off).",
-							"nl": "Linker wipper 1x gedrukt (aan en uit)."
-						}
-					},
-					"2": {
-						"hint": {
-							"en": "Pressed right paddle 1x (on and off).",
-							"nl": "Rechter wipper 1x gedrukt (aan en uit)."
-						}
-					},
-					"3": {
-						"hint": {
-							"en": "Pressed right paddle 2x (on and off).",
-							"nl": "Rechter wipper 2x gedrukt (aan en uit)."
-						}
-					},
-					"4": {
-						"hint": {
-							"en": "(Shoulde be) All switch commands",
-							"nl": "(Hoort) Alle schakel commando's"
-						}
-					}
-				}
-			},
-			"class": "light",
-			"capabilities": [
-				"onoff"
-			],
-			"images": {
-				"large": "/drivers/TZ66/assets/images/large.png",
-				"small": "/drivers/TZ66/assets/images/small.png"
-			},
-			"settings": [
-				{
-					"id": "led_behaviour",
-					"type": "dropdown",
-					"label": {
-						"en": "LED Behaviour",
-						"nl": "LED Gedrag"
-					},
-					"hint": {
-						"en": "Determine the behaviour of the LED.",
-						"nl": "Bepaal het gedrag van de LED."
-					},
-					"value": "0",
-					"values": [
-						{
-							"id": "0",
-							"label": {
-								"en": "LED indicates the switch is off.",
-								"nl": "LED geeft aan het schakelaar uit is."
-							}
-						},
-						{
-							"id": "1",
-							"label": {
-								"en": "LED indicates the switch is on",
-								"nl": "LED geeft aan het schakelaar aan is"
-							}
-						}
-					]
-				},
-				{
-					"id": "led_behaviour_data",
-					"type": "dropdown",
-					"label": {
-						"en": "LED Behaviour On Data",
-						"nl": "LED Gedrag Met Data"
-					},
-					"hint": {
-						"en": "Determine the behaviour of the LED when data is being transmitted.",
-						"nl": "Bepaal het gedrag van de LED wanneer data word verzonden."
-					},
-					"value": "2",
-					"values": [
-						{
-							"id": "0",
-							"label": {
-								"en": "LED doesn't blink.",
-								"nl": "LED knipperd niet."
-							}
-						},
-						{
-							"id": "1",
-							"label": {
-								"en": "LED blinks when transmitting data.",
-								"nl": "LED knipperd wanneer data word verzonden."
-							}
-						},
-						{
-							"id": "2",
-							"label": {
-								"en": "LED blinks for 1 seconds when data is send.",
-								"nl": "LED knipperd voor 1 seconden als hij data verzend."
-							}
-						}
-					]
-				},
-				{
-					"id": "invert_switch",
-					"type": "dropdown",
-					"label": {
-						"en": "Switch Behaviour",
-						"nl": "Schakelaar Gedrag"
-					},
-					"hint": {
-						"en": "Determine if the switch sends \"On\" when top or bottom is pressed.",
-						"nl": "Bepaal of de schakelaar \"Aan\" zend wanneer boven of onder is ingedrukt."
-					},
-					"value": "0",
-					"values": [
-						{
-							"id": "0",
-							"label": {
-								"en": "Top = On",
-								"nl": "Boven = Aan"
-							}
-						},
-						{
-							"id": "1",
-							"label": {
-								"en": "Bottom = On",
-								"nl": "Onder = Aan"
-							}
-						}
-					]
-				}
-			]
-		},
-		{
-			"id": "TZ67",
-			"name": {
-				"en": "Dimmer Wallplug TZ67",
-				"nl": "Dimmer Muurplug TZ67"
-			},
-			"zwave": {
-				"manufacturerId": 280,
-				"productTypeId": 514,
-				"productId": [
-					1553
-				],
-				"learnmode": {
-					"image": "/drivers/TZ67/assets/learnmode.svg",
-					"instruction": {
-						"en": "Press button 3 times within 1.5 seconds",
-						"nl": "Druk 3 keer op de knop binnen 1,5 seconden"
-					}
-				},
-				"associationGroups": [
-					1
-				],
-				"associationGroupsOptions": {
-					"1": {
-						"hint": {
-							"en": "This is the controller group, it is not recommended to change this.",
-							"nl": "Dit is de controller groep, het is niet aangeraden deze te wijzigen."
-						}
-					}
-				}
-			},
-			"class": "socket",
-			"capabilities": [
-				"onoff",
-				"dim"
-			],
-			"capabilitiesOptions": {
-				"onoff": {
-					"setOnDim": false
-				}
-			},
-			"images": {
-				"large": "/drivers/TZ67/assets/images/large.png",
-				"small": "/drivers/TZ67/assets/images/small.png"
-			},
-			"settings": [
-				{
-					"id": "led_behaviour",
-					"type": "dropdown",
-					"label": {
-						"en": "LED Behaviour",
-						"nl": "LED Gedrag"
-					},
-					"hint": {
-						"en": "Determine the behaviour of the LED.",
-						"nl": "Bepaal het gedrag van de LED."
-					},
-					"value": "0",
-					"values": [
-						{
-							"id": "0",
-							"label": {
-								"en": "LED indicates the socket is off.",
-								"nl": "LED geeft aan het stopcontact uit is."
-							}
-						},
-						{
-							"id": "1",
-							"label": {
-								"en": "LED indicates the socket is on",
-								"nl": "LED geeft aan het stopcontact aan is"
-							}
-						}
-					]
-				},
-				{
-					"id": "poll_interval",
-					"type": "number",
-					"attr": {
-						"min": 0,
-						"max": 3600
-					},
-					"value": 0,
-					"label": {
-						"en": "Manual State Interval",
-						"nl": "Handmatig Status Interval"
-					},
-					"hint": {
-						"en": "Determine the amount of seconds homey askes for the state, needed if you use the manual button as well. Range: 0 (Off), 60 - 3600 seconds",
-						"nl": "Bepaal het aantal seconden dat homey om de status vraagt, nodig als je de handmatig knop ook gebruikt. Bereik: 0 (Off), 60 - 3600 seconden"
-					}
-				}
-			]
-		},
-		{
-			"id": "TZ67-PLUS",
-			"name": {
-				"en": "Dimmer Wallplug (Z-Wave Plus) TZ67",
-				"nl": "Dimmer Muurplug (Z-Wave Plus) TZ67"
-			},
-			"zwave": {
-				"manufacturerId": 280,
-				"productTypeId": 3,
-				"productId": [
-					8
-				],
-				"learnmode": {
-					"image": "/drivers/TZ67-PLUS/assets/learnmode.svg",
-					"instruction": {
-						"en": "Press button 3 times within 1.5 seconds",
-						"nl": "Druk 3 keer op de knop binnen 1,5 seconden"
-					}
-				},
-				"associationGroups": [
-					1
-				],
-				"associationGroupsOptions": {
-					"1": {
-						"hint": {
-							"en": "This is the controller group, it is not recommended to change this.",
-							"nl": "Dit is de controller groep, het is niet aangeraden deze te wijzigen."
-						}
-					}
-				}
-			},
-			"class": "socket",
-			"capabilities": [
-				"onoff",
-				"dim"
-			],
-			"capabilitiesOptions": {
-				"onoff": {
-					"setOnDim": false
-				}
-			},
-			"images": {
-				"large": "/drivers/TZ67-PLUS/assets/images/large.png",
-				"small": "/drivers/TZ67-PLUS/assets/images/small.png"
-			},
-			"settings": [
-				{
-					"id": "led_behaviour",
-					"type": "dropdown",
-					"label": {
-						"en": "LED Behaviour",
-						"nl": "LED Gedrag"
-					},
-					"hint": {
-						"en": "Determine the behaviour of the LED.",
-						"nl": "Bepaal het gedrag van de LED."
-					},
-					"value": "0",
-					"values": [
-						{
-							"id": "0",
-							"label": {
-								"en": "LED indicates the socket is off.",
-								"nl": "LED geeft aan het stopcontact uit is."
-							}
-						},
-						{
-							"id": "1",
-							"label": {
-								"en": "LED indicates the socket is on",
-								"nl": "LED geeft aan het stopcontact aan is"
-							}
-						}
-					]
-				},
-				{
-					"id": "poll_interval",
-					"type": "number",
-					"attr": {
-						"min": 0,
-						"max": 3600
-					},
-					"value": 0,
-					"label": {
-						"en": "Manual State Interval",
-						"nl": "Handmatig Status Interval"
-					},
-					"hint": {
-						"en": "Determine the amount of seconds homey askes for the state, needed if you use the manual button as well. Range: 0 (Off), 60 - 3600 seconds",
-						"nl": "Bepaal het aantal seconden dat homey om de status vraagt, nodig als je de handmatig knop ook gebruikt. Bereik: 0 (Off), 60 - 3600 seconden"
-					}
-				}
-			]
-		},
-		{
-			"id": "TZ68",
-			"name": {
-				"en": "Wallplug TZ68",
-				"nl": "Muurplug TZ68"
-			},
-			"zwave": {
-				"manufacturerId": 280,
-				"productTypeId": 257,
-				"productId": [
-					259
-				],
-				"learnmode": {
-					"image": "/drivers/TZ68/assets/learnmode.svg",
-					"instruction": {
-						"en": "Press button 3 times within 1.5 seconds",
-						"nl": "Druk 3 keer op de knop binnen 1,5 seconden"
-					}
-				},
-				"associationGroups": [
-					1
-				],
-				"associationGroupsOptions": {
-					"1": {
-						"hint": {
-							"en": "This is the controller group, it is not recommended to change this.",
-							"nl": "Dit is de controller groep, het is niet aangeraden deze te wijzigen."
-						}
-					}
-				}
-			},
-			"class": "socket",
-			"capabilities": [
-				"onoff"
-			],
-			"images": {
-				"large": "/drivers/TZ68/assets/images/large.png",
-				"small": "/drivers/TZ68/assets/images/small.png"
-			},
-			"settings": [
-				{
-					"id": "led_behaviour",
-					"type": "dropdown",
-					"label": {
-						"en": "LED Behaviour",
-						"nl": "LED Gedrag"
-					},
-					"hint": {
-						"en": "Determine the behaviour of the LED.",
-						"nl": "Bepaal het gedrag van de LED."
-					},
-					"value": "0",
-					"values": [
-						{
-							"id": "0",
-							"label": {
-								"en": "LED indicates the socket is off.",
-								"nl": "LED geeft aan het stopcontact uit is."
-							}
-						},
-						{
-							"id": "1",
-							"label": {
-								"en": "LED indicates the socket is on",
-								"nl": "LED geeft aan het stopcontact aan is"
-							}
-						}
-					]
-				},
-				{
-					"id": "poll_interval",
-					"type": "number",
-					"attr": {
-						"min": 0,
-						"max": 3600
-					},
-					"value": 0,
-					"label": {
-						"en": "Manual State Interval",
-						"nl": "Handmatig Status Interval"
-					},
-					"hint": {
-						"en": "Determine the amount of seconds homey askes for the state, needed if you use the manual button as well. Range: 0 (Off), 60 - 3600 seconds",
-						"nl": "Bepaal het aantal seconden dat homey om de status vraagt, nodig als je de handmatig knop ook gebruikt. Bereik: 0 (Off), 60 - 3600 seconden"
-					}
-				}
-			]
-		},
-		{
-			"id": "TZ68-PLUS",
-			"name": {
-				"en": "Wallplug (Z-Wave Plus) TZ68-PLUS",
-				"nl": "Muurplug (Z-Wave Plus) TZ68-PLUS"
-			},
-			"zwave": {
-				"manufacturerId": 280,
-				"productTypeId": 3,
-				"productId": [
-					2
-				],
-				"learnmode": {
-					"image": "/drivers/TZ68-PLUS/assets/learnmode.svg",
-					"instruction": {
-						"en": "Press button 3 times within 1.5 seconds",
-						"nl": "Druk 3 keer op de knop binnen 1,5 seconden"
-					}
-				},
-				"associationGroups": [
-					1
-				],
-				"associationGroupsOptions": {
-					"1": {
-						"hint": {
-							"en": "This is the controller group, it is not recommended to change this.",
-							"nl": "Dit is de controller groep, het is niet aangeraden deze te wijzigen."
-						}
-					}
-				}
-			},
-			"class": "socket",
-			"capabilities": [
-				"onoff"
-			],
-			"images": {
-				"large": "/drivers/TZ68-PLUS/assets/images/large.png",
-				"small": "/drivers/TZ68-PLUS/assets/images/small.png"
-			},
-			"settings": [
-				{
-					"id": "led_behaviour",
-					"type": "dropdown",
-					"label": {
-						"en": "LED Behaviour",
-						"nl": "LED Gedrag"
-					},
-					"hint": {
-						"en": "Determine the behaviour of the LED.",
-						"nl": "Bepaal het gedrag van de LED."
-					},
-					"value": "0",
-					"values": [
-						{
-							"id": "0",
-							"label": {
-								"en": "LED indicates the socket is off.",
-								"nl": "LED geeft aan het stopcontact uit is."
-							}
-						},
-						{
-							"id": "1",
-							"label": {
-								"en": "LED indicates the socket is on",
-								"nl": "LED geeft aan het stopcontact aan is"
-							}
-						}
-					]
-				},
-				{
-					"id": "poll_interval",
-					"type": "number",
-					"attr": {
-						"min": 0,
-						"max": 3600
-					},
-					"value": 0,
-					"label": {
-						"en": "Manual State Interval",
-						"nl": "Handmatig Status Interval"
-					},
-					"hint": {
-						"en": "Determine the amount of seconds homey askes for the state, needed if you use the manual button as well. Range: 0 (Off), 60 - 3600 seconds",
-						"nl": "Bepaal het aantal seconden dat homey om de status vraagt, nodig als je de handmatig knop ook gebruikt. Bereik: 0 (Off), 60 - 3600 seconden"
-					}
-				}
-			]
-		}
-	]
+  "id": "com.tkbhome",
+  "name": {
+    "en": "TKB Home"
+  },
+  "version": "1.0.3",
+  "compatibility": ">=1.1.5",
+  "description": {
+    "en": "TKB Home devices for Homey"
+  },
+  "category": [
+    "appliances",
+    "lights",
+    "security"
+  ],
+  "images": {
+    "large": "/assets/images/large.png",
+    "small": "/assets/images/small.png"
+  },
+  "author": {
+    "name": "Remco Mengers",
+    "email": "caseda08@hotmail.com"
+  },
+  "contributors": {
+    "developers": [
+      {
+        "name": "Michel Nederlof",
+        "email": ""
+      }
+    ]
+  },
+  "capabilities": {
+    "measure_luminance_level": {
+      "type": "number",
+      "title": {
+        "en": "Luminance Level",
+        "nl": "Helderheid Niveau"
+      },
+      "units": {
+        "en": "%"
+      },
+      "desc": {
+        "en": "Luminance Level in Percentage (%)",
+        "nl": "Helderheid Niveau in Percentage (%)"
+      },
+      "chartType": "spline",
+      "decimals": 0,
+      "getable": true,
+      "setable": false
+    }
+  },
+  "flow": {
+    "triggers": [
+      {
+        "id": "TSP01_brightness",
+        "title": {
+          "en": "The luminance level has changed",
+          "nl": "Het helderheids niveau is veranderd"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=TSP01"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "luminance",
+            "type": "number",
+            "title": {
+              "en": "Level",
+              "nl": "Niveau"
+            },
+            "example": 50
+          }
+        ]
+      },
+      {
+        "id": "TZ36D_s2_single_on",
+        "title": {
+          "en": "Right switched on",
+          "nl": "Rechts aan geschakeld"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=TZ36"
+          }
+        ]
+      },
+      {
+        "id": "TZ36D_s2_single_off",
+        "title": {
+          "en": "Right switched off",
+          "nl": "Rechts uit geschakeld"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=TZ36"
+          }
+        ]
+      },
+      {
+        "id": "TZ36D_s2_double_on",
+        "title": {
+          "en": "Right switched 2x on",
+          "nl": "Rechts 2x aan geschakeld"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=TZ36"
+          }
+        ]
+      },
+      {
+        "id": "TZ36D_s2_double_off",
+        "title": {
+          "en": "Right switched 2x off",
+          "nl": "Rechts 2x uit geschakeld"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=TZ36"
+          }
+        ]
+      },
+      {
+        "id": "TZ65D_s2_single_on",
+        "title": {
+          "en": "Right switched on",
+          "nl": "Rechts aan geschakeld"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=TZ65"
+          }
+        ]
+      },
+      {
+        "id": "TZ65D_s2_single_off",
+        "title": {
+          "en": "Right switched off",
+          "nl": "Rechts uit geschakeld"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=TZ65"
+          }
+        ]
+      },
+      {
+        "id": "TZ65D_s2_double_on",
+        "title": {
+          "en": "Right switched 2x on",
+          "nl": "Rechts 2x aan geschakeld"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=TZ65"
+          }
+        ]
+      },
+      {
+        "id": "TZ65D_s2_double_off",
+        "title": {
+          "en": "Right switched 2x off",
+          "nl": "Rechts 2x uit geschakeld"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=TZ65"
+          }
+        ]
+      },
+      {
+        "id": "TZ66D_s2_single_on",
+        "title": {
+          "en": "Right switched on",
+          "nl": "Rechts aan geschakeld"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=TZ66"
+          }
+        ]
+      },
+      {
+        "id": "TZ66D_s2_single_off",
+        "title": {
+          "en": "Right switched off",
+          "nl": "Rechts uit geschakeld"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=TZ66"
+          }
+        ]
+      },
+      {
+        "id": "TZ66D_s2_double_on",
+        "title": {
+          "en": "Right switched 2x on",
+          "nl": "Rechts 2x aan geschakeld"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=TZ66"
+          }
+        ]
+      },
+      {
+        "id": "TZ66D_s2_double_off",
+        "title": {
+          "en": "Right switched 2x off",
+          "nl": "Rechts 2x uit geschakeld"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=TZ66"
+          }
+        ]
+      }
+    ]
+  },
+  "drivers": [
+    {
+      "id": "TSP01",
+      "name": {
+        "en": "3(4) in 1 Multi Sensor TSP01/TSM02",
+        "nl": "3(4) in 1 Multi Sensor TSP01/TSM02"
+      },
+      "zwave": {
+        "manufacturerId": 280,
+        "productTypeId": 2,
+        "productId": [
+          2
+        ],
+        "learnmode": {
+          "image": "/drivers/TSP01/assets/learnmode.svg",
+          "instruction": {
+            "en": "Press the tamper key 3 times, within 1.5 seconds",
+            "nl": "Druk 3 keer op het sabotage knopje, binnen 1,5 seconden"
+          }
+        },
+        "associationGroups": [
+          1,
+          2
+        ],
+        "associationGroupsOptions": {
+          "1": {
+            "hint": {
+              "en": "This is the controller group, it is not recommended to change this setting.",
+              "nl": "Dit is de controller groep, het is niet aangeraden deze te wijzigen."
+            }
+          },
+          "2": {
+            "hint": {
+              "en": "Light control group, also serves as a motion cancellation (delay)",
+              "nl": "Dit is de licht controller groep, functioneerd ook als beweging alarm annulering (vertraging)."
+            }
+          }
+        },
+        "defaultConfiguration": [
+          {
+            "id": 5,
+            "size": 1,
+            "value": 12
+          },
+          {
+            "id": 12,
+            "size": 1,
+            "value": 4
+          },
+          {
+            "id": 13,
+            "size": 1,
+            "value": 4
+          }
+        ]
+      },
+      "class": "sensor",
+      "capabilities": [
+        "alarm_contact",
+        "alarm_motion",
+        "alarm_tamper",
+        "measure_luminance_level",
+        "measure_temperature",
+        "measure_battery"
+      ],
+      "mobile": {
+        "compontents": [
+          {
+            "id": "icon"
+          },
+          {
+            "id": "battery",
+            "capabilities": [
+              "measure_battery"
+            ]
+          },
+          {
+            "id": "sensor",
+            "capabilities": [
+              "alarm_contact",
+              "alarm_motion",
+              "measure_luminance_level",
+              "measure_temperature",
+              "alarm_tamper"
+            ],
+            "options": {
+              "icons": {
+                "measure_luminance_level": "./drivers/TSP01/assets/measure_luminance_level.svg"
+              }
+            }
+          }
+        ]
+      },
+      "images": {
+        "large": "/drivers/TSP01/assets/images/large.png",
+        "small": "/drivers/TSP01/assets/images/small.png"
+      },
+      "settings": [
+        {
+          "id": "basic_set_level",
+          "type": "number",
+          "attr": {
+            "min": 0,
+            "max": 255
+          },
+          "label": {
+            "en": "Basic Set Level",
+            "nl": "Basic Set waarde"
+          },
+          "hint": {
+            "en": "Setting the BASIC command value to turn on the light(s). The 255 means turn on the light. For dimmer equipment 1 to 99 means the light strength.",
+            "nl": "De waarde die wordt gestuurd tijdens het BASIC commando om het licht aan te zetten. Waarde 255 is verlichting Aan. Voor dimmers kan het bereik 1 - 99 worden gebruikt om de dim-sterkte in te stellen."
+          },
+          "value": 255
+        },
+        {
+          "id": "pir_sensitivity",
+          "type": "number",
+          "attr": {
+            "min": 0,
+            "max": 99
+          },
+          "label": {
+            "en": "Motion Sensitivity",
+            "nl": "Beweging Gevoeligheid"
+          },
+          "hint": {
+            "en": "High sensitivity means can detected long distance, but if there is more noise signal in the environment, it will re-trigger too frequency. Range: 0 (Off), 1 - 99.",
+            "nl": "Hoge sensitivity kan een grotere afstand overbruggen, maar gaat ook vaker af indien er meer ruis in de omgeving is. Bereik: 0 (Uit), 1 - 99."
+          },
+          "value": 70
+        },
+        {
+          "id": "turn_off_light_time",
+          "type": "number",
+          "attr": {
+            "min": 24,
+            "max": 1016,
+            "step": 8
+          },
+          "value": 32,
+          "label": {
+            "en": "Motion alarm cancellation delay",
+            "nl": "Bewegingsalarm annuleringsperiode"
+          },
+          "hint": {
+            "en": "Motion alarm cancellation and Turn lights off (Off command to Association Group 2) after these amount of seconds, in steps of 8 seconds. Range: 24 - 1016",
+            "nl": "Bewegings alarm annulering and Zet verlichting uit (Uit commando naar Associatie Groep 2) na deze hoeveelheid seconden, in stappen van 8 seconden. Bereik: 24 - 1016"
+          }
+        },
+        {
+          "id": "light_sensitivity",
+          "type": "number",
+          "attr": {
+            "min": 0,
+            "max": 100
+          },
+          "label": {
+            "en": "Motion, Brightness Threshold",
+            "nl": "Beweging, Helderheid Drempel"
+          },
+          "hint": {
+            "en": "The illummination threshold (in percentage) to turn on the light on movement (Association Group 2). Range: 0 (Off, never turn on light), 1 - 99, 100 (Always turn light on). Only in 1 - 99 range it will update lux value",
+            "nl": "De drempelwaarde (in percentage) voor de lichtsensor om het licht aan te schakelen bij beweging (Associatie Groep 2). Bereik: 0 (Uit, zet nooit licht aan), 1 - 99 , 100 (Zet altijd licht aan). Alleen in het 1 - 99 bereik zal de lux waarde worden geupdate"
+          },
+          "value": 99
+        },
+        {
+          "id": "test_mode",
+          "type": "checkbox",
+          "value": false,
+          "label": {
+            "en": "Test Mode",
+            "nl": "Test Modus"
+          },
+          "hint": {
+            "en": "Should the sensor be in test mode, or be in operation mode",
+            "nl": "Moet de sensor in test modus zijn, of in werking modus zijn."
+          }
+        },
+        {
+          "id": "operation_mode",
+          "type": "dropdown",
+          "value": "0",
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "Home Automation Mode",
+                "nl": "Huis Automatisering Modus"
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "Security Mode",
+                "nl": "Beveiliging Modus"
+              }
+            }
+          ],
+          "label": {
+            "en": "Operation Mode",
+            "nl": "Werking Modus"
+          },
+          "hint": {
+            "en": "Security = Always send Motion Alarms & Selectable PIR sleep timer. Home Automation = Motion on lux treshold & PIR inactive for 6 seconds.",
+            "nl": "Beveiliging = Altijd beweging melden & selecteerbare inactieve beweging timer. Huis Automatisering = Beweging onder Lux Drempel & Beweging inactief voor 6 seconden."
+          }
+        },
+        {
+          "id": "door/window_mode",
+          "type": "checkbox",
+          "value": false,
+          "label": {
+            "en": "Disable Door/Window Sensor",
+            "nl": "Deactiveer Deur/Raam Sensor"
+          },
+          "hint": {
+            "en": "Should the sensor have the door/window sensor be disabled. (only used in STM02)",
+            "nl": "Moet de sensor de deur/raam sensor deactief zijn. (Alleen gebruikt in STM02)"
+          }
+        },
+        {
+          "id": "temperature_monitoring",
+          "type": "checkbox",
+          "value": false,
+          "label": {
+            "en": "Enable temperature monitoring",
+            "nl": "Activeer temperatuur monitoring"
+          },
+          "hint": {
+            "en": "When enabled, it will report whenever the temperature has changed 1.5 degree Celcius. If the temperature is over 60 degrees Celcius, it will report every 64 seconds.",
+            "nl": "Indien ingeschakeld dan stuurt het een temperatuur rapport als de temperatuur anderhalve graad Celcius wijzigt. Als het warmer is als 60 graden Celcius dan stuurt het iedere 64 seconden een temperatuurrapport."
+          }
+        },
+        {
+          "id": "pir_redetect_interval_time",
+          "type": "number",
+          "attr": {
+            "min": 24,
+            "max": 1016,
+            "step": 8
+          },
+          "value": 24,
+          "label": {
+            "en": "PIR Re-detect Interval",
+            "nl": "Beweging Detectie Interval"
+          },
+          "hint": {
+            "en": "Mode: Home Automation always 6 seconds, Security mode: Determain the amount of seconds the PIR sensor will not respond after motion was detected, in steps of 8 seconds. Range: 24 - 1016",
+            "nl": "Modus: Huis Automatisering altijd 6 seconden, Beveiliging mode: Bepaal het aantal seconden dat de beweging sensor niet reageerd na een beweging detectie, in stappen van 8 seconden. Bereik: 24 - 1016"
+          }
+        },
+        {
+          "id": "battery_report_time",
+          "type": "number",
+          "attr": {
+            "min": 0.5,
+            "max": 63.5,
+            "step": 0.5
+          },
+          "label": {
+            "en": "Battery Level Report Interval",
+            "nl": "Batterijniveau Verzend Interval"
+          },
+          "hint": {
+            "en": "The interval time (in hours) for auto report the actual battery level. Range: 0.5 - 63.5",
+            "nl": "Een vast interval (in uren) om een rapport te sturen over het actuele batterij niveau. Bereik: 0,5 - 63,5"
+          },
+          "value": 6
+        },
+        {
+          "id": "contact_report_time",
+          "type": "number",
+          "attr": {
+            "min": 0.5,
+            "max": 63.5,
+            "step": 0.5
+          },
+          "label": {
+            "en": "Door/Window Report Interval",
+            "nl": "Deur/Raam Verzend Interval"
+          },
+          "hint": {
+            "en": "The interval time (in hours) for auto report of the actual door/window state. Range: 0.5 - 63.5",
+            "nl": "Een vast interval (in uren) om een rapport te sturen over de actuele deur/raam status. Bereik: 0,5 - 63,5"
+          },
+          "value": 6
+        },
+        {
+          "id": "illumination_report_time",
+          "type": "number",
+          "attr": {
+            "min": 0.5,
+            "max": 63.5,
+            "step": 0.5
+          },
+          "label": {
+            "en": "Illumination Report Interval",
+            "nl": "Helderheid Verzend Interval"
+          },
+          "hint": {
+            "en": "The interval time (in hours) for auto report of the illumination. Range: 0.5 - 63.5",
+            "nl": "Een vast interval (in uren) om een rapport te sturen over de gemeten helderheid. Bereik: 0,5 - 63,5"
+          },
+          "value": 2
+        },
+        {
+          "id": "temperature_report_time",
+          "type": "number",
+          "attr": {
+            "min": 0.5,
+            "max": 63.5,
+            "step": 0.5
+          },
+          "label": {
+            "en": "Temperature Report Interval",
+            "nl": "Temperatuur Verzend Interval"
+          },
+          "hint": {
+            "en": "The interval time (in hours) for auto report of the temperature. Range: 0.5 - 63.5",
+            "nl": "Een vast interval (in uren) om een rapport te sturen over de temperatuur. Bereik: 0,5 - 63,5"
+          },
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "TZ36",
+      "name": {
+        "en": "Switch TZ36/TZ56",
+        "nl": "Schakelaar TZ36/TZ56"
+      },
+      "zwave": {
+        "manufacturerId": 280,
+        "productTypeId": 3,
+        "productId": [
+          3
+        ],
+        "learnmode": {
+          "image": "/drivers/TZ36/assets/learnmode.svg",
+          "instruction": {
+            "en": "Press an on/off button once",
+            "nl": "Druk een keer op een aan/uit knop"
+          }
+        },
+        "associationGroups": [
+          2,
+          3
+        ],
+        "associationGroupsOptions": {
+          "1": {
+            "hint": {
+              "en": "Devices that are associated here will toggle their state when you switch with the left switch.",
+              "nl": "Apparaten die hier zijn geassocieerd zullen hun status schakelen wanneer je schakelt met de linker schakelaar."
+            }
+          },
+          "2": {
+            "hint": {
+              "en": "Devices that are associated here will toggle their state when you toggle with the right switch.",
+              "nl": "Apparaten die hier zijn geassocieerd zullen hun status schakelen wanneer je schakelt met de rechter schakelaar."
+            }
+          },
+          "3": {
+            "hint": {
+              "en": "Devices that are associated here will toggle their state when you double pressing the right switch.",
+              "nl": "Apparaten die hier zijn geassocieerd zullen hun status schakelen wanneer je 2x drukt op de rechter schakelaar."
+            }
+          },
+          "4": {
+            "hint": {
+              "en": "Devices that are associated here follow the state of the switch when it is being switched by other devices",
+              "nl": "Apparaten die hier zijn geassocieerd volgen de status van de schakelaar wanneer het wordt geschakeld door andere apparaten"
+            }
+          }
+        }
+      },
+      "class": "light",
+      "capabilities": [
+        "onoff"
+      ],
+      "images": {
+        "large": "/drivers/TZ36/assets/images/large.png",
+        "small": "/drivers/TZ36/assets/images/small.png"
+      },
+      "settings": [
+        {
+          "id": "led_behaviour",
+          "type": "dropdown",
+          "label": {
+            "en": "LED Behaviour",
+            "nl": "LED Gedrag"
+          },
+          "hint": {
+            "en": "Determine the behaviour of the LED.",
+            "nl": "Bepaal het gedrag van de LED."
+          },
+          "value": "0",
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "LED indicates the switch is off.",
+                "nl": "LED geeft aan het schakelaar uit is."
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "LED indicates the switch is on",
+                "nl": "LED geeft aan het schakelaar aan is"
+              }
+            }
+          ]
+        },
+        {
+          "id": "led_behaviour_data",
+          "type": "dropdown",
+          "label": {
+            "en": "LED Behaviour On Data",
+            "nl": "LED Gedrag Met Data"
+          },
+          "hint": {
+            "en": "Determine the behaviour of the LED when data is being transmitted.",
+            "nl": "Bepaal het gedrag van de LED wanneer data word verzonden."
+          },
+          "value": "2",
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "LED doesn't blink.",
+                "nl": "LED knipperd niet."
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "LED blinks when transmitting data.",
+                "nl": "LED knipperd wanneer data word verzonden."
+              }
+            },
+            {
+              "id": "2",
+              "label": {
+                "en": "LED blinks for 1 seconds when data is send.",
+                "nl": "LED knipperd voor 1 seconden als hij data verzend."
+              }
+            }
+          ]
+        },
+        {
+          "id": "invert_switch",
+          "type": "dropdown",
+          "label": {
+            "en": "Switch Behaviour",
+            "nl": "Schakelaar Gedrag"
+          },
+          "hint": {
+            "en": "Determine if the switch sends \"On\" when top or bottom is pressed.",
+            "nl": "Bepaal of de schakelaar \"Aan\" zend wanneer boven of onder is ingedrukt."
+          },
+          "value": "0",
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "Top = On",
+                "nl": "Boven = Aan"
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "Bottom = On",
+                "nl": "Onder = Aan"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TZ65",
+      "name": {
+        "en": "Dimmer TZ35/TZ55/TZ65",
+        "nl": "Dimmer TZ35/TZ55/TZ65"
+      },
+      "zwave": {
+        "manufacturerId": 280,
+        "productTypeId": 2056,
+        "productId": [
+          2056
+        ],
+        "learnmode": {
+          "image": "/drivers/TZ65/assets/learnmode.svg",
+          "instruction": {
+            "en": "Press an on/off button once",
+            "nl": "Druk een keer op een aan/uit knop"
+          }
+        },
+        "associationGroups": [
+          2,
+          3
+        ],
+        "associationGroupsOptions": {
+          "1": {
+            "hint": {
+              "en": "Devices that are associated here will toggle their state when you switch with the left switch.",
+              "nl": "Apparaten die hier zijn geassocieerd zullen hun status schakelen wanneer je schakelt met de linker schakelaar."
+            }
+          },
+          "2": {
+            "hint": {
+              "en": "Devices that are associated here will toggle their state when you toggle with the right switch.",
+              "nl": "Apparaten die hier zijn geassocieerd zullen hun status schakelen wanneer je schakelt met de rechter schakelaar."
+            }
+          },
+          "3": {
+            "hint": {
+              "en": "Devices that are associated here will toggle their state when you double pressing the right switch.",
+              "nl": "Apparaten die hier zijn geassocieerd zullen hun status schakelen wanneer je 2x drukt op de rechter schakelaar."
+            }
+          },
+          "4": {
+            "hint": {
+              "en": "Devices that are associated here follow the state of the switch when it is being switched by other devices",
+              "nl": "Apparaten die hier zijn geassocieerd volgen de status van de schakelaar wanneer het wordt geschakeld door andere apparaten"
+            }
+          }
+        }
+      },
+      "class": "light",
+      "capabilities": [
+        "onoff",
+        "dim"
+      ],
+      "capabilitiesOptions": {
+        "onoff": {
+          "setOnDim": false
+        }
+      },
+      "images": {
+        "large": "/drivers/TZ65/assets/images/large.png",
+        "small": "/drivers/TZ65/assets/images/small.png"
+      },
+      "settings": [
+        {
+          "id": "led_behaviour",
+          "type": "dropdown",
+          "label": {
+            "en": "LED Behaviour",
+            "nl": "LED Gedrag"
+          },
+          "hint": {
+            "en": "Determine the behaviour of the LED.",
+            "nl": "Bepaal het gedrag van de LED."
+          },
+          "value": "0",
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "LED indicates the switch is off.",
+                "nl": "LED geeft aan het schakelaar uit is."
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "LED indicates the switch is on",
+                "nl": "LED geeft aan het schakelaar aan is"
+              }
+            }
+          ]
+        },
+        {
+          "id": "led_behaviour_data",
+          "type": "dropdown",
+          "label": {
+            "en": "LED Behaviour On Data",
+            "nl": "LED Gedrag Met Data"
+          },
+          "hint": {
+            "en": "Determine the behaviour of the LED when data is being transmitted.",
+            "nl": "Bepaal het gedrag van de LED wanneer data word verzonden."
+          },
+          "value": "2",
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "LED doesn't blink.",
+                "nl": "LED knipperd niet."
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "LED blinks when transmitting data.",
+                "nl": "LED knipperd wanneer data word verzonden."
+              }
+            },
+            {
+              "id": "2",
+              "label": {
+                "en": "LED blinks for 1 seconds when data is send.",
+                "nl": "LED knipperd voor 1 seconden als hij data verzend."
+              }
+            }
+          ]
+        },
+        {
+          "id": "invert_switch",
+          "type": "dropdown",
+          "label": {
+            "en": "Switch Behaviour",
+            "nl": "Schakelaar Gedrag"
+          },
+          "hint": {
+            "en": "Determine if the switch sends \"On\" when top or bottom is pressed.",
+            "nl": "Bepaal of de schakelaar \"Aan\" zend wanneer boven of onder is ingedrukt."
+          },
+          "value": "0",
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "Top = On",
+                "nl": "Boven = Aan"
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "Bottom = On",
+                "nl": "Onder = Aan"
+              }
+            }
+          ]
+        },
+        {
+          "id": "poll_interval",
+          "type": "number",
+          "attr": {
+            "min": 0,
+            "max": 86400
+          },
+          "value": 300,
+          "label": {
+            "en": "Poll Status Interval",
+            "nl": "Poll Status Interval"
+          },
+          "hint": {
+            "en": "The amount of seconds between asking the device for a status update.\nRange: 0 (Off), 60 - 86400 seconds",
+            "nl": "Aantal seconden tussen het opvragen van een status update aan het apparaat.\nBereik:  0 (Uit), 60 - 86400 seconden"
+          }
+        }
+      ]
+    },
+    {
+      "id": "TZ66",
+      "name": {
+        "en": "Switch TZ66",
+        "nl": "Schakelaar TZ66"
+      },
+      "zwave": {
+        "manufacturerId": 280,
+        "productTypeId": 258,
+        "productId": [
+          4128,
+          4150
+        ],
+        "learnmode": {
+          "image": "/drivers/TZ66/assets/learnmode.svg",
+          "instruction": {
+            "en": "Press an on/off button once",
+            "nl": "Druk een keer op een aan/uit knop"
+          }
+        },
+        "associationGroups": [
+          2,
+          3
+        ],
+        "associationGroupsOptions": {
+          "1": {
+            "hint": {
+              "en": "Devices that are associated here will toggle their state when you switch with the left switch.",
+              "nl": "Apparaten die hier zijn geassocieerd zullen hun status schakelen wanneer je schakelt met de linker schakelaar."
+            }
+          },
+          "2": {
+            "hint": {
+              "en": "Devices that are associated here will toggle their state when you toggle with the right switch.",
+              "nl": "Apparaten die hier zijn geassocieerd zullen hun status schakelen wanneer je schakelt met de rechter schakelaar."
+            }
+          },
+          "3": {
+            "hint": {
+              "en": "Devices that are associated here will toggle their state when you double pressing the right switch.",
+              "nl": "Apparaten die hier zijn geassocieerd zullen hun status schakelen wanneer je 2x drukt op de rechter schakelaar."
+            }
+          },
+          "4": {
+            "hint": {
+              "en": "Devices that are associated here follow the state of the switch when it is being switched by other devices",
+              "nl": "Apparaten die hier zijn geassocieerd volgen de status van de schakelaar wanneer het wordt geschakeld door andere apparaten"
+            }
+          }
+        }
+      },
+      "class": "light",
+      "capabilities": [
+        "onoff"
+      ],
+      "images": {
+        "large": "/drivers/TZ66/assets/images/large.png",
+        "small": "/drivers/TZ66/assets/images/small.png"
+      },
+      "settings": [
+        {
+          "id": "led_behaviour",
+          "type": "dropdown",
+          "label": {
+            "en": "LED Behaviour",
+            "nl": "LED Gedrag"
+          },
+          "hint": {
+            "en": "Determine the behaviour of the LED.",
+            "nl": "Bepaal het gedrag van de LED."
+          },
+          "value": "0",
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "LED indicates the switch is off.",
+                "nl": "LED geeft aan het schakelaar uit is."
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "LED indicates the switch is on",
+                "nl": "LED geeft aan het schakelaar aan is"
+              }
+            }
+          ]
+        },
+        {
+          "id": "led_behaviour_data",
+          "type": "dropdown",
+          "label": {
+            "en": "LED Behaviour On Data",
+            "nl": "LED Gedrag Met Data"
+          },
+          "hint": {
+            "en": "Determine the behaviour of the LED when data is being transmitted.",
+            "nl": "Bepaal het gedrag van de LED wanneer data word verzonden."
+          },
+          "value": "2",
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "LED doesn't blink.",
+                "nl": "LED knipperd niet."
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "LED blinks when transmitting data.",
+                "nl": "LED knipperd wanneer data word verzonden."
+              }
+            },
+            {
+              "id": "2",
+              "label": {
+                "en": "LED blinks for 1 seconds when data is send.",
+                "nl": "LED knipperd voor 1 seconden als hij data verzend."
+              }
+            }
+          ]
+        },
+        {
+          "id": "invert_switch",
+          "type": "dropdown",
+          "label": {
+            "en": "Switch Behaviour",
+            "nl": "Schakelaar Gedrag"
+          },
+          "hint": {
+            "en": "Determine if the switch sends \"On\" when top or bottom is pressed.",
+            "nl": "Bepaal of de schakelaar \"Aan\" zend wanneer boven of onder is ingedrukt."
+          },
+          "value": "0",
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "Top = On",
+                "nl": "Boven = Aan"
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "Bottom = On",
+                "nl": "Onder = Aan"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TZ67-PLUS",
+      "name": {
+        "en": "Wallplug Dimmer (Z-Wave Plus) TZ67",
+        "nl": "Tussenstekker Dimmer (Z-Wave Plus) TZ67"
+      },
+      "zwave": {
+        "manufacturerId": 280,
+        "productTypeId": 3,
+        "productId": [
+          8
+        ],
+        "learnmode": {
+          "image": "/drivers/TZ67-PLUS/assets/learnmode.svg",
+          "instruction": {
+            "en": "Press the button 3 times, within 1.5 seconds",
+            "nl": "Druk 3 keer op de knop, binnen 1,5 seconden"
+          }
+        },
+        "associationGroups": [
+          1
+        ],
+        "associationGroupsOptions": {
+          "1": {
+            "hint": {
+              "en": "This is the controller group, it is not recommended to change this.",
+              "nl": "Dit is de controller groep, het is niet aangeraden deze te wijzigen."
+            }
+          }
+        }
+      },
+      "class": "socket",
+      "capabilities": [
+        "onoff",
+        "dim"
+      ],
+      "capabilitiesOptions": {
+        "onoff": {
+          "setOnDim": false
+        }
+      },
+      "images": {
+        "large": "/drivers/TZ67-PLUS/assets/images/large.png",
+        "small": "/drivers/TZ67-PLUS/assets/images/small.png"
+      },
+      "settings": [
+        {
+          "id": "led_behaviour",
+          "type": "dropdown",
+          "label": {
+            "en": "LED Behaviour",
+            "nl": "LED Gedrag"
+          },
+          "hint": {
+            "en": "Determine the behaviour of the LED.",
+            "nl": "Bepaal het gedrag van de LED."
+          },
+          "value": "0",
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "LED indicates the socket is off.",
+                "nl": "LED geeft aan het stopcontact uit is."
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "LED indicates the socket is on",
+                "nl": "LED geeft aan het stopcontact aan is"
+              }
+            }
+          ]
+        },
+        {
+          "id": "poll_interval",
+          "type": "number",
+          "attr": {
+            "min": 0,
+            "max": 86400
+          },
+          "value": 0,
+          "label": {
+            "en": "Manual State Interval",
+            "nl": "Handmatig Status Interval"
+          },
+          "hint": {
+            "en": "Determine the amount of seconds homey askes for the state, needed if you use the manual button as well.\nRange: 0 (Off), 60 - 86400 seconds",
+            "nl": "Bepaal het aantal seconden dat homey om de status vraagt, nodig als je de handmatig knop ook gebruikt.\nBereik: 0 (Off), 60 - 86400 seconden"
+          }
+        }
+      ]
+    },
+    {
+      "id": "TZ67",
+      "name": {
+        "en": "Wallplug Dimmer TZ67",
+        "nl": "Tussenstekker Dimmer TZ67"
+      },
+      "zwave": {
+        "manufacturerId": 280,
+        "productTypeId": 514,
+        "productId": [
+          1553
+        ],
+        "learnmode": {
+          "image": "/drivers/TZ67/assets/learnmode.svg",
+          "instruction": {
+            "en": "Press the button 3 times, within 1.5 seconds",
+            "nl": "Druk 3 keer op de knop, binnen 1,5 seconden"
+          }
+        },
+        "associationGroups": [
+          1
+        ],
+        "associationGroupsOptions": {
+          "1": {
+            "hint": {
+              "en": "This is the controller group, it is not recommended to change this.",
+              "nl": "Dit is de controller groep, het is niet aangeraden deze te wijzigen."
+            }
+          }
+        }
+      },
+      "class": "socket",
+      "capabilities": [
+        "onoff",
+        "dim"
+      ],
+      "capabilitiesOptions": {
+        "onoff": {
+          "setOnDim": false
+        }
+      },
+      "images": {
+        "large": "/drivers/TZ67/assets/images/large.png",
+        "small": "/drivers/TZ67/assets/images/small.png"
+      },
+      "settings": [
+        {
+          "id": "led_behaviour",
+          "type": "dropdown",
+          "label": {
+            "en": "LED Behaviour",
+            "nl": "LED Gedrag"
+          },
+          "hint": {
+            "en": "Determine the behaviour of the LED.",
+            "nl": "Bepaal het gedrag van de LED."
+          },
+          "value": "0",
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "LED indicates the socket is off.",
+                "nl": "LED geeft aan het stopcontact uit is."
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "LED indicates the socket is on",
+                "nl": "LED geeft aan het stopcontact aan is"
+              }
+            }
+          ]
+        },
+        {
+          "id": "poll_interval",
+          "type": "number",
+          "attr": {
+            "min": 0,
+            "max": 86400
+          },
+          "value": 0,
+          "label": {
+            "en": "Manual State Interval",
+            "nl": "Handmatig Status Interval"
+          },
+          "hint": {
+            "en": "Determine the amount of seconds homey askes for the state, needed if you use the manual button as well.\nRange: 0 (Off), 60 - 86400 seconds",
+            "nl": "Bepaal het aantal seconden dat homey om de status vraagt, nodig als je de handmatig knop ook gebruikt.\nBereik: 0 (Off), 60 - 86400 seconden"
+          }
+        }
+      ]
+    },
+    {
+      "id": "TZ68-PLUS",
+      "name": {
+        "en": "Wallplug (Z-Wave Plus) TZ68-PLUS",
+        "nl": "Tussenstekker (Z-Wave Plus) TZ68-PLUS"
+      },
+      "zwave": {
+        "manufacturerId": 280,
+        "productTypeId": 3,
+        "productId": [
+          2
+        ],
+        "learnmode": {
+          "image": "/drivers/TZ68-PLUS/assets/learnmode.svg",
+          "instruction": {
+            "en": "Press the button 3 times, within 1.5 seconds",
+            "nl": "Druk 3 keer op de knop, binnen 1,5 seconden"
+          }
+        },
+        "associationGroups": [
+          1
+        ],
+        "associationGroupsOptions": {
+          "1": {
+            "hint": {
+              "en": "This is the controller group, it is not recommended to change this.",
+              "nl": "Dit is de controller groep, het is niet aangeraden deze te wijzigen."
+            }
+          }
+        }
+      },
+      "class": "socket",
+      "capabilities": [
+        "onoff"
+      ],
+      "images": {
+        "large": "/drivers/TZ68-PLUS/assets/images/large.png",
+        "small": "/drivers/TZ68-PLUS/assets/images/small.png"
+      },
+      "settings": [
+        {
+          "id": "led_behaviour",
+          "type": "dropdown",
+          "label": {
+            "en": "LED Behaviour",
+            "nl": "LED Gedrag"
+          },
+          "hint": {
+            "en": "Determine the behaviour of the LED.",
+            "nl": "Bepaal het gedrag van de LED."
+          },
+          "value": "0",
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "LED indicates the socket is off.",
+                "nl": "LED geeft aan het stopcontact uit is."
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "LED indicates the socket is on",
+                "nl": "LED geeft aan het stopcontact aan is"
+              }
+            }
+          ]
+        },
+        {
+          "id": "poll_interval",
+          "type": "number",
+          "attr": {
+            "min": 0,
+            "max": 86400
+          },
+          "value": 0,
+          "label": {
+            "en": "Manual State Interval",
+            "nl": "Handmatig Status Interval"
+          },
+          "hint": {
+            "en": "Determine the amount of seconds homey askes for the state, needed if you use the manual button as well.\nRange: 0 (Off), 60 - 86400 seconds",
+            "nl": "Bepaal het aantal seconden dat homey om de status vraagt, nodig als je de handmatig knop ook gebruikt.\nBereik: 0 (Off), 60 - 86400 seconden"
+          }
+        }
+      ]
+    },
+    {
+      "id": "TZ68",
+      "name": {
+        "en": "Wallplug TZ68",
+        "nl": "Tussenstekker TZ68"
+      },
+      "zwave": {
+        "manufacturerId": 280,
+        "productTypeId": 257,
+        "productId": [
+          259
+        ],
+        "learnmode": {
+          "image": "/drivers/TZ68/assets/learnmode.svg",
+          "instruction": {
+            "en": "Press the button 3 times, within 1.5 seconds",
+            "nl": "Druk 3 keer op de knop, binnen 1,5 seconden"
+          }
+        },
+        "associationGroups": [
+          1
+        ],
+        "associationGroupsOptions": {
+          "1": {
+            "hint": {
+              "en": "This is the controller group, it is not recommended to change this.",
+              "nl": "Dit is de controller groep, het is niet aangeraden deze te wijzigen."
+            }
+          }
+        }
+      },
+      "class": "socket",
+      "capabilities": [
+        "onoff"
+      ],
+      "images": {
+        "large": "/drivers/TZ68/assets/images/large.png",
+        "small": "/drivers/TZ68/assets/images/small.png"
+      },
+      "settings": [
+        {
+          "id": "led_behaviour",
+          "type": "dropdown",
+          "label": {
+            "en": "LED Behaviour",
+            "nl": "LED Gedrag"
+          },
+          "hint": {
+            "en": "Determine the behaviour of the LED.",
+            "nl": "Bepaal het gedrag van de LED."
+          },
+          "value": "0",
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "LED indicates the socket is off.",
+                "nl": "LED geeft aan het stopcontact uit is."
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "LED indicates the socket is on",
+                "nl": "LED geeft aan het stopcontact aan is"
+              }
+            }
+          ]
+        },
+        {
+          "id": "poll_interval",
+          "type": "number",
+          "attr": {
+            "min": 0,
+            "max": 86400
+          },
+          "value": 0,
+          "label": {
+            "en": "Manual State Interval",
+            "nl": "Handmatig Status Interval"
+          },
+          "hint": {
+            "en": "Determine the amount of seconds homey askes for the state, needed if you use the manual button as well.\nRange: 0 (Off), 60 - 86400 seconds",
+            "nl": "Bepaal het aantal seconden dat homey om de status vraagt, nodig als je de handmatig knop ook gebruikt.\nBereik: 0 (Off), 60 - 86400 seconden"
+          }
+        }
+      ]
+    }
+  ]
 }

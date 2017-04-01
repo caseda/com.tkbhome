@@ -1,0 +1,156 @@
+{
+	"id": "TZ66",
+	"name": {
+		"en": "Switch TZ66",
+		"nl": "Schakelaar TZ66"
+	},
+	"zwave": {
+		"manufacturerId": 280,
+		"productTypeId": 258,
+		"productId": [
+			4128,
+			4150
+		],
+		"learnmode": {
+			"image": "/drivers/TZ66/assets/learnmode.svg",
+			"instruction": {
+				"en": "Press an on/off button once",
+				"nl": "Druk een keer op een aan/uit knop"
+			}
+		},
+		"associationGroups": [
+			2,
+			3
+		],
+		"associationGroupsOptions": {
+			"1": {
+				"hint": {
+					"en": "Devices that are associated here will toggle their state when you switch with the left switch.",
+					"nl": "Apparaten die hier zijn geassocieerd zullen hun status schakelen wanneer je schakelt met de linker schakelaar."
+				}
+			},
+			"2": {
+				"hint": {
+					"en": "Devices that are associated here will toggle their state when you toggle with the right switch.",
+					"nl": "Apparaten die hier zijn geassocieerd zullen hun status schakelen wanneer je schakelt met de rechter schakelaar."
+				}
+			},
+			"3": {
+				"hint": {
+					"en": "Devices that are associated here will toggle their state when you double pressing the right switch.",
+					"nl": "Apparaten die hier zijn geassocieerd zullen hun status schakelen wanneer je 2x drukt op de rechter schakelaar."
+				}
+			},
+			"4": {
+				"hint": {
+					"en": "Devices that are associated here follow the state of the switch when it is being switched by other devices",
+					"nl": "Apparaten die hier zijn geassocieerd volgen de status van de schakelaar wanneer het wordt geschakeld door andere apparaten"
+				}
+			}
+		}
+	},
+	"class": "light",
+	"capabilities": [
+		"onoff"
+	],
+	"images": {
+		"large": "/drivers/TZ66/assets/images/large.png",
+		"small": "/drivers/TZ66/assets/images/small.png"
+	},
+	"settings": [
+		{
+			"id": "led_behaviour",
+			"type": "dropdown",
+			"label": {
+				"en": "LED Behaviour",
+				"nl": "LED Gedrag"
+			},
+			"hint": {
+				"en": "Determine the behaviour of the LED.",
+				"nl": "Bepaal het gedrag van de LED."
+			},
+			"value": "0",
+			"values": [
+				{
+					"id": "0",
+					"label": {
+						"en": "LED indicates the switch is off.",
+						"nl": "LED geeft aan het schakelaar uit is."
+					}
+				},
+				{
+					"id": "1",
+					"label": {
+						"en": "LED indicates the switch is on",
+						"nl": "LED geeft aan het schakelaar aan is"
+					}
+				}
+			]
+		},
+		{
+			"id": "led_behaviour_data",
+			"type": "dropdown",
+			"label": {
+				"en": "LED Behaviour On Data",
+				"nl": "LED Gedrag Met Data"
+			},
+			"hint": {
+				"en": "Determine the behaviour of the LED when data is being transmitted.",
+				"nl": "Bepaal het gedrag van de LED wanneer data word verzonden."
+			},
+			"value": "2",
+			"values": [
+				{
+					"id": "0",
+					"label": {
+						"en": "LED doesn't blink.",
+						"nl": "LED knipperd niet."
+					}
+				},
+				{
+					"id": "1",
+					"label": {
+						"en": "LED blinks when transmitting data.",
+						"nl": "LED knipperd wanneer data word verzonden."
+					}
+				},
+				{
+					"id": "2",
+					"label": {
+						"en": "LED blinks for 1 seconds when data is send.",
+						"nl": "LED knipperd voor 1 seconden als hij data verzend."
+					}
+				}
+			]
+		},
+		{
+			"id": "invert_switch",
+			"type": "dropdown",
+			"label": {
+				"en": "Switch Behaviour",
+				"nl": "Schakelaar Gedrag"
+			},
+			"hint": {
+				"en": "Determine if the switch sends \"On\" when top or bottom is pressed.",
+				"nl": "Bepaal of de schakelaar \"Aan\" zend wanneer boven of onder is ingedrukt."
+			},
+			"value": "0",
+			"values": [
+				{
+					"id": "0",
+					"label": {
+						"en": "Top = On",
+						"nl": "Boven = Aan"
+					}
+				},
+				{
+					"id": "1",
+					"label": {
+						"en": "Bottom = On",
+						"nl": "Onder = Aan"
+					}
+				}
+			]
+		}
+	]
+}

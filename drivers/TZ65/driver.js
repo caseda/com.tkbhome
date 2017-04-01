@@ -2,133 +2,133 @@
 
 const path = require('path');
 const ZwaveDriver = require('homey-zwavedriver');
+const singlePress = {};
 
-// http://www.tkbhome.com/?cn-p-d-180.html <- TZ65S
-// http://www.tkbhome.com/?cn-p-d-181.html <- TZ65D
-// http://www.pepper1.net/zwavedb/device/424 <- TZ65S
-// http://www.pepper1.net/zwavedb/device/343 <- TZ65D
+// TZ35S: http://www.tkbhome.com/?cn-p-d-263.html
+// TZ35D: http://www.tkbhome.com/?cn-p-d-262.html
+// TZ55S: http://www.tkbhome.com/?cn-p-d-265.html
+// TZ55D: http://www.tkbhome.com/?cn-p-d-266.html
+// TZ65S: http://www.tkbhome.com/?cn-p-d-180.html
+// TZ65D: http://www.tkbhome.com/?cn-p-d-181.html
 
 module.exports = new ZwaveDriver( path.basename(__dirname), {
 	capabilities: {
-		'onoff': {
-			'command_class': 'COMMAND_CLASS_SWITCH_MULTILEVEL',
-			'command_get': 'SWITCH_MULTILEVEL_GET',
-			'command_set': 'SWITCH_MULTILEVEL_SET',
-			'command_set_parser': value => {
+		onoff: {
+			command_class: 'COMMAND_CLASS_SWITCH_MULTILEVEL',
+			command_set: 'SWITCH_MULTILEVEL_SET',
+			command_set_parser: (value, node) => {
+				if (node) {
+					setTimeout(() => {
+						node.instance.CommandClass.COMMAND_CLASS_SWITCH_MULTILEVEL.SWITCH_MULTILEVEL_GET();
+					}, 2500);
+				}
+
 				return {
-					'Value': (value > 0) ? 'on/enable' : 'off/disable'
+					Value: (value > 0) ? 'on/enable' : 'off/disable',
 				};
 			},
-			'command_report': 'SWITCH_MULTILEVEL_REPORT',
-			'command_report_parser': report => {
-				if (typeof report['Value'] === 'string') return report['Value'] === 'on/enable';
-				
-				return report['Value (Raw)'][0] > 0;
-			},
-			'pollInterval': 'poll_interval'
 		},
-		
-		'dim': {
-			'command_class': 'COMMAND_CLASS_SWITCH_MULTILEVEL',
-			'command_get': 'SWITCH_MULTILEVEL_GET',
-			'command_set': 'SWITCH_MULTILEVEL_SET',
-			'command_set_parser': value => ({ 'Value': Math.round(value * 99) }),
-			'command_report': 'SWITCH_MULTILEVEL_REPORT',
-			'command_report_parser': (report, node) => {
-				if (typeof report.Value === 'string') return (report.Value === 'on/enable') ? 1.0 : 0.0;
 
+		dim: {
+			command_class: 'COMMAND_CLASS_SWITCH_MULTILEVEL',
+			command_get: 'SWITCH_MULTILEVEL_GET',
+			command_set: 'SWITCH_MULTILEVEL_SET',
+			command_set_parser: (value, node) => {
 				// Setting on/off state when dimming
-				if (!node.state.onoff || node.state.onoff !== (report['Value (Raw)'][0] > 0))
+				if (!node.state.onoff || node.state.onoff !== (value > 0)) {
+					node.state.onoff = (value > 0);
+					module.exports.realtime(node.device_data, 'onoff', (value > 0));
+				}
+
+				return {
+					Value: Math.round(value * 99),
+				};
+			},
+			command_report: 'SWITCH_MULTILEVEL_REPORT',
+			command_report_parser: (report, node) => {
+				// Setting on/off state when dimming
+				if (!node.state.onoff || node.state.onoff !== (report['Value (Raw)'][0] > 0)) {
 					node.state.onoff = (report['Value (Raw)'][0] > 0);
+					module.exports.realtime(node.device_data, 'onoff', (report['Value (Raw)'][0] > 0));
+				}
+
+				if (typeof report.Value === 'string') return (report.Value === 'on/enable') ? 1.0 : 0.0;
 
 				return report['Value (Raw)'][0] / 99;
 			},
-			'pollInterval': 'poll_interval'
-		}
+			pollInterval: 'poll_interval',
+		},
 	},
-	settings: {
-		"night_light": {
-			"index": 3,
-			"size": 1,
-		},
-		"invert_switch": {
-			"index": 4,
-			"size": 1,
-		},
-		"led_behaviour_data": {
-			"index": 19,
-			"size": 1,
-		},
-	}
-});
 
-let singlePress = false;
-let basicSet = false;
+	beforeInit: (token, callback) => {
+		const node = module.exports.nodes[token];
+		if (node) {
+			if (!singlePress.hasOwnProperty(node.device_data.token)) {
+				singlePress[node.device_data.token] = false;
+			}
+		}
+
+		// Initiate the device
+		return callback();
+	},
+
+	settings: {
+		led_behaviour: {
+			index: 3,
+			size: 1,
+		},
+		invert_switch: {
+			index: 4,
+			size: 1,
+		},
+		led_behaviour_data: {
+			index: 19,
+			size: 1,
+		},
+	},
+});
 
 module.exports.on('initNode', token => {
 	const node = module.exports.nodes[token];
-	
+
 	if (node) {
-		// Single press causes an applicationUpdate frame.
 		node.instance.on('applicationUpdate', () => {
-			// Read out Multilevel Switch CC after 2,5 seconds on left button
-			setTimeout( function() {
-				if (basicSet === false) {
-					setTimeout( function() {
-						node.instance.CommandClass.COMMAND_CLASS_SWITCH_MULTILEVEL.SWITCH_MULTILEVEL_GET();
-					}, 2400);
-				}
-			}, 100);
-			
-			// set singlePress for 200 mS
-			singlePress = true;
-			setTimeout( function() {
-				singlePress = false;
-			}, 200);
-		});
-		
-		// Trigger on BASIC_SET
-		node.instance.CommandClass['COMMAND_CLASS_BASIC'].on('report', (command, report) => {
-			
-			if (!report || !report.hasOwnProperty("Value") || !command || !command.hasOwnProperty("name")) return;
-			
-			if (command.name === "BASIC_SET") {
-			
-				// set basicSet for 200 mS
-				basicSet = true;
-				setTimeout( function() {
-					basicSet = false;
+			setTimeout(() => {
+				node.instance.CommandClass.COMMAND_CLASS_SWITCH_MULTILEVEL.SWITCH_MULTILEVEL_GET();
+			}, 2500);
+
+			if (singlePress.hasOwnProperty(token)) {
+				singlePress[token] = true;
+				setTimeout(() => {
+					singlePress[token] = false;
 				}, 200);
-				
-				// Single press registered
-				if (singlePress === true) {
-					// Trigger Single click on flow card
-					if (report.Value === 255) {
-						Homey.manager('flow').triggerDevice('TZ65D_s2_single_on', null, null, node.device_data);
-					}
-					
-					// Trigger Sinlge click off flow card
-					else
-					if (report.Value === 0) {
-						Homey.manager('flow').triggerDevice('TZ65D_s2_single_off', null, null, node.device_data);
-					}
-				}
-				
-				// Double press registered
-				else
-				if (singlePress === false) {
-					// Trigger Double click on flow card
-					if (report.Value === 255) {
-						Homey.manager('flow').triggerDevice('TZ65D_s2_double_on', null, null, node.device_data);
-					}
-					
-					// Trigger Double click off flow card
-					else
-					if (report.Value === 0) {
-						Homey.manager('flow').triggerDevice('TZ65D_s2_double_off', null, null, node.device_data);
-					}
-				}
 			}
 		});
+
+		// Trigger on BASIC_SET
+		if (node.instance.CommandClass.COMMAND_CLASS_BASIC !== 'undefined') {
+			node.instance.CommandClass.COMMAND_CLASS_BASIC.on('report', (command, report) => {
+
+				if (command.name === BASIC_SET) {
+					// Single press registered
+					if (singlePress[token] === true) {
+						// Trigger Single click on flow card
+						if (report.Value === 255) Homey.manager('flow').triggerDevice('TZ65D_s2_single_on', null, null, node.device_data);
+
+						// Trigger Single click off flow card
+						if (report.Value === 0) Homey.manager('flow').triggerDevice('TZ65D_s2_single_off', null, null, node.device_data);
+					}
+
+					// Double press registered
+					else if (singlePress[token] === false) {
+						// Trigger Double click on flow card
+						if (report.Value === 255) Homey.manager('flow').triggerDevice('TZ65D_s2_double_on', null, null, node.device_data);
+
+						// Trigger Double click off flow card
+						if (report.Value === 0) Homey.manager('flow').triggerDevice('TZ65D_s2_double_off', null, null, node.device_data);
+					}
+				}
+			});
+		}
 	}
 });

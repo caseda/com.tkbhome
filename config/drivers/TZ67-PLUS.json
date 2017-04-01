@@ -1,0 +1,94 @@
+{
+	"id": "TZ67-PLUS",
+	"name": {
+		"en": "Wallplug Dimmer (Z-Wave Plus) TZ67",
+		"nl": "Tussenstekker Dimmer (Z-Wave Plus) TZ67"
+	},
+	"zwave": {
+		"manufacturerId": 280,
+		"productTypeId": 3,
+		"productId": [
+			8
+		],
+		"learnmode": {
+			"image": "/drivers/TZ67-PLUS/assets/learnmode.svg",
+			"instruction": {
+				"en": "Press the button 3 times, within 1.5 seconds",
+				"nl": "Druk 3 keer op de knop, binnen 1,5 seconden"
+			}
+		},
+		"associationGroups": [
+			1
+		],
+		"associationGroupsOptions": {
+			"1": {
+				"hint": {
+					"en": "This is the controller group, it is not recommended to change this.",
+					"nl": "Dit is de controller groep, het is niet aangeraden deze te wijzigen."
+				}
+			}
+		}
+	},
+	"class": "socket",
+	"capabilities": [
+		"onoff",
+		"dim"
+	],
+	"capabilitiesOptions": {
+		"onoff": {
+			"setOnDim": false
+		}
+	},
+	"images": {
+		"large": "/drivers/TZ67-PLUS/assets/images/large.png",
+		"small": "/drivers/TZ67-PLUS/assets/images/small.png"
+	},
+	"settings": [
+		{
+			"id": "led_behaviour",
+			"type": "dropdown",
+			"label": {
+				"en": "LED Behaviour",
+				"nl": "LED Gedrag"
+			},
+			"hint": {
+				"en": "Determine the behaviour of the LED.",
+				"nl": "Bepaal het gedrag van de LED."
+			},
+			"value": "0",
+			"values": [
+				{
+					"id": "0",
+					"label": {
+						"en": "LED indicates the socket is off.",
+						"nl": "LED geeft aan het stopcontact uit is."
+					}
+				},
+				{
+					"id": "1",
+					"label": {
+						"en": "LED indicates the socket is on",
+						"nl": "LED geeft aan het stopcontact aan is"
+					}
+				}
+			]
+		},
+		{
+			"id": "poll_interval",
+			"type": "number",
+			"attr": {
+				"min": 0,
+				"max": 86400
+			},
+			"value": 0,
+			"label": {
+				"en": "Manual State Interval",
+				"nl": "Handmatig Status Interval"
+			},
+			"hint": {
+				"en": "Determine the amount of seconds homey askes for the state, needed if you use the manual button as well.\nRange: 0 (Off), 60 - 86400 seconds",
+				"nl": "Bepaal het aantal seconden dat homey om de status vraagt, nodig als je de handmatig knop ook gebruikt.\nBereik: 0 (Off), 60 - 86400 seconden"
+			}
+		}
+	]
+}

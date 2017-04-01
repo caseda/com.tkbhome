@@ -21,18 +21,30 @@ This app adds support for TKB Home devices in Homey.
 
 ### Notes:
 **TZ35/TZ55/TZ65**
-The TZ35/TZ55/TZ65 needs to use polling to get the correct dim state of the output in certain situations.  
-The is by default on 300 seconds (5 minutes).  
-It is not recommended to put this below 60 seconds (1 minute),  
-it might cause too much traffic.  
-you can also manually update the state by just pressing the left switch  
-You can turn it off (value: 0), if you only want/need to update the state manually
+The Wall Dimmers need to be polled to get the correct dim state when you dim it with the switch itself.  
+The interval is by default on 300 seconds (5 minutes).  
+It is not recommended to put this below 60 seconds (1 minute), it might cause too much traffic.  
+You can also "immediately" update its state in homey, by just pressing any of the switches once.  
+The dim level takes about 2.5 seconds to update when switching on, since the dimmer dims up to its set brightness.  
+
+**TZ67(-PLUS)/TZ68(-PLUS)**
+The wallplugs only use the polling interval if you use the button on the wallplug itself.  
+It is not recommended to put this below 60 seconds (1 minute), it might cause too much traffic.
 
 ## Change Log:
+**1.0.3:**
+Fix:  
+All wall switches/dimmers: the right switch should work again  
+  # Do make sure homey's ID (1) is in association groups 2 and 3 only, not in 1 and 4  
+Update:  
+All switch icons.  
+Multi sensor icons.  
+Z-wave driver to 1.1.8.
+
 **1.0.2:**
 Fix:  
-TZ36 - ID's weren't correct  
-TZ56 - ID's weren't correct  
+TZ36 - ID's were incorrect  
+TZ56 - ID's were incorrect  
 "set dim level" flow cards, now work properly
 
 **1.0.1:**
