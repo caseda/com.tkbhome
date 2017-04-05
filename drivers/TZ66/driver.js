@@ -2,6 +2,7 @@
 
 const path = require('path');
 const ZwaveDriver = require('homey-zwavedriver');
+const singlePress = {};
 
 // TZ66: http://www.tkbhome.com/?cn-p-d-170.html
 
