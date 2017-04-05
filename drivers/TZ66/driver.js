@@ -12,7 +12,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			command_class: 'COMMAND_CLASS_SWITCH_BINARY',
 			command_get: 'SWITCH_BINARY_GET',
 			command_set: 'SWITCH_BINARY_SET',
-			command_set_parser: value => {
+			command_set_parser: (value, node) => {
 				if (node) {
 					setTimeout(() => {
 						node.instance.CommandClass.COMMAND_CLASS_SWITCH_BINARY.SWITCH_BINARY_GET();
