@@ -32,6 +32,9 @@ The wallplugs only use the polling interval if you use the button on the wallplu
 It is not recommended to put this below 60 seconds (1 minute), it might cause too much traffic.
 
 ## Change Log:
+**1.0.4:**
+Some small bug fixes.
+
 **1.0.3:**
 Fix:  
 All wall switches/dimmers: the right switch should work again  
