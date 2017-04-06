@@ -109,7 +109,7 @@ module.exports.on('initNode', token => {
 		if (node.instance.CommandClass.COMMAND_CLASS_BASIC !== 'undefined') {
 			node.instance.CommandClass.COMMAND_CLASS_BASIC.on('report', (command, report) => {
 
-				if (command.name === BASIC_SET) {
+				if (command.name === 'BASIC_SET') {
 					// Single press registered
 					if (singlePress[token] === true) {
 						// Trigger Single click on flow card
