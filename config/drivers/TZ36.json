@@ -5,8 +5,12 @@
 		"nl": "Schakelaar TZ36/TZ56"
 	},
 	"zwave": {
-		"manufacturerId": 280,
-		"productTypeId": 3,
+		"manufacturerId": [
+			280
+		],
+		"productTypeId": [
+			3
+		],
 		"productId": [
 			3
 		],

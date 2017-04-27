@@ -5,8 +5,12 @@
 		"nl": "Tussenstekker (Z-Wave Plus) TZ68-PLUS"
 	},
 	"zwave": {
-		"manufacturerId": 280,
-		"productTypeId": 3,
+		"manufacturerId": [
+			280
+		],
+		"productTypeId": [
+			3
+		],
 		"productId": [
 			2
 		],

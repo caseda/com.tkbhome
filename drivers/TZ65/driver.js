@@ -39,7 +39,6 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 					node.state.onoff = (value > 0);
 					module.exports.realtime(node.device_data, 'onoff', (value > 0));
 				}
-
 				return {
 					Value: Math.round(value * 99),
 				};
@@ -51,9 +50,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 					node.state.onoff = (report['Value (Raw)'][0] > 0);
 					module.exports.realtime(node.device_data, 'onoff', (report['Value (Raw)'][0] > 0));
 				}
-
 				if (typeof report.Value === 'string') return (report.Value === 'on/enable') ? 1.0 : 0.0;
-
 				return report['Value (Raw)'][0] / 99;
 			},
 			pollInterval: 'poll_interval',

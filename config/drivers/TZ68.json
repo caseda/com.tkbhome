@@ -5,8 +5,12 @@
 		"nl": "Tussenstekker TZ68"
 	},
 	"zwave": {
-		"manufacturerId": 280,
-		"productTypeId": 257,
+		"manufacturerId": [
+			280
+		],
+		"productTypeId": [
+			257
+		],
 		"productId": [
 			259
 		],

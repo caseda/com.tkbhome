@@ -5,8 +5,12 @@
 		"nl": "Schakelaar TZ66"
 	},
 	"zwave": {
-		"manufacturerId": 280,
-		"productTypeId": 258,
+		"manufacturerId": [
+			280
+		],
+		"productTypeId": [
+			258
+		],
 		"productId": [
 			4128,
 			4150

@@ -5,8 +5,12 @@
 		"nl": "3(4) in 1 Multi Sensor TSP01/TSM02"
 	},
 	"zwave": {
-		"manufacturerId": 280,
-		"productTypeId": 2,
+		"manufacturerId": [
+			280
+		],
+		"productTypeId": [
+			2
+		],
 		"productId": [
 			2
 		],

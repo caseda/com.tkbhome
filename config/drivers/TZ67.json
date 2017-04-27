@@ -5,8 +5,12 @@
 		"nl": "Tussenstekker Dimmer TZ67"
 	},
 	"zwave": {
-		"manufacturerId": 280,
-		"productTypeId": 514,
+		"manufacturerId": [
+			280
+		],
+		"productTypeId": [
+			514
+		],
 		"productId": [
 			1553
 		],

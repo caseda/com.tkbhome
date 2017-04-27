@@ -1,0 +1,20 @@
+[
+	{
+		"id": "TZ88_reset_meter",
+		"title": {
+			"en": "Reset energy consumption (kWh)",
+			"nl": "Reset energie consumptie (kWh)"
+		},
+		"hint": {
+			"en": "WARNING: This action can't be undone.",
+			"nl": "WAARSCHUWING: Deze actie kan niet ongedaan worden gemaakt"
+		},
+		"args": [
+			{
+				"name": "device",
+				"type": "device",
+				"filter": "driver_id=TZ88"
+			}
+		]
+	}
+]

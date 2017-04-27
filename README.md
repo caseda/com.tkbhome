@@ -14,6 +14,7 @@ This app adds support for TKB Home devices in Homey.
 + TZ67-PLUS - Wallplug Dimmer (Z-Wave Plus) (all types)
 + TZ68 - Wallplug Switch (all types)
 + TZ68-PLUS - Wallplug Switch (Z-Wave Plus) (all types)
++ TZ88 - Smart Energy Wallplug (Z-Wave Plus) (all types)
 
 ## Supported Languages:
 * English
@@ -32,7 +33,11 @@ The wallplugs only use the polling interval if you use the button on the wallplu
 It is not recommended to put this below 60 seconds (1 minute), it might cause too much traffic.
 
 ## Change Log:
-**1.0.4:**
+**1.0.6:**
+Add support:
++ TZ88 - Smart Energy Wallplug
+
+**1.0.4/1.0.5:**
 Some small bug fixes.
 
 **1.0.3:**

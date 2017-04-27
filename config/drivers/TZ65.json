@@ -5,9 +5,15 @@
 		"nl": "Dimmer TZ35/TZ55/TZ65"
 	},
 	"zwave": {
-		"manufacturerId": 280,
-		"productTypeId": 2056,
+		"manufacturerId": [
+			280
+		],
+		"productTypeId": [
+			4,
+			2056
+		],
 		"productId": [
+			3,
 			2056
 		],
 		"learnmode": {
