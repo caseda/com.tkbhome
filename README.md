@@ -32,6 +32,11 @@ The dim level takes about 2.5 seconds to update when switching on, since the dim
 The wallplugs only use the polling interval if you use the button on the wallplug itself.  
 It is not recommended to put this below 60 seconds (1 minute), it might cause too much traffic.
 
+**TZ88**
+It sends the wattage value when the load changes (more then) 5%.  
+This can't be edited and could cause of a lot of data if the load changes the power usage a lot.  
+All other manufacturers have this on at least 20% for this reason, so do keep this in mind.
+
 ## Change Log:
 **1.0.6:**
 Add support:
