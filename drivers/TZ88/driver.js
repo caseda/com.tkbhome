@@ -38,7 +38,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			},
 			pollInterval: 'poll_interval_voltage'
 		},
-		measure_amperage: {
+		measure_current: {
 			command_class: 'COMMAND_CLASS_METER',
 			command_get: 'METER_GET',
 			command_get_parser: () => ({

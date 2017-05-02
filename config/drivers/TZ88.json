@@ -38,7 +38,7 @@
 	"capabilities": [
 		"onoff",
 		"measure_voltage",
-		"measure_amperage",
+		"measure_current",
 		"measure_power",
 		"meter_power"
 	],

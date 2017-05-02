@@ -39,6 +39,10 @@ All other manufacturers have this on at least 20% for this reason, so do keep th
 The voltage and amperage don't get reported on intervals, added polling for this (by default poll is off to save traffic).
 
 ## Change Log:
+**1.0.7:**
+Fix:  
+TZ88 - Accidentally used the wrong capability ID
+
 **1.0.6:**
 Add support:
 + TZ88 - Smart Energy Wallplug
