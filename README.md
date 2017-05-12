@@ -43,7 +43,7 @@ The voltage and amperage don't get reported on intervals, added polling for this
 ## Change Log:
 **1.0.8:**
 Add support:  
-TZ37 - Double Relay Wall Switch
+TZ37 - Double Relay Wall Switch  
 TZ57 - Double Relay Wall Switch
 
 **1.0.7:**
@@ -74,12 +74,12 @@ TZ56 - ID's were incorrect
 
 **1.0.1:**
 Added support:  
-TSM02 - 4-in-1 Multi Sensor
-TSP01 - 3-in-1 Multi Sensor
-TZ35 - Single & Dual Wall Dimmer
-TZ36 - Single & Dual Wall Switch
-TZ55 - Single & Dual Wall Dimmer
-TZ56 - Single & Dual Wall Switch
+TSM02 - 4-in-1 Multi Sensor  
+TSP01 - 3-in-1 Multi Sensor  
+TZ35 - Single & Dual Wall Dimmer  
+TZ36 - Single & Dual Wall Switch  
+TZ55 - Single & Dual Wall Dimmer  
+TZ56 - Single & Dual Wall Switch  
 TZ67-PLUS Wallplug Dimmer (Z-Wave Plus)  
 Updated Association Group Hints  
 Updated Z-wave driver (1.1.2)
