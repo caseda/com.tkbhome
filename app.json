@@ -828,7 +828,7 @@
             "capabilities": [
               "onoff"
             ],
-            "icon": "/drivers/TZ37/assets/icon-2.svg",
+            "icon": "/drivers/TZ37/assets/icon-1.svg",
             "name": {
               "en": "Left Switch",
               "nl": "Linker Schakelaar"
