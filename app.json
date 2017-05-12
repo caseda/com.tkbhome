@@ -799,14 +799,14 @@
         "associationGroupsOptions": {
           "1": {
             "hint": {
-              "en": "Devices that are associated here will toggle their state when you switch with the left switch.",
-              "nl": "Apparaten die hier zijn geassocieerd zullen hun status schakelen wanneer je schakelt met de linker schakelaar."
+              "en": "Devices that are associated here will toggle their state when you switch with the right switch. Also the Lifeline, not recommended to remove homey's ID",
+              "nl": "Apparaten die hier zijn geassocieerd zullen hun status schakelen wanneer je schakelt met de rechter schakelaar. Ook de levenslijn, niet aangeraden homey's ID te verwijderen"
             }
           },
           "2": {
             "hint": {
-              "en": "Devices that are associated here will toggle their state when you toggle with the right switch.",
-              "nl": "Apparaten die hier zijn geassocieerd zullen hun status schakelen wanneer je schakelt met de rechter schakelaar."
+              "en": "Devices that are associated here will toggle their state when you double pressing the left switch.",
+              "nl": "Apparaten die hier zijn geassocieerd zullen hun status schakelen wanneer je 2x drukt op de linker schakelaar."
             }
           },
           "3": {
@@ -817,8 +817,8 @@
           },
           "4": {
             "hint": {
-              "en": "Devices that are associated here follow the state of the switch when it is being switched by other devices",
-              "nl": "Apparaten die hier zijn geassocieerd volgen de status van de schakelaar wanneer het wordt geschakeld door andere apparaten"
+              "en": "Devices that are associated here follow the state of the switch when it is being switched.",
+              "nl": "Apparaten die hier zijn geassocieerd volgen de status van de schakelaar wanneer het wordt geschakeld."
             }
           }
         },
