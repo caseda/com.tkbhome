@@ -4,12 +4,14 @@ This app adds support for TKB Home devices in Homey.
 ## Supported devices:
 + TSM02 - 4-in-1 Multi Sensor
 + TSP01 - 3-in-1 Multi Sensor
-+ TZ35 - Single & Dual Wall Dimmer
-+ TZ36 - Single & Dual Wall Switch
-+ TZ55 - Single & Dual Wall Dimmer
-+ TZ56 - Single & Dual Wall Switch
-+ TZ65 - Single & Dual Wall Dimmer
-+ TZ66 - Single & Dual Wall Switch
++ TZ35 - Single & Double Wall Dimmer
++ TZ36 - Single & Double Wall Switch
++ TZ37 - Double Relay Wall Switch
++ TZ55 - Single & Double Wall Dimmer
++ TZ56 - Single & Double Wall Switch
++ TZ57 - Double Relay Wall Switch
++ TZ65 - Single & Double Wall Dimmer
++ TZ66 - Single & Double Wall Switch
 + TZ67 - Wallplug Dimmer (all types)
 + TZ67-PLUS - Wallplug Dimmer (Z-Wave Plus) (all types)
 + TZ68 - Wallplug Switch (all types)
@@ -39,13 +41,18 @@ All other manufacturers have this on at least 20% for this reason, so do keep th
 The voltage and amperage don't get reported on intervals, added polling for this (by default poll is off to save traffic).
 
 ## Change Log:
+**1.0.8:**
+Add support:  
+TZ37 - Double Relay Wall Switch
+TZ57 - Double Relay Wall Switch
+
 **1.0.7:**
 Fix:  
 TZ88 - Accidentally used the wrong capability ID
 
 **1.0.6:**
-Add support:
-+ TZ88 - Smart Energy Wallplug
+Add support:  
+TZ88 - Smart Energy Wallplug
 
 **1.0.4/1.0.5:**
 Some small bug fixes.
@@ -66,14 +73,14 @@ TZ56 - ID's were incorrect
 "set dim level" flow cards, now work properly
 
 **1.0.1:**
-Added support:
-+ TSM02 - 4-in-1 Multi Sensor
-* TSP01 - 3-in-1 Multi Sensor
-* TZ35 - Single & Dual Wall Dimmer
-* TZ36 - Single & Dual Wall Switch
-* TZ55 - Single & Dual Wall Dimmer
-* TZ56 - Single & Dual Wall Switch
-* TZ67-PLUS Wallplug Dimmer (Z-Wave Plus)  
+Added support:  
+TSM02 - 4-in-1 Multi Sensor
+TSP01 - 3-in-1 Multi Sensor
+TZ35 - Single & Dual Wall Dimmer
+TZ36 - Single & Dual Wall Switch
+TZ55 - Single & Dual Wall Dimmer
+TZ56 - Single & Dual Wall Switch
+TZ67-PLUS Wallplug Dimmer (Z-Wave Plus)  
 Updated Association Group Hints  
 Updated Z-wave driver (1.1.2)
 
