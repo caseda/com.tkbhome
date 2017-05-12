@@ -886,19 +886,6 @@
           ]
         },
         {
-          "id": "save_state",
-          "type": "checkbox",
-          "label": {
-            "en": "Save Power-off State",
-            "nl": "Onthoud Stroom-eraf Status"
-          },
-          "hint": {
-            "en": "Saves its last state when power is disconnected",
-            "nl": "Onthoud zijn laatste status wanneer stroom eraf word gehaald"
-          },
-          "value": true
-        },
-        {
           "id": "led_behaviour_data",
           "type": "dropdown",
           "label": {
@@ -933,6 +920,19 @@
               }
             }
           ]
+        },
+        {
+          "id": "save_state",
+          "type": "checkbox",
+          "label": {
+            "en": "Save Power-off State",
+            "nl": "Onthoud Stroom-eraf Status"
+          },
+          "hint": {
+            "en": "Saves its last state when power is disconnected",
+            "nl": "Onthoud zijn laatste status wanneer stroom eraf word gehaald"
+          },
+          "value": true
         },
         {
           "id": "invert_switch",
