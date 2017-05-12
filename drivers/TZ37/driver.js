@@ -4,6 +4,7 @@ const path = require('path');
 const ZwaveDriver = require('homey-zwavedriver');
 
 // TZ37: http://www.tkbhome.com/?cn-p-d-314.html
+// TZ57: http://www.tkbhome.com/?cn-p-d-315.html
 
 module.exports = new ZwaveDriver( path.basename(__dirname), {
 	capabilities: {
@@ -16,7 +17,7 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			}),
 			command_report: 'SWITCH_BINARY_REPORT',
 			command_report_parser: report => report.Value === 'on/enable',
-		}
+		},
 	},
 	settings: {
 		led_behaviour: {
