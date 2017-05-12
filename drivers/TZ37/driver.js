@@ -21,15 +21,19 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 	},
 	settings: {
 		led_behaviour: {
-			index: 3,
+			index: 1,
+			size: 1,
+		},
+		save_state: {
+			index: 2,
 			size: 1,
 		},
 		invert_switch: {
-			index: 4,
+			index: 3,
 			size: 1,
 		},
 		led_behaviour_data: {
-			index: 19,
+			index: 4,
 			size: 1,
 		},
 	},
