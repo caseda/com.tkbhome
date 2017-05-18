@@ -3,7 +3,7 @@
   "name": {
     "en": "TKB Home"
   },
-  "version": "1.0.8",
+  "version": "1.0.9",
   "compatibility": ">=1.1.9",
   "description": {
     "en": "TKB Home devices for Homey"

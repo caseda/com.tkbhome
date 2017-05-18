@@ -17,12 +17,11 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			command_class: 'COMMAND_CLASS_SWITCH_MULTILEVEL',
 			command_set: 'SWITCH_MULTILEVEL_SET',
 			command_set_parser: (value, node) => {
-				if (node) {
+				if (node && typeof node.instance.CommandClass.COMMAND_CLASS_SWITCH_MULTILEVEL !== 'undefined') {
 					setTimeout(() => {
 						node.instance.CommandClass.COMMAND_CLASS_SWITCH_MULTILEVEL.SWITCH_MULTILEVEL_GET();
 					}, 2500);
 				}
-
 				return {
 					Value: (value > 0) ? 'on/enable' : 'off/disable',
 				};
@@ -35,9 +34,9 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			command_set: 'SWITCH_MULTILEVEL_SET',
 			command_set_parser: (value, node) => {
 				// Setting on/off state when dimming
-				if (!node.state.onoff || node.state.onoff !== (value > 0)) {
-					node.state.onoff = (value > 0);
-					module.exports.realtime(node.device_data, 'onoff', (value > 0));
+				if (typeof node.state.onoff === 'undefined' || node.state.onoff !== (value > 0)) {
+					node.state.onoff = value > 0;
+					module.exports.realtime(node.device_data, 'onoff', value > 0);
 				}
 				return {
 					Value: Math.round(value * 99),
@@ -45,13 +44,22 @@ module.exports = new ZwaveDriver( path.basename(__dirname), {
 			},
 			command_report: 'SWITCH_MULTILEVEL_REPORT',
 			command_report_parser: (report, node) => {
-				// Setting on/off state when dimming
-				if (!node.state.onoff || node.state.onoff !== (report['Value (Raw)'][0] > 0)) {
-					node.state.onoff = (report['Value (Raw)'][0] > 0);
-					module.exports.realtime(node.device_data, 'onoff', (report['Value (Raw)'][0] > 0));
+				if (!report) return null;
+				if (typeof report.Value === 'string') {
+					if (typeof node.state.onoff === 'undefined' || node.state.onoff !== (report.Value === 'on/enable')) {
+						node.state.onoff = report.Value === 'on/enable';
+						module.exports.realtime(node.device_data, 'onoff', report.Value === 'on/enable');
+					}
+					return (report.Value === 'on/enable') ? 1.0 : 0.0;
 				}
-				if (typeof report.Value === 'string') return (report.Value === 'on/enable') ? 1.0 : 0.0;
-				return report['Value (Raw)'][0] / 99;
+				if (typeof report['Value (Raw)'] !== 'undefined') {
+					if (!node.state.onoff || node.state.onoff !== (report['Value (Raw)'][0] > 0)) {
+						node.state.onoff = report['Value (Raw)'][0] > 0;
+						module.exports.realtime(node.device_data, 'onoff', report['Value (Raw)'][0] > 0);
+					}
+					return report['Value (Raw)'][0] / 99;
+				}
+				return null;
 			},
 			pollInterval: 'poll_interval',
 		},
