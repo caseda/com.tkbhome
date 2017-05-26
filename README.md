@@ -16,6 +16,7 @@ This app adds support for TKB Home devices in Homey.
 + TZ67-PLUS - Wallplug Dimmer (Z-Wave Plus) (all types)
 + TZ68 - Wallplug Switch (all types)
 + TZ68-PLUS - Wallplug Switch (Z-Wave Plus) (all types)
++ TZ69 - Smart Energy Wallplug (Z-Wave Plus) (all types)
 + TZ88 - Smart Energy Wallplug (Z-Wave Plus) (all types)
 
 ## Supported Languages:
@@ -30,7 +31,7 @@ It is not recommended to put this below 60 seconds (1 minute), it might cause to
 You can also "immediately" update its state in homey, by just pressing any of the switches once.  
 The dim level takes about 2.5 seconds to update when switching on, since the dimmer dims up to its set brightness.  
 
-**TZ67(-PLUS)/TZ68(-PLUS)**
+**TZ67(-PLUS)/TZ68(-PLUS)/TZ69**
 The wallplugs only use the polling interval if you use the button on the wallplug itself.  
 It is not recommended to put this below 60 seconds (1 minute), it might cause too much traffic.
 
@@ -41,6 +42,10 @@ All other manufacturers have this on at least 20% for this reason, so do keep th
 The voltage and amperage don't get reported on intervals, added polling for this (by default poll is off to save traffic).
 
 ## Change Log:
+**1.0.10:**
+Add support:  
+TZ69 - Smart Energy Wallplug (Z-Wave Plus)
+
 **1.0.9:**
 Fix:  
 TZ65/TZ67/TZ67-PLUS - Fix a rare crash that could occur
