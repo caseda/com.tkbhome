@@ -42,6 +42,9 @@ All other manufacturers have this on at least 20% for this reason, so do keep th
 The voltage and amperage don't get reported on intervals, added polling for this (by default poll is off to save traffic).
 
 ## Change Log:
+**1.0.11:**
+Add extra ID to TZ55 driver
+
 **1.0.10:**
 Add support:  
 TZ69 - Smart Energy Wallplug (Z-Wave Plus)

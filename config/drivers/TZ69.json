@@ -81,7 +81,7 @@
 			"type": "checkbox",
 			"label": {
 				"en": "Save Power-off State",
-				"nl": "Onthoud Stroom-Eraf Status"
+				"nl": "Onthoud Stroom-eraf Status"
 			},
 			"hint": {
 				"en": "Saves its last state when power is disconnected",
