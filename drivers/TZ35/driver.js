@@ -4,8 +4,10 @@ const path = require('path');
 const ZwaveDriver = require('homey-zwavedriver');
 const singlePress = {};
 
-// TZ65S: http://www.tkbhome.com/?cn-p-d-180.html
-// TZ65D: http://www.tkbhome.com/?cn-p-d-181.html
+// TZ35S: http://www.tkbhome.com/?cn-p-d-263.html
+// TZ35D: http://www.tkbhome.com/?cn-p-d-262.html
+// TZ55S: http://www.tkbhome.com/?cn-p-d-265.html
+// TZ55D: http://www.tkbhome.com/?cn-p-d-266.html
 
 module.exports = new ZwaveDriver( path.basename(__dirname), {
 	capabilities: {

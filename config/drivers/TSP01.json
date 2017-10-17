@@ -67,7 +67,7 @@
 		"measure_battery"
 	],
 	"mobile": {
-		"compontents": [
+		"components": [
 			{
 				"id": "icon"
 			},

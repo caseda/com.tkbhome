@@ -1,21 +1,24 @@
 {
-	"id": "TZ65",
+	"id": "TZ35",
 	"name": {
-		"en": "Dimmer TZ65",
-		"nl": "Dimmer TZ65"
+		"en": "Dimmer TZ35/TZ55",
+		"nl": "Dimmer TZ35/TZ55"
 	},
 	"zwave": {
 		"manufacturerId": [
-			280
+			280,
+			65535
 		],
 		"productTypeId": [
-			4
+			3,
+			2056
 		],
 		"productId": [
-			3
+			4,
+			2056
 		],
 		"learnmode": {
-			"image": "/drivers/TZ65/assets/learnmode.svg",
+			"image": "/drivers/TZ35/assets/learnmode.svg",
 			"instruction": {
 				"en": "Press an on/off button once",
 				"nl": "Druk een keer op een aan/uit knop"
@@ -63,8 +66,8 @@
 		}
 	},
 	"images": {
-		"large": "/drivers/TZ65/assets/images/large.png",
-		"small": "/drivers/TZ65/assets/images/small.png"
+		"large": "/drivers/TZ35/assets/images/large.png",
+		"small": "/drivers/TZ35/assets/images/small.png"
 	},
 	"settings": [
 		{
