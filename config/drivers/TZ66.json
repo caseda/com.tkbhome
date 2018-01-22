@@ -63,8 +63,29 @@
 	},
 	"settings": [
 		{
+			"id": "ignore_start_dim_level",
+			"type": "checkbox",
+			"zwave": {
+				"index": 1,
+				"size": 1
+			},
+			"label": {
+				"en": "Ignore dim level",
+				"nl": "Dim niveau negeren"
+			},
+			"hint": {
+				"en": "The left switch can control other z-wave dimmers, if this setting is enabled it will not use its own dim level as starting point.",
+				"nl": "De linker schakelaar kan andere z-wave dimmers bedienen, als deze setting is ingeschakeld zal het niet zijn eigen dim niveau geruiken als begin punt."
+			},
+			"value": true
+		},
+		{
 			"id": "led_behaviour",
 			"type": "dropdown",
+			"zwave": {
+				"index": 3,
+				"size": 1
+			},
 			"label": {
 				"en": "LED Behaviour",
 				"nl": "LED Gedrag"
@@ -94,6 +115,10 @@
 		{
 			"id": "led_behaviour_data",
 			"type": "dropdown",
+			"zwave": {
+				"index": 19,
+				"size": 1
+			},
 			"label": {
 				"en": "LED Behaviour On Data",
 				"nl": "LED Gedrag Met Data"
@@ -121,8 +146,8 @@
 				{
 					"id": "2",
 					"label": {
-						"en": "LED blinks for 1 seconds when data is send.",
-						"nl": "LED knipperd voor 1 seconden als hij data verzend."
+						"en": "LED blinks for 1 second when data is send.",
+						"nl": "LED knipperd voor 1 seconde als hij data verzend."
 					}
 				}
 			]
@@ -130,6 +155,10 @@
 		{
 			"id": "invert_switch",
 			"type": "dropdown",
+			"zwave": {
+				"index": 4,
+				"size": 1
+			},
 			"label": {
 				"en": "Switch Behaviour",
 				"nl": "Schakelaar Gedrag"
@@ -155,6 +184,40 @@
 					}
 				}
 			]
+		},
+		{
+			"id": "shade_control_2",
+			"type": "checkbox",
+			"zwave": {
+				"index": 14,
+				"size": 1
+			},
+			"label": {
+				"en": "Window covering control, group 2",
+				"nl": "Raam bedekking besturing, group 2"
+			},
+			"hint": {
+				"en": "Use the right switch (association goup 2) to control any window covering. (roller shutter, curtain, etc)",
+				"nl": "Gebruik de rechter schakelaar (associatie groep 2) om elke raam bedenking te besturen (rolluik, gordijn, etc)."
+			},
+			"value": false
+		},
+		{
+			"id": "shade_control_3",
+			"type": "checkbox",
+			"zwave": {
+				"index": 15,
+				"size": 1
+			},
+			"label": {
+				"en": "Window covering control, group 3",
+				"nl": "Raam bedekking besturing, group 3"
+			},
+			"hint": {
+				"en": "Use the right switch (association goup 3) to control any window covering. (roller shutter, curtain, etc)",
+				"nl": "Gebruik de rechter schakelaar (associatie groep 3) om elke raam bedenking te besturen (rolluik, gordijn, etc)."
+			},
+			"value": false
 		}
 	]
 }

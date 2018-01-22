@@ -50,6 +50,10 @@
 		{
 			"id": "watt_interval",
 			"type": "number",
+			"zwave": {
+				"index": 1,
+				"size": 1
+			},
 			"label": {
 				"en": "Wattage Report Interval",
 				"nl": "Wattage Verzend Interval"
@@ -68,6 +72,10 @@
 		{
 			"id": "kwh_interval",
 			"type": "number",
+			"zwave": {
+				"index": 2,
+				"size": 1
+			},
 			"label": {
 				"en": "kWh Report Interval",
 				"nl": "kWh Verzend Interval"
@@ -86,6 +94,10 @@
 		{
 			"id": "amp_overload",
 			"type": "number",
+			"zwave": {
+				"index": 3,
+				"size": 1
+			},
 			"label": {
 				"en": "Amperage Overload Alarm",
 				"nl": "Ampere Overbelasting Alarm"
@@ -104,6 +116,10 @@
 		{
 			"id": "restore_state",
 			"type": "dropdown",
+			"zwave": {
+				"index": 5,
+				"size": 1
+			},
 			"label": {
 				"en": "Restore Power State",
 				"nl": "Herstel Stroom Status"
@@ -140,6 +156,10 @@
 		{
 			"id": "always_on",
 			"type": "checkbox",
+			"zwave": {
+				"index": 6,
+				"size": 1
+			},
 			"label": {
 				"en": "Always On",
 				"nl": "Altijd Aan"
@@ -153,6 +173,10 @@
 		{
 			"id": "led_behaviour",
 			"type": "dropdown",
+			"zwave": {
+				"index": 7,
+				"size": 1
+			},
 			"label": {
 				"en": "LED Behaviour",
 				"nl": "LED Gedrag"
@@ -182,6 +206,10 @@
 		{
 			"id": "auto_off",
 			"type": "number",
+			"zwave": {
+				"index": 8,
+				"size": 1
+			},
 			"label": {
 				"en": "Automatic Off Timer",
 				"nl": "Automatische Uit Timer"
@@ -194,6 +222,23 @@
 			"attr": {
 				"min": 0,
 				"max": 32767
+			}
+		},
+		{
+			"id": "poll_interval",
+			"type": "number",
+			"attr": {
+				"min": 0,
+				"max": 86400
+			},
+			"value": 0,
+			"label": {
+				"en": "Manual State Interval",
+				"nl": "Handmatig Status Interval"
+			},
+			"hint": {
+				"en": "Determine the amount of seconds homey askes for the state, needed if you use the manual button as well.\nRange: 0 (Off), 60 - 86400 seconds",
+				"nl": "Bepaal het aantal seconden dat homey om de status vraagt, nodig als je de handmatig knop ook gebruikt.\nBereik: 0 (Off), 60 - 86400 seconden"
 			}
 		},
 		{

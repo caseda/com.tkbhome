@@ -1,20 +1,20 @@
 {
-  "name": "com.tkbhome",
-  "version": "1.0.1",
-  "description": "This app adds support for TKB Home devices in Homey",
-  "main": "app.js",
-  "dependencies": {
-    "homey-zwavedriver": "git+https://github.com/athombv/node-homey-zwavedriver.git"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+http://git@github.com/caseda/com.tkbhome.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "homepage": "https://github.com/caseda/com.tkbhome#readme"
+	"name": "com.tkbhome",
+	"version": "2.0.0",
+	"description": "This app adds support for TKB Home devices in Homey",
+	"main": "app.js",
+	"dependencies": {
+		"homey-meshdriver": "git+https://github.com/athombv/node-homey-meshdriver.git"
+	},
+	"devDependencies": {},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/caseda/com.tkbhome"
+	},
+	"author": "R. Mengers",
+	"license": "ISC",
+	"homepage": "https://github.com/caseda/com.tokbhome#readme"
 }

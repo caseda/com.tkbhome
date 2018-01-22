@@ -2,12 +2,12 @@
 	{
 		"id": "TZ88_reset_meter",
 		"title": {
-			"en": "Reset energy consumption (kWh)",
-			"nl": "Reset energie consumptie (kWh)"
+			"en": "Deprecated - Reset energy consumption (kWh)",
+			"nl": "Verouderd - Reset energie consumptie (kWh)"
 		},
 		"hint": {
-			"en": "WARNING: This action can't be undone.",
-			"nl": "WAARSCHUWING: Deze actie kan niet ongedaan worden gemaakt"
+			"en": "This card is Deprecated, please use the new reset meter card.\n\nWARNING: This action can't be undone.",
+			"nl": "Deze kaart is verouderd, gebruik alsjeblieft de nieuwe reset meter kaart.\n\nWAARSCHUWING: Deze actie kan niet ongedaan worden gemaakt"
 		},
 		"args": [
 			{

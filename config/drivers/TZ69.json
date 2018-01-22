@@ -56,6 +56,10 @@
 		{
 			"id": "indicator",
 			"type": "dropdown",
+			"zwave": {
+				"index": 1,
+				"size": 1
+			},
 			"label": {
 				"en": "LED Behaviour",
 				"nl": "LED Gedrag"
@@ -80,6 +84,10 @@
 		},
 		{
 			"id": "save_state",
+			"zwave": {
+				"index": 2,
+				"size": 1
+			},
 			"type": "checkbox",
 			"label": {
 				"en": "Save Power-off State",
@@ -94,6 +102,10 @@
 		{
 			"id": "watt_report",
 			"type": "number",
+			"zwave": {
+				"index": 3,
+				"size": 1
+			},
 			"label": {
 				"en": "Wattage Report Interval",
 				"nl": "Wattage Verzend Interval"
@@ -112,6 +124,10 @@
 		{
 			"id": "kwh_report",
 			"type": "number",
+			"zwave": {
+				"index": 4,
+				"size": 1
+			},
 			"label": {
 				"en": "Kilo-WattHour Report Interval",
 				"nl": "KiloWattUur Verzend Interval"

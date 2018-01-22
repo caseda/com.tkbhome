@@ -102,6 +102,11 @@
 		{
 			"id": "basic_set_level",
 			"type": "number",
+			"zwave": {
+				"index":  2,
+				"size": 1,
+				"signed": false
+			},
 			"attr": {
 				"min": 0,
 				"max": 255
@@ -119,6 +124,10 @@
 		{
 			"id": "pir_sensitivity",
 			"type": "number",
+			"zwave": {
+				"index":  3,
+				"size": 1
+			},
 			"attr": {
 				"min": 0,
 				"max": 99
@@ -136,6 +145,10 @@
 		{
 			"id": "turn_off_light_time",
 			"type": "number",
+			"zwave": {
+				"index":  9,
+				"size": 1
+			},
 			"attr": {
 				"min": 24,
 				"max": 1016,
@@ -154,6 +167,10 @@
 		{
 			"id": "light_sensitivity",
 			"type": "number",
+			"zwave": {
+				"index":  4,
+				"size": 1
+			},
 			"attr": {
 				"min": 0,
 				"max": 100
@@ -171,6 +188,10 @@
 		{
 			"id": "test_mode",
 			"type": "checkbox",
+			"zwave": {
+				"index":  5,
+				"size": 1
+			},
 			"value": false,
 			"label": {
 				"en": "Test Mode",
@@ -184,6 +205,10 @@
 		{
 			"id": "operation_mode",
 			"type": "dropdown",
+			"zwave": {
+				"index":  5,
+				"size": 1
+			},
 			"value": "0",
 			"values": [
 				{
@@ -213,6 +238,10 @@
 		{
 			"id": "door/window_mode",
 			"type": "checkbox",
+			"zwave": {
+				"index":  5,
+				"size": 1
+			},
 			"value": false,
 			"label": {
 				"en": "Disable Door/Window Sensor",
@@ -226,6 +255,10 @@
 		{
 			"id": "temperature_monitoring",
 			"type": "checkbox",
+			"zwave": {
+				"index":  6,
+				"size": 1
+			},
 			"value": false,
 			"label": {
 				"en": "Enable temperature monitoring",
@@ -239,6 +272,10 @@
 		{
 			"id": "pir_redetect_interval_time",
 			"type": "number",
+			"zwave": {
+				"index":  8,
+				"size": 1
+			},
 			"attr": {
 				"min": 24,
 				"max": 1016,
@@ -257,6 +294,10 @@
 		{
 			"id": "battery_report_time",
 			"type": "number",
+			"zwave": {
+				"index":  10,
+				"size": 1
+			},
 			"attr": {
 				"min": 0.5,
 				"max": 63.5,
@@ -275,6 +316,10 @@
 		{
 			"id": "contact_report_time",
 			"type": "number",
+			"zwave": {
+				"index":  11,
+				"size": 1
+			},
 			"attr": {
 				"min": 0.5,
 				"max": 63.5,
@@ -293,6 +338,10 @@
 		{
 			"id": "illumination_report_time",
 			"type": "number",
+			"zwave": {
+				"index":  12,
+				"size": 1
+			},
 			"attr": {
 				"min": 0.5,
 				"max": 63.5,
@@ -311,6 +360,10 @@
 		{
 			"id": "temperature_report_time",
 			"type": "number",
+			"zwave": {
+				"index":  13,
+				"size": 1
+			},
 			"attr": {
 				"min": 0.5,
 				"max": 63.5,

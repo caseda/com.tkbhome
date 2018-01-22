@@ -87,6 +87,10 @@
 		{
 			"id": "led_behaviour",
 			"type": "dropdown",
+			"zwave": {
+				"index": 1,
+				"size": 1
+			},
 			"label": {
 				"en": "LED Behaviour",
 				"nl": "LED Gedrag"
@@ -116,6 +120,10 @@
 		{
 			"id": "led_behaviour_data",
 			"type": "dropdown",
+			"zwave": {
+				"index": 4,
+				"size": 1
+			},
 			"label": {
 				"en": "LED Behaviour On Data",
 				"nl": "LED Gedrag Met Data"
@@ -143,8 +151,8 @@
 				{
 					"id": "2",
 					"label": {
-						"en": "LED blinks for 1 seconds when data is send.",
-						"nl": "LED knipperd voor 1 seconden als hij data verzend."
+						"en": "LED blinks for 1 second when data is send.",
+						"nl": "LED knipperd voor 1 seconde als hij data verzend."
 					}
 				}
 			]
@@ -152,6 +160,10 @@
 		{
 			"id": "save_state",
 			"type": "checkbox",
+			"zwave": {
+				"index": 2,
+				"size": 1
+			},
 			"label": {
 				"en": "Save Power-off State",
 				"nl": "Onthoud Stroom-eraf Status"
@@ -165,6 +177,10 @@
 		{
 			"id": "invert_switch",
 			"type": "dropdown",
+			"zwave": {
+				"index": 3,
+				"size": 1
+			},
 			"label": {
 				"en": "Switch Behaviour",
 				"nl": "Schakelaar Gedrag"

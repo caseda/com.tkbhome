@@ -6,7 +6,8 @@
 	},
 	"zwave": {
 		"manufacturerId": [
-			280
+			280,
+			65535
 		],
 		"productTypeId": [
 			3
@@ -51,6 +52,10 @@
 		{
 			"id": "led_behaviour",
 			"type": "dropdown",
+			"zwave": {
+				"index": 1,
+				"size": 1
+			},
 			"label": {
 				"en": "LED Behaviour",
 				"nl": "LED Gedrag"

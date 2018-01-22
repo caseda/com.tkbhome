@@ -45,6 +45,10 @@
 		{
 			"id": "led_behaviour",
 			"type": "dropdown",
+			"zwave": {
+				"index": 1,
+				"size": 1
+			},
 			"label": {
 				"en": "LED Behaviour",
 				"nl": "LED Gedrag"

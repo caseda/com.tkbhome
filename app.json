@@ -3,8 +3,9 @@
   "name": {
     "en": "TKB Home"
   },
-  "version": "1.0.12",
-  "compatibility": ">=1.1.9",
+  "sdk": 2,
+  "version": "2.0.0",
+  "compatibility": ">=1.5.0",
   "description": {
     "en": "TKB Home devices for Homey",
     "nl": "TKB Home apparaten voor Homey"
@@ -29,6 +30,17 @@
         "email": ""
       }
     ]
+  },
+  "contributing": {
+    "donate": {
+      "paypal": {
+        "username": "caseda",
+        "currency": "EUR"
+      }
+    }
+  },
+  "bugs": {
+    "url": "https://github.com/caseda/com.tkbhome/issues"
   },
   "capabilities": {
     "measure_luminance_level": {
@@ -74,6 +86,62 @@
               "nl": "Niveau"
             },
             "example": 50
+          }
+        ]
+      },
+      {
+        "id": "TZ35D_s2_single_on",
+        "title": {
+          "en": "Right switched on",
+          "nl": "Rechts aan geschakeld"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=TZ35"
+          }
+        ]
+      },
+      {
+        "id": "TZ35D_s2_single_off",
+        "title": {
+          "en": "Right switched off",
+          "nl": "Rechts uit geschakeld"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=TZ35"
+          }
+        ]
+      },
+      {
+        "id": "TZ35D_s2_double_on",
+        "title": {
+          "en": "Right switched 2x on",
+          "nl": "Rechts 2x aan geschakeld"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=TZ35"
+          }
+        ]
+      },
+      {
+        "id": "TZ35D_s2_double_off",
+        "title": {
+          "en": "Right switched 2x off",
+          "nl": "Rechts 2x uit geschakeld"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=TZ35"
           }
         ]
       },
@@ -262,14 +330,32 @@
     ],
     "actions": [
       {
-        "id": "TZ88_reset_meter",
+        "id": "resetMeter",
         "title": {
-          "en": "Reset energy consumption (kWh)",
-          "nl": "Reset energie consumptie (kWh)"
+          "en": "Reset meter values",
+          "nl": "Meter waarden opnieuw instellen"
         },
         "hint": {
-          "en": "WARNING: This action can't be undone.",
-          "nl": "WAARSCHUWING: Deze actie kan niet ongedaan worden gemaakt"
+          "en": "Reset the accumulated power usage value (kWh), note that this can not be reversed.",
+          "nl": "Stel geaccumuleerde stroomverbruik waarde (kWh) opnieuw in, dit kan niet worden teruggedraaid."
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=TZ69|TZ88"
+          }
+        ]
+      },
+      {
+        "id": "TZ88_reset_meter",
+        "title": {
+          "en": "Deprecated - Reset energy consumption (kWh)",
+          "nl": "Verouderd - Reset energie consumptie (kWh)"
+        },
+        "hint": {
+          "en": "This card is Deprecated, please use the new reset meter card.\n\nWARNING: This action can't be undone.",
+          "nl": "Deze kaart is verouderd, gebruik alsjeblieft de nieuwe reset meter kaart.\n\nWAARSCHUWING: Deze actie kan niet ongedaan worden gemaakt"
         },
         "args": [
           {
@@ -386,6 +472,11 @@
         {
           "id": "basic_set_level",
           "type": "number",
+          "zwave": {
+            "index": 2,
+            "size": 1,
+            "signed": false
+          },
           "attr": {
             "min": 0,
             "max": 255
@@ -403,6 +494,10 @@
         {
           "id": "pir_sensitivity",
           "type": "number",
+          "zwave": {
+            "index": 3,
+            "size": 1
+          },
           "attr": {
             "min": 0,
             "max": 99
@@ -420,6 +515,10 @@
         {
           "id": "turn_off_light_time",
           "type": "number",
+          "zwave": {
+            "index": 9,
+            "size": 1
+          },
           "attr": {
             "min": 24,
             "max": 1016,
@@ -438,6 +537,10 @@
         {
           "id": "light_sensitivity",
           "type": "number",
+          "zwave": {
+            "index": 4,
+            "size": 1
+          },
           "attr": {
             "min": 0,
             "max": 100
@@ -455,6 +558,10 @@
         {
           "id": "test_mode",
           "type": "checkbox",
+          "zwave": {
+            "index": 5,
+            "size": 1
+          },
           "value": false,
           "label": {
             "en": "Test Mode",
@@ -468,6 +575,10 @@
         {
           "id": "operation_mode",
           "type": "dropdown",
+          "zwave": {
+            "index": 5,
+            "size": 1
+          },
           "value": "0",
           "values": [
             {
@@ -497,6 +608,10 @@
         {
           "id": "door/window_mode",
           "type": "checkbox",
+          "zwave": {
+            "index": 5,
+            "size": 1
+          },
           "value": false,
           "label": {
             "en": "Disable Door/Window Sensor",
@@ -510,6 +625,10 @@
         {
           "id": "temperature_monitoring",
           "type": "checkbox",
+          "zwave": {
+            "index": 6,
+            "size": 1
+          },
           "value": false,
           "label": {
             "en": "Enable temperature monitoring",
@@ -523,6 +642,10 @@
         {
           "id": "pir_redetect_interval_time",
           "type": "number",
+          "zwave": {
+            "index": 8,
+            "size": 1
+          },
           "attr": {
             "min": 24,
             "max": 1016,
@@ -541,6 +664,10 @@
         {
           "id": "battery_report_time",
           "type": "number",
+          "zwave": {
+            "index": 10,
+            "size": 1
+          },
           "attr": {
             "min": 0.5,
             "max": 63.5,
@@ -559,6 +686,10 @@
         {
           "id": "contact_report_time",
           "type": "number",
+          "zwave": {
+            "index": 11,
+            "size": 1
+          },
           "attr": {
             "min": 0.5,
             "max": 63.5,
@@ -577,6 +708,10 @@
         {
           "id": "illumination_report_time",
           "type": "number",
+          "zwave": {
+            "index": 12,
+            "size": 1
+          },
           "attr": {
             "min": 0.5,
             "max": 63.5,
@@ -595,6 +730,10 @@
         {
           "id": "temperature_report_time",
           "type": "number",
+          "zwave": {
+            "index": 13,
+            "size": 1
+          },
           "attr": {
             "min": 0.5,
             "max": 63.5,
@@ -624,12 +763,10 @@
           65535
         ],
         "productTypeId": [
-          3,
-          2056
+          3
         ],
         "productId": [
-          4,
-          2056
+          4
         ],
         "learnmode": {
           "image": "/drivers/TZ35/assets/learnmode.svg",
@@ -687,6 +824,10 @@
         {
           "id": "led_behaviour",
           "type": "dropdown",
+          "zwave": {
+            "index": 3,
+            "size": 1
+          },
           "label": {
             "en": "LED Behaviour",
             "nl": "LED Gedrag"
@@ -716,6 +857,10 @@
         {
           "id": "led_behaviour_data",
           "type": "dropdown",
+          "zwave": {
+            "index": 19,
+            "size": 1
+          },
           "label": {
             "en": "LED Behaviour On Data",
             "nl": "LED Gedrag Met Data"
@@ -743,8 +888,8 @@
             {
               "id": "2",
               "label": {
-                "en": "LED blinks for 1 seconds when data is send.",
-                "nl": "LED knipperd voor 1 seconden als hij data verzend."
+                "en": "LED blinks for 1 second when data is send.",
+                "nl": "LED knipperd voor 1 seconde als hij data verzend."
               }
             }
           ]
@@ -752,6 +897,10 @@
         {
           "id": "invert_switch",
           "type": "dropdown",
+          "zwave": {
+            "index": 4,
+            "size": 1
+          },
           "label": {
             "en": "Switch Behaviour",
             "nl": "Schakelaar Gedrag"
@@ -863,6 +1012,10 @@
         {
           "id": "led_behaviour",
           "type": "dropdown",
+          "zwave": {
+            "index": 3,
+            "size": 1
+          },
           "label": {
             "en": "LED Behaviour",
             "nl": "LED Gedrag"
@@ -892,6 +1045,10 @@
         {
           "id": "led_behaviour_data",
           "type": "dropdown",
+          "zwave": {
+            "index": 19,
+            "size": 1
+          },
           "label": {
             "en": "LED Behaviour On Data",
             "nl": "LED Gedrag Met Data"
@@ -919,8 +1076,8 @@
             {
               "id": "2",
               "label": {
-                "en": "LED blinks for 1 seconds when data is send.",
-                "nl": "LED knipperd voor 1 seconden als hij data verzend."
+                "en": "LED blinks for 1 second when data is send.",
+                "nl": "LED knipperd voor 1 seconde als hij data verzend."
               }
             }
           ]
@@ -1045,6 +1202,10 @@
         {
           "id": "led_behaviour",
           "type": "dropdown",
+          "zwave": {
+            "index": 1,
+            "size": 1
+          },
           "label": {
             "en": "LED Behaviour",
             "nl": "LED Gedrag"
@@ -1074,6 +1235,10 @@
         {
           "id": "led_behaviour_data",
           "type": "dropdown",
+          "zwave": {
+            "index": 4,
+            "size": 1
+          },
           "label": {
             "en": "LED Behaviour On Data",
             "nl": "LED Gedrag Met Data"
@@ -1101,8 +1266,8 @@
             {
               "id": "2",
               "label": {
-                "en": "LED blinks for 1 seconds when data is send.",
-                "nl": "LED knipperd voor 1 seconden als hij data verzend."
+                "en": "LED blinks for 1 second when data is send.",
+                "nl": "LED knipperd voor 1 seconde als hij data verzend."
               }
             }
           ]
@@ -1110,6 +1275,10 @@
         {
           "id": "save_state",
           "type": "checkbox",
+          "zwave": {
+            "index": 2,
+            "size": 1
+          },
           "label": {
             "en": "Save Power-off State",
             "nl": "Onthoud Stroom-eraf Status"
@@ -1123,6 +1292,10 @@
         {
           "id": "invert_switch",
           "type": "dropdown",
+          "zwave": {
+            "index": 3,
+            "size": 1
+          },
           "label": {
             "en": "Switch Behaviour",
             "nl": "Schakelaar Gedrag"
@@ -1162,10 +1335,12 @@
           280
         ],
         "productTypeId": [
-          4
+          4,
+          2056
         ],
         "productId": [
-          3
+          3,
+          2056
         ],
         "learnmode": {
           "image": "/drivers/TZ65/assets/learnmode.svg",
@@ -1223,6 +1398,10 @@
         {
           "id": "led_behaviour",
           "type": "dropdown",
+          "zwave": {
+            "index": 3,
+            "size": 1
+          },
           "label": {
             "en": "LED Behaviour",
             "nl": "LED Gedrag"
@@ -1252,6 +1431,10 @@
         {
           "id": "led_behaviour_data",
           "type": "dropdown",
+          "zwave": {
+            "index": 19,
+            "size": 1
+          },
           "label": {
             "en": "LED Behaviour On Data",
             "nl": "LED Gedrag Met Data"
@@ -1279,8 +1462,8 @@
             {
               "id": "2",
               "label": {
-                "en": "LED blinks for 1 seconds when data is send.",
-                "nl": "LED knipperd voor 1 seconden als hij data verzend."
+                "en": "LED blinks for 1 second when data is send.",
+                "nl": "LED knipperd voor 1 seconde als hij data verzend."
               }
             }
           ]
@@ -1288,6 +1471,10 @@
         {
           "id": "invert_switch",
           "type": "dropdown",
+          "zwave": {
+            "index": 4,
+            "size": 1
+          },
           "label": {
             "en": "Switch Behaviour",
             "nl": "Schakelaar Gedrag"
@@ -1398,8 +1585,29 @@
       },
       "settings": [
         {
+          "id": "ignore_start_dim_level",
+          "type": "checkbox",
+          "zwave": {
+            "index": 1,
+            "size": 1
+          },
+          "label": {
+            "en": "Ignore dim level",
+            "nl": "Dim niveau negeren"
+          },
+          "hint": {
+            "en": "The left switch can control other z-wave dimmers, if this setting is enabled it will not use its own dim level as starting point.",
+            "nl": "De linker schakelaar kan andere z-wave dimmers bedienen, als deze setting is ingeschakeld zal het niet zijn eigen dim niveau geruiken als begin punt."
+          },
+          "value": true
+        },
+        {
           "id": "led_behaviour",
           "type": "dropdown",
+          "zwave": {
+            "index": 3,
+            "size": 1
+          },
           "label": {
             "en": "LED Behaviour",
             "nl": "LED Gedrag"
@@ -1429,6 +1637,10 @@
         {
           "id": "led_behaviour_data",
           "type": "dropdown",
+          "zwave": {
+            "index": 19,
+            "size": 1
+          },
           "label": {
             "en": "LED Behaviour On Data",
             "nl": "LED Gedrag Met Data"
@@ -1456,8 +1668,8 @@
             {
               "id": "2",
               "label": {
-                "en": "LED blinks for 1 seconds when data is send.",
-                "nl": "LED knipperd voor 1 seconden als hij data verzend."
+                "en": "LED blinks for 1 second when data is send.",
+                "nl": "LED knipperd voor 1 seconde als hij data verzend."
               }
             }
           ]
@@ -1465,6 +1677,10 @@
         {
           "id": "invert_switch",
           "type": "dropdown",
+          "zwave": {
+            "index": 4,
+            "size": 1
+          },
           "label": {
             "en": "Switch Behaviour",
             "nl": "Schakelaar Gedrag"
@@ -1490,6 +1706,40 @@
               }
             }
           ]
+        },
+        {
+          "id": "shade_control_2",
+          "type": "checkbox",
+          "zwave": {
+            "index": 14,
+            "size": 1
+          },
+          "label": {
+            "en": "Window covering control, group 2",
+            "nl": "Raam bedekking besturing, group 2"
+          },
+          "hint": {
+            "en": "Use the right switch (association goup 2) to control any window covering. (roller shutter, curtain, etc)",
+            "nl": "Gebruik de rechter schakelaar (associatie groep 2) om elke raam bedenking te besturen (rolluik, gordijn, etc)."
+          },
+          "value": false
+        },
+        {
+          "id": "shade_control_3",
+          "type": "checkbox",
+          "zwave": {
+            "index": 15,
+            "size": 1
+          },
+          "label": {
+            "en": "Window covering control, group 3",
+            "nl": "Raam bedekking besturing, group 3"
+          },
+          "hint": {
+            "en": "Use the right switch (association goup 3) to control any window covering. (roller shutter, curtain, etc)",
+            "nl": "Gebruik de rechter schakelaar (associatie groep 3) om elke raam bedenking te besturen (rolluik, gordijn, etc)."
+          },
+          "value": false
         }
       ]
     },
@@ -1501,7 +1751,8 @@
       },
       "zwave": {
         "manufacturerId": [
-          280
+          280,
+          65535
         ],
         "productTypeId": [
           3
@@ -1546,6 +1797,10 @@
         {
           "id": "led_behaviour",
           "type": "dropdown",
+          "zwave": {
+            "index": 1,
+            "size": 1
+          },
           "label": {
             "en": "LED Behaviour",
             "nl": "LED Gedrag"
@@ -1644,6 +1899,10 @@
         {
           "id": "led_behaviour",
           "type": "dropdown",
+          "zwave": {
+            "index": 1,
+            "size": 1
+          },
           "label": {
             "en": "LED Behaviour",
             "nl": "LED Gedrag"
@@ -1736,6 +1995,10 @@
         {
           "id": "led_behaviour",
           "type": "dropdown",
+          "zwave": {
+            "index": 1,
+            "size": 1
+          },
           "label": {
             "en": "LED Behaviour",
             "nl": "LED Gedrag"
@@ -1828,6 +2091,10 @@
         {
           "id": "led_behaviour",
           "type": "dropdown",
+          "zwave": {
+            "index": 1,
+            "size": 1
+          },
           "label": {
             "en": "LED Behaviour",
             "nl": "LED Gedrag"
@@ -1931,6 +2198,10 @@
         {
           "id": "indicator",
           "type": "dropdown",
+          "zwave": {
+            "index": 1,
+            "size": 1
+          },
           "label": {
             "en": "LED Behaviour",
             "nl": "LED Gedrag"
@@ -1955,6 +2226,10 @@
         },
         {
           "id": "save_state",
+          "zwave": {
+            "index": 2,
+            "size": 1
+          },
           "type": "checkbox",
           "label": {
             "en": "Save Power-off State",
@@ -1969,6 +2244,10 @@
         {
           "id": "watt_report",
           "type": "number",
+          "zwave": {
+            "index": 3,
+            "size": 1
+          },
           "label": {
             "en": "Wattage Report Interval",
             "nl": "Wattage Verzend Interval"
@@ -1987,6 +2266,10 @@
         {
           "id": "kwh_report",
           "type": "number",
+          "zwave": {
+            "index": 4,
+            "size": 1
+          },
           "label": {
             "en": "Kilo-WattHour Report Interval",
             "nl": "KiloWattUur Verzend Interval"
@@ -2073,6 +2356,10 @@
         {
           "id": "watt_interval",
           "type": "number",
+          "zwave": {
+            "index": 1,
+            "size": 1
+          },
           "label": {
             "en": "Wattage Report Interval",
             "nl": "Wattage Verzend Interval"
@@ -2091,6 +2378,10 @@
         {
           "id": "kwh_interval",
           "type": "number",
+          "zwave": {
+            "index": 2,
+            "size": 1
+          },
           "label": {
             "en": "kWh Report Interval",
             "nl": "kWh Verzend Interval"
@@ -2109,6 +2400,10 @@
         {
           "id": "amp_overload",
           "type": "number",
+          "zwave": {
+            "index": 3,
+            "size": 1
+          },
           "label": {
             "en": "Amperage Overload Alarm",
             "nl": "Ampere Overbelasting Alarm"
@@ -2127,6 +2422,10 @@
         {
           "id": "restore_state",
           "type": "dropdown",
+          "zwave": {
+            "index": 5,
+            "size": 1
+          },
           "label": {
             "en": "Restore Power State",
             "nl": "Herstel Stroom Status"
@@ -2163,6 +2462,10 @@
         {
           "id": "always_on",
           "type": "checkbox",
+          "zwave": {
+            "index": 6,
+            "size": 1
+          },
           "label": {
             "en": "Always On",
             "nl": "Altijd Aan"
@@ -2176,6 +2479,10 @@
         {
           "id": "led_behaviour",
           "type": "dropdown",
+          "zwave": {
+            "index": 7,
+            "size": 1
+          },
           "label": {
             "en": "LED Behaviour",
             "nl": "LED Gedrag"
@@ -2205,6 +2512,10 @@
         {
           "id": "auto_off",
           "type": "number",
+          "zwave": {
+            "index": 8,
+            "size": 1
+          },
           "label": {
             "en": "Automatic Off Timer",
             "nl": "Automatische Uit Timer"
@@ -2217,6 +2528,23 @@
           "attr": {
             "min": 0,
             "max": 32767
+          }
+        },
+        {
+          "id": "poll_interval",
+          "type": "number",
+          "attr": {
+            "min": 0,
+            "max": 86400
+          },
+          "value": 0,
+          "label": {
+            "en": "Manual State Interval",
+            "nl": "Handmatig Status Interval"
+          },
+          "hint": {
+            "en": "Determine the amount of seconds homey askes for the state, needed if you use the manual button as well.\nRange: 0 (Off), 60 - 86400 seconds",
+            "nl": "Bepaal het aantal seconden dat homey om de status vraagt, nodig als je de handmatig knop ook gebruikt.\nBereik: 0 (Off), 60 - 86400 seconden"
           }
         },
         {

@@ -42,6 +42,12 @@ All other manufacturers have this on at least 20% for this reason, so do keep th
 The voltage and amperage don't get reported on intervals, added polling for this (by default poll is off to save traffic).
 
 ## Change Log:
+**2.0.0:**
+- Full rewrite to SDKv2;
+- Fixed Meter Reset flow cards (TZ69 & TZ88);
+- Added (bad) manufacturer ID TZ67;
+- Added flow cards TZ37/TZ55
+
 **1.0.11:**
 Add extra ID to TZ55 driver
 
@@ -119,8 +125,3 @@ Changed TZ65D to TZ65 (TZ65S & TZ65D are both same driver)
 
 **0.9.0:**
 First Addition to app-store.
-
-### Donate:
-If you like the work that I have done, and loved the magic.  
-Maybe you can think about filling my magic meter again:  
-[![Paypal Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CH7AVGUY9KEQJ)
