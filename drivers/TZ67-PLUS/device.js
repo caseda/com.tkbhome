@@ -16,9 +16,9 @@ class TZ67PlusPlugDimmer extends ZwaveDevice {
 				if (!(CC_MultilevelSwitch instanceof Error) && typeof CC_MultilevelSwitch.SWITCH_MULTILEVEL_GET === 'function') {
 					setTimeout(() => {
 						CC_MultilevelSwitch.SWITCH_MULTILEVEL_GET();
-					}, 2500);
+					}, 2000);
 				}
-				
+
 				return {
 					Value: (value) ? 'on/enable' : 'off/disable',
 				};

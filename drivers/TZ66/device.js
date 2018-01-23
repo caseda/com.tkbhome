@@ -35,7 +35,16 @@ class TZ66Switch extends ZwaveDevice {
 
 			const CC_MultilevelSwitch = this.getCommandClass('SWITCH_MULTILEVEL');
 			if (!(CC_MultilevelSwitch instanceof Error) && typeof CC_MultilevelSwitch.SWITCH_MULTILEVEL_GET === 'function') {
-				CC_MultilevelSwitch.SWITCH_MULTILEVEL_GET();
+				setTimeout(() => {
+					CC_MultilevelSwitch.SWITCH_MULTILEVEL_GET()
+						.then(result => {
+							this.log(result);
+							if (result.hasOwnProperty('Value (Raw)')) {
+								this.setCapabilityValue('onoff', result['Value (Raw)'][0] > 0);
+								this.setCapabilityValue('dim', (result['Value (Raw)'][0] === 255) ? 1 : result['Value (Raw)'][0] / 99);
+							}
+						});
+				}, 2000);
 			}
 
 			singlePress = true;
@@ -48,7 +57,16 @@ class TZ66Switch extends ZwaveDevice {
 
 			const CC_MultilevelSwitch = this.getCommandClass('SWITCH_MULTILEVEL');
 			if (!(CC_MultilevelSwitch instanceof Error) && typeof CC_MultilevelSwitch.SWITCH_MULTILEVEL_GET === 'function') {
-				CC_MultilevelSwitch.SWITCH_MULTILEVEL_GET();
+				setTimeout(() => {
+					CC_MultilevelSwitch.SWITCH_MULTILEVEL_GET()
+						.then(result => {
+							this.log(result);
+							if (result.hasOwnProperty('Value (Raw)')) {
+								this.setCapabilityValue('onoff', result['Value (Raw)'][0] > 0);
+								this.setCapabilityValue('dim', (result['Value (Raw)'][0] === 255) ? 1 : result['Value (Raw)'][0] / 99);
+							}
+						});
+				}, 2000);
 			}
 
 			singlePress = true;
