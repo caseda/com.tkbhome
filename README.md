@@ -42,6 +42,9 @@ All other manufacturers have this on at least 20% for this reason, so do keep th
 The voltage and amperage don't get reported on intervals, added polling for this (by default poll is off to save traffic).
 
 ## Change Log:
+**2.0.1:**
+- Fixed a crash caused by a typo in the TSP01/TSM02 setting parsers
+
 **2.0.0:**
 - Full rewrite to SDKv2;
 - Fixed Meter Reset flow cards (TZ69 & TZ88);

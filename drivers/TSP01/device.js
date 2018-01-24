@@ -66,12 +66,12 @@ class TSP01MotionContactSensor extends ZwaveDevice {
 		});
 
 		this.registerSetting('temperature_monitoring', value => (value) ? 68 : 4);
-		this.registerSetting('pir_redetect_interval_time', value => Math.round(value / 8);
-		this.registerSetting('turn_off_light_time', value => Math.round(value / 8);
-		this.registerSetting('battery_report_time', value => Math.round(value * 2);
-		this.registerSetting('contact_report_time', value => Math.round(value * 2);
-		this.registerSetting('illumination_report_time', value => Math.round(value * 2);
-		this.registerSetting('temperature_report_time', value => Math.round(value * 2);
+		this.registerSetting('pir_redetect_interval_time', value => Math.round(value / 8));
+		this.registerSetting('turn_off_light_time', value => Math.round(value / 8));
+		this.registerSetting('battery_report_time', value => Math.round(value * 2));
+		this.registerSetting('contact_report_time', value => Math.round(value * 2));
+		this.registerSetting('illumination_report_time', value => Math.round(value * 2));
+		this.registerSetting('temperature_report_time', value => Math.round(value * 2));
 
 		// Flows
 		let luminancePercentageChanged = new Homey.FlowCardAction('TSP01_brightness');
