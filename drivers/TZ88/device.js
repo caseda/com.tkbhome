@@ -33,7 +33,7 @@ class TZ88MeteringPlug extends ZwaveMeteringDevice {
 			.register();
 
 		oldMeterResetAction
-		.registerRunListener(() => Promise.reject('card_not_used_anymore_use_new_reset_card');
+		.registerRunListener(() => Promise.reject('card_not_used_anymore_use_new_reset_card'));
 
 		let resetMeterFlowAction = new Homey.FlowCardAction('resetMeter');
 		resetMeterFlowAction
