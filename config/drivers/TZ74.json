@@ -52,7 +52,7 @@
 		},
 		"multiChannelNodes": {
 			"1": {
-				"class": "light",
+				"class": "socket",
 				"capabilities": [
 					"onoff"
 				],
@@ -63,7 +63,7 @@
 				}
 			},
 			"2": {
-				"class": "light",
+				"class": "socket",
 				"capabilities": [
 					"onoff"
 				],
@@ -75,7 +75,7 @@
 			}
 		}
 	},
-	"class": "light",
+	"class": "socket",
 	"capabilities": [
 		"onoff"
 	],
