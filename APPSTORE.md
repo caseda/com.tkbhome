@@ -4,6 +4,7 @@ This app adds support for TKB Home devices in Homey.
 ## Supported devices:
 + TSM02 - 4-in-1 Multi Sensor
 + TSP01 - 3-in-1 Multi Sensor
++ TZ04 - Dual Relay Metering Module
 + TZ35 - Single & Double Wall Dimmer
 + TZ36 - Single & Double Wall Switch
 + TZ37 - Double Relay Wall Switch
@@ -45,7 +46,10 @@ The voltage and amperage don't get reported on intervals, added polling for this
 ## Change Log:
 
 **2.0.2:**
+- Added Dual Relay Metering Module TZ04
+- Added ID's to TZ55
 - Added Dual Relay Switch Module TZ74
+- Update meshdriver (v1.2.7)
 
 **2.0.1:**
 - Fixed a crash caused by a typo in the TSP01/TSM02 setting parsers
