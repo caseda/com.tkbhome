@@ -230,23 +230,6 @@
 				"max": 327670
 			},
 			"value": 0
-		},
-		{
-			"id": "poll_interval",
-			"type": "number",
-			"attr": {
-				"min": 0,
-				"max": 86400
-			},
-			"value": 0,
-			"label": {
-				"en": "Manual State Interval",
-				"nl": "Handmatig Status Interval"
-			},
-			"hint": {
-				"en": "Determine the amount of seconds homey askes for the state, needed if you use the manual button as well.\nRange: 0 (Off), 60 - 86400 seconds",
-				"nl": "Bepaal het aantal seconden dat homey om de status vraagt, nodig als je de handmatig knop ook gebruikt.\nBereik: 0 (Off), 60 - 86400 seconden"
-			}
 		}
 	]
 }

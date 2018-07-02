@@ -9,9 +9,7 @@ class TZ04oubleRelayMeteringModule extends ZwaveMeteringDevice {
 		//this.enableDebug();
 
 		// Capabilities
-		this.registerCapability('onoff', 'SWITCH_BINARY', {
-			pollInterval: this.getSetting('poll_interval') * 1000,
-		});
+		this.registerCapability('onoff', 'SWITCH_BINARY');
 		this.registerCapability('measure_power', 'METER');
 		this.registerCapability('meter_power', 'METER');
 
