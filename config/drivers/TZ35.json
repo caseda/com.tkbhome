@@ -10,10 +10,12 @@
 			65535
 		],
 		"productTypeId": [
-			3
+			3,
+			785
 		],
 		"productId": [
-			4
+			4,
+			513
 		],
 		"learnmode": {
 			"image": "/drivers/TZ35/assets/learnmode.svg",

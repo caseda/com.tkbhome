@@ -521,12 +521,11 @@
           "type": "number",
           "zwave": {
             "index": 9,
-            "size": 1,
-            "signed": false
+            "size": 1
           },
           "attr": {
             "min": 24,
-            "max": 255,
+            "max": 1016,
             "step": 8
           },
           "value": 32,
@@ -649,8 +648,7 @@
           "type": "number",
           "zwave": {
             "index": 8,
-            "size": 1,
-            "signed": false
+            "size": 1
           },
           "attr": {
             "min": 24,
@@ -769,10 +767,12 @@
           65535
         ],
         "productTypeId": [
-          3
+          3,
+          785
         ],
         "productId": [
-          4
+          4,
+          513
         ],
         "learnmode": {
           "image": "/drivers/TZ35/assets/learnmode.svg",
