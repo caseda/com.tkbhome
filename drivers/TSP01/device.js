@@ -9,7 +9,9 @@ class TSP01MotionContactSensor extends ZwaveDevice {
 		//this.enableDebug();
 
 		// Register Flows
-		this._luminancePercentageChanged = new Homey.FlowCardTriggerDevice('TSP01_brightness').registerRunListener(this._luminancePercentageChanged).register();
+		let luminancePercentageChanged = new Homey.FlowCardTriggerDevice('TSP01_brightness');
+		luminancePercentageChanged
+			.register();
 
 		// Register Capabilities
 		this.registerCapability('measure_battery', 'BATTERY');
@@ -41,7 +43,7 @@ class TSP01MotionContactSensor extends ZwaveDevice {
 			report: 'SENSOR_MULTILEVEL_REPORT',
 			reportParser: report => {
 				if (report.hasOwnProperty('Sensor Type') && report.hasOwnProperty('Sensor Value (Parsed)') && report['Sensor Type'] === 'Luminance (version 1)') {
-					this._luminancePercentageChanged.trigger(this, { luminance: report['Sensor Value (Parsed)'] }, null);
+					luminancePercentageChanged.trigger(this, { luminance: report['Sensor Value (Parsed)'] }, null);
 					return report['Sensor Value (Parsed)'];
 				}
 				return null;
@@ -79,6 +81,7 @@ class TSP01MotionContactSensor extends ZwaveDevice {
 		this.registerSetting('contact_report_time', value => Math.round(value * 2));
 		this.registerSetting('illumination_report_time', value => Math.round(value * 2));
 		this.registerSetting('temperature_report_time', value => Math.round(value * 2));
+	}
 }
 
 module.exports = TSP01MotionContactSensor;
