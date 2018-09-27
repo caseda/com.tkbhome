@@ -190,7 +190,7 @@
 			},
 			"hint": {
 				"en": "The amount of seconds between asking the device for a status update.\nRange: 0 (Off), 60 - 86400 seconds",
-				"nl": "Aantal seconden tussen het opvragen van een status update aan het apparaat.\nBereik:  0 (Uit), 60 - 86400 seconden"
+				"nl": "Aantal seconden tussen het opvragen van een status update aan het apparaat.\nBereik: 0 (Uit), 60 - 86400 seconden"
 			}
 		}
 	]

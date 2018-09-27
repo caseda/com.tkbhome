@@ -350,24 +350,24 @@
             "filter": "driver_id=TZ04|TZ69|TZ88"
           }
         ]
+      }
+    ],
+    "conditions": [
+      {
+        "id": "FGBS-001_i1",
+        "title": {
+          "en": "Input 1 !{{is open|is closed}}",
+          "nl": "Ingang 1 !{{is geopend|is gesloten}}"
+        },
+        "args": []
       },
       {
-        "id": "TZ88_reset_meter",
+        "id": "FGBS-001_i2",
         "title": {
-          "en": "Deprecated - Reset energy consumption (kWh)",
-          "nl": "Verouderd - Reset energie consumptie (kWh)"
+          "en": "Input 2 !{{is open|is closed}}",
+          "nl": "Ingang 2 !{{is geopend|is gesloten}}"
         },
-        "hint": {
-          "en": "This card is Deprecated, please use the new reset meter card.\n\nWARNING: This action can't be undone.",
-          "nl": "Deze kaart is verouderd, gebruik alsjeblieft de nieuwe reset meter kaart.\n\nWAARSCHUWING: Deze actie kan niet ongedaan worden gemaakt"
-        },
-        "args": [
-          {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=TZ88"
-          }
-        ]
+        "args": []
       }
     ]
   },
@@ -525,7 +525,7 @@
           },
           "attr": {
             "min": 24,
-            "max": 1016,
+            "max": 255,
             "step": 8
           },
           "value": 32,
@@ -652,7 +652,7 @@
           },
           "attr": {
             "min": 24,
-            "max": 1016,
+            "max": 127,
             "step": 8
           },
           "value": 24,
@@ -860,7 +860,7 @@
           },
           "attr": {
             "min": 5,
-            "max": 163835,
+            "max": 127,
             "step": 5
           },
           "value": 300
@@ -882,7 +882,7 @@
           },
           "attr": {
             "min": 10,
-            "max": 327670,
+            "max": 127,
             "step": 10
           },
           "value": 60
@@ -984,7 +984,7 @@
           },
           "attr": {
             "min": 0,
-            "max": 327670
+            "max": 127
           },
           "value": 0
         }
@@ -1182,7 +1182,7 @@
           },
           "hint": {
             "en": "The amount of seconds between asking the device for a status update.\nRange: 0 (Off), 60 - 86400 seconds",
-            "nl": "Aantal seconden tussen het opvragen van een status update aan het apparaat.\nBereik:  0 (Uit), 60 - 86400 seconden"
+            "nl": "Aantal seconden tussen het opvragen van een status update aan het apparaat.\nBereik: 0 (Uit), 60 - 86400 seconden"
           }
         }
       ]
@@ -1756,7 +1756,7 @@
           },
           "hint": {
             "en": "The amount of seconds between asking the device for a status update.\nRange: 0 (Off), 60 - 86400 seconds",
-            "nl": "Aantal seconden tussen het opvragen van een status update aan het apparaat.\nBereik:  0 (Uit), 60 - 86400 seconden"
+            "nl": "Aantal seconden tussen het opvragen van een status update aan het apparaat.\nBereik: 0 (Uit), 60 - 86400 seconden"
           }
         }
       ]
@@ -2499,7 +2499,7 @@
           },
           "attr": {
             "min": 5,
-            "max": 163835,
+            "max": 127,
             "step": 5
           },
           "value": 300
@@ -2521,7 +2521,7 @@
           },
           "attr": {
             "min": 10,
-            "max": 327670,
+            "max": 127,
             "step": 10
           },
           "value": 60
@@ -2803,7 +2803,7 @@
           "value": 3600,
           "attr": {
             "min": 5,
-            "max": 163835,
+            "max": 127,
             "step": 5
           }
         },
@@ -2825,7 +2825,7 @@
           "value": 60,
           "attr": {
             "min": 10,
-            "max": 327670,
+            "max": 127,
             "step": 10
           }
         },
@@ -2959,7 +2959,7 @@
           "value": 0,
           "attr": {
             "min": 0,
-            "max": 32767
+            "max": 127
           }
         },
         {
@@ -2967,7 +2967,7 @@
           "type": "number",
           "attr": {
             "min": 0,
-            "max": 86400
+            "max": 127
           },
           "value": 0,
           "label": {

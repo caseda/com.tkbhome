@@ -45,10 +45,11 @@ The voltage and amperage don't get reported on intervals, added polling for this
 
 ## Change Log:
 **2.0.2:**
+- Fix bug TSP01
 - Added Dual Relay Metering Module TZ04
 - Added ID's to TZ55
 - Added Dual Relay Switch Module TZ74
-- Update meshdriver (v1.2.7)
+- Update meshdriver (v1.2.21)
 
 **2.0.1:**
 - Fixed a crash caused by a typo in the TSP01/TSM02 setting parsers

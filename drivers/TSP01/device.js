@@ -8,9 +8,16 @@ class TSP01MotionContactSensor extends ZwaveDevice {
 		//this.printNode();
 		//this.enableDebug();
 
-		// Capabilities
+		// Register Flows
+		this._luminancePercentageChanged = new Homey.FlowCardTriggerDevice('TSP01_brightness').registerRunListener(this._luminancePercentageChanged).register();
+
+		// Register Capabilities
 		this.registerCapability('measure_battery', 'BATTERY');
-		this.registerCapability('measure_temperature', 'SENSOR_MULTILEVEL');
+		this.registerCapability('measure_temperature', 'SENSOR_MULTILEVEL', {
+			getOpts: {
+				getOnStart: false,
+			},
+		});
 		this.registerCapability('alarm_contact', 'SENSOR_BINARY');
 		this.registerCapability('alarm_tamper', 'SENSOR_BINARY');
 		this.registerCapability('alarm_motion', 'SENSOR_BINARY');
@@ -34,14 +41,14 @@ class TSP01MotionContactSensor extends ZwaveDevice {
 			report: 'SENSOR_MULTILEVEL_REPORT',
 			reportParser: report => {
 				if (report.hasOwnProperty('Sensor Type') && report.hasOwnProperty('Sensor Value (Parsed)') && report['Sensor Type'] === 'Luminance (version 1)') {
-					luminancePercentageChanged.trigger('TSP01_brightness', { luminance: report['Sensor Value (Parsed)'] }, null);
+					this._luminancePercentageChanged.trigger(this, { luminance: report['Sensor Value (Parsed)'] }, null);
 					return report['Sensor Value (Parsed)'];
 				}
 				return null;
 			},
 		})
 
-		// Settings
+		// Register Settings
 		this.registerSetting('basic_set_level', value => (value > 99) ? 255 : value);
 
 		this.registerSetting('test_mode', value => {
@@ -72,12 +79,6 @@ class TSP01MotionContactSensor extends ZwaveDevice {
 		this.registerSetting('contact_report_time', value => Math.round(value * 2));
 		this.registerSetting('illumination_report_time', value => Math.round(value * 2));
 		this.registerSetting('temperature_report_time', value => Math.round(value * 2));
-
-		// Flows
-		let luminancePercentageChanged = new Homey.FlowCardAction('TSP01_brightness');
-		luminancePercentageChanged
-			.register();
-	}
 }
 
 module.exports = TSP01MotionContactSensor;
