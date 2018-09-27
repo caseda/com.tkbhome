@@ -4,7 +4,7 @@
     "en": "TKB Home"
   },
   "sdk": 2,
-  "version": "2.0.1",
+  "version": "2.0.2",
   "compatibility": ">=1.5.0",
   "description": {
     "en": "TKB Home devices for Homey",
