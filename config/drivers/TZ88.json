@@ -52,7 +52,7 @@
 			"type": "number",
 			"zwave": {
 				"index": 1,
-				"size": 1
+				"size": 2
 			},
 			"label": {
 				"en": "Wattage Report Interval",
@@ -74,7 +74,7 @@
 			"type": "number",
 			"zwave": {
 				"index": 2,
-				"size": 1
+				"size": 2
 			},
 			"label": {
 				"en": "kWh Report Interval",
@@ -208,7 +208,7 @@
 			"type": "number",
 			"zwave": {
 				"index": 8,
-				"size": 1
+				"size": 2
 			},
 			"label": {
 				"en": "Automatic Off Timer",

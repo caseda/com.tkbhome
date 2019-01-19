@@ -91,7 +91,7 @@
 			"type": "number",
 			"zwave": {
 				"index": 1,
-				"size": 1
+				"size": 2
 			},
 			"label": {
 				"en": "Wattage Report Interval",
@@ -113,7 +113,7 @@
 			"type": "number",
 			"zwave": {
 				"index": 2,
-				"size": 1
+				"size": 2
 			},
 			"label": {
 				"en": "Kilo-WattHour Report Interval",
@@ -222,12 +222,12 @@
 				"nl": "Automatische Uit Timer"
 			},
 			"hint": {
-				"en": "After how many seconds should both relays automatically turn off again.\nRange: 0 (Off) 1 - 327670 seconds",
-				"nl": "Na hoeveel seconden moeten beide relais weer automatische uit gaan.\nBereik: 0 (Uit), 1 - 327670 seconden"
+				"en": "After how many seconds should both relays automatically turn off again.\nRange: 0 (Off) 1 - 32767 seconds",
+				"nl": "Na hoeveel seconden moeten beide relais weer automatische uit gaan.\nBereik: 0 (Uit), 1 - 32767 seconden"
 			},
 			"attr": {
 				"min": 0,
-				"max": 327670
+				"max": 32767
 			},
 			"value": 0
 		}
