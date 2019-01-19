@@ -4,7 +4,7 @@
 	"description": "This app adds support for TKB Home devices in Homey",
 	"main": "app.js",
 	"dependencies": {
-		"homey-meshdriver": "git+https://github.com/athombv/node-homey-meshdriver.git"
+		"homey-meshdriver": "^1.2.29"
 	},
 	"devDependencies": {},
 	"scripts": {

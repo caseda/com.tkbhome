@@ -1,0 +1,55 @@
+{
+	"id": "TZ69",
+	"name": {
+		"en": "Smart Energy Wallplug TZ69",
+		"nl": "Slimme Energie Tussenstekker TZ69"
+	},
+	"zwave": {
+		"manufacturerId": [
+			280
+		],
+		"productTypeId": [
+			4,
+			785
+		],
+		"productId": [
+			2,
+			259
+		],
+		"learnmode": {
+			"image": "/drivers/TZ69/assets/learnmode.svg",
+			"instruction": {
+				"en": "Press the button 3 times, within 1.5 seconds",
+				"nl": "Druk 3 keer op de knop, binnen 1,5 seconden"
+			}
+		},
+		"defaultConfiguration": [
+			{
+				"id": 3,
+				"size": 2,
+				"value": 60
+			}
+		],
+		"associationGroups": [
+			1
+		],
+		"associationGroupsOptions": {
+			"1": {
+				"hint": {
+					"en": "This is the controller group (lifeline), it is not recommended to remove Homey's ID in here.",
+					"nl": "Dit is de controller groep (levenslijn), het is niet aangeraden om hier Homey's ID te verwijderen."
+				}
+			}
+		}
+	},
+	"class": "socket",
+	"capabilities": [
+		"onoff",
+		"measure_power",
+		"meter_power"
+	],
+	"images": {
+		"large": "/drivers/TZ68-PLUS/assets/images/large.png",
+		"small": "/drivers/TZ68-PLUS/assets/images/small.png"
+	}
+}

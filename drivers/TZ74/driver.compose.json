@@ -1,0 +1,86 @@
+{
+	"id": "TZ74",
+	"name": {
+		"en": "Double Relay Switch TZ74",
+		"nl": "Dubbel Relais Schakelaar TZ74"
+	},
+	"zwave": {
+		"manufacturerId": [
+			280
+		],
+		"productTypeId": [
+			785
+		],
+		"productId": [
+			772
+		],
+		"learnmode": {
+			"image": "/drivers/TZ74/assets/learnmode.svg",
+			"instruction": {
+				"en": "Press the inclusion button 3 times within 2 seconds to start the inclusion mode.",
+				"nl": "Druk binnen 2 seconden 3 keer op de includeer knop om de inclusie modus te activeren."
+			}
+		},
+		"associationGroups": [
+			1
+		],
+		"associationGroupsOptions": {
+			"1": {
+				"hint": {
+					"en": "Devices that are associated here will toggle their state when you switch with the right switch. Also the Lifeline, not recommended to remove Homey's ID",
+					"nl": "Apparaten die hier zijn geassocieerd zullen hun status schakelen wanneer je schakelt met de rechter schakelaar. Ook de levenslijn, niet aangeraden Homey's ID te verwijderen"
+				}
+			},
+			"2": {
+				"hint": {
+					"en": "Devices that are associated here will toggle their state when you double pressing the left switch.",
+					"nl": "Apparaten die hier zijn geassocieerd zullen hun status schakelen wanneer je 2x drukt op de linker schakelaar."
+				}
+			},
+			"3": {
+				"hint": {
+					"en": "Devices that are associated here will toggle their state when you double pressing the right switch.",
+					"nl": "Apparaten die hier zijn geassocieerd zullen hun status schakelen wanneer je 2x drukt op de rechter schakelaar."
+				}
+			},
+			"4": {
+				"hint": {
+					"en": "Devices that are associated here follow the state of the switch when it is being switched.",
+					"nl": "Apparaten die hier zijn geassocieerd volgen de status van de schakelaar wanneer het wordt geschakeld."
+				}
+			}
+		},
+		"multiChannelNodes": {
+			"1": {
+				"class": "socket",
+				"capabilities": [
+					"onoff"
+				],
+				"icon": "/drivers/TZ74/assets/icon-1.svg",
+				"name": {
+					"en": "Switch 1",
+					"nl": "Schakelaar 1"
+				}
+			},
+			"2": {
+				"class": "socket",
+				"capabilities": [
+					"onoff"
+				],
+				"icon": "/drivers/TZ74/assets/icon-2.svg",
+				"name": {
+					"en": "Switch 2",
+					"nl": "Schakelaar 2"
+				}
+			}
+		}
+	},
+	"class": "socket",
+	"capabilities": [
+		"onoff"
+	],
+	"images": {
+		"large": "/drivers/TZ74/assets/images/large.png",
+		"small": "/drivers/TZ74/assets/images/small.png"
+	}
+}

@@ -1,0 +1,18 @@
+{
+	"id": "resetMeter",
+	"title": {
+		"en": "Reset meter values",
+		"nl": "Meter waarden opnieuw instellen"
+	},
+	"hint": {
+		"en": "Reset the accumulated power usage value (kWh), note that this can not be reversed.",
+		"nl": "Stel geaccumuleerde stroomverbruik waarde (kWh) opnieuw in, dit kan niet worden teruggedraaid."
+	},
+	"args": [
+		{
+			"name": "device",
+			"type": "device",
+			"filter": "driver_id=TZ04|TZ69|TZ88"
+		}
+	]
+}

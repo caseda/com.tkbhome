@@ -1,0 +1,44 @@
+{
+	"id": "TZ68",
+	"name": {
+		"en": "Wallplug TZ68",
+		"nl": "Tussenstekker TZ68"
+	},
+	"zwave": {
+		"manufacturerId": [
+			280
+		],
+		"productTypeId": [
+			257
+		],
+		"productId": [
+			259
+		],
+		"learnmode": {
+			"image": "/drivers/TZ68/assets/learnmode.svg",
+			"instruction": {
+				"en": "Press the button 3 times, within 1.5 seconds",
+				"nl": "Druk 3 keer op de knop, binnen 1,5 seconden"
+			}
+		},
+		"associationGroups": [
+			1
+		],
+		"associationGroupsOptions": {
+			"1": {
+				"hint": {
+					"en": "This is the controller group, it is not recommended to change this.",
+					"nl": "Dit is de controller groep, het is niet aangeraden deze te wijzigen."
+				}
+			}
+		}
+	},
+	"class": "socket",
+	"capabilities": [
+		"onoff"
+	],
+	"images": {
+		"large": "/drivers/TZ68/assets/images/large.png",
+		"small": "/drivers/TZ68/assets/images/small.png"
+	}
+}

@@ -1,0 +1,11 @@
+{
+	"actions": 	[
+		{
+			"id": "TZ88_overload_alarm",
+			"title": {
+				"en": "Overload (A) alarm activated",
+				"nl": "Overbelastings (A) alarm geactiveerd"
+			}
+		}
+	]
+}

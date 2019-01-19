@@ -1,0 +1,125 @@
+[
+  {
+    "id": "led_behaviour",
+    "type": "dropdown",
+    "zwave": {
+      "index": 3,
+      "size": 1
+    },
+    "label": {
+      "en": "LED Behaviour",
+      "nl": "LED Gedrag"
+    },
+    "hint": {
+      "en": "Determine the behaviour of the LED.",
+      "nl": "Bepaal het gedrag van de LED."
+    },
+    "value": "0",
+    "values": [
+      {
+        "id": "0",
+        "label": {
+          "en": "LED indicates the switch is off.",
+          "nl": "LED geeft aan het schakelaar uit is."
+        }
+      },
+      {
+        "id": "1",
+        "label": {
+          "en": "LED indicates the switch is on",
+          "nl": "LED geeft aan het schakelaar aan is"
+        }
+      }
+    ]
+  },
+  {
+    "id": "led_behaviour_data",
+    "type": "dropdown",
+    "zwave": {
+      "index": 19,
+      "size": 1
+    },
+    "label": {
+      "en": "LED Behaviour On Data",
+      "nl": "LED Gedrag Met Data"
+    },
+    "hint": {
+      "en": "Determine the behaviour of the LED when data is being transmitted.",
+      "nl": "Bepaal het gedrag van de LED wanneer data word verzonden."
+    },
+    "value": "2",
+    "values": [
+      {
+        "id": "0",
+        "label": {
+          "en": "LED doesn't blink.",
+          "nl": "LED knipperd niet."
+        }
+      },
+      {
+        "id": "1",
+        "label": {
+          "en": "LED blinks when transmitting data.",
+          "nl": "LED knipperd wanneer data word verzonden."
+        }
+      },
+      {
+        "id": "2",
+        "label": {
+          "en": "LED blinks for 1 second when data is send.",
+          "nl": "LED knipperd voor 1 seconde als hij data verzend."
+        }
+      }
+    ]
+  },
+  {
+    "id": "invert_switch",
+    "type": "dropdown",
+    "zwave": {
+      "index": 4,
+      "size": 1
+    },
+    "label": {
+      "en": "Switch Behaviour",
+      "nl": "Schakelaar Gedrag"
+    },
+    "hint": {
+      "en": "Determine if the switch sends \"On\" when top or bottom is pressed.",
+      "nl": "Bepaal of de schakelaar \"Aan\" zend wanneer boven of onder is ingedrukt."
+    },
+    "value": "0",
+    "values": [
+      {
+        "id": "0",
+        "label": {
+          "en": "Top = On",
+          "nl": "Boven = Aan"
+        }
+      },
+      {
+        "id": "1",
+        "label": {
+          "en": "Bottom = On",
+          "nl": "Onder = Aan"
+        }
+      }
+    ]
+  },
+  {
+    "id": "poll_interval",
+    "type": "number",
+    "attr": {
+      "min": 0,
+      "max": 86400
+    },
+    "value": 300,
+    "label": {
+      "en": "Poll Status Interval",
+      "nl": "Poll Status Interval"
+    },
+    "hint": {
+      "en": "The amount of seconds between asking the device for a status update.\nRange: 0 (Off), 60 - 86400 seconds",
+      "nl": "Aantal seconden tussen het opvragen van een status update aan het apparaat.\nBereik: 0 (Uit), 60 - 86400 seconden"
+    }
+  }
+]

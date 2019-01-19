@@ -1,0 +1,20 @@
+{
+  "type": "number",
+  "uiComponent": "sensor",
+  "title": {
+    "en": "Luminance",
+    "nl": "Helderheid"
+  },
+  "units": {
+    "en": "%"
+  },
+  "insights": true,
+  "desc": {
+    "en": "Luminance in Percentage (%)",
+    "nl": "Helderheid in Percentage (%)"
+  },
+  "chartType": "spline",
+  "decimals": 0,
+  "getable": true,
+  "setable": false
+}

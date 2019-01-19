@@ -1,0 +1,22 @@
+{
+	"actions":[
+		{
+			"id": "TSP01_brightness",
+			"title": {
+				"en": "The luminance level has changed",
+				"nl": "Het helderheids niveau is veranderd"
+			},
+			"tokens": [
+				{
+					"name": "luminance",
+					"type": "number",
+					"title": {
+						"en": "Level",
+						"nl": "Niveau"
+					},
+					"example": 50
+				}
+			]
+		}
+	]
+}

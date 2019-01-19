@@ -1,0 +1,49 @@
+{
+	"id": "TZ88",
+	"name": {
+		"en": "Smart Energy Wallplug TZ88",
+		"nl": "Slimme Energie Tussenstekker TZ88"
+	},
+	"zwave": {
+		"manufacturerId": [
+			280
+		],
+		"productTypeId": [
+			1
+		],
+		"productId": [
+			1,
+			17
+		],
+		"learnmode": {
+			"image": "/drivers/TZ88/assets/learnmode.svg",
+			"instruction": {
+				"en": "Press the button 3 times, within 2 seconds",
+				"nl": "Druk 3 keer op de knop, binnen 2 seconden"
+			}
+		},
+		"associationGroups": [
+			1
+		],
+		"associationGroupsOptions": {
+			"1": {
+				"hint": {
+					"en": "This is the controller group, it is not recommended to change this.",
+					"nl": "Dit is de controller groep, het is niet aangeraden deze te wijzigen."
+				}
+			}
+		}
+	},
+	"class": "socket",
+	"capabilities": [
+		"onoff",
+		"measure_voltage",
+		"measure_current",
+		"measure_power",
+		"meter_power"
+	],
+	"images": {
+		"large": "/drivers/TZ88/assets/images/large.png",
+		"small": "/drivers/TZ88/assets/images/small.png"
+	}
+}

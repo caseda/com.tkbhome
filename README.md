@@ -44,6 +44,11 @@ All other manufacturers have this on at least 20% for this reason, so do keep th
 The voltage and amperage don't get reported on intervals, added polling for this (by default poll is off to save traffic).
 
 ## Change Log:
+**2.0.3:**
+- Fix app not being able to install on Homey v2
+- Convert app to new composer
+- Update meshdriver (v1.2.29)
+
 **2.0.2:**
 - Fix bug TSP01
 - Added Dual Relay Metering Module TZ04

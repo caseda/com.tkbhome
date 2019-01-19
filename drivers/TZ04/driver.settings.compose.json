@@ -1,0 +1,147 @@
+[
+  {
+    "id": "watt_report",
+    "type": "number",
+    "zwave": {
+      "index": 1,
+      "size": 2
+    },
+    "label": {
+      "en": "Wattage Report Interval",
+      "nl": "Wattage Verzend Interval"
+    },
+    "hint": {
+      "en": "On what interval (in steps of 5 seconds) must the wallplug send its current wattage value.\nRange: 5 - 163835 seconds",
+      "nl": "Met wat van interval (in stappen van 5 seconden) moet de tussenstekker zijn wattage waarde verzenden.\nBereik: 5 - 163835 seconden"
+    },
+    "attr": {
+      "min": 5,
+      "max": 163835,
+      "step": 5
+    },
+    "value": 300
+  },
+  {
+    "id": "kwh_report",
+    "type": "number",
+    "zwave": {
+      "index": 2,
+      "size": 2
+    },
+    "label": {
+      "en": "Kilo-WattHour Report Interval",
+      "nl": "KiloWattUur Verzend Interval"
+    },
+    "hint": {
+      "en": "On what interval (in steps of 10 minutes) must the wallplug send its current energie consumption value.\nRange: 10 - 327670 minutes",
+      "nl": "Met wat van interval (in stappen van 10 minuten) moet de tussenstekker zijn energie verbruik waarde verzenden.\nBereik: 10 - 327670 minuten"
+    },
+    "attr": {
+      "min": 10,
+      "max": 327670,
+      "step": 10
+    },
+    "value": 60
+  },
+  {
+    "id": "switch_type",
+    "zwave": {
+      "index": 4,
+      "size": 1
+    },
+    "type": "dropdown",
+    "label": {
+      "en": "Switch type",
+      "nl": "Schakelaar type"
+    },
+    "hint": {
+      "en": "This parameter (4) determines what device is operating the switch.",
+      "nl": "Deze parameter (4) bepaalt welk apparaat de schakelaar bestuurt."
+    },
+    "value": "3",
+    "values": [
+      {
+        "id": "1",
+        "label": {
+          "en": "Toggle switch (switch dependend)",
+          "nl": "Tuimelschakelaar (schakelaar afhankelijk)"
+        }
+      },
+      {
+        "id": "2",
+        "label": {
+          "en": "Momentary switch",
+          "nl": "Pulsdrukschakelaar"
+        }
+      },
+      {
+        "id": "3",
+        "label": {
+          "en": "Toggle switch (always toggle)",
+          "nl": "Tuimelschakelaar (schakelt altijd)"
+        }
+      }
+    ]
+  },
+  {
+    "id": "save_state",
+    "zwave": {
+      "index": 4,
+      "size": 1
+    },
+    "type": "dropdown",
+    "label": {
+      "en": "Switch Power-On State",
+      "nl": "Schakelaar Power-Up Status"
+    },
+    "hint": {
+      "en": "In which state should the switch be in when power is re-applied.",
+      "nl": "In welke status moet de schakelaar zich bevinden als de spanning weer terug komt."
+    },
+    "value": "1",
+    "values": [
+      {
+        "id": "0",
+        "label": {
+          "en": "Off",
+          "nl": "Uit"
+        }
+      },
+      {
+        "id": "1",
+        "label": {
+          "en": "Last state",
+          "nl": "Laatste status"
+        }
+      },
+      {
+        "id": "2",
+        "label": {
+          "en": "On",
+          "nl": "Aan"
+        }
+      }
+    ]
+  },
+  {
+    "id": "auto_off",
+    "type": "number",
+    "zwave": {
+      "index": 8,
+      "size": 2
+    },
+    "label": {
+      "en": "Automatic Off Timer",
+      "nl": "Automatische Uit Timer"
+    },
+    "hint": {
+      "en": "After how many seconds should both relays automatically turn off again.\nRange: 0 (Off) 1 - 32767 seconds",
+      "nl": "Na hoeveel seconden moeten beide relais weer automatische uit gaan.\nBereik: 0 (Uit), 1 - 32767 seconden"
+    },
+    "attr": {
+      "min": 0,
+      "max": 32767
+    },
+    "value": 0
+  }
+]

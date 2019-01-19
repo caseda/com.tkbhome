@@ -1,0 +1,32 @@
+{
+	"actions": [
+		{
+			"id": "TZ65D_s2_single_on",
+			"title": {
+				"en": "Right switched on",
+				"nl": "Rechts aan geschakeld"
+			}
+		},
+		{
+			"id": "TZ65D_s2_single_off",
+			"title": {
+				"en": "Right switched off",
+				"nl": "Rechts uit geschakeld"
+			}
+		},
+		{
+			"id": "TZ65D_s2_double_on",
+			"title": {
+				"en": "Right switched 2x on",
+				"nl": "Rechts 2x aan geschakeld"
+			}
+		},
+		{
+			"id": "TZ65D_s2_double_off",
+			"title": {
+				"en": "Right switched 2x off",
+				"nl": "Rechts 2x uit geschakeld"
+			}
+		}
+	]
+}

@@ -1,0 +1,230 @@
+[
+  {
+    "id": "watt_interval",
+    "type": "number",
+    "zwave": {
+      "index": 1,
+      "size": 2
+    },
+    "label": {
+      "en": "Wattage Report Interval",
+      "nl": "Wattage Verzend Interval"
+    },
+    "hint": {
+      "en": "On which interval (in steps of 5 seconds) will the wattage be send, even if the default threshold of 5% has not been met.\nRange: 5s - 163835s (45 hours)",
+      "nl": "Met welk interval (in stappen van 5 seconden) zal de wattage verzonden worden, zelfs als de standaard drempel van 5% niet overschreden is.\nBereik: 5s - 163835s (45 hours)"
+    },
+    "value": 3600,
+    "attr": {
+      "min": 5,
+      "max": 163835,
+      "step": 5
+    }
+  },
+  {
+    "id": "kwh_interval",
+    "type": "number",
+    "zwave": {
+      "index": 2,
+      "size": 2
+    },
+    "label": {
+      "en": "kWh Report Interval",
+      "nl": "kWh Verzend Interval"
+    },
+    "hint": {
+      "en": "On which interval (in steps of 10 minutes) will the energie consumption be send, even if the default threshold of 5% has not been met.\nRange: 10m - 327670m (227.55 days)",
+      "nl": "Met welk interval (in stappen van 10 minuten) zal de energie consumptie verzonden worden, zelfs als de standaard drempel van 5% niet overschreden is.\nBereik: 10m - 327670m (227,55 dagen)"
+    },
+    "value": 60,
+    "attr": {
+      "min": 10,
+      "max": 327670,
+      "step": 10
+    }
+  },
+  {
+    "id": "amp_overload",
+    "type": "number",
+    "zwave": {
+      "index": 3,
+      "size": 1
+    },
+    "label": {
+      "en": "Amperage Overload Alarm",
+      "nl": "Ampere Overbelasting Alarm"
+    },
+    "hint": {
+      "en": "Above what value will there be an alarm given.\nRange: 0.10A - 13.00A",
+      "nl": "Boven welke waarde zal er een alarm gegeven worden.\nBereik: 0,10A - 13,00A"
+    },
+    "value": 13,
+    "attr": {
+      "min": 0.1,
+      "max": 13,
+      "step": 0.01
+    }
+  },
+  {
+    "id": "restore_state",
+    "type": "dropdown",
+    "zwave": {
+      "index": 5,
+      "size": 1
+    },
+    "label": {
+      "en": "Restore Power State",
+      "nl": "Herstel Stroom Status"
+    },
+    "hint": {
+      "en": "In what state must the wallplug be when power is restored.",
+      "nl": "In welke status moet de tussenstekker zijn als de stroom weer word hersteld."
+    },
+    "value": "1",
+    "values": [
+      {
+        "id": "0",
+        "label": {
+          "en": "Off",
+          "nl": "Uit"
+        }
+      },
+      {
+        "id": "1",
+        "label": {
+          "en": "Last State",
+          "nl": "Vorige Status"
+        }
+      },
+      {
+        "id": "2",
+        "label": {
+          "en": "On",
+          "nl": "Aan"
+        }
+      }
+    ]
+  },
+  {
+    "id": "always_on",
+    "type": "checkbox",
+    "zwave": {
+      "index": 6,
+      "size": 1
+    },
+    "label": {
+      "en": "Always On",
+      "nl": "Altijd Aan"
+    },
+    "hint": {
+      "en": "When enabled the wallplug will always stay on.",
+      "nl": "Wanneer geactiveerd zal de tussenstekker altijd aan zijn."
+    },
+    "value": false
+  },
+  {
+    "id": "led_behaviour",
+    "type": "dropdown",
+    "zwave": {
+      "index": 7,
+      "size": 1
+    },
+    "label": {
+      "en": "LED Behaviour",
+      "nl": "LED Gedrag"
+    },
+    "hint": {
+      "en": "Determine the behaviour of the LED.",
+      "nl": "Bepaal het gedrag van de LED."
+    },
+    "value": "1",
+    "values": [
+      {
+        "id": "1",
+        "label": {
+          "en": "LED is on when the socket is off.",
+          "nl": "LED is aan als het stopcontact uit is."
+        }
+      },
+      {
+        "id": "2",
+        "label": {
+          "en": "LED is on when the socket is on",
+          "nl": "LED is aan als het stopcontact aan is"
+        }
+      }
+    ]
+  },
+  {
+    "id": "auto_off",
+    "type": "number",
+    "zwave": {
+      "index": 8,
+      "size": 2
+    },
+    "label": {
+      "en": "Automatic Off Timer",
+      "nl": "Automatische Uit Timer"
+    },
+    "hint": {
+      "en": "After how many seconds will the wallplug automatically go off.\nRange: 0 (Off), 1s - 32767s",
+      "nl": "Na hoeveel seconden zal de tussenstekker automatische uit gaan.\nBereik: 0 (Uit), 1s - 32767s"
+    },
+    "value": 0,
+    "attr": {
+      "min": 0,
+      "max": 32767
+    }
+  },
+  {
+    "id": "poll_interval",
+    "type": "number",
+    "attr": {
+      "min": 0,
+      "max": 86400
+    },
+    "value": 0,
+    "label": {
+      "en": "Manual State Interval",
+      "nl": "Handmatig Status Interval"
+    },
+    "hint": {
+      "en": "Determine the amount of seconds homey askes for the state, needed if you use the manual button as well.\nRange: 0 (Off), 60 - 86400 seconds",
+      "nl": "Bepaal het aantal seconden dat homey om de status vraagt, nodig als je de handmatig knop ook gebruikt.\nBereik: 0 (Off), 60 - 86400 seconden"
+    }
+  },
+  {
+    "id": "poll_interval_voltage",
+    "type": "number",
+    "label": {
+      "en": "Voltage Poll Interval",
+      "nl": "Voltage Poll Interval"
+    },
+    "hint": {
+      "en": "On which interval (in seconds) will the voltage being polled, it is not recommended to have it below 60 seconds.\nRange: 0 (Off), 1 - 86400s (1 day)",
+      "nl": "Met welk interval (in seconden) zal de voltage worden gepolled, het is niet aangeraden deze lager dan 60 seconden te zetten.\nBereik: 0 (Uit), 1 - 86400s (1 dag)"
+    },
+    "value": 0,
+    "attr": {
+      "min": 0,
+      "max": 86400
+    }
+  },
+  {
+    "id": "poll_interval_amperage",
+    "type": "number",
+    "label": {
+      "en": "Amperage Poll Interval",
+      "nl": "Amperage Poll Interval"
+    },
+    "hint": {
+      "en": "On which interval (in seconds) will the amperage being polled, it is not recommended to have it below 60 seconds.\nRange: 0 (Off), 1 - 86400s (1 day)",
+      "nl": "Met welk interval (in seconden) zal de amperage worden gepolled, het is niet aangeraden deze lager dan 60 seconden te zetten.\nBereik: 0 (Uit), 1 - 86400s (1 dag)"
+    },
+    "value": 0,
+    "attr": {
+      "min": 0,
+      "max": 86400
+    }
+  }
+]

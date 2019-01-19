@@ -1,0 +1,101 @@
+{
+	"id": "TSP01",
+	"name": {
+		"en": "3(4) in 1 Multi Sensor TSP01/TSM02",
+		"nl": "3(4) in 1 Multi Sensor TSP01/TSM02"
+	},
+	"zwave": {
+		"manufacturerId": [
+			280
+		],
+		"productTypeId": [
+			2
+		],
+		"productId": [
+			2
+		],
+		"learnmode": {
+			"image": "/drivers/TSP01/assets/learnmode.svg",
+			"instruction": {
+				"en": "Press the tamper key 3 times, within 1.5 seconds",
+				"nl": "Druk 3 keer op het sabotage knopje, binnen 1,5 seconden"
+			}
+		},
+		"associationGroups": [
+			1,
+			2
+		],
+		"associationGroupsOptions": {
+			"1": {
+				"hint": {
+					"en": "This is the controller group, it is not recommended to change this setting.",
+					"nl": "Dit is de controller groep, het is niet aangeraden deze te wijzigen."
+				}
+			},
+			"2": {
+				"hint": {
+					"en": "Light control group, also serves as a motion cancellation (delay)",
+					"nl": "Dit is de licht controller groep, functioneerd ook als beweging alarm annulering (vertraging)."
+				}
+			}
+		},
+		"defaultConfiguration": [
+			{
+				"id": 5,
+				"size": 1,
+				"value": 12
+			},
+			{
+				"id": 12,
+				"size": 1,
+				"value": 4
+			},
+			{
+				"id": 13,
+				"size": 1,
+				"value": 4
+			}
+		]
+	},
+	"class": "sensor",
+	"capabilities": [
+		"alarm_contact",
+		"alarm_motion",
+		"alarm_tamper",
+		"measure_luminance_level",
+		"measure_temperature",
+		"measure_battery"
+	],
+	"mobile": {
+		"components": [
+			{
+				"id": "icon"
+			},
+			{
+				"id": "battery",
+				"capabilities": [
+					"measure_battery"
+				]
+			},
+			{
+				"id": "sensor",
+				"capabilities": [
+					"alarm_contact",
+					"alarm_motion",
+					"measure_luminance_level",
+					"measure_temperature",
+					"alarm_tamper"
+				],
+				"options": {
+					"icons": {
+						"measure_luminance_level": "./drivers/TSP01/assets/measure_luminance_level.svg"
+					}
+				}
+			}
+		]
+	},
+	"images": {
+		"large": "/drivers/TSP01/assets/images/large.png",
+		"small": "/drivers/TSP01/assets/images/small.png"
+	}
+}

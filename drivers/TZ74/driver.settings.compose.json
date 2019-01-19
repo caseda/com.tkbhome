@@ -1,0 +1,105 @@
+[
+  {
+    "id": "indicator",
+    "type": "dropdown",
+    "zwave": {
+      "index": 1,
+      "size": 1
+    },
+    "label": {
+      "en": "LED Behaviour",
+      "nl": "LED Gedrag"
+    },
+    "value": "0",
+    "values": [
+      {
+        "id": "0",
+        "label": {
+          "en": "LED indicates that the socket is on.",
+          "nl": "LED geeft aan dat het stopcontact aan is."
+        }
+      },
+      {
+        "id": "1",
+        "label": {
+          "en": "LED indicates that the socket is off",
+          "nl": "LED geeft aan dat het stopcontact uit is"
+        }
+      }
+    ]
+  },
+  {
+    "id": "save_state",
+    "zwave": {
+      "index": 2,
+      "size": 1
+    },
+    "type": "checkbox",
+    "label": {
+      "en": "Save Power-off State",
+      "nl": "Onthoud Stroom-eraf Status"
+    },
+    "hint": {
+      "en": "Saves its last state when power is disconnected",
+      "nl": "Onthoud zijn laatste status wanneer stroom eraf word gehaald"
+    },
+    "value": false
+  },
+  {
+    "id": "invert_switch_state",
+    "zwave": {
+      "index": 3,
+      "size": 1
+    },
+    "type": "checkbox",
+    "label": {
+      "en": "Invert switch state",
+      "nl": "Keer de schakelstatus om"
+    },
+    "hint": {
+      "en": "Check this setting if the switch is working like it is upside down.",
+      "nl": "Activeer deze setting als de schakelaar werkt alsof hij op de kop is gemonteerd."
+    },
+    "value": false
+  },
+  {
+    "id": "switch_type",
+    "zwave": {
+      "index": 4,
+      "size": 1
+    },
+    "type": "dropdown",
+    "label": {
+      "en": "Switch type",
+      "nl": "Schakelaar type"
+    },
+    "hint": {
+      "en": "This parameter (4) determines what device is operating the switch.",
+      "nl": "Deze parameter (4) bepaalt welk apparaat de schakelaar bestuurt."
+    },
+    "value": "3",
+    "values": [
+      {
+        "id": "1",
+        "label": {
+          "en": "Toggle switch (switch dependend)",
+          "nl": "Tuimelschakelaar (schakelaar afhankelijk)"
+        }
+      },
+      {
+        "id": "2",
+        "label": {
+          "en": "Momentary switch",
+          "nl": "Pulsdrukschakelaar"
+        }
+      },
+      {
+        "id": "3",
+        "label": {
+          "en": "Toggle switch (always toggle)",
+          "nl": "Tuimelschakelaar (schakelt altijd)"
+        }
+      }
+    ]
+  }
+]

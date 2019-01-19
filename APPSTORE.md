@@ -44,20 +44,18 @@ All other manufacturers have this on at least 20% for this reason, so do keep th
 The voltage and amperage don't get reported on intervals, added polling for this (by default poll is off to save traffic).
 
 ## Change Log:
+**2.0.3:**
+- Fix app not being able to install on Homey v2
+- Update meshdriver
+
 **2.0.2:**
 - Fix bug TSP01
 - Added Dual Relay Metering Module TZ04
 - Added ID's to TZ55
 - Added Dual Relay Switch Module TZ74
-- Update meshdriver (v1.2.21)
+- Update meshdriver
 
 **2.0.1:**
 - Fixed a crash caused by a typo in the TSP01/TSM02 setting parsers
-
-**2.0.0:**
-- Full rewrite to SDKv2;
-- Fixed Meter Reset flow cards (TZ69 & TZ88);
-- Added (bad) manufacturer ID TZ67;
-- Added flow cards TZ37/TZ55
 
 Rest of the change log can be found [here](https://github.com/caseda/com.tkbhome/blob/master/README.md).

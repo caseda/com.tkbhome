@@ -1,0 +1,109 @@
+[
+  {
+    "id": "indicator",
+    "type": "dropdown",
+    "zwave": {
+      "index": 1,
+      "size": 1
+    },
+    "label": {
+      "en": "LED Behaviour",
+      "nl": "LED Gedrag"
+    },
+    "value": "0",
+    "values": [
+      {
+        "id": "0",
+        "label": {
+          "en": "LED indicates that the socket is on.",
+          "nl": "LED geeft aan dat het stopcontact aan is."
+        }
+      },
+      {
+        "id": "1",
+        "label": {
+          "en": "LED indicates that the socket is off",
+          "nl": "LED geeft aan dat het stopcontact uit is"
+        }
+      }
+    ]
+  },
+  {
+    "id": "save_state",
+    "zwave": {
+      "index": 2,
+      "size": 1
+    },
+    "type": "checkbox",
+    "label": {
+      "en": "Save Power-off State",
+      "nl": "Onthoud Stroom-eraf Status"
+    },
+    "hint": {
+      "en": "Saves its last state when power is disconnected",
+      "nl": "Onthoud zijn laatste status wanneer stroom eraf word gehaald"
+    },
+    "value": false
+  },
+  {
+    "id": "watt_report",
+    "type": "number",
+    "zwave": {
+      "index": 3,
+      "size": 2
+    },
+    "label": {
+      "en": "Wattage Report Interval",
+      "nl": "Wattage Verzend Interval"
+    },
+    "hint": {
+      "en": "On what interval (in steps of 5 seconds) must the wallplug send its current wattage value.\nRange: 5 - 163840 seconds",
+      "nl": "Met wat van interval (in stappen van 5 seconden) moet de tussenstekker zijn wattage waarde verzenden.\nBereik: 5 - 163840 seconden"
+    },
+    "attr": {
+      "min": 5,
+      "max": 163835,
+      "step": 5
+    },
+    "value": 300
+  },
+  {
+    "id": "kwh_report",
+    "type": "number",
+    "zwave": {
+      "index": 4,
+      "size": 2
+    },
+    "label": {
+      "en": "Kilo-WattHour Report Interval",
+      "nl": "KiloWattUur Verzend Interval"
+    },
+    "hint": {
+      "en": "On what interval (in steps of 10 minutes) must the wallplug send its current energie consumption value.\nRange: 10 - 327680 minutes",
+      "nl": "Met wat van interval (in stappen van 10 minuten) moet de tussenstekker zijn energie verbruik waarde verzenden.\nBereik: 10 - 327680 minuten"
+    },
+    "attr": {
+      "min": 10,
+      "max": 327670,
+      "step": 10
+    },
+    "value": 60
+  },
+  {
+    "id": "poll_interval",
+    "type": "number",
+    "attr": {
+      "min": 0,
+      "max": 86400
+    },
+    "value": 0,
+    "label": {
+      "en": "Manual State Interval",
+      "nl": "Handmatig Status Interval"
+    },
+    "hint": {
+      "en": "Determine the amount of seconds homey askes for the state, needed if you use the manual button as well.\nRange: 0 (Off), 60 - 86400 seconds",
+      "nl": "Bepaal het aantal seconden dat homey om de status vraagt, nodig als je de handmatig knop ook gebruikt.\nBereik: 0 (Off), 60 - 86400 seconden"
+    }
+  }
+]

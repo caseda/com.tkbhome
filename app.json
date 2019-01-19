@@ -4,7 +4,7 @@
     "en": "TKB Home"
   },
   "sdk": 2,
-  "version": "2.0.2",
+  "version": "2.0.3",
   "compatibility": ">=1.5.0",
   "description": {
     "en": "TKB Home devices for Homey",
@@ -46,292 +46,7 @@
   "bugs": {
     "url": "https://github.com/caseda/com.tkbhome/issues"
   },
-  "capabilities": {
-    "measure_luminance_level": {
-      "type": "number",
-      "title": {
-        "en": "Luminance Level",
-        "nl": "Helderheid Niveau"
-      },
-      "units": {
-        "en": "%"
-      },
-      "desc": {
-        "en": "Luminance Level in Percentage (%)",
-        "nl": "Helderheid Niveau in Percentage (%)"
-      },
-      "chartType": "spline",
-      "decimals": 0,
-      "getable": true,
-      "setable": false
-    }
-  },
   "flow": {
-    "triggers": [
-      {
-        "id": "TSP01_brightness",
-        "title": {
-          "en": "The luminance level has changed",
-          "nl": "Het helderheids niveau is veranderd"
-        },
-        "args": [
-          {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=TSP01"
-          }
-        ],
-        "tokens": [
-          {
-            "name": "luminance",
-            "type": "number",
-            "title": {
-              "en": "Level",
-              "nl": "Niveau"
-            },
-            "example": 50
-          }
-        ]
-      },
-      {
-        "id": "TZ35D_s2_single_on",
-        "title": {
-          "en": "Right switched on",
-          "nl": "Rechts aan geschakeld"
-        },
-        "args": [
-          {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=TZ35"
-          }
-        ]
-      },
-      {
-        "id": "TZ35D_s2_single_off",
-        "title": {
-          "en": "Right switched off",
-          "nl": "Rechts uit geschakeld"
-        },
-        "args": [
-          {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=TZ35"
-          }
-        ]
-      },
-      {
-        "id": "TZ35D_s2_double_on",
-        "title": {
-          "en": "Right switched 2x on",
-          "nl": "Rechts 2x aan geschakeld"
-        },
-        "args": [
-          {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=TZ35"
-          }
-        ]
-      },
-      {
-        "id": "TZ35D_s2_double_off",
-        "title": {
-          "en": "Right switched 2x off",
-          "nl": "Rechts 2x uit geschakeld"
-        },
-        "args": [
-          {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=TZ35"
-          }
-        ]
-      },
-      {
-        "id": "TZ36D_s2_single_on",
-        "title": {
-          "en": "Right switched on",
-          "nl": "Rechts aan geschakeld"
-        },
-        "args": [
-          {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=TZ36"
-          }
-        ]
-      },
-      {
-        "id": "TZ36D_s2_single_off",
-        "title": {
-          "en": "Right switched off",
-          "nl": "Rechts uit geschakeld"
-        },
-        "args": [
-          {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=TZ36"
-          }
-        ]
-      },
-      {
-        "id": "TZ36D_s2_double_on",
-        "title": {
-          "en": "Right switched 2x on",
-          "nl": "Rechts 2x aan geschakeld"
-        },
-        "args": [
-          {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=TZ36"
-          }
-        ]
-      },
-      {
-        "id": "TZ36D_s2_double_off",
-        "title": {
-          "en": "Right switched 2x off",
-          "nl": "Rechts 2x uit geschakeld"
-        },
-        "args": [
-          {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=TZ36"
-          }
-        ]
-      },
-      {
-        "id": "TZ65D_s2_single_on",
-        "title": {
-          "en": "Right switched on",
-          "nl": "Rechts aan geschakeld"
-        },
-        "args": [
-          {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=TZ65"
-          }
-        ]
-      },
-      {
-        "id": "TZ65D_s2_single_off",
-        "title": {
-          "en": "Right switched off",
-          "nl": "Rechts uit geschakeld"
-        },
-        "args": [
-          {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=TZ65"
-          }
-        ]
-      },
-      {
-        "id": "TZ65D_s2_double_on",
-        "title": {
-          "en": "Right switched 2x on",
-          "nl": "Rechts 2x aan geschakeld"
-        },
-        "args": [
-          {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=TZ65"
-          }
-        ]
-      },
-      {
-        "id": "TZ65D_s2_double_off",
-        "title": {
-          "en": "Right switched 2x off",
-          "nl": "Rechts 2x uit geschakeld"
-        },
-        "args": [
-          {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=TZ65"
-          }
-        ]
-      },
-      {
-        "id": "TZ66D_s2_single_on",
-        "title": {
-          "en": "Right switched on",
-          "nl": "Rechts aan geschakeld"
-        },
-        "args": [
-          {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=TZ66"
-          }
-        ]
-      },
-      {
-        "id": "TZ66D_s2_single_off",
-        "title": {
-          "en": "Right switched off",
-          "nl": "Rechts uit geschakeld"
-        },
-        "args": [
-          {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=TZ66"
-          }
-        ]
-      },
-      {
-        "id": "TZ66D_s2_double_on",
-        "title": {
-          "en": "Right switched 2x on",
-          "nl": "Rechts 2x aan geschakeld"
-        },
-        "args": [
-          {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=TZ66"
-          }
-        ]
-      },
-      {
-        "id": "TZ66D_s2_double_off",
-        "title": {
-          "en": "Right switched 2x off",
-          "nl": "Rechts 2x uit geschakeld"
-        },
-        "args": [
-          {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=TZ66"
-          }
-        ]
-      },
-      {
-        "id": "TZ88_overload_alarm",
-        "title": {
-          "en": "Overload (A) alarm activated",
-          "nl": "Overbelastings (A) alarm geactiveerd"
-        },
-        "args": [
-          {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=TZ88"
-          }
-        ]
-      }
-    ],
     "actions": [
       {
         "id": "resetMeter",
@@ -350,24 +65,269 @@
             "filter": "driver_id=TZ04|TZ69|TZ88"
           }
         ]
-      }
-    ],
-    "conditions": [
-      {
-        "id": "FGBS-001_i1",
-        "title": {
-          "en": "Input 1 !{{is open|is closed}}",
-          "nl": "Ingang 1 !{{is geopend|is gesloten}}"
-        },
-        "args": []
       },
       {
-        "id": "FGBS-001_i2",
+        "id": "TSP01_brightness",
         "title": {
-          "en": "Input 2 !{{is open|is closed}}",
-          "nl": "Ingang 2 !{{is geopend|is gesloten}}"
+          "en": "The luminance level has changed",
+          "nl": "Het helderheids niveau is veranderd"
         },
-        "args": []
+        "tokens": [
+          {
+            "name": "luminance",
+            "type": "number",
+            "title": {
+              "en": "Level",
+              "nl": "Niveau"
+            },
+            "example": 50
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=TSP01"
+          }
+        ]
+      },
+      {
+        "id": "TZ35D_s2_single_on",
+        "title": {
+          "en": "Right switched on",
+          "nl": "Rechts aan geschakeld"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=TZ35"
+          }
+        ]
+      },
+      {
+        "id": "TZ35D_s2_single_off",
+        "title": {
+          "en": "Right switched off",
+          "nl": "Rechts uit geschakeld"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=TZ35"
+          }
+        ]
+      },
+      {
+        "id": "TZ35D_s2_double_on",
+        "title": {
+          "en": "Right switched 2x on",
+          "nl": "Rechts 2x aan geschakeld"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=TZ35"
+          }
+        ]
+      },
+      {
+        "id": "TZ35D_s2_double_off",
+        "title": {
+          "en": "Right switched 2x off",
+          "nl": "Rechts 2x uit geschakeld"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=TZ35"
+          }
+        ]
+      },
+      {
+        "id": "TZ36D_s2_single_on",
+        "title": {
+          "en": "Right switched on",
+          "nl": "Rechts aan geschakeld"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=TZ36"
+          }
+        ]
+      },
+      {
+        "id": "TZ36D_s2_single_off",
+        "title": {
+          "en": "Right switched off",
+          "nl": "Rechts uit geschakeld"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=TZ36"
+          }
+        ]
+      },
+      {
+        "id": "TZ36D_s2_double_on",
+        "title": {
+          "en": "Right switched 2x on",
+          "nl": "Rechts 2x aan geschakeld"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=TZ36"
+          }
+        ]
+      },
+      {
+        "id": "TZ36D_s2_double_off",
+        "title": {
+          "en": "Right switched 2x off",
+          "nl": "Rechts 2x uit geschakeld"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=TZ36"
+          }
+        ]
+      },
+      {
+        "id": "TZ65D_s2_single_on",
+        "title": {
+          "en": "Right switched on",
+          "nl": "Rechts aan geschakeld"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=TZ65"
+          }
+        ]
+      },
+      {
+        "id": "TZ65D_s2_single_off",
+        "title": {
+          "en": "Right switched off",
+          "nl": "Rechts uit geschakeld"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=TZ65"
+          }
+        ]
+      },
+      {
+        "id": "TZ65D_s2_double_on",
+        "title": {
+          "en": "Right switched 2x on",
+          "nl": "Rechts 2x aan geschakeld"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=TZ65"
+          }
+        ]
+      },
+      {
+        "id": "TZ65D_s2_double_off",
+        "title": {
+          "en": "Right switched 2x off",
+          "nl": "Rechts 2x uit geschakeld"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=TZ65"
+          }
+        ]
+      },
+      {
+        "id": "TZ66D_s2_single_on",
+        "title": {
+          "en": "Right switched on",
+          "nl": "Rechts aan geschakeld"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=TZ66"
+          }
+        ]
+      },
+      {
+        "id": "TZ66D_s2_single_off",
+        "title": {
+          "en": "Right switched off",
+          "nl": "Rechts uit geschakeld"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=TZ66"
+          }
+        ]
+      },
+      {
+        "id": "TZ66D_s2_double_on",
+        "title": {
+          "en": "Right switched 2x on",
+          "nl": "Rechts 2x aan geschakeld"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=TZ66"
+          }
+        ]
+      },
+      {
+        "id": "TZ66D_s2_double_off",
+        "title": {
+          "en": "Right switched 2x off",
+          "nl": "Rechts 2x uit geschakeld"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=TZ66"
+          }
+        ]
+      },
+      {
+        "id": "TZ88_overload_alarm",
+        "title": {
+          "en": "Overload (A) alarm activated",
+          "nl": "Overbelastings (A) alarm geactiveerd"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=TZ88"
+          }
+        ]
       }
     ]
   },
@@ -1985,6 +1945,108 @@
       ]
     },
     {
+      "id": "TZ67",
+      "name": {
+        "en": "Wallplug Dimmer TZ67",
+        "nl": "Tussenstekker Dimmer TZ67"
+      },
+      "zwave": {
+        "manufacturerId": [
+          280
+        ],
+        "productTypeId": [
+          514
+        ],
+        "productId": [
+          1553
+        ],
+        "learnmode": {
+          "image": "/drivers/TZ67/assets/learnmode.svg",
+          "instruction": {
+            "en": "Press the button 3 times, within 1.5 seconds",
+            "nl": "Druk 3 keer op de knop, binnen 1,5 seconden"
+          }
+        },
+        "associationGroups": [
+          1
+        ],
+        "associationGroupsOptions": {
+          "1": {
+            "hint": {
+              "en": "This is the controller group, it is not recommended to change this.",
+              "nl": "Dit is de controller groep, het is niet aangeraden deze te wijzigen."
+            }
+          }
+        }
+      },
+      "class": "socket",
+      "capabilities": [
+        "onoff",
+        "dim"
+      ],
+      "capabilitiesOptions": {
+        "onoff": {
+          "setOnDim": false
+        }
+      },
+      "images": {
+        "large": "/drivers/TZ67/assets/images/large.png",
+        "small": "/drivers/TZ67/assets/images/small.png"
+      },
+      "settings": [
+        {
+          "id": "led_behaviour",
+          "type": "dropdown",
+          "zwave": {
+            "index": 1,
+            "size": 1
+          },
+          "label": {
+            "en": "LED Behaviour",
+            "nl": "LED Gedrag"
+          },
+          "hint": {
+            "en": "Determine the behaviour of the LED.",
+            "nl": "Bepaal het gedrag van de LED."
+          },
+          "value": "0",
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "LED indicates the socket is off.",
+                "nl": "LED geeft aan het stopcontact uit is."
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "LED indicates the socket is on",
+                "nl": "LED geeft aan het stopcontact aan is"
+              }
+            }
+          ]
+        },
+        {
+          "id": "poll_interval",
+          "type": "number",
+          "attr": {
+            "min": 0,
+            "max": 86400
+          },
+          "value": 0,
+          "label": {
+            "en": "Manual State Interval",
+            "nl": "Handmatig Status Interval"
+          },
+          "hint": {
+            "en": "Determine the amount of seconds homey askes for the state, needed if you use the manual button as well.\nRange: 0 (Off), 60 - 86400 seconds",
+            "nl": "Bepaal het aantal seconden dat homey om de status vraagt, nodig als je de handmatig knop ook gebruikt.\nBereik: 0 (Off), 60 - 86400 seconden"
+          }
+        }
+      ]
+    },
+    {
       "id": "TZ67-PLUS",
       "name": {
         "en": "Wallplug Dimmer (Z-Wave Plus) TZ67",
@@ -2088,23 +2150,23 @@
       ]
     },
     {
-      "id": "TZ67",
+      "id": "TZ68",
       "name": {
-        "en": "Wallplug Dimmer TZ67",
-        "nl": "Tussenstekker Dimmer TZ67"
+        "en": "Wallplug TZ68",
+        "nl": "Tussenstekker TZ68"
       },
       "zwave": {
         "manufacturerId": [
           280
         ],
         "productTypeId": [
-          514
+          257
         ],
         "productId": [
-          1553
+          259
         ],
         "learnmode": {
-          "image": "/drivers/TZ67/assets/learnmode.svg",
+          "image": "/drivers/TZ68/assets/learnmode.svg",
           "instruction": {
             "en": "Press the button 3 times, within 1.5 seconds",
             "nl": "Druk 3 keer op de knop, binnen 1,5 seconden"
@@ -2124,17 +2186,11 @@
       },
       "class": "socket",
       "capabilities": [
-        "onoff",
-        "dim"
+        "onoff"
       ],
-      "capabilitiesOptions": {
-        "onoff": {
-          "setOnDim": false
-        }
-      },
       "images": {
-        "large": "/drivers/TZ67/assets/images/large.png",
-        "small": "/drivers/TZ67/assets/images/small.png"
+        "large": "/drivers/TZ68/assets/images/large.png",
+        "small": "/drivers/TZ68/assets/images/small.png"
       },
       "settings": [
         {
@@ -2231,102 +2287,6 @@
       "images": {
         "large": "/drivers/TZ68-PLUS/assets/images/large.png",
         "small": "/drivers/TZ68-PLUS/assets/images/small.png"
-      },
-      "settings": [
-        {
-          "id": "led_behaviour",
-          "type": "dropdown",
-          "zwave": {
-            "index": 1,
-            "size": 1
-          },
-          "label": {
-            "en": "LED Behaviour",
-            "nl": "LED Gedrag"
-          },
-          "hint": {
-            "en": "Determine the behaviour of the LED.",
-            "nl": "Bepaal het gedrag van de LED."
-          },
-          "value": "0",
-          "values": [
-            {
-              "id": "0",
-              "label": {
-                "en": "LED indicates the socket is off.",
-                "nl": "LED geeft aan het stopcontact uit is."
-              }
-            },
-            {
-              "id": "1",
-              "label": {
-                "en": "LED indicates the socket is on",
-                "nl": "LED geeft aan het stopcontact aan is"
-              }
-            }
-          ]
-        },
-        {
-          "id": "poll_interval",
-          "type": "number",
-          "attr": {
-            "min": 0,
-            "max": 86400
-          },
-          "value": 0,
-          "label": {
-            "en": "Manual State Interval",
-            "nl": "Handmatig Status Interval"
-          },
-          "hint": {
-            "en": "Determine the amount of seconds homey askes for the state, needed if you use the manual button as well.\nRange: 0 (Off), 60 - 86400 seconds",
-            "nl": "Bepaal het aantal seconden dat homey om de status vraagt, nodig als je de handmatig knop ook gebruikt.\nBereik: 0 (Off), 60 - 86400 seconden"
-          }
-        }
-      ]
-    },
-    {
-      "id": "TZ68",
-      "name": {
-        "en": "Wallplug TZ68",
-        "nl": "Tussenstekker TZ68"
-      },
-      "zwave": {
-        "manufacturerId": [
-          280
-        ],
-        "productTypeId": [
-          257
-        ],
-        "productId": [
-          259
-        ],
-        "learnmode": {
-          "image": "/drivers/TZ68/assets/learnmode.svg",
-          "instruction": {
-            "en": "Press the button 3 times, within 1.5 seconds",
-            "nl": "Druk 3 keer op de knop, binnen 1,5 seconden"
-          }
-        },
-        "associationGroups": [
-          1
-        ],
-        "associationGroupsOptions": {
-          "1": {
-            "hint": {
-              "en": "This is the controller group, it is not recommended to change this.",
-              "nl": "Dit is de controller groep, het is niet aangeraden deze te wijzigen."
-            }
-          }
-        }
-      },
-      "class": "socket",
-      "capabilities": [
-        "onoff"
-      ],
-      "images": {
-        "large": "/drivers/TZ68/assets/images/large.png",
-        "small": "/drivers/TZ68/assets/images/small.png"
       },
       "settings": [
         {
@@ -2494,8 +2454,8 @@
             "nl": "Wattage Verzend Interval"
           },
           "hint": {
-            "en": "On what interval (in steps of 5 seconds) must the wallplug send its current wattage value.\nRange: 5 - 163835 seconds",
-            "nl": "Met wat van interval (in stappen van 5 seconden) moet de tussenstekker zijn wattage waarde verzenden.\nBereik: 5 - 163835 seconden"
+            "en": "On what interval (in steps of 5 seconds) must the wallplug send its current wattage value.\nRange: 5 - 163840 seconds",
+            "nl": "Met wat van interval (in stappen van 5 seconden) moet de tussenstekker zijn wattage waarde verzenden.\nBereik: 5 - 163840 seconden"
           },
           "attr": {
             "min": 5,
@@ -2516,8 +2476,8 @@
             "nl": "KiloWattUur Verzend Interval"
           },
           "hint": {
-            "en": "On what interval (in steps of 10 minutes) must the wallplug send its current energie consumption value.\nRange: 10 - 327670 minutes",
-            "nl": "Met wat van interval (in stappen van 10 minuten) moet de tussenstekker zijn energie verbruik waarde verzenden.\nBereik: 10 - 327670 minuten"
+            "en": "On what interval (in steps of 10 minutes) must the wallplug send its current energie consumption value.\nRange: 10 - 327680 minutes",
+            "nl": "Met wat van interval (in stappen van 10 minuten) moet de tussenstekker zijn energie verbruik waarde verzenden.\nBereik: 10 - 327680 minuten"
           },
           "attr": {
             "min": 10,
@@ -3015,5 +2975,27 @@
         }
       ]
     }
-  ]
+  ],
+  "capabilities": {
+    "measure_luminance_level": {
+      "type": "number",
+      "uiComponent": "sensor",
+      "title": {
+        "en": "Luminance",
+        "nl": "Helderheid"
+      },
+      "units": {
+        "en": "%"
+      },
+      "insights": true,
+      "desc": {
+        "en": "Luminance in Percentage (%)",
+        "nl": "Helderheid in Percentage (%)"
+      },
+      "chartType": "spline",
+      "decimals": 0,
+      "getable": true,
+      "setable": false
+    }
+  }
 }

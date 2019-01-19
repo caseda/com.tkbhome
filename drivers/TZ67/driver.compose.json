@@ -1,0 +1,50 @@
+{
+	"id": "TZ67",
+	"name": {
+		"en": "Wallplug Dimmer TZ67",
+		"nl": "Tussenstekker Dimmer TZ67"
+	},
+	"zwave": {
+		"manufacturerId": [
+			280
+		],
+		"productTypeId": [
+			514
+		],
+		"productId": [
+			1553
+		],
+		"learnmode": {
+			"image": "/drivers/TZ67/assets/learnmode.svg",
+			"instruction": {
+				"en": "Press the button 3 times, within 1.5 seconds",
+				"nl": "Druk 3 keer op de knop, binnen 1,5 seconden"
+			}
+		},
+		"associationGroups": [
+			1
+		],
+		"associationGroupsOptions": {
+			"1": {
+				"hint": {
+					"en": "This is the controller group, it is not recommended to change this.",
+					"nl": "Dit is de controller groep, het is niet aangeraden deze te wijzigen."
+				}
+			}
+		}
+	},
+	"class": "socket",
+	"capabilities": [
+		"onoff",
+		"dim"
+	],
+	"capabilitiesOptions": {
+		"onoff": {
+			"setOnDim": false
+		}
+	},
+	"images": {
+		"large": "/drivers/TZ67/assets/images/large.png",
+		"small": "/drivers/TZ67/assets/images/small.png"
+	}
+}
