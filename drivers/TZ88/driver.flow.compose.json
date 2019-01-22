@@ -1,5 +1,5 @@
 {
-	"actions": 	[
+	"triggers": 	[
 		{
 			"id": "TZ88_overload_alarm",
 			"title": {
