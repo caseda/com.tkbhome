@@ -65,7 +65,9 @@
             "filter": "driver_id=TZ04|TZ69|TZ88"
           }
         ]
-      },
+      }
+    ],
+    "triggers": [
       {
         "id": "TSP01_brightness",
         "title": {
