@@ -1028,7 +1028,7 @@
           "id": "led_behaviour",
           "type": "dropdown",
           "zwave": {
-            "index": 3,
+            "index": 1,
             "size": 1
           },
           "label": {
@@ -1061,7 +1061,7 @@
           "id": "led_behaviour_data",
           "type": "dropdown",
           "zwave": {
-            "index": 19,
+            "index": 4,
             "size": 1
           },
           "label": {
@@ -1101,7 +1101,7 @@
           "id": "invert_switch",
           "type": "dropdown",
           "zwave": {
-            "index": 4,
+            "index": 3,
             "size": 1
           },
           "label": {
@@ -1216,7 +1216,7 @@
           "id": "led_behaviour",
           "type": "dropdown",
           "zwave": {
-            "index": 3,
+            "index": 1,
             "size": 1
           },
           "label": {
@@ -1249,7 +1249,7 @@
           "id": "led_behaviour_data",
           "type": "dropdown",
           "zwave": {
-            "index": 19,
+            "index": 4,
             "size": 1
           },
           "label": {
@@ -1288,6 +1288,10 @@
         {
           "id": "invert_switch",
           "type": "dropdown",
+          "zwave": {
+            "index": 3,
+            "size": 1
+          },
           "label": {
             "en": "Switch Behaviour",
             "nl": "Schakelaar Gedrag"
