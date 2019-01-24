@@ -44,6 +44,9 @@ All other manufacturers have this on at least 20% for this reason, so do keep th
 The voltage and amperage don't get reported on intervals, added polling for this (by default poll is off to save traffic).
 
 ## Change Log:
+**2.0.5:**
+- Setting fixes to: TZ35 & TZ36
+
 **2.0.4:**
 - Fix (custom) trigger cards
 
