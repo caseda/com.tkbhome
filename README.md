@@ -20,6 +20,7 @@ This app adds support for TKB Home devices in Homey.
 + TZ69 - Smart Energy Wallplug (Z-Wave Plus) (all types)
 + TZ74 - Dual Relay Switch Module
 + TZ88 - Smart Energy Wallplug (Z-Wave Plus) (all types)
++ TZE96 - Thermostat with Touchscreen (Z-Wave Plus) (all types)
 
 ## Supported Languages:
 * English
