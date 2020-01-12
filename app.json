@@ -32,6 +32,10 @@
       {
         "name": "SadhuRus",
         "email": ""
+      },
+      {
+        "name": "Menno Bliek (Momotica)",
+        "email": "menno@momotica.nl"
       }
     ]
   },
@@ -2980,6 +2984,68 @@
           }
         }
       ]
+    },
+    {
+      "id": "TZE96",
+      "name": {
+        "en": "Thermostat TZE96",
+        "nl": "Thermostaat TZE96"
+      },
+      "icon": "/drivers/TZE96/assets/icon.svg",
+      "images": {
+        "large": "/drivers/TZE96/assets/images/large.png",
+        "small": "/drivers/TZE96/assets/images/small.png"
+      },
+      "class": "thermostat",
+      "capabilities": [
+        "measure_temperature",
+        "target_temperature"
+      ],
+      "capabilitiesOptions": {
+        "target_temperature": {
+          "min": 5,
+          "max": 35,
+          "step": 0.5
+        },
+        "measure_temperature": {
+          "title": "temperature"
+        }
+      },
+      "zwave": {
+        "manufacturerId": 280,
+        "productTypeId": 785,
+        "productId": 1286,
+        "includeSecure": false,
+        "__comment": "Reverted back to non secure inclusion due to S2 security handshake issues",
+        "productDocumentation": "https://products.z-wavealliance.org/ProductManual/File?folder=&filename=Manuals/3065/Manual_Heatit_Z-TRM2fx_ENG_3.1.pdf",
+        "pid": 3065,
+        "imageRemotePath": "https://products.z-wavealliance.org/ProductImages/Index?productName=ZC10-18116305",
+        "learnmode": {
+          "image": "/drivers/TZE96/assets/learnmode.svg",
+          "instruction": {
+            "en": "Make sure the thermostat is in off state. \nPress 3 times within 1,5 sec on the UP button.",
+            "nl": "Zorg dat de thermostaat uit is. \nDruk dan 3x binnen 1,5 sec op de omhoog knop."
+          }
+        },
+        "associationGroups": [
+          1
+        ],
+        "associationGroupsOptions": {
+          "1": {
+            "hint": {
+              "en": "Lifeline. All run-time reporting is addressed to this group. Only one node can be assigned to this association group. \nDefault: 1 (Homey's ID)",
+              "nl": "Lifeline: Association Groep 1 wordt gebruikt om alle rapportages door te geven. Slechts een node kan toegevoegd worden aan deze associatie groep. \nStandaard: 1 (Homey's ID)"
+            }
+          }
+        },
+        "defaultConfiguration": [
+          {
+            "id": 4,
+            "size": 4,
+            "value": 4
+          }
+        ]
+      }
     }
   ],
   "capabilities": {
