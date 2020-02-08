@@ -37,6 +37,9 @@
   },
   "source": "https://github.com/caseda/com.tkbhome",
   "support": "https://github.com/caseda/com.tkbhome/issues",
+  "bugs": {
+    "url": "https://github.com/caseda/com.tkbhome/issues"
+  },
   "flow": {
     "actions": [
       {
