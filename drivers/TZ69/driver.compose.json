@@ -46,7 +46,8 @@
 	"capabilities": [
 		"onoff",
 		"measure_power",
-		"meter_power"
+		"meter_power",
+		"measure_voltage"
 	],
 	"images": {
 		"large": "/drivers/TZ68-PLUS/assets/images/large.png",

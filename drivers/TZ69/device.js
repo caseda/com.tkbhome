@@ -8,6 +8,7 @@ class TZ69MeteringPlug extends ZwaveMeteringDevice {
 		//this.printNode();
 		//this.enableDebug();
 
+
 		// Capabilities
 		this.registerCapability('onoff', 'SWITCH_BINARY', {
 			pollInterval: this.getSetting('poll_interval') * 1000,
@@ -15,9 +16,16 @@ class TZ69MeteringPlug extends ZwaveMeteringDevice {
 		this.registerCapability('measure_power', 'METER');
 		this.registerCapability('meter_power', 'METER');
 
+		if (!this.hasCapability('measure_voltage')) {
+			this.addCapability('measure_voltage');
+			this.registerCapability('measure_voltage', 'METER');
+		} else {
+			this.registerCapability('measure_voltage', 'METER');
+		}
+
 		// Settings
-		this.registerSetting('watt_report', value => Math.round(newValue / 5));
-		this.registerSetting('kwh_report', value => Math.round(newValue / 10));
+		this.registerSetting('watt_report', value => Math.round(value / 5));
+		this.registerSetting('kwh_report', value => Math.round(value / 10));
 
 		// Flows
 		let resetMeterFlowAction = new Homey.FlowCardAction('resetMeter');

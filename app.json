@@ -4,7 +4,7 @@
     "en": "TKB Home"
   },
   "sdk": 2,
-  "version": "2.0.5",
+  "version": "2.0.6",
   "compatibility": ">=1.5.0",
   "description": {
     "en": "TKB Home devices for Homey",
@@ -32,20 +32,15 @@
       {
         "name": "SadhuRus",
         "email": ""
+      },
+      {
+        "name": "Menno Bliek (Momotica)",
+        "email": "menno@momotica.nl"
       }
     ]
   },
-  "contributing": {
-    "donate": {
-      "paypal": {
-        "username": "caseda",
-        "currency": "EUR"
-      }
-    }
-  },
-  "bugs": {
-    "url": "https://github.com/caseda/com.tkbhome/issues"
-  },
+  "source": "https://github.com/caseda/com.tkbhome",
+  "support": "https://github.com/caseda/com.tkbhome/issues",
   "flow": {
     "actions": [
       {
@@ -339,6 +334,11 @@
       "name": {
         "en": "3(4) in 1 Multi Sensor TSP01/TSM02",
         "nl": "3(4) in 1 Multi Sensor TSP01/TSM02"
+      },
+      "energy": {
+        "batteries": [
+          "CR123A"
+        ]
       },
       "zwave": {
         "manufacturerId": [
@@ -1160,10 +1160,12 @@
           280
         ],
         "productTypeId": [
-          3
+          3,
+          785
         ],
         "productId": [
-          3
+          3,
+          514
         ],
         "learnmode": {
           "image": "/drivers/TZ36/assets/learnmode.svg",
@@ -2395,7 +2397,8 @@
       "capabilities": [
         "onoff",
         "measure_power",
-        "meter_power"
+        "meter_power",
+        "measure_voltage"
       ],
       "images": {
         "large": "/drivers/TZ68-PLUS/assets/images/large.png",
@@ -3007,6 +3010,49 @@
         "associationGroups": [
           1,
           2
+      "id": "TZE96",
+      "name": {
+        "en": "Thermostat TZE96",
+        "nl": "Thermostaat TZE96"
+      },
+      "icon": "/drivers/TZE96/assets/icon.svg",
+      "images": {
+        "large": "/drivers/TZE96/assets/images/large.png",
+        "small": "/drivers/TZE96/assets/images/small.png"
+      },
+      "class": "thermostat",
+      "capabilities": [
+        "measure_temperature",
+        "target_temperature"
+      ],
+      "capabilitiesOptions": {
+        "target_temperature": {
+          "min": 5,
+          "max": 35,
+          "step": 0.5
+        },
+        "measure_temperature": {
+          "title": "temperature"
+        }
+      },
+      "zwave": {
+        "manufacturerId": 280,
+        "productTypeId": 785,
+        "productId": 1286,
+        "includeSecure": false,
+        "__comment": "Reverted back to non secure inclusion due to S2 security handshake issues",
+        "productDocumentation": "https://products.z-wavealliance.org/ProductManual/File?folder=&filename=Manuals/3065/Manual_Heatit_Z-TRM2fx_ENG_3.1.pdf",
+        "pid": 3065,
+        "imageRemotePath": "https://products.z-wavealliance.org/ProductImages/Index?productName=ZC10-18116305",
+        "learnmode": {
+          "image": "/drivers/TZE96/assets/learnmode.svg",
+          "instruction": {
+            "en": "Make sure the thermostat is in off state. \nPress 3 times within 1,5 sec on the UP button.",
+            "nl": "Zorg dat de thermostaat uit is. \nDruk dan 3x binnen 1,5 sec op de omhoog knop."
+          }
+        },
+        "associationGroups": [
+          1
         ],
         "associationGroupsOptions": {
           "1": {
@@ -3019,6 +3065,8 @@
             "hint": {
               "en": "Light control group, also serves as a motion cancellation (delay)",
               "nl": "Dit is de licht controller groep, functioneerd ook als beweging alarm annulering (vertraging)."
+              "en": "Lifeline. All run-time reporting is addressed to this group. Only one node can be assigned to this association group. \nDefault: 1 (Homey's ID)",
+              "nl": "Lifeline: Association Groep 1 wordt gebruikt om alle rapportages door te geven. Slechts een node kan toegevoegd worden aan deze associatie groep. \nStandaard: 1 (Homey's ID)"
             }
           }
         },
@@ -3046,6 +3094,12 @@
         "alarm_tamper",
         "measure_battery"
       ]
+            "id": 4,
+            "size": 4,
+            "value": 4
+          }
+        ]
+      }
     }
   ],
   "capabilities": {

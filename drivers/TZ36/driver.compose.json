@@ -9,10 +9,12 @@
 			280
 		],
 		"productTypeId": [
-			3
+			3,
+			785
 		],
 		"productId": [
-			3
+			3,
+			514
 		],
 		"learnmode": {
 			"image": "/drivers/TZ36/assets/learnmode.svg",
