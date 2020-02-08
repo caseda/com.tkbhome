@@ -4,6 +4,9 @@
 		"en": "Door/Window Sensor TSM10",
 		"nl": "Door/Window Sensor TSM10"
 	},
+	"energy": {
+    "batteries": [ "CR123A" ]
+  },
 	"zwave": {
 		"manufacturerId": [
 			280

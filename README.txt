@@ -1,7 +1,7 @@
 Controlling switches and wallplugs from TKB Home with Homey.
 
 --- Current Supported devices: ---
-TSM02, TSP01, TZ04, TZ35, TZ36, TZ37, TZ55, TZ56, TZ57, TZ65, TZ66, TZ67, TZ67-PLUS, TZ68, TZ68-PLUS, TZ69, TZ74, TZ88.
+TSM02, TSM10, TSP01, TZ04, TZ35, TZ36, TZ37, TZ55, TZ56, TZ57, TZ65, TZ66, TZ67, TZ67-PLUS, TZ68, TZ68-PLUS, TZ69, TZ74, TZ88, TZE96.
 As i've stopped active developent on this app,
 any new devices won't be added by me.
 
