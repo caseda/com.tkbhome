@@ -1,0 +1,95 @@
+{
+	"id": "TSM10",
+	"name": {
+		"en": "Door/Window Sensor TSM10",
+		"nl": "Door/Window Sensor TSM10"
+	},
+	"zwave": {
+		"manufacturerId": [
+			280
+		],
+		"productTypeId": [
+			785
+		],
+		"productId": [
+			1537
+		],
+		"learnmode": {
+			"image": "/drivers/TSM10/assets/learnmode.svg",
+			"instruction": {
+				"en": "Press the tamper key 3 times, within 1.5 seconds",
+				"nl": "Druk 3 keer op het sabotage knopje, binnen 1,5 seconden"
+			}
+		},
+		"associationGroups": [
+			1,
+			2
+		],
+		"associationGroupsOptions": {
+			"1": {
+				"hint": {
+					"en": "This is the controller group, it is not recommended to change this setting.",
+					"nl": "Dit is de controller groep, het is niet aangeraden deze te wijzigen."
+				}
+			},
+			"2": {
+				"hint": {
+					"en": "Light control group, also serves as a motion cancellation (delay)",
+					"nl": "Dit is de licht controller groep, functioneerd ook als beweging alarm annulering (vertraging)."
+				}
+			}
+		},
+		"defaultConfiguration": [
+			{
+				"id": 5,
+				"size": 1,
+				"value": 12
+			},
+			{
+				"id": 12,
+				"size": 1,
+				"value": 4
+			},
+			{
+				"id": 13,
+				"size": 1,
+				"value": 4
+			}
+		]
+	},
+	"class": "sensor",
+	"capabilities": [
+		"alarm_contact",
+		"alarm_tamper",
+		"measure_battery"
+	],
+	"mobile": {
+		"components": [
+			{
+				"id": "icon"
+			},
+			{
+				"id": "battery",
+				"capabilities": [
+					"measure_battery"
+				]
+			},
+			{
+				"id": "sensor",
+				"capabilities": [
+					"alarm_contact",
+					"alarm_tamper"
+				],
+				"options": {
+					"icons": {
+						"measure_luminance_level": "./drivers/TSM10/assets/measure_luminance_level.svg"
+					}
+				}
+			}
+		]
+	},
+	"images": {
+		"large": "/drivers/TSM10/assets/images/large.png",
+		"small": "/drivers/TSM10/assets/images/small.png"
+	}
+}
