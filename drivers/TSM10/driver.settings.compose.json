@@ -1,0 +1,46 @@
+[
+  {
+    "id": "battery_report_time",
+    "type": "number",
+    "zwave": {
+      "index": 10,
+      "size": 1
+    },
+    "attr": {
+      "min": 0.5,
+      "max": 63.5,
+      "step": 0.5
+    },
+    "label": {
+      "en": "Battery Level Report Interval",
+      "nl": "Batterijniveau Verzend Interval"
+    },
+    "hint": {
+      "en": "The interval time (in hours) for auto report the actual battery level. Range: 0.5 - 63.5",
+      "nl": "Een vast interval (in uren) om een rapport te sturen over het actuele batterij niveau. Bereik: 0,5 - 63,5"
+    },
+    "value": 6
+  },
+  {
+    "id": "contact_report_time",
+    "type": "number",
+    "zwave": {
+      "index": 11,
+      "size": 1
+    },
+    "attr": {
+      "min": 0.5,
+      "max": 63.5,
+      "step": 0.5
+    },
+    "label": {
+      "en": "Door/Window Report Interval",
+      "nl": "Deur/Raam Verzend Interval"
+    },
+    "hint": {
+      "en": "The interval time (in hours) for auto report of the actual door/window state. Range: 0.5 - 63.5",
+      "nl": "Een vast interval (in uren) om een rapport te sturen over de actuele deur/raam status. Bereik: 0,5 - 63,5"
+    },
+    "value": 6
+  }
+]
