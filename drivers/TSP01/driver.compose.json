@@ -4,6 +4,9 @@
 		"en": "3(4) in 1 Multi Sensor TSP01/TSM02",
 		"nl": "3(4) in 1 Multi Sensor TSP01/TSM02"
 	},
+	"energy": {
+    "batteries": [ "CR123A" ]
+  },
 	"zwave": {
 		"manufacturerId": [
 			280

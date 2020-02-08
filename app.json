@@ -4,7 +4,7 @@
     "en": "TKB Home"
   },
   "sdk": 2,
-  "version": "2.0.5",
+  "version": "2.0.6",
   "compatibility": ">=1.5.0",
   "description": {
     "en": "TKB Home devices for Homey",
@@ -35,17 +35,8 @@
       }
     ]
   },
-  "contributing": {
-    "donate": {
-      "paypal": {
-        "username": "caseda",
-        "currency": "EUR"
-      }
-    }
-  },
-  "bugs": {
-    "url": "https://github.com/caseda/com.tkbhome/issues"
-  },
+  "source": "https://github.com/caseda/com.tkbhome",
+  "support": "https://github.com/caseda/com.tkbhome/issues",
   "flow": {
     "actions": [
       {
@@ -339,6 +330,11 @@
       "name": {
         "en": "3(4) in 1 Multi Sensor TSP01/TSM02",
         "nl": "3(4) in 1 Multi Sensor TSP01/TSM02"
+      },
+      "energy": {
+        "batteries": [
+          "CR123A"
+        ]
       },
       "zwave": {
         "manufacturerId": [
@@ -1160,10 +1156,12 @@
           280
         ],
         "productTypeId": [
-          3
+          3,
+          785
         ],
         "productId": [
-          3
+          3,
+          514
         ],
         "learnmode": {
           "image": "/drivers/TZ36/assets/learnmode.svg",
@@ -2395,7 +2393,8 @@
       "capabilities": [
         "onoff",
         "measure_power",
-        "meter_power"
+        "meter_power",
+        "measure_voltage"
       ],
       "images": {
         "large": "/drivers/TZ68-PLUS/assets/images/large.png",
