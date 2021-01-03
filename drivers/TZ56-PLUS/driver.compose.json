@@ -1,21 +1,21 @@
 {
-	"id": "TZ36",
+	"id": "TZ56-PLUS",
 	"name": {
-		"en": "Switch TZ36/TZ56",
-		"nl": "Schakelaar TZ36/TZ56"
+		"en": "Switch TZ56-PLUS",
+		"nl": "Schakelaar TZ56-PLUS"
 	},
 	"zwave": {
 		"manufacturerId": [
 			280
 		],
 		"productTypeId": [
-			3
+			785
 		],
 		"productId": [
-			3
+			514
 		],
 		"learnmode": {
-			"image": "/drivers/TZ36/assets/learnmode.svg",
+			"image": "/drivers/TZ56-PLUS/assets/learnmode.svg",
 			"instruction": {
 				"en": "Press an on/off button once",
 				"nl": "Druk een keer op een aan/uit knop"
@@ -57,7 +57,7 @@
 		"onoff"
 	],
 	"images": {
-		"large": "/drivers/TZ36/assets/images/large.png",
-		"small": "/drivers/TZ36/assets/images/small.png"
+		"large": "/drivers/TZ56-PLUS/assets/images/large.png",
+		"small": "/drivers/TZ56-PLUS/assets/images/small.png"
 	}
 }
