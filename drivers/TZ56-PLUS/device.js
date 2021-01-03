@@ -3,7 +3,7 @@
 const Homey = require('homey');
 const ZwaveDevice = require('homey-meshdriver').ZwaveDevice;
 
-class TZ36Switch extends ZwaveDevice {
+class TZ56PlusSwitch extends ZwaveDevice {
 	async onMeshInit() {
 		//this.printNode();
 		//this.enableDebug();
@@ -12,20 +12,20 @@ class TZ36Switch extends ZwaveDevice {
 		this.registerCapability('onoff', 'SWITCH_BINARY');
 
 		// Flows
-		let TZ36RightSingleOn = new Homey.FlowCardTriggerDevice('TZ36D_s2_single_on');
-		TZ36RightSingleOn
+		let TZ56PlusRightSingleOn = new Homey.FlowCardTriggerDevice('TZ56PLUSD_s2_single_on');
+		TZ56PlusRightSingleOn
 			.register();
 
-		let TZ36RightSingleOff = new Homey.FlowCardTriggerDevice('TZ36D_s2_single_off');
-		TZ36RightSingleOff
+		let TZ56PlusRightSingleOff = new Homey.FlowCardTriggerDevice('TZ56PLUSD_s2_single_off');
+		TZ56PlusRightSingleOff
 			.register();
 
-		let TZ36RightDoubleOn = new Homey.FlowCardTriggerDevice('TZ36D_s2_double_on');
-		TZ36RightDoubleOn
+		let TZ56PlusRightDoubleOn = new Homey.FlowCardTriggerDevice('TZ56PLUSD_s2_double_on');
+		TZ56PlusRightDoubleOn
 			.register();
 
-		let TZ36RightDoubleOff = new Homey.FlowCardTriggerDevice('TZ36D_s2_double_off');
-		TZ36RightDoubleOff
+		let TZ56PlusRightDoubleOff = new Homey.FlowCardTriggerDevice('TZ56PLUSD_s2_double_off');
+		TZ56PlusRightDoubleOff
 			.register();
 
 		// Single/double press function
@@ -81,15 +81,15 @@ class TZ36Switch extends ZwaveDevice {
 			if (report.hasOwnProperty('Value')) {
 
 				if (singlePress) {
-					if (report.Value === 255) TZ36RightSingleOn.trigger(this, null, null);
-					if (report.Value === 0) TZ36RightSingleOff.trigger(this, null, null);
+					if (report.Value === 255) TZ56PlusRightSingleOn.trigger(this, null, null);
+					if (report.Value === 0) TZ56PlusRightSingleOff.trigger(this, null, null);
 				} else {
-					if (report.Value === 255) TZ36RightDoubleOn.trigger(this, null, null);
-					if (report.Value === 0) TZ36RightDoubleOff.trigger(this, null, null);
+					if (report.Value === 255) TZ56PlusRightDoubleOn.trigger(this, null, null);
+					if (report.Value === 0) TZ56PlusRightDoubleOff.trigger(this, null, null);
 				}
 			}
 		});
 	}
 }
 
-module.exports = TZ36Switch;
+module.exports = TZ56PlusSwitch;
