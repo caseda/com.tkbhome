@@ -12,19 +12,19 @@ class TZ56PlusSwitch extends ZwaveDevice {
 		this.registerCapability('onoff', 'SWITCH_BINARY');
 
 		// Flows
-		let TZ56PlusRightSingleOn = new Homey.FlowCardTriggerDevice('TZ56PLUSD_s2_single_on');
+		let TZ56PlusRightSingleOn = new Homey.FlowCardTriggerDevice('TZ56DPLUS_s2_single_on');
 		TZ56PlusRightSingleOn
 			.register();
 
-		let TZ56PlusRightSingleOff = new Homey.FlowCardTriggerDevice('TZ56PLUSD_s2_single_off');
+		let TZ56PlusRightSingleOff = new Homey.FlowCardTriggerDevice('TZ56DPLUS_s2_single_off');
 		TZ56PlusRightSingleOff
 			.register();
 
-		let TZ56PlusRightDoubleOn = new Homey.FlowCardTriggerDevice('TZ56PLUSD_s2_double_on');
+		let TZ56PlusRightDoubleOn = new Homey.FlowCardTriggerDevice('TZ56DPLUS_s2_double_on');
 		TZ56PlusRightDoubleOn
 			.register();
 
-		let TZ56PlusRightDoubleOff = new Homey.FlowCardTriggerDevice('TZ56PLUSD_s2_double_off');
+		let TZ56PlusRightDoubleOff = new Homey.FlowCardTriggerDevice('TZ56DPLUS_s2_double_off');
 		TZ56PlusRightDoubleOff
 			.register();
 
