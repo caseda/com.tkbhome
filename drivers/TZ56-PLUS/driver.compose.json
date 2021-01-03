@@ -1,0 +1,63 @@
+{
+	"id": "TZ36",
+	"name": {
+		"en": "Switch TZ36/TZ56",
+		"nl": "Schakelaar TZ36/TZ56"
+	},
+	"zwave": {
+		"manufacturerId": [
+			280
+		],
+		"productTypeId": [
+			3
+		],
+		"productId": [
+			3
+		],
+		"learnmode": {
+			"image": "/drivers/TZ36/assets/learnmode.svg",
+			"instruction": {
+				"en": "Press an on/off button once",
+				"nl": "Druk een keer op een aan/uit knop"
+			}
+		},
+		"associationGroups": [
+			2,
+			3
+		],
+		"associationGroupsOptions": {
+			"1": {
+				"hint": {
+					"en": "Devices that are associated here will toggle their state when you switch with the left switch.",
+					"nl": "Apparaten die hier zijn geassocieerd zullen hun status schakelen wanneer je schakelt met de linker schakelaar."
+				}
+			},
+			"2": {
+				"hint": {
+					"en": "Devices that are associated here will toggle their state when you toggle with the right switch.",
+					"nl": "Apparaten die hier zijn geassocieerd zullen hun status schakelen wanneer je schakelt met de rechter schakelaar."
+				}
+			},
+			"3": {
+				"hint": {
+					"en": "Devices that are associated here will toggle their state when you double pressing the right switch.",
+					"nl": "Apparaten die hier zijn geassocieerd zullen hun status schakelen wanneer je 2x drukt op de rechter schakelaar."
+				}
+			},
+			"4": {
+				"hint": {
+					"en": "Devices that are associated here follow the state of the switch when it is being switched by other devices",
+					"nl": "Apparaten die hier zijn geassocieerd volgen de status van de schakelaar wanneer het wordt geschakeld door andere apparaten"
+				}
+			}
+		}
+	},
+	"class": "light",
+	"capabilities": [
+		"onoff"
+	],
+	"images": {
+		"large": "/drivers/TZ36/assets/images/large.png",
+		"small": "/drivers/TZ36/assets/images/small.png"
+	}
+}
