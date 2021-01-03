@@ -17,8 +17,8 @@
 		"learnmode": {
 			"image": "/drivers/TZ56-PLUS/assets/learnmode.svg",
 			"instruction": {
-				"en": "Press an on/off button once",
-				"nl": "Druk een keer op een aan/uit knop"
+				"en": "Press an on/off button three times",
+				"nl": "Druk drie keer op een aan/uit knop"
 			}
 		},
 		"associationGroups": [
